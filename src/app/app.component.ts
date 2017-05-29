@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventComponent } from './components/event/event.component';
 
 @Component({
   selector: 'app-root',
