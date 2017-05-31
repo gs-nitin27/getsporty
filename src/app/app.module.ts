@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { EventComponent } from './components/event/event.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { HomeComponent } from './components/home/home.component';
+import { JobComponent } from './component/job/job.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
     TournamentComponent,
-    HomeComponent
+    HomeComponent,
+    JobComponent
   ],
   imports: [
     BrowserModule,
