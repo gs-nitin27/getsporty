@@ -1,0 +1,55 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+   <h1>
+     List Content
+      <small></small>
+   </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Custom Tabs -->
+         <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+               <li class="active"><a href="#content" data-toggle="tab">Content</a></li>
+               <li class="pull-right"><a routerLink="/tournament" class="btn btn-info"><i class="fa fa-plus-square"></i> ADD</a></li>
+            </ul>
+            <div class="tab-content">
+               <div class="tab-pane active" id="content">
+                  <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                           <tr>
+                              <th class="text-center" >title</th>
+                              <th class="text-center" >content</th>
+                              <th class="text-center" >userid</th>
+                              <th class="text-center" >publish</th>
+                              <th class="text-center" >url</th>
+                              <th class="text-center" ></th>
+                           </tr>
+                        </thead>
+                        <tbody >
+                           <tr *ngFor='let content of Contents' >
+                              <td class="text-center">{{ content.title }}</td>
+                              <td class="text-center">{{ content.content }}</td>
+                              <td class="text-center">{{ content.userid }}</td>
+                              <td class="text-center">{{ content.publish }}</td>
+                              <td class="text-center">{{ content.url }}</td>
+                              <td class="text-center"><a href="javascript:void(0)" (click)= "editContent(content.id)">Edit</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+               <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+         </div>
+         <!-- nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
+   </div>
+</section>
+<!-- /.content -->

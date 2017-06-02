@@ -9,6 +9,11 @@ import { EventComponent } from './components/event/event.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { HomeComponent } from './components/home/home.component';
 import { JobComponent } from './component/job/job.component';
+import { viewContentComponent } from './components/content/view_content/viewContent.component';
+import { viewContentServices } from './components/services/viewContent.services';
+import { APP_CONFIG, AppConfig } from './app.config';
+import { RegistrationComponent } from './components/content/create_content/createContent.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +21,8 @@ import { JobComponent } from './component/job/job.component';
     EventComponent,
     TournamentComponent,
     HomeComponent,
+    RegistrationComponent,
+    viewContentComponent,
     JobComponent
   ],
   imports: [
@@ -25,7 +32,10 @@ import { JobComponent } from './component/job/job.component';
     routes,
     RouterModule
   ],
-  providers: [],
+  providers: [
+  viewContentServices,
+  [{ provide: APP_CONFIG, useValue: AppConfig }]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
