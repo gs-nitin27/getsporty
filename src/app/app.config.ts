@@ -7,5 +7,6 @@ export const AppConfig: IAppConfig = {
     apBaseUrl: "http://localhost/staging/index.php/",
     viewcontenturl: "http://localhost/testingapp/angularapi.php?act=contentangularlex",
     createcontenturl: "http://localhost/testingapp/angularapi.php?act=createcontent",
-
+    createeventurl :  "http://localhost/testingapp/angularapi.php?act=createevent",
+    sportlist : "http://localhost/testingapp/angularapi.php?act=sportlisting",
 };

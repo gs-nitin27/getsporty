@@ -7,11 +7,11 @@ import { createContentServices } from '../../services/createContent.services';
 
 
 @Component({
-  selector: 'app-registration',
+  selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
   providers:[createContentServices]
 })
-export class RegistrationComponent implements OnInit {
+export class CreateContentComponent implements OnInit {
 
   constructor(private _contents: createContentServices,private router: Router) { }
   @Input() contents: CreateContent;

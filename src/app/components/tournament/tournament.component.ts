@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './tournament.component.html',
   styleUrls: ['./tournament.component.css']
 })
-export class TournamentComponent implements OnInit {
+export class TournamentComponent {
+title = 'My First Angular App';
 
   constructor() { }
 

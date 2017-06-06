@@ -5,8 +5,8 @@ import { EventComponent } from './components/event/event.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { HomeComponent } from './components/home/home.component';
 import { viewContentComponent } from './components/content/view_content/viewContent.component';
-import { RegistrationComponent } from './components/content/create_content/createContent.component';
-
+import { CreateContentComponent } from './components/content/create_content/createContent.component';
+import { CreateEventComponent } from './components/event/createevent/createEvent.component';
 
 export const router:Routes = [
 
@@ -15,7 +15,8 @@ export const router:Routes = [
       {path : 'event',component: EventComponent},
       {path : 'tournament' , component: TournamentComponent},
       {path : 'contentview' , component: viewContentComponent},
-      {path : 'createcontent' , component: RegistrationComponent}
+      {path : 'createcontent' , component: CreateContentComponent},
+      {path : 'createevent' , component: CreateEventComponent}
 
 
 ];

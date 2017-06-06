@@ -1,0 +1,129 @@
+
+<div class="container">
+  <h2>Create Event</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Organization Address</a></li>
+    <li><a data-toggle="tab" href="#menu3">Ticket Details</a></li>
+  </ul>
+  <div class="tab-content">
+    
+   <div id="home" class="tab-pane fade in active">
+   <br>
+   <br>
+    <div class="form-group">
+	<label for="title">Event Userid</label>
+	<input type="text" name="title" [(ngModel)]="events.userid" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="description">Event name</label>
+	<input type="text" name="description" [(ngModel)]="events.name" class="form-control" value="description" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event description</label>
+	<input type="text" name="title" [(ngModel)]="events.description" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+
+	<div class="form-group">
+	<label for="sport">entry_type</label>
+	<input type="text" name="title" [(ngModel)]="events.entry_type" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+
+<div *ngIf="sports">
+    <div class="form-group">
+    <label for="name">Event sport:</label>
+      <select class="form-control" name="game" [(ngModel)]="events.sport" required>
+        <option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
+      </select>
+    </div>
+  </div>
+
+
+    
+	
+	<div class="form-group">
+	<label for="title">Event address</label>
+	<input type="text" name="title" [(ngModel)]="events.address" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+    </div>
+
+       <!-- Tab 2 start -->
+    
+
+    <div id="menu1" class="tab-pane fade">  
+    <br>
+    <br>
+
+    <div class="form-group">
+	<label for="title">Event city</label>
+	<input type="text" name="title" [(ngModel)]="events.city" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event state</label>
+	<input type="text" name="title" [(ngModel)]="events.state" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event event_link</label>
+	<input type="text" name="title" [(ngModel)]="events.event_link" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event start_date</label>
+	<input type="text" name="title" [(ngModel)]="events.start_date" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event end_date</label>
+	<input type="text" name="title" [(ngModel)]="events.end_date" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event organizer_email</label>
+	<input type="text" name="title" [(ngModel)]="events.organizer_email" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div>
+    </div>
+
+<!-- new Tab 3 -->
+
+
+    <div id="menu2" class="tab-pane fade">
+    <br>
+    <br>
+     <div class="form-group">
+	<label for="title">Event mobile</label>
+	<input type="text" name="title" [(ngModel)]="events.mobile" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event eligibility</label>
+	<input type="text" name="title" [(ngModel)]="events.eligibility" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	<div class="form-group">
+	<label for="title">Event terms_cond</label>
+	<input type="text" name="title" [(ngModel)]="events.terms_cond" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+	
+
+    </div>
+
+
+<!-- new Tab 4 -->
+
+   <div id="menu3" class="tab-pane fade">
+   <br>
+   <br>
+     <div class="form-group">
+	<label for="title">Event ticket</label>
+	<input type="text" name="title" [(ngModel)]="events.ticket" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+	</div >
+
+
+ 
+    
+
+    </div>
+
+        <div class="p-container">
+		<input type="submit" (click) ="Create()" class="btn btn-primary" value="Submit" >
+		<div class="clear"> </div>
+		</div>
+
+  </div>
+</div>

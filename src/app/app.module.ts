@@ -12,7 +12,8 @@ import { JobComponent } from './component/job/job.component';
 import { viewContentComponent } from './components/content/view_content/viewContent.component';
 import { viewContentServices } from './components/services/viewContent.services';
 import { APP_CONFIG, AppConfig } from './app.config';
-import { RegistrationComponent } from './components/content/create_content/createContent.component';
+import { CreateContentComponent } from './components/content/create_content/createContent.component';
+import { CreateEventComponent } from './components/event/createevent/createEvent.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RegistrationComponent } from './components/content/create_content/creat
     EventComponent,
     TournamentComponent,
     HomeComponent,
-    RegistrationComponent,
+    CreateContentComponent,
+    CreateEventComponent,
     viewContentComponent,
     JobComponent
   ],
