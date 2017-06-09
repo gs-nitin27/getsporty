@@ -5,7 +5,6 @@ import { CreateContent } from '../../model/createContent.module';
 import { createContentServices } from '../../services/createContent.services';
 
 
-
 @Component({
   selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
@@ -26,7 +25,7 @@ export class CreateContentComponent implements OnInit {
           
            this._contents.saveContent(this.contents).subscribe(
            (data) => { 
-             this.router.navigate(["/contentview"]);
+             alert("created");
              },
            (err) => alert("Hi")
         ); 

@@ -17,5 +17,5 @@ export class CreateEvent
       eligibility: string;
       terms_cond: string;
       ticket : string;
-
+      image  : string;
 }

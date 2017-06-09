@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.router';
@@ -14,6 +14,7 @@ import { viewContentServices } from './components/services/viewContent.services'
 import { APP_CONFIG, AppConfig } from './app.config';
 import { CreateContentComponent } from './components/content/create_content/createContent.component';
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
+
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CreateEventComponent } from './components/event/createevent/createEvent
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     routes,
     RouterModule
   ],
