@@ -8,4 +8,6 @@ import { EventComponent } from './components/event/event.component';
 })
 export class AppComponent {
   title = 'app works!';
+
+  
 }

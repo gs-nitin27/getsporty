@@ -14,6 +14,9 @@ import { viewContentServices } from './components/services/viewContent.services'
 import { APP_CONFIG, AppConfig } from './app.config';
 import { CreateContentComponent } from './components/content/create_content/createContent.component';
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
+import { LoginComponent } from './components/useraccount/login.component';
+import { loginServices } from './components/services/login.services';
+
 
 
 
@@ -23,6 +26,7 @@ import { CreateEventComponent } from './components/event/createevent/createEvent
     EventComponent,
     TournamentComponent,
     HomeComponent,
+    LoginComponent,
     CreateContentComponent,
     CreateEventComponent,
     viewContentComponent,
@@ -37,7 +41,7 @@ import { CreateEventComponent } from './components/event/createevent/createEvent
     RouterModule
   ],
   providers: [
-  viewContentServices,
+  viewContentServices,loginServices,
   [{ provide: APP_CONFIG, useValue: AppConfig }]
   ],
   bootstrap: [AppComponent]

@@ -11,6 +11,9 @@ import { viewContentServices } from '../../services/viewContent.services';
 })
 export class viewContentComponent implements OnInit {
      public Contents: contentModel[];
+     public username  = localStorage.getItem('currentUser');
+     public userid  = localStorage.getItem('currentUserid');
+
     
 
 
@@ -18,7 +21,23 @@ export class viewContentComponent implements OnInit {
 
     ngOnInit() {
 
-        this._viewContentServices.loadcontentModel(1).subscribe(res => this.Contents = res);
+        this.viewcontent();
+
+        
+        
+    }
+
+   viewcontent()
+   {
+
+    this._viewContentServices.loadcontentModel(this.userid).subscribe(res => this.Contents = res);
+   }
+    
+
+
+    editContent(contentid)
+    {
+      alert(contentid);
     }
     
 }

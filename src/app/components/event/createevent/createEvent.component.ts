@@ -21,53 +21,75 @@ import { createEventServices } from '../../services/createEvent.services';
 })
 export class CreateEventComponent implements OnInit {
 
+ 
 public myForm: FormGroup;
-myGroupName = ['term'];
+myGroupName = ['ticket'];
+
+public termForm: FormGroup;
+termCondition = ['term'];
+
 sports: any[];
 sportslist: Object = {};
 image :string;
+name : string;
 ticket :Object = {};
+terms_cond : Object = {};
 
 
 
-  constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { }
+  constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { 
+
+    
+
+  }
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
 
     this.Sportlist();
     this.events = new CreateEvent();
+
     this.myForm = this._fb.group({
-         
             myArray: this._fb.array([
                 this._fb.group({  
-                   term: this._fb.group({
-                            TName:  [''],
-                            Price:  [''],
-                            Number: [''],
+                   ticket: this._fb.group({
+                            TName:[''],
+                            Price:[''],
+                            Number:[''],
                      
                     })
                 }), 
 
             ])
         }); 
+
+
+
+    this.termForm = this._fb.group({
+            myArray: this._fb.array([
+                this._fb.group({  
+                   term: this._fb.group({
+                            term:[''],
+                            
+                     
+                    })
+                }), 
+
+            ])
+        });
   }
 
-  Create()
-  {       
-          
+  Create() : void  {     
 
-     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
+    var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
      this.events.ticket = inputValue;
 
-           this._event.saveEvent(this.events).subscribe(
-           (data) => { 
-             this.router.navigate(["/contentview"]);
-             },
-           (err) => alert("Hi")
-        ); 
-  }
+    var inputTermValue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
+     this.events.terms_cond = inputTermValue;
+        this.events.userid =  localStorage.getItem('currentUserid');
+        this._event.saveEvent(this.events);
 
+  }
 
    Sportlist() {
     this._event.Sportlist()
@@ -127,11 +149,7 @@ ticket :Object = {};
     }
 
  addArray(newName:string) {
-
-        
-
         const control = <FormArray>this.myForm.controls['myArray'];
-
         this.myGroupName.push(newName);
         control.push(this.initArray(newName));
 
@@ -147,4 +165,33 @@ ticket :Object = {};
     }
 
 
-}
+
+     inittermArray(nameObj:any) {
+
+      return  this._fb.group({  
+                [nameObj]: this._fb.group({
+            
+                          term : [''],
+                          
+                    })
+                })  
+    }
+
+ addtermArray(newTerm:string) {
+        const control = <FormArray>this.termForm.controls['myArray'];
+        this.termCondition.push(newTerm);
+        control.push(this.inittermArray(newTerm));
+
+           
+    }
+
+
+  removeterm(i: number) {
+       const control = <FormArray>this.termForm.controls['myArray'];
+       control.removeAt(i);
+       this.termCondition.splice(i,1);
+    }
+
+} 
+
+ 

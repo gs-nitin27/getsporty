@@ -1,12 +1,32 @@
-<div>
+<body>
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Company's Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      
+      <ul id="nav-mobile" class="mr50 right hide-on-med-and-down">
+        <li><a routerLink="event">Event</a></li>
+        <li><a routerLink="createevent">Create Event</a></li>	
+        <li><a routerLink="tournament">Tournament</a></li>
+        <li><a routerLink="contentview">View Content</a></li>		
+        <li><a routerLink="createcontent">Create Content</a></li>
+        <li><a routerLink="login">Login</a></li>
+      </ul>
+      <ul id="mobile-demo" class="side-nav" style="width:250px;">
+        <li><a routerLink="event">Event</a></li>
+        <li><a routerLink="createevent">Create Event</a></li>	
+        <li><a routerLink="tournament">Tournament</a></li>
+        <li><a routerLink="contentview">View Content</a></li>		
+        <li><a routerLink="createcontent">Create Content</a></li>
+        <li><a routerLink="login">Login</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<li><a routerLink="event">Event</a></li>
-<li><a routerLink="createevent">Create Event</a></li>	
-<li><a routerLink="tournament">Tournament</a></li>
-<li><a routerLink="contentview">View Content</a></li>		
-<li><a routerLink="createcontent">Create Content</a></li>
 
-</div>
-<div class= "container">
+</body>
+
+
+
 <router-outlet></router-outlet>
-</div>
+

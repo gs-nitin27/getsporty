@@ -5,6 +5,7 @@ export let APP_CONFIG = new OpaqueToken("app.config");
 
 export const AppConfig: IAppConfig = {  
     apBaseUrl: "http://localhost/staging/index.php/",
+     loginUrl :  "http://localhost/testingapp/angularapi.php?act=angulartest",
     viewcontenturl: "http://localhost/testingapp/angularapi.php?act=contentangularlex",
     createcontenturl: "http://localhost/testingapp/angularapi.php?act=createcontent",
     createeventurl :  "http://localhost/testingapp/angularapi.php?act=createevent",

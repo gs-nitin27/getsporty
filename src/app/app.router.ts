@@ -7,10 +7,14 @@ import { HomeComponent } from './components/home/home.component';
 import { viewContentComponent } from './components/content/view_content/viewContent.component';
 import { CreateContentComponent } from './components/content/create_content/createContent.component';
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
+import { LoginComponent } from './components/useraccount/login.component';
+
+
 
 export const router:Routes = [
 
-      {path : '',redirectTo:'home' , pathMatch: 'full'},
+      {path : '',redirectTo:'login' , pathMatch: 'full'},
+      {path : 'login',component: LoginComponent},
       {path : 'home',component: HomeComponent},
       {path : 'event',component: EventComponent},
       {path : 'tournament' , component: TournamentComponent},

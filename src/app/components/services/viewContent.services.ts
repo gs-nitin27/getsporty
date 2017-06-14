@@ -24,8 +24,8 @@ export class viewContentServices {
                       this.baseUrl = this._config.viewcontenturl;
                  }
 
-     public  loadcontentModel(id: number) : Observable<any>  {
-        return this._http.get(this.baseUrl)
+     public  loadcontentModel(id: string) : Observable<any>  {
+        return this._http.get(this.baseUrl + "&userid="+id)
             .map(res => < contentModel[] > res.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 }

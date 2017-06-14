@@ -5,4 +5,5 @@ export interface IAppConfig {
     createcontenturl:string;
     createeventurl:string;
     sportlist : string;
+    loginUrl  : string;
 }

@@ -5,6 +5,8 @@ import { CreateContent } from '../../model/createContent.module';
 import { createContentServices } from '../../services/createContent.services';
 
 
+
+
 @Component({
   selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
