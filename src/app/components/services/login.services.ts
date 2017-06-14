@@ -42,11 +42,8 @@ constructor(private _http: Http,
                     localStorage.clear();
                     localStorage.setItem('currentUser',data.customer);
                     localStorage.setItem('currentUserid',data.userId);
-
                     }
-
-
-                         this.router.navigate(["/contentview"]);
+                         this.router.navigate(["/home"]);
                          }
                          else
                          {
