@@ -1,19 +1,25 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
-
+declare var $:any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
 public showMenu : boolean;
 public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
 
-
+    ngOnInit() 
+    {
+         $(document).ready(function(){
+         $(".button-collapse").sideNav();
+         });
+         $('#login').webuiPopover({url:'#login-form'});
+    }
+    
 
 constructor(private router: Router){
  if(this.userid) 
@@ -29,8 +35,8 @@ constructor(private router: Router){
 
  logout() :void {
     localStorage.clear();
-    
-    this.router.navigate(["/login"]);
+
+    this.router.navigate(["main"]);
     }
 
 

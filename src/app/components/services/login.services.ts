@@ -20,7 +20,7 @@ constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig,private router: Router) {
 
 
-                 
+
                       this.baseUrl = this._config.createeventurl;
                       this.sportlistUrl = this._config.sportlist;
                       this.loginurl    = this._config.loginUrl;
@@ -46,7 +46,7 @@ constructor(private _http: Http,
                     localStorage.setItem('currentUser',data.customer);
                     localStorage.setItem('currentUserid',data.userId);
                     }
-                         this.router.navigate(["/home"]);
+                         this.router.navigate(["/dashboard"]);
                          }
                          else
                          {
