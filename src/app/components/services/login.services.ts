@@ -18,6 +18,9 @@ export class loginServices {
 
 constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig,private router: Router) {
+
+
+                 
                       this.baseUrl = this._config.createeventurl;
                       this.sportlistUrl = this._config.sportlist;
                       this.loginurl    = this._config.loginUrl;

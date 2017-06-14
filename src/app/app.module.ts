@@ -16,7 +16,8 @@ import { CreateContentComponent } from './components/content/create_content/crea
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
 import { LoginComponent } from './components/useraccount/login.component';
 import { loginServices } from './components/services/login.services';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 
 
 
@@ -27,6 +28,8 @@ import { loginServices } from './components/services/login.services';
     TournamentComponent,
     HomeComponent,
     LoginComponent,
+    RegistrationComponent,
+    DashboardComponent,
     CreateContentComponent,
     CreateEventComponent,
     viewContentComponent,

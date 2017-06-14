@@ -8,6 +8,8 @@ import { viewContentComponent } from './components/content/view_content/viewCont
 import { CreateContentComponent } from './components/content/create_content/createContent.component';
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
 import { LoginComponent } from './components/useraccount/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 
 
 
@@ -20,7 +22,10 @@ export const router:Routes = [
       {path : 'tournament' , component: TournamentComponent},
       {path : 'contentview' , component: viewContentComponent},
       {path : 'createcontent' , component: CreateContentComponent},
-      {path : 'createevent' , component: CreateEventComponent}
+      {path : 'createevent' , component: CreateEventComponent},
+      {path : 'dashboard' , component: DashboardComponent},
+      {path : 'main' , component: AppComponent},
+      {path : 'registration' , component: RegistrationComponent}
 
 
 ];

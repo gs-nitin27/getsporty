@@ -5,8 +5,6 @@
 
       <img class="responsive-img"  src="http://portal.getsporty.in/img/logo.png" />
       <div class="section"></div>
-
-      <h5 class="indigo-text">Please, login into your account</h5>
       <div class="section"></div>
 
       <div class="container">
@@ -32,9 +30,7 @@
               <input id="password" type="password" class="validate" #password [(ngModel)]="loginModel.password" formControlName="password" placeholder="Password" [class.invalid]="form.controls['password'].touched && !form.controls['password'].valid">
                 <label for='password'>Password</label>
               </div>
-              <label style='float: right;'>
-                <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
-              </label>
+              
               
             </div>
 
@@ -43,12 +39,17 @@
               <div class='row'>
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
               </div>
+
  
 
 
-              <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Create account</button>
-              </div>
+             <label style='float: left;'>
+             <a class='pink-text' routerLink="/registration"><b>Register</b></a>
+              </label>
+
+              <label style='float: right;'>
+                <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
+              </label>
        
           </form>
         </div>
@@ -56,8 +57,7 @@
       
 
 
-    <div class="section"></div>
-    <div class="section"></div>
+
   </main>
   </div>
 </body>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/login.model';
 import { loginServices } from '../services/login.services';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,17 +14,22 @@ export class LoginComponent implements OnInit {
 
     public loginModel: User = new User();
     public form: FormGroup;
+    public userid  = localStorage.getItem('currentUserid');
 
   ngOnInit() 
   {
-        
+        if(this.userid)
+        {
+             this.router.navigate(["/home"]);
+
+        }
   }
 
     
 
 
  constructor(private fb: FormBuilder,
-        private _accountService: loginServices,
+        private _accountService: loginServices,private router: Router
     ) {
         this.form = fb.group({
             email: [''],
@@ -44,6 +50,7 @@ export class LoginComponent implements OnInit {
     logout() :void {
 
     localStorage.clear();
+
     }
 
 

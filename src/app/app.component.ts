@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { EventComponent } from './components/event/event.component';
+import { Component} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,32 @@ import { EventComponent } from './components/event/event.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+public showMenu : boolean;
+public username  = localStorage.getItem('currentUser');
+public userid  = localStorage.getItem('currentUserid');
+
+
+
+constructor(private router: Router){
+ if(this.userid) 
+ {
+             this.showMenu = true;
+ }
+ else
+{
+       this.showMenu = false;
+}
+        
+}
+
+ logout() :void {
+    localStorage.clear();
+    
+    this.router.navigate(["/login"]);
+    }
+
+
+
 
   
 }
