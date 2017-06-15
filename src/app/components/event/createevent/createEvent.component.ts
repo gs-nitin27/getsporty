@@ -1,16 +1,14 @@
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
-
-
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
+declare var $:any;
 
 @Injectable()
 
@@ -45,6 +43,21 @@ terms_cond : Object = {};
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
+
+    $(document).ready(function() {
+    $('select').material_select();
+  });
+ 
+
+ $('.datepicker').pickadate({   
+            selectMonths: true, 
+            selectYears: true,
+            format: 'dd/mm/yyyy',
+            min: true,
+            max: false,
+            closeOnSelect: true,
+            closeOnClear: true,
+        });
 
     this.Sportlist();
     this.events = new CreateEvent();
