@@ -102,11 +102,11 @@
 	
 
 
-   <form [formGroup]="termForm" novalidate (ngSubmit)="save(termForm)">
+   <form [formGroup]="termForm" novalidate>
       
       <div formArrayName="myArray"> 
         
-         <div *ngFor="let myGroup of termForm.controls.myArray.controls; let i=index" class="panel panel-default">
+         <div *ngFor="let myGroup of termForm.controls.myArray; let i=index" class="panel panel-default">
           
            <div [formGroupName]="i" class="panel-body"> 
               <span *ngIf="termForm.controls.myArray.controls.length > 1" 
@@ -124,8 +124,7 @@
     </div>
         <div class="margin-20">
         <input #newTerm
-      (keyup.enter)="addName(newTerm.value)"
-       type="hidden" style="width:30%" id="newTerm"  value="term">
+             type="hidden" style="width:30%" id="newTerm"  value="term">
         <a (click)="addtermArray(newTerm.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
         </div>
           <br/><br/>
@@ -164,11 +163,11 @@
         <h2>Ticket Details</h2>
       </div>
 
-   <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+   <form [formGroup]="myForm" novalidate>
       
       <div formArrayName="myArray"> 
         
-         <div *ngFor="let myGroup of myForm.controls.myArray.controls; let i=index" class="panel panel-default">
+         <div *ngFor="let myGroup of myForm.controls.myArray; let i=index" class="panel panel-default">
           
            <div [formGroupName]="i" class="panel-body"> 
               <span *ngIf="myForm.controls.myArray.controls.length > 1" 
@@ -204,7 +203,7 @@
  
         <div class="margin-20">
         <input #newName
-      (keyup.enter)="addName(newName.value)"
+      
        type="hidden" style="width:30%" id="newName"  value="ticket">
         <a (click)="addArray(newName.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
         </div>
