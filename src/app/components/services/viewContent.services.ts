@@ -21,11 +21,11 @@ export class viewContentServices {
 
     constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig) {
-                      this.baseUrl = this._config.viewcontenturl;
+                      this.baseUrl = this._config.apBaseUrl;
                  }
 
      public  loadcontentModel(id: string) : Observable<any>  {
-        return this._http.get(this.baseUrl + "&userid="+id)
+        return this._http.get(this.baseUrl + "/angularapi.php?act=contentangularlex" + "&userid="+id)
             .map(res => < contentModel[] > res.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 }

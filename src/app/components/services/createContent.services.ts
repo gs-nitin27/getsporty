@@ -14,10 +14,11 @@ export class createContentServices {
 
 constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig) {
-                      this.baseUrl = this._config.createcontenturl;
+                      this.baseUrl = this._config.apBaseUrl;
                  }
     saveContent(contents:CreateContent) {
-       return this._http.post(this.baseUrl, contents, xhrHeaders).map(res =>  res.json()).share(); 	    
+       return this._http.post(this.baseUrl + "/angularapi.php?act=createcontent", contents, xhrHeaders).map(res =>  res.json()).share(); 	    
     }
 }
 
+ 

@@ -11,13 +11,13 @@ import { IAppConfig }  from '../../app.iconfig';
 
 @Injectable()
 export class createEventServices {
-    public baseUrl: string;
+    public createeventurl: string;
     public sportlistUrl : string;
 
 constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig ,private router: Router) {
-                      this.baseUrl = this._config.createeventurl;
-                      this.sportlistUrl = this._config.sportlist;
+                      this.createeventurl = this._config.apBaseUrl;
+                      this.sportlistUrl = this._config.apBaseUrl + "/angularapi.php?act=sportlisting";
 
                  }
     
@@ -29,9 +29,9 @@ constructor(private _http: Http,
   public saveEvent(events:CreateEvent) {
 
 
-     return this._http.post(this.baseUrl, events, xhrHeaders)
+     return this._http.post(this.createeventurl + "/angularapi.php?act=createevent", events, xhrHeaders)
             .map((res => res.json())).subscribe(
-                data => console.log(data),
+                data => alert(data),
                 err => console.log("An Error Occured While Processing Your Request"));
 
     }
