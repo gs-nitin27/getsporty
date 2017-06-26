@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.router';
 import { AppComponent } from './app.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { EventComponent } from './components/event/event.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { HomeComponent } from './components/home/home.component';
@@ -45,6 +46,7 @@ import { RegistrationComponent } from './components/useraccount/registration/reg
   ],
   providers: [
   viewContentServices,loginServices,
+  [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   [{ provide: APP_CONFIG, useValue: AppConfig }]
   ],
   bootstrap: [AppComponent]
