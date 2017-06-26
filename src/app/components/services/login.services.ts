@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import {HttpModule, Http,Response} from '@angular/http';
+import {HttpModule, Http,Response,Headers,RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map'
 import { User } from '../model/login.model';
@@ -35,8 +35,12 @@ constructor(private _http: Http,
   }
 
   public login(login: User) : void {
+
+        let headers      = new Headers({ 'Content-Type': 'application/json' }); 
+        let options       = new RequestOptions({ headers: headers });
+
         let url = this.baseUrl + "/angularapi.php?act=angulartest" + "&email=" + login['email'] + "&password=" + login['password'];
-        this._http.get(url).map((res => res.json()))
+        this._http.get(url,options).map((res => res.json()))
             .subscribe(
                 (data) => { if(data != null){ 
                 let user = data;

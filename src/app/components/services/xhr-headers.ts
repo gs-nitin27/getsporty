@@ -6,7 +6,8 @@ import {Headers} from "@angular/http";
 export function xhrHeaders() {
     const headers = new Headers();
     headers.append("Access-Control-Allow-Origin", "*");
-    headers.append('Content-Type', 'text/html; charset=utf-8');
+    headers.append("Content-Type", "*");
+    headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     headers.append('X-Requested-With','XMLHttpRequest');
     return {headers};
 } 
