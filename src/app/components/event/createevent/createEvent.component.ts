@@ -8,13 +8,16 @@ import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
+
 declare var $:any;
+declare var timepicker: any;
 
 @Injectable()
 
 @Component({
   selector: 'app-createevent',
   templateUrl: './createEvent.component.html',
+   styleUrls: ['./createEvent.component.css'],
   providers:[createEventServices]
 })
 export class CreateEventComponent implements OnInit {
@@ -26,13 +29,29 @@ myGroupName = ['ticket'];
 public termForm: FormGroup;
 termCondition = ['term'];
 
-controls : any;
+
 sports: any[];
 sportslist: Object = {};
 image :string;
 name : string;
 ticket :Object = {};
 terms_cond : Object = {};
+
+
+userid = '';
+description = '';
+entry_type  = '';
+sport = '';
+address = '';
+city = '';
+state = '';
+event_link = '';
+start_date = '';
+end_date = '';
+organizer_email = '';
+mobile = '';
+eligibility = '';
+
 
 
 
@@ -45,7 +64,7 @@ terms_cond : Object = {};
   responseStatus:Object= [];
   ngOnInit() {
 
-
+    
     this.Sportlist();
     this.events = new CreateEvent();
 
@@ -76,6 +95,14 @@ terms_cond : Object = {};
                 }), 
 
             ])
+        });
+
+
+
+  $(document).ready(function() {
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
         });
   }
 

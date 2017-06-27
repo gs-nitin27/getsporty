@@ -49,7 +49,7 @@ constructor(private _http: Http,
                     localStorage.setItem('currentUser',data.customer);
                     localStorage.setItem('currentUserid',data.userId);
                     }
-                         this.router.navigate(["/dashboard"]);
+                         this.router.navigate(["/home"]);
                          }
                          else
                          {

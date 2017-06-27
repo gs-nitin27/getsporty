@@ -25,6 +25,8 @@ constructor(private router: Router){
  else
 {
     this.showMenu = false;
+    this.router.navigate(["/login"]);
+
 }
         
 }
