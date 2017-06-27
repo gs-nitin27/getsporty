@@ -39,13 +39,9 @@
     </div>
   </div>
 
-
     
 	
-	<div class="form-group">
-	<label for="title">Event address</label>
-	<input type="text" name="title" [(ngModel)]="events.address" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
-	</div >
+	
     </div>
 
        <!-- Tab 2 start -->
@@ -54,7 +50,10 @@
     <div id="menu1" class="tab-pane fade">  
     <br>
     <br>
-
+<div class="form-group">
+  <label for="title">Event address</label>
+  <input type="text" name="title" [(ngModel)]="events.address" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+  </div >
     <div class="form-group">
 	<label for="title">Event city</label>
 	<input type="text" name="title" [(ngModel)]="events.city" class="form-control" value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
@@ -106,7 +105,7 @@
       
       <div formArrayName="myArray"> 
         
-         <div *ngFor="let myGroup of termForm.controls.myArray; let i=index" class="panel panel-default">
+         <div *ngFor="let myGroup of termForm.controls.myArray.controls; let i=index" class="panel panel-default">
           
            <div [formGroupName]="i" class="panel-body"> 
               <span *ngIf="termForm.controls.myArray.controls.length > 1" 
@@ -167,7 +166,7 @@
       
       <div formArrayName="myArray"> 
         
-         <div *ngFor="let myGroup of myForm.controls.myArray; let i=index" class="panel panel-default">
+         <div *ngFor="let myGroup of myForm.controls.myArray.controls; let i=index" class="panel panel-default">
           
            <div [formGroupName]="i" class="panel-body"> 
               <span *ngIf="myForm.controls.myArray.controls.length > 1" 

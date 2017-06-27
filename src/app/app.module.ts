@@ -19,7 +19,7 @@ import { LoginComponent } from './components/useraccount/login.component';
 import { loginServices } from './components/services/login.services';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
-
+import { UserdataComponent } from './userdata.component';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { RegistrationComponent } from './components/useraccount/registration/reg
     EventComponent,
     TournamentComponent,
     HomeComponent,
+    UserdataComponent,
     LoginComponent,
     RegistrationComponent,
     DashboardComponent,

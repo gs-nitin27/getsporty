@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { contentModel } from '../../model/viewContent.model';
 import { viewContentServices } from '../../services/viewContent.services';
+import { Globledataservices } from '../../services/globaldata.services';
 
 
 
@@ -19,13 +20,10 @@ export class viewContentComponent implements OnInit {
 
     constructor(private _viewContentServices: viewContentServices) {}
 
-    ngOnInit() {
-
-        this.viewcontent();
-
-        
-        
-    }
+    ngOnInit() 
+         {
+            this.viewcontent();
+         }
 
    viewcontent()
    {

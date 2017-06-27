@@ -4,8 +4,9 @@ import { IAppConfig } from "./app.iconfig"
 export let APP_CONFIG = new OpaqueToken("app.config");
 
 export const AppConfig: IAppConfig = {  
-     applocalhostUrl: "http://localhost/testingapp",
-     apBaseUrl : "https://testingapp.getsporty.in",
+     apBaseUrl: "http://localhost/testingapp",
+     applocalhostUrl : "https://testingapp.getsporty.in",
+
 
 
      loginUrl :  "http://localhost/testingapp/angularapi.php?act=angulartest",
