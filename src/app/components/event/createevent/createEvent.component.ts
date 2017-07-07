@@ -8,16 +8,13 @@ import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
-
 declare var $:any;
-declare var timepicker: any;
 
 @Injectable()
 
 @Component({
   selector: 'app-createevent',
   templateUrl: './createEvent.component.html',
-   styleUrls: ['./createEvent.component.css'],
   providers:[createEventServices]
 })
 export class CreateEventComponent implements OnInit {
@@ -29,29 +26,12 @@ myGroupName = ['ticket'];
 public termForm: FormGroup;
 termCondition = ['term'];
 
-
 sports: any[];
 sportslist: Object = {};
 image :string;
 name : string;
 ticket :Object = {};
 terms_cond : Object = {};
-
-
-userid = '';
-description = '';
-entry_type  = '';
-sport = '';
-address = '';
-city = '';
-state = '';
-event_link = '';
-start_date = '';
-end_date = '';
-organizer_email = '';
-mobile = '';
-eligibility = '';
-
 
 
 
@@ -64,7 +44,21 @@ eligibility = '';
   responseStatus:Object= [];
   ngOnInit() {
 
-    
+    $(document).ready(function() {
+    $('select').material_select();
+  });
+ 
+
+ $('.datepicker').pickadate({   
+            selectMonths: true, 
+            selectYears: true,
+            format: 'dd/mm/yyyy',
+            min: true,
+            max: false,
+            closeOnSelect: true,
+            closeOnClear: true,
+        });
+
     this.Sportlist();
     this.events = new CreateEvent();
 
@@ -96,25 +90,21 @@ eligibility = '';
 
             ])
         });
-
-
-
-  $(document).ready(function() {
-            $(".timepicker").timepicker({
-                showInputs: false
-            });
-        });
   }
 
-  Create() : void  {     
+  Create(events) : void  {     
 
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
      this.events.ticket = inputValue;
 
+
     var inputTermValue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
-     this.events.terms_cond = inputTermValue;
-        this.events.userid =  localStorage.getItem('currentUserid');
-        this._event.saveEvent(this.events);
+    this.events.terms_cond = inputTermValue;
+    this.events.userid =  localStorage.getItem('currentUserid');
+
+   
+
+    this._event.saveEvent(this.events);
 
   }
 

@@ -20,6 +20,7 @@ public userid  = localStorage.getItem('currentUserid');
 constructor(private router: Router){
  if(this.userid) 
  {
+
     this.showMenu = true;
  }
  else

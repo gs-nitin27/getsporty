@@ -1,7 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import {HttpModule, Http,Response,Headers,RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map'
+import 'rxjs/Rx'; 
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/observable/throw';
 import { User } from '../model/login.model';
 import {xhrHeaders} from "./xhr-headers";
 import { CreateEvent } from  '../model/createEvent.module';
@@ -19,7 +25,7 @@ export class loginServices {
 constructor(private _http: Http,
                  @Inject(APP_CONFIG) private _config: IAppConfig,private router: Router) {
 
-
+ 
 
                       this.baseUrl = this._config.apBaseUrl;
                      
@@ -58,6 +64,14 @@ constructor(private _http: Http,
              }, (err) => console.log("Error" + err),
             );
     }
+
+
+getHeroes(login: User): Promise<User[]> {
+    return this._http.get(this.baseUrl,xhrHeaders)
+               .toPromise()
+               .then(response => response.json().data as User[]);
+              
+  }
 
 }
 

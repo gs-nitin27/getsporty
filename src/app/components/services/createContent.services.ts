@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import {HttpModule, Http,Response} from '@angular/http';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import {xhrHeaders} from "./xhr-headers";
 import { CreateContent } from  '../model/createContent.module';
 import { APP_CONFIG } from '../../app.config';
@@ -17,8 +18,23 @@ constructor(private _http: Http,
                       this.baseUrl = this._config.apBaseUrl;
                  }
     saveContent(contents:CreateContent) {
-       return this._http.post(this.baseUrl + "/angularapi.php?act=createcontent", contents, xhrHeaders).map(res =>  res.json()).share(); 	    
+       return this._http.post(this.baseUrl + "/angularapi.php?act=createcontent", contents, xhrHeaders).map(res =>  res.json()); 	    
     }
+
+    
+  public signup(contents:CreateContent)  {
+
+return this._http.post(this.baseUrl + "/angularapi.php?act=createcontent", contents)
+  .map(res => res.json())
+  .map(user => {
+                     alert("asdf");
+  }).toPromise();
+
+  }
+
+
+
+
 }
 
  
