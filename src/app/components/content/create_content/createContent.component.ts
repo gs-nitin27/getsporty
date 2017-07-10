@@ -35,7 +35,7 @@ export class CreateContentComponent implements OnInit {
             street: ['', Validators.required],
             postcode: ['']
         });
-    }
+    }  
 
     addAddress() {
         const control = <FormArray>this.myForm.controls['addresses'];
