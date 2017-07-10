@@ -15,7 +15,7 @@
           <small *ngIf="!myForm.controls.name.valid" class="text-danger">
               Name is required (minimum 5 characters).
             </small>
-        </div>
+        </div>    
         <!--addresses-->
         <div formArrayName="addresses">
           <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="panel panel-default">
