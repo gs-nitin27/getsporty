@@ -66,12 +66,7 @@ constructor(private _http: Http,
     }
 
 
-getHeroes(login: User): Promise<User[]> {
-    return this._http.get(this.baseUrl,xhrHeaders)
-               .toPromise()
-               .then(response => response.json().data as User[]);
-              
-  }
+
 
 }
 

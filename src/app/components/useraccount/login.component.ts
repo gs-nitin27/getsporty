@@ -53,11 +53,7 @@ export class LoginComponent implements OnInit {
 
     }
 
-  save(): void {
-    var formData = this.form.value;
-    this._accountService.getHeroes(formData)
-      .then(() => this.router.navigate(["/login"]));
-  }
+
 
 
 

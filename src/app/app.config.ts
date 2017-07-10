@@ -5,9 +5,9 @@ export let APP_CONFIG = new OpaqueToken("app.config");
 
 export const AppConfig: IAppConfig = {  
 
-     applocalhostUrl: "http://localhost/getsporty/php",
+     apBaseUrl: "http://localhost/getsporty/php",
 
-     apBaseUrl : "https://getsporty.in/dist/php",
+     applocalhostUrl : "https://getsporty.in/dist/php",
 
 
 

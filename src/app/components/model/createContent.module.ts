@@ -1,8 +1,12 @@
-export class CreateContent
-{
-     title: string;
-     content: string;
-     url:string;
 
-       
+
+
+export interface CreateContent {
+    name: string;
+    addresses: Address[];
+}
+
+export interface Address {
+    street: string;
+    postcode: string;
 }
