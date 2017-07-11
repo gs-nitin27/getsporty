@@ -1,3 +1,4 @@
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
@@ -93,17 +94,15 @@ terms_cond : Object = {};
 
   Create(events) : void  {     
 
-    
-
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
-    this.events.ticket = inputValue;
+     this.events.ticket = inputValue;
 
 
     var inputTermValue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
     this.events.terms_cond = inputTermValue;
     this.events.userid =  localStorage.getItem('currentUserid');
 
-    
+   
 
     this._event.saveEvent(this.events);
 

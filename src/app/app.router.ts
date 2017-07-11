@@ -10,6 +10,7 @@ import { CreateEventComponent } from './components/event/createevent/createEvent
 import { LoginComponent } from './components/useraccount/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
+import { ProfileComponent } from './components/useraccount/profile/profile.component';
 
 
 
@@ -25,7 +26,8 @@ export const router:Routes = [
       {path : 'createevent' , component: CreateEventComponent},
       {path : 'dashboard' , component: DashboardComponent},
       {path : 'main' , component: AppComponent},
-      {path : 'registration' , component: RegistrationComponent}
+      {path : 'registration' , component: RegistrationComponent},
+      {path : 'profile' , component :ProfileComponent}
 
 
 ];
