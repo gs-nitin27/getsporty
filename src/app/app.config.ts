@@ -7,7 +7,11 @@ export const AppConfig: IAppConfig = {
 
      applocalhostUrl: "http://localhost/getsporty/php",
 
+<<<<<<< HEAD
      apBaseUrl : "http://getsporty.in/dist/assets/php",
+=======
+     applocalhostUrl : "http://getsporty.in/dist/php",
+>>>>>>> 5ec22aab2b298a303f79f2f5c87de44c2196bf49
 
 
 

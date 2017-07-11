@@ -19,6 +19,7 @@ import { LoginComponent } from './components/useraccount/login.component';
 import { loginServices } from './components/services/login.services';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
+import { ProfileComponent } from './components/useraccount/profile/profile.component';
 import { UserdataComponent } from './userdata.component';
 
 
@@ -34,6 +35,7 @@ import { UserdataComponent } from './userdata.component';
     DashboardComponent,
     CreateContentComponent,
     CreateEventComponent,
+    ProfileComponent,
     viewContentComponent,
     JobComponent
   ],
