@@ -38,5 +38,10 @@ constructor(private router: Router){
     this.router.navigate(["/login"]);
     }
 
+ // gotoDetail(): void {
+ // alert(this.userid);
+//  this.router.navigate(['/profile', this.userid]);
+ // }
+
   
 }

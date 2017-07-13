@@ -16,11 +16,9 @@ nav .brand-logo {
     margin-left: 0px;
 }
 }
-
 .nav-wrapper{
 	background-color: #27A7FF;
 }
-
 .ml20{
 	margin-left: 20px;
 }
@@ -29,10 +27,8 @@ nav .brand-logo {
   color: white;
 }
 .tabs .indicator {
-    
     background-color: rgb(43, 209, 226);
     height:3px;
-    
 }
 .input-field label{
 	color:#01579b;

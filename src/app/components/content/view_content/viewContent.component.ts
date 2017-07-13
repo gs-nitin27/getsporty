@@ -3,9 +3,6 @@ import { contentModel } from '../../model/viewContent.model';
 import { viewContentServices } from '../../services/viewContent.services';
 import { Globledataservices } from '../../services/globaldata.services';
 
-
-
-
 @Component({
   selector: 'app-viewcontent',
   templateUrl: './viewContent.component.html'
@@ -27,7 +24,6 @@ export class viewContentComponent implements OnInit {
 
    viewcontent()
    {
-
     this._viewContentServices.loadcontentModel(this.userid).subscribe(res => this.Contents = res);
    }
     

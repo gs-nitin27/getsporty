@@ -46,25 +46,6 @@ public function angulartest($username,$password)
 	
 }
 
-public function profiledata($userid)
-{
-  $query = mysql_query("SELECT  * FROM `user` WHERE `userid` = '$userid'");
-          if($query)
-          {
-            while($row = mysql_fetch_assoc($query))
-            {   
-               //$data1= $row; 
-               $data[] = $row;
-               return $data;
-             }
-           }
-            else
-            {
-               return 0;
-            } 
-
-}
-
 public function getContent($userid)
 {
    $query = mysql_query("SELECT * FROM `cms_content` WHERE `userid` = '$userid'");

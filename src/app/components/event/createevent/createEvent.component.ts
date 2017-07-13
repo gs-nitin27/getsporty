@@ -109,10 +109,7 @@ terms_cond : Object = {};
   }
 
    Sportlist() {
-    this._event.Sportlist()
-      .subscribe(data => {
-        this.sports = data;
-        console.log(this.sports)
+    this._event.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
       })
   }
 
@@ -169,8 +166,6 @@ terms_cond : Object = {};
         const control = <FormArray>this.myForm.controls['myArray'];
         this.myGroupName.push(newName);
         control.push(this.initArray(newName));
-
-           
     }
 
 

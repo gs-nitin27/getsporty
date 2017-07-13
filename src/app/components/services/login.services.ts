@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import {HttpModule, Http,Response,Headers,RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 import 'rxjs/Rx'; 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -31,7 +32,7 @@ constructor(private _http: Http,
                      
 
                  }
-    saveEvent(events:CreateEvent) {
+saveEvent(events:CreateEvent) {
        return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events, xhrHeaders).map(res =>  res.json()).share();      
     }
 
@@ -64,6 +65,19 @@ constructor(private _http: Http,
              }, (err) => console.log("Error" + err),
             );
     }
+
+  public profiledata(id:string) : Observable<any> {
+  return this._http.get(this.baseUrl + "/angularapi.php?act=profiledata" + "&userid="+id)
+  .map(res =>< User[] > res.json()).catch((error : any) =>Observable.throw(error.json().error || 'Server error'));
+  
+  } 
+
+ getHero(id: number): Promise<User> {
+    const url = `${this.baseUrl + "/angularapi.php?act=profiledata" + "&userid="}${id}`;
+    return this._http.get(url)
+      .toPromise()
+      .then(response => response.json().data as User);
+  }
 
 
 

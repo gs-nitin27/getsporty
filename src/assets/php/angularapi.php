@@ -9,6 +9,9 @@ include('services/getListingService.php');
 
 if($_REQUEST['act'] == 'contentangular')
 {
+    
+   
+
 	$req    =   new angularapi();
 	$res= $req->getContentInfo();
     echo json_encode($res); 
@@ -35,8 +38,9 @@ else if($_REQUEST['act'] == 'angulartest')
 }
 
 
-else if($_REQUEST['act'] == 'contentangularlex')
+if($_REQUEST['act'] == 'contentangularlex')
 {
+
   $userid      =  $_REQUEST['userid'];
 	$req    =   new angularapi();
 	$res= $req->getContent($userid);
@@ -61,7 +65,7 @@ else if($_REQUEST['act'] == 'createcontent')
         echo json_encode($res);
 }
 
-else if($_REQUEST['act'] == "sportlisting")
+if($_REQUEST['act'] == "sportlisting")
 {
 $req = new GetListingService();
 $res = $req->getsportlisting();
@@ -125,13 +129,4 @@ else if($_REQUEST['act'] == 'test')
   print_r($data);
 
 }
-
-if($_REQUEST['act'] == 'profiledata')
-{
-  $userid      =  $_REQUEST['userid'];
-  $req    =   new angularapi();
-  $res= $req->profiledata($userid);
-    echo json_encode($res); 
-}
-
 ?>
