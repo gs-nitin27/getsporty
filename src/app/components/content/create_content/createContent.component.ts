@@ -1,54 +1,36 @@
-
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
 
 import { CreateContent } from '../../model/createContent.module';
 import { createContentServices } from '../../services/createContent.services';
 
-@Component({
 
-  moduleId: module.id,
-   selector: 'app-createcontent',
+
+
+@Component({
+  selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
   styleUrls: ['./createContent.component.css'],
   providers:[createContentServices]
 })
-
 export class CreateContentComponent implements OnInit {
-    public myForm: FormGroup;
 
-    constructor(private _fb: FormBuilder) { }
+  constructor(private _contents: createContentServices,private router: Router) { }
+  @Input() contents: CreateContent;
+  responseStatus:Object= [];
+  ngOnInit() {
+  
+    this.contents = new CreateContent(); 
+  }
 
-    ngOnInit() {
-        this.myForm = this._fb.group({
-            name: ['', [Validators.required, Validators.minLength(5)]],
-            addresses: this._fb.array([
-                this.initAddress(),
-            ])
-        });
-    }
-
-    initAddress() {
-        return this._fb.group({
-            street: ['', Validators.required],
-            postcode: ['']
-        });
-    }  
-
-    addAddress() {
-        const control = <FormArray>this.myForm.controls['addresses'];
-        control.push(this.initAddress());
-    }
-
-    removeAddress(i: number) {
-        const control = <FormArray>this.myForm.controls['addresses'];
-        control.removeAt(i);
-    }
-
-    save(model: CreateContent) {
-        console.log(model);
-    }
+  Create()
+  {    
+          
+           this._contents.saveContent(this.contents).subscribe(
+           (data) => { 
+             alert("created");
+             },
+           (err) => alert("Hi")
+        ); 
+  }
 }
