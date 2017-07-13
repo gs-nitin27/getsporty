@@ -10,6 +10,7 @@ import { createContentServices } from '../../services/createContent.services';
 @Component({
   selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
+  styleUrls: ['./createContent.component.css'],
   providers:[createContentServices]
 })
 export class CreateContentComponent implements OnInit {

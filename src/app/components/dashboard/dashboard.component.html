@@ -1,12 +1,26 @@
+<!-- <<<<<<< HEAD
 <nav *ngIf="showMenu">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Company's logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="mr1 right">
+=======
+ -->
+<nav class="navbar navbar-default" *ngIf="showMenu">
+
+
+    <div class="container-fluid">
+     <div class="navbar-header">
+      <a href="#" class="navbar-brand">Company's logo</a>
+       </div>
+     <!--  <ul id="nav-mobile"  class="nav navbar-nav">
+>>>>>>> 31b81eb6aae2586cf411f9117e205d424489f374
       <li><a  href='#' id="login"><i class="material-icons left" style="display:inline;">perm_identity</i><span>{{username}}</span>
 </a></li>
-      </ul>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul> -->
+
+
+      <ul id="nav-mobile"  class="nav navbar-nav navbar-right">
         <li><a routerLink="/event">Event</a></li>
         <li><a routerLink="/createevent">Create Event</a></li> 
         <li><a routerLink="/tournament">Tournament</a></li>
@@ -17,9 +31,9 @@
         <li><a (click)= "logout()" >Logout</a></li>
              
       </ul>
-      
+     
 
-
+<!-- 
 <div id="login-form" class="webui-popover-content">
 <div>Log in via<br>
  <button class="loginBtn loginBtn--facebook">
@@ -42,8 +56,10 @@ Or<br>
                 
             </button>
         </form>
-    </div>
-      <ul id="mobile-demo" class="side-nav" style="width:220px;    background-color: #222d32;">
+    </div> -->
+
+
+     <!--  <ul id="mobile-demo" class="side-nav" style="width:220px;    background-color: #222d32;">
       <li><div class="userView">
       <div class="background">
         <img style="max-width:100%;height:100%" src="#">
@@ -60,7 +76,10 @@ Or<br>
         <li><a routerLink="/createcontent">Create Content</a></li>
         <li><a routerLink="/profile">Profile</a></li>
         <li><a routerLink="/login">Login</a></li>
-      </ul>
-    </div> 
+<<<<<<< HEAD
+      </ul> -->
+
+    </div>
+
   </nav>
   
