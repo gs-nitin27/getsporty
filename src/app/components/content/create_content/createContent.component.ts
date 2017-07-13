@@ -20,7 +20,7 @@ export class CreateContentComponent implements OnInit {
   responseStatus:Object= [];
   ngOnInit() {
   
-    this.contents = new CreateContent(); 
+    //this.contents = new CreateContent(); 
   }
 
   Create()

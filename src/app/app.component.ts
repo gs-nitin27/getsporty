@@ -14,10 +14,7 @@ public userid  = localStorage.getItem('currentUserid');
 
     ngOnInit() 
     {
-         $(document).ready(function(){
-         $(".button-collapse").sideNav();
-         });
-         $('#login').webuiPopover({url:'#login-form'});
+      
     }
     
 

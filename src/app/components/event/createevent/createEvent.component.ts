@@ -44,20 +44,6 @@ terms_cond : Object = {};
   responseStatus:Object= [];
   ngOnInit() {
 
-    $(document).ready(function() {
-    $('select').material_select();
-  });
- 
-
- $('.datepicker').pickadate({   
-            selectMonths: true, 
-            selectYears: true,
-            format: 'dd/mm/yyyy',
-            min: true,
-            max: false,
-            closeOnSelect: true,
-            closeOnClear: true,
-        });
 
     this.Sportlist();
     this.events = new CreateEvent();
