@@ -13,6 +13,7 @@ import { createContentServices } from '../../services/createContent.services';
   moduleId: module.id,
    selector: 'app-createcontent',
   templateUrl: './createContent.component.html',
+  styleUrls: ['./createContent.component.css'],
   providers:[createContentServices]
 })
 

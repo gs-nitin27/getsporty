@@ -1,62 +1,272 @@
                 <app-dashboard></app-dashboard>
 
+  
+<div class="container">
+  <h2>Create Jobs</h2>
+   <div style="background-color: white;border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;margin-bottom: 20px;">
+  <ul class="nav nav-tabs">
+    <li class="active"><a class="nooutline" data-toggle="tab" href="#home">Job Details</a></li>
+    <li><a class="nooutline" data-toggle="tab" href="#menu1">Organization</a></li>
+    <li><a class="nooutline" data-toggle="tab" href="#menu2">Requirements</a></li>
+    
+  </ul>
+  <div class="tab-content">
+
+   <div id="home" class="tab-pane fade in active">
+   
+<div class="box1">
+<h2>Job Details:</h2>
+ <div class="form-group">
+ 
+  
+ 
+  <input type="hidden" name="title"   value="title" required=""><a href="#" class=" icon user"></a>
+  </div >
+  <div>
+  <span class="input input--hoshi">
+  
+  <input class='input__field input__field--hoshi'  type="text" name="title"   value="title" ><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="title"><span class="input__label-content input__label-content--hoshi">Job Title</span></label></span>
+  </div >
+  <div>
+    <span class="input input--hoshi">
+
+  
+  <input class='input__field input__field--hoshi' type="text" name="desciption"   value="desciption" ><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="desciption"><span class="input__label-content input__label-content--hoshi">Job Description</span></label>
+  </span>
+  </div >
+
+   <div class="form-group">
+ 
+    <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Sport</label>
+      <select class="form-control mr5" name="game"  style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+        <option> Select</option>
+          <option> Part Time</option>
+            <option> Full Time</option>
+      </select>
+      
+      
+    </div>
+    <div class="form-group">
+ 
+    <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Category</label>
+      <select class="form-control mr5" name="game"  style=" width: 98.5%; border-radius: 0;    padding-left: 0px;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+        <option> Select</option>
+          <option> Cricket</option>
+            <option> Football</option>
+             <option> Hockey</option>
+      </select>
+      
+      
+    </div>
+
+  <div>
+<span class="input input--hoshi">
+
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address line 1</span></label>
+  </span>
+  </div >
+  <div>
+<span class="input input--hoshi">
+
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address line 2</span></label>
+  </span>
+  </div >
+  <div>
+<span class="input input--hoshi">
+
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Location</span></label>
+  </span>
+  </div >
+  <div class=" wd60 pd0 fl">
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
+    </span>
+  </div >
+  <div class="wd60 pd0 fr">
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"  value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">PIN</span></label>
+  </span>
+  </div >
+  <div>
+<span class="input input--hoshi">
+
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Link</span></label>
+  </span>
+  </div >
+<div >
+    
+  </div>
+  </div>
+    </div>
+
+       <!-- Tab 2 start -->
     
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="margin-20">
-        <h4>Add customer</h4>
-      </div>
-      <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" formControlName="name">
-          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              Name is required (minimum 5 characters).
-            </small>
-        </div>    
-        <!--addresses-->
-        <div formArrayName="addresses">
-          <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="panel panel-default">
-            <div class="panel-heading">
-              <span>Address {{i + 1}}</span>
-              <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)"></span>
-            </div>
-            <div class="panel-body" [formGroupName]="i">
-              <div class="form-group col-xs-6">
-                <label>street</label>
-                <input type="text" class="form-control" formControlName="street">
-                <small [hidden]="myForm.controls.addresses.controls[i].controls.street.valid" class="text-danger">
-                    Street is required
-                </small>
-              </div>
-              <div class="form-group col-xs-6">
-                <label>postcode</label>
-                <input type="text" class="form-control" formControlName="postcode">
-              </div>
-            </div>
-          </div>
-        </div>
+    <div id="menu1" class="tab-pane fade">  
+    
+<div class="box1">
+<h2>Organisation Details:</h2>
+  <div>
+  <span class="input input--hoshi">
+ 
+  <input class='input__field input__field--hoshi' type="text" name="title"  value="title"><a href="#" class=" icon user"></a>
+   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Organisation Name</span></label>
+  </span>
+  </div >
+    <div>
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">About Organisation</span></label>
+    </span>
+  </div >
+  <div>
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"  value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 1</span></label>
+  </span>
+  </div >
+  
+  <div>
+   <span class="input input--hoshi">
+  <input type="text" name="title"  class="input__field input__field--hoshi validate datepicker" value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 2</span></label>
+  </span>
+  </div >
+   
+  <div class=" wd60 pd0 fl">
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Location</span></label>
+    </span>
+  </div >
+  <div class="wd60 pd0 fr">
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"  value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
+  </span>
+  </div >
+  <div class=" wd60 pd0 fl">
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title"><a href="#" class=" icon user"></a>
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Mobile No.</span></label>
+    </span>
+  </div >
+  <div class="wd60 pd0 fr">
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"  value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">PIN</span></label>
+  </span>
+  </div >
+  
+  
+  <div>
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"   value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" ><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Email</span></label>
+  </span>
+  </div >
+  
+</div>
+    </div>
 
-        <div class="margin-20">
-          <a (click)="addAddress()" style="cursor: default">
-            Add another address +
-          </a>
-        </div>
+<!-- new Tab 3 -->
 
-        <div class="margin-20">
-          <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
-        </div>
-        <div class="clearfix"></div>
 
-        <div class="margin-20">
-          <div>myForm details:-</div>
-          <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-          <pre>form value: <br>{{myForm.value | json}}</pre>
+    <div id="menu2" class="tab-pane fade">
+    
+    
+    <div class="box1">
+    <h2>Requirement:</h2>
+  <div>
+   <span class="input input--hoshi">
+  <input  type="text" name="title"  class="input__field input__field--hoshi validate datepicker" value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Work Experience</span></label>
+  </span>
+  </div >
+  <div>
+   <span class="input input--hoshi">
+  <input type="text" name="title"  class="input__field input__field--hoshi validate datepicker" value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Qualification</span></label>
+  </span>
+  </div >
+  <div>
+   <span class="input input--hoshi">
+  <input type="text" name="title"  class="input__field input__field--hoshi validate datepicker" value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Desired Skill</span></label>
+  </span>
+  </div >
+  <div>
+   <span class="input input--hoshi">
+  <input  type="text" name="title"  class="input__field input__field--hoshi validate datepicker" value="title"><a href="#" class=" icon user"></a>
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Key Requirements</span></label>
+  </span>
+  </div >
+ <div class="form-group">
+ 
+    <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Sport</label>
+      <select class="form-control mr5" name="game"  style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+        <option> Select</option>
+          <option> Male</option>
+            <option> Female</option>
+      </select>
+      
+      
+    </div>
+ 
+    </div>
+
+
+
+
+       
+
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">    
+        <div class="col-xs-6 col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2" style="margin-bottom: 20px;   float: left;margin-left: 0%;">  
+            <!-- image-preview-filename input [CUT FROM HERE]-->
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input class="files1" type="file" accept="image/png, image/jpeg, image/gif" id="Jimage" name="file"  />
+                        
+                         <!-- rename it -->
+                    </div>
+                     <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;">
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]--> 
         </div>
-      </form>
+    </div>
+</div>
+   <div class="p-container">
+    <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;" type="submit" (click) ="Create(events)" class="btn btn-primary" value="Submit" >
+    <div class="clear"> </div>
     </div>
   </div>
 </div>
-			
+
+            
+   
+
+   
