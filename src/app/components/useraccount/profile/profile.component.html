@@ -1,72 +1,131 @@
 <app-dashboard></app-dashboard>
-
-
-
-
-<div class="container">
+<div class="container"> 
 	<div class="row">
 		<div class="col-sm-15 col-md-15 user-details">
             <div class="user-image">
-                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
+            <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g"  class="img-circle">
             </div>
             <div class="user-info-block">
-            <div *ngFor='let userdata of Users' >
-
-              <!-- <span class="text-center">{{ content.name}}</span> -->
-
-                <div class="user-heading">
-                    <h3>{{ userdata.name}}</h3>
-                    <span class="help-block">Chandigarh, IN</span>
-                </div>
-                <ul class="navigation">
-                    <li class="active">
-                        <a data-toggle="tab" href="#information">
-                            <span class="glyphicon glyphicon-user"> Basic Details</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#settings">
-                            <span class="glyphicon glyphicon-cog"> Education Details</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#email">
-                            <span class="glyphicon glyphicon-envelope"> Personal Details</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#events">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="user-body">
-                 <div class="tab-content">
-                    <div id="information" class="tab-pane active">
-                    <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" class="form-control" [(ngModel)]= "userdata.name">
-                     </div>
-                     <div class="form-group">
-                     <label>Location</label>
-                    <input type="text" name="location" class="form-control" value="{{userdata.location}}">
-                    </div> 
-                    </div>
-                    <div id="settings" class="tab-pane">
-                        
-                        <h4>Settings</h4>
-                       
-                        </div>
-                        <div id="email" class="tab-pane">
-                            <h4>Send Message</h4>
-                        </div>
-                        <div id="events" class="tab-pane">
-                            <h4>Events</h4>
-                        </div>
-                    </div>
-                </div>
+            <div *ngFor='let userdata of Users'>
+            <div class="user-heading">
+            <h3>{{ userdata.name}}</h3>
+            <span class="help-block">{{userdata.prof_name}}</span>
             </div>
-        </div>
-	</div>
+            <ul class="navigation">
+            <li class="active">
+            <a data-toggle="tab" href="#information">
+            <span class="glyphicon glyphicon-user"> Basic Details</span>
+            </a>
+            </li>
+            <li>
+            <a data-toggle="tab" href="#settings">
+            <span class="glyphicon glyphicon-cog"> Education Details</span>
+            </a>
+            </li>
+            <li>
+            <a data-toggle="tab" href="#email">
+            <span class="glyphicon glyphicon-envelope"> Personal Details</span>
+            </a>
+            </li>
+            <li>
+            <a data-toggle="tab" href="#events">
+            <span class="glyphicon glyphicon-calendar"></span>
+            </a>
+            </li>
+            </ul>
+            <div class="user-body">
+            <div class="tab-content">
+            <div id="information" class="tab-pane active">
+            <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]= "userdata.name">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.email">
+            </div> 
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.userType">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.contact_no">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.sport">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.gender">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address1">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address2">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address3">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.dob">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.prof_name">
+            </div>
+            <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.prof_language">
+            </div>
+            </div>
+
+            <div id="settings" class="tab-pane">
+            <h4>Settings</h4>
+            </div>
+
+            <div id="email" class="tab-pane">
+            <h4>Send Message</h4>
+            </div>
+
+            <div id="events" class="tab-pane">
+            <h4>Events</h4>
+            <button (click)="getprofiledata()" name="profile data" value="profile data">Profile data</button>
+            <div *ngFor='let porfiledata of keys'>
+            <div *ngFor='let porfiledata1 of porfiledata'>
+
+        
+
+           
+            </div>
+          <!--   <div *ngFor='let porfiledata of porfiledata.formalEducation || json}} </h1> -->
+
+            <!--    <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata.organisation}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata.stream}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata.courseDuration}}">
+            </div> -->
+            <h2>---------------------------------------------------------------------------------------------</h2> 
+            </div>
+
+
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+                   
+	    </div>
 </div>
 </div>
+

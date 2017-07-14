@@ -66,18 +66,34 @@ saveEvent(events:CreateEvent) {
             );
     }
 
-  public profiledata(id:string) : Observable<any> {
+  public profiledata(id:string) : Observable<any> 
+  {
   return this._http.get(this.baseUrl + "/angularapi.php?act=profiledata" + "&userid="+id)
   .map(res =>< User[] > res.json()).catch((error : any) =>Observable.throw(error.json().error || 'Server error'));
   
-  } 
+} 
+public getprofiledata(id:string) : Observable<any> 
+{
+ return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id=2')
+  .map(res =>< User[] > res.json().data.Education).catch((error : any) =>Observable.throw(error.json().error || 'Server error'));
+    
+}
 
- getHero(id: number): Promise<User> {
-    const url = `${this.baseUrl + "/angularapi.php?act=profiledata" + "&userid="}${id}`;
-    return this._http.get(url)
-      .toPromise()
-      .then(response => response.json().data as User);
-  }
+
+
+
+send_request(id: String) 
+{       
+   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id=2')
+        .toPromise()
+        .then( res => res.json().data);
+
+}
+
+
+
+
+
 
 
 
