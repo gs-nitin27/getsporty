@@ -96,14 +96,41 @@
 
             <div id="events" class="tab-pane">
             <h4>Events</h4>
+            {{inner}}
             <button (click)="getprofiledata()" name="profile data" value="profile data">Profile data</button>
-            <div *ngFor='let porfiledata of keys'>
+
+            <div *ngFor='let porfiledata of testing'>
+
             <div *ngFor='let porfiledata1 of porfiledata'>
 
-        
-
-           
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.degree}}">
             </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.organisation}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.stream}}">
+            </div>
+
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.courseDuration}}">
+            </div>
+         
+
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.designation}}">
+            </div>
+
+
+
+            </div>
+            
+            
+            <!-- <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata.degree}}">
+            </div> -->
+
           <!--   <div *ngFor='let porfiledata of porfiledata.formalEducation || json}} </h1> -->
 
             <!--    <div class="form-group">
@@ -113,9 +140,9 @@
             <input type="text" name="degree" class="form-control" value="{{porfiledata.stream}}">
             </div>
             <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata.courseDuration}}">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata.stream}}">
             </div> -->
-            <h2>---------------------------------------------------------------------------------------------</h2> 
+            
             </div>
 
 

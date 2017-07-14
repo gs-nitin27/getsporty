@@ -22,7 +22,9 @@ public userid  = localStorage.getItem('currentUserid');
 
  public Users: User;
  public newdata: User;
-
+ testing : any[];
+ inner1 : any[];
+ outer1: any[];
   a: User;
 
  constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
@@ -38,24 +40,34 @@ public userid  = localStorage.getItem('currentUserid');
  this._accountService.send_request(this.userid).then((result) =>
   {  
        this.a=result;
+    
        
-       //var count = 0;
-    //for (var i in result) {
-  // if (result.hasOwnProperty(i)) count++;
-//}
-
-let keys = []; 
+let keys = [];
+let outer = [];
+let inner = []; 
 for(let key in result){
-   if(result.hasOwnProperty(key)){  
-  for(let key1 in result[key]){
-   if(result[key].hasOwnProperty(key1))
-   {
-       keys.push(result[key][key1]);
-   }     
-   }    
+    if(result.hasOwnProperty(key)){
+       
+       //outer.push(result[key]);
+
+         //alert(JSON.stringify(result[key]));  
+      for(let key1 in result[key]){
+       if(result[key].hasOwnProperty(key1))
+      { 
+          
+          inner.push(result[key][key1]);
+       // alert(result[key][key1]);
+       //keys.push(result[key][key1]);
+       }     
+     }    
 }
-}
-  alert(JSON.stringify(keys));
+}  
+    this.inner1 = inner;
+    this.outer1 = outer;
+    alert("outer" + JSON.stringify(this.inner1));
+    alert("inner"+JSON.stringify( this.outer1));
+  //this.testing = keys;
+  //alert(JSON.stringify(this.testing));
   }
   );
 
@@ -77,7 +89,7 @@ getprofiledata()
     this.newdata = data ;
 
 
-    alert(JSON.stringify(this.newdata));
+    //alert(JSON.stringify(this.newdata));
      
 
    });
