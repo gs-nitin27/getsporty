@@ -9,7 +9,7 @@
     //     echo 'Allowed';
   //       exit;
 //}
-$con = mysql_connect('localhost','getsport_staging','7UNMH?n#VtGy');
+$con = mysql_connect('localhost','root','');
 if($con)
 {
      $selected = mysql_select_db('getsport_staging') or die("Could not select databasename");
