@@ -11,7 +11,17 @@
 /*jshint browser: true, strict: true, undef: true */
 /*global define: false */
 
-
+function hi() {
+ 
+  if(document.getElementById("first").value!=''){
+    
+    $('span').addClass('input--filled');
+  }
+  else{
+     $('span').removeClass('input--filled');
+  }
+  // body...
+}
 
 ( function( window ) {
 
