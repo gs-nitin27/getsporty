@@ -15,6 +15,7 @@ declare var $:any;
 @Component({
   selector: 'app-createevent',
   templateUrl: './createEvent.component.html',
+  styleUrls: ['./createEvent.component.css'],
   providers:[createEventServices]
 })
 export class CreateEventComponent implements OnInit {
