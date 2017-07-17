@@ -42,10 +42,7 @@ constructor(private _JobServices : JobServices, private _http : Http)
 
 CreateJob(job) : void
 {
-	
-	alert(JSON.stringify(job));
-	this._JobServices.CreatJob(job);
-
+     this._JobServices.CreatJob(job);
 }
 
 handleFileSelect(evt){
