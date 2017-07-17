@@ -99,7 +99,7 @@ public function createcontent($item)
 
 public function createevent($item)
 {
-   // print_r($item);die;
+
    $insert = mysql_query("INSERT INTO `gs_eventinfo`(`id`, `userid`,`name`, `type`, `address_1`,`location`,`state` ,`description`,`sport_name`,`eligibility1`, `terms_cond1`,`mobile` ,`event_links`, `start_date`, `end_date`, `email_app_collection`,`dateCreated`,`ticket_detail`,`image`) VALUES ('$item->id','$item->userid','$item->name', '$item->type','$item->address1','$item->city','$item->state','$item->description','$item->sport','$item->eligibility1','$item->tandc1','$item->mobile','$item->event_links',STR_TO_DATE('$item->start_date', '%m/%d/%Y'),STR_TO_DATE('$item->end_date','%m/%d/%Y'),'$item->email_app_collection',CURDATE(),'$item->ticket_detail','$item->image')");
    if($insert)
    {
@@ -149,7 +149,20 @@ public function listuserdata($userid)
 
 }
 
+public function createjob($item)
+{
+
+$insert = mysql_query("INSERT INTO `gs_jobinfo`(`id`,`userid`,`title`,`location`,`gender`,`sport`,`type`,`job_link`,`work_experience`,`description`,`key_requirement`,`org_address1`,`org_address2`,`org_city`,`org_state`,`org_pin`,`organisation_name`,`about`,`address1`,`address2`,`state`,`pin`,`contact`,`email`,`image`,`date_created`)  VALUES ('$item->id','$item->userid','$item->title','$item->location','$item->gender','$item->sport','$item->type','$item->job_link','$item->work_experience','$item->description','$item->key_requirement','$item->org_address1','$item->org_address2','$item->org_city','$item->org_state','$item->org_pin','$item->organisation_name','$item->about','$item->address1','$item->address2','$item->state','$item->pin','$item->contact','$item->email','$item->image',CURDATE())");
+
+  if($insert)
+  {
+   return mysql_insert_id();
+  }
+  else
+  {
+    return 0;
+  }
 
 }
-
+}
 ?>

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import {HttpModule, Http,Response,Headers,RequestOptions } from '@angular/http';
+import { HttpModule, Http,Response,Headers,RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
+import { Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 import 'rxjs/Rx'; 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/throw';
 import { User } from '../model/login.model';
-import {xhrHeaders} from "./xhr-headers";
+import { xhrHeaders} from "./xhr-headers";
 import { CreateEvent } from  '../model/createEvent.module';
 import { APP_CONFIG } from '../../app.config';
 import { IAppConfig }  from '../../app.iconfig';

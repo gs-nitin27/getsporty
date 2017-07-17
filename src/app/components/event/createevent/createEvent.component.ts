@@ -59,7 +59,6 @@ terms_cond : Object = {};
                      
                     })
                 }), 
-
             ])
         }); 
 
@@ -81,16 +80,19 @@ terms_cond : Object = {};
 
   Create(events) : void  {     
 
+  //alert(events);
+
+
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
      this.events.ticket = inputValue;
 
 
     var inputTermValue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
     this.events.terms_cond = inputTermValue;
-    this.events.userid =  localStorage.getItem('currentUserid');
 
-   
+    this.events.userid =  localStorage.getItem('currentUserid'); 
 
+    
     this._event.saveEvent(this.events);
 
   }
