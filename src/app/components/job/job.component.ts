@@ -73,7 +73,9 @@ handleFileSelect(evt){
             .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
-                data => this.Job.image = data,
+                data => {
+                this.Job.image = data;
+                },
                 error => console.log(error)
     ) }
 

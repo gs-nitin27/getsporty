@@ -80,7 +80,7 @@ terms_cond : Object = {};
 
   Create(events) : void  {     
 
-  //alert(events);
+
 
 
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
