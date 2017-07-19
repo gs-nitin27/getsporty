@@ -95,29 +95,122 @@
             </div>
 
             <div id="events" class="tab-pane">
-            <h4>Events</h4>
-            <button (click)="getprofiledata()" name="profile data" value="profile data">Profile data</button>
-            <div *ngFor='let porfiledata of keys'>
+            <span>Formal Education</span>
+
+          <!--   <div *ngFor='let porfiledata of formalEducation1'>
             <div *ngFor='let porfiledata1 of porfiledata'>
-
-        
-
-           
-            </div>
-          <!--   <div *ngFor='let porfiledata of porfiledata.formalEducation || json}} </h1> -->
-
-            <!--    <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata.organisation}}">
+            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.degree}}">
             </div>
             <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata.stream}}">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.organisation}}">
             </div>
             <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata.courseDuration}}">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.stream}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.courseDuration}}">
+            </div>
+            </div>
+            </div> 
             </div> -->
-            <h2>---------------------------------------------------------------------------------------------</h2> 
+             
+         <!--     <span>Sport Education</span>
+            <div *ngFor='let sportEducationdata of   sportEducation1'>
+            <div *ngFor='let sportEducationdata1 of sportEducationdata'>
+            
+           <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.degree}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.organisation}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.stream}}">
             </div>
 
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.courseDuration}}">
+            </div>
+
+            </div>
+            </div> 
+            </div> -->
+
+            <div *ngFor='let porfiledata of formalEducation1'>
+            <div *ngFor='let porfiledata1 of porfiledata'>
+            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.degree}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.organisation}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.stream}}">
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" value="{{porfiledata1.courseDuration}}">
+            </div>
+            </div>
+            </div>
+            </div>
+
+    <form [formGroup]="termForm" novalidate>
+    <div formArrayName="myArray">
+    <div *ngFor="let myGroup of termForm.controls.myArray.controls; let i=index" class="panel panel-default">
+          
+           <div [formGroupName]="i" class="panel-body"> 
+              <span *ngIf="termForm.controls.myArray.controls.length > 1" 
+                    (click)="removeterm(i)" class="glyphicon glyphicon-remove pull-right">
+                </span>
+            <h5>Formal Education</h5>
+            <div [formGroupName]="termCondition[i]" class="panel-body"> 
+            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" formControlName="degree" >
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" formControlName="organisation" >
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" formControlName="stream" >
+            </div>
+            <div class="form-group">
+            <input type="text" name="degree" class="form-control" formControlName="from" >
+            </div>
+             <div class="form-group">
+            <input type="text" name="degree" class="form-control" formControlName="to" >
+            </div>
+            </div>
+
+
+
+      </div>
+      </div>
+      </div>
+
+
+    </div>
+        <div class="margin-20">
+        <input #newTerm
+             type="hidden" style="width:30%" id="newTerm"  value="formalEducation">
+        <a (click)="addtermArray(newTerm.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
+        </div>
+          <br/><br/>
+        <div class="margin-20">
+          <div>myForm details:-</div>
+          <pre>form value: <br>{{termForm.value | json}}</pre>
+        </div>
+          
+          <input type="text" name="t" id="formalEdu" class="form-control" value="{{termForm.value | json}}">
+      
+      </form>
+
+         <button (click) = "cheakjson();">Push</button>
+ 
 
             </div>
             </div>
