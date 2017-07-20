@@ -68,6 +68,9 @@ nav .brand-logo {
     padding-left: 50px;
     background-color: #f2f2f2
 }
+.pd30{
+  padding-top: 30px;
+}
 .backform1{
         background-color: rgba(0, 0, 0, 0.10)!important;
        margin-top: -20px;
@@ -157,18 +160,20 @@ nav .brand-logo {
 } .posrel{   position: relative; }
 
  .nav-tabs>li {
-    width: 20%;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;   
-  
-        margin-left: 10%;
+    width: 33.33%;
+ border-radius: 2px;   
+  color:white;
+      
+        
         background-color: white;
          }
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
-  border:none;
-}
+
 .nav-tabs>li>a{
   text-align: center;
+  margin-right: 0px;
+  color: #000;
+  border-radius: 2px;
+  padding: 15px 0px;
   border:none;
 }
   .nav-tabs {
@@ -176,4 +181,75 @@ nav .brand-logo {
    }
 .mr30{
   margin-top: 30px;
+}
+.nav-tabs{
+    background: white;
+   
+}
+.blue{
+  background-color: #aed581;
+
+}
+.yellow{
+  background-color: #ffcc80;
+
+}
+.red{
+  background-color: #ff8a65;
+
+}
+.blue:hover {
+  background-color: #8ac14a;
+
+}
+.yellow:hover {
+  background-color: #ffb950;
+
+}
+.red:hover {
+  background-color: #f56436;
+
+}
+
+.nav-tabs>li.active>.blue, .nav-tabs>li.active>.blue:focus, .nav-tabs>li.active>.blue:hover{
+  border:none;
+  background-color: #8ac14a;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav-tabs>li.active>.yellow, .nav-tabs>li.active>.yellow:focus, .nav-tabs>li.active>.ywllow:hover{
+  border:none;
+  background-color: #ffb950;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav-tabs>li.active>.red, .nav-tabs>li.active>.red:focus, .nav-tabs>li.active>.red:hover{
+  border:none;
+  background-color: #f56436;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav>li>.blue:focus, .nav>li>.blue:hover{
+  background-color: #8ac14a;
+
+}
+.nav>li>.yellow:focus, .nav>li>.yellow:hover{
+  background-color: #ffb950;
+
+}
+.nav>li>.red:focus, .nav>li>.red:hover{
+  background-color: #f56436;
+
+}
+.shadow{
+      padding-top: 25px;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.btn-primary {
+    background: #03A9F4;
+    border:none;
+}
+.btn-primary:hover{
+      background-color: #4FC3F7!important;
+}
+.btn{
+      transition: .2s ease-out;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
