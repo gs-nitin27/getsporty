@@ -9,9 +9,6 @@ include('services/getListingService.php');
 
 if($_REQUEST['act'] == 'contentangular')
 {
-    
-   
-
 	$req    =   new angularapi();
 	$res= $req->getContentInfo();
     echo json_encode($res); 
@@ -38,9 +35,8 @@ else if($_REQUEST['act'] == 'angulartest')
 }
 
 
-if($_REQUEST['act'] == 'contentangularlex')
+else if($_REQUEST['act'] == 'contentangularlex')
 {
-
   $userid      =  $_REQUEST['userid'];
 	$req    =   new angularapi();
 	$res= $req->getContent($userid);
@@ -65,7 +61,7 @@ else if($_REQUEST['act'] == 'createcontent')
         echo json_encode($res);
 }
 
-if($_REQUEST['act'] == "sportlisting")
+else if($_REQUEST['act'] == "sportlisting")
 {
 $req = new GetListingService();
 $res = $req->getsportlisting();
@@ -78,7 +74,7 @@ else if($_REQUEST['act'] == 'createevent')
 {        
         $data =  json_decode(file_get_contents("php://input"));
         $item                     =  new stdClass();
-
+        
 
 
         $item->id                        = 0;
@@ -129,4 +125,170 @@ else if($_REQUEST['act'] == 'test')
   print_r($data);
 
 }
+
+else if($_REQUEST['act'] == 'profiledata')
+{
+  $userid      =  $_REQUEST['userid'];
+  $req    =   new angularapi();
+  $res= $req->profiledata($userid);
+    echo json_encode($res); 
+}
+
+else if($_REQUEST['act'] == 'getUserProfile')
+{
+$userid         =  @$_REQUEST['userid'];
+$prof_id        =  @$_REQUEST['prof_id'];
+$req            =  new angularapi();
+$user_res       = $req->userdata($userid);
+
+if($user_res==0)
+{
+  $user = array('status' => 0, 'data'=> $user_res, 'msg'=>'User is Not Register');
+  echo json_encode($user);
+  die();
+}
+
+else
+  {
+       $req            = new angularapi();
+       $res            = $req->listuserdata($userid);
+       //print_r($res) ;die();
+               if($res == 0)
+               {
+                    if($prof_id==1) 
+                    {
+                      $data = file_get_contents('json/Athletes.json');
+                    }
+                   else if ($prof_id==2) 
+                    {
+                      $data = file_get_contents('json/coach_profile.json');
+                    }
+                   else if ($prof_id == 13) 
+                    {
+                      $data = file_get_contents('json/other_profile.json');
+                    }
+                    else
+                    {
+                      $data = file_get_contents('json/other_profile.json');
+                    }
+               }
+                else
+                {
+                  
+                  $data = $res['user_detail'];
+
+                }
+                  $data = json_decode($data); 
+                  $count = 0;
+                  $count1 = 0; 
+                  if (is_array($data) || is_object($data))
+                  {
+                  foreach ($data as  $value) 
+                  {
+                    if (is_array($value) || is_object($value))
+                     {
+                  
+                        foreach ($value as  $value1)
+                         {
+                         if (is_array($value1) || is_object($value1))
+                         {
+                              foreach ($value1 as $value2) 
+                              {
+                                  
+                                    if (is_array($value2) || is_object($value2))
+                                     {
+
+                                      foreach ($value2 as  $value3) 
+                                      {
+                                            if($value3 != '')
+                                            {
+                                                ++$count;
+                                            }
+                                            else
+                                            {
+                                                ++$count1;
+                                            }
+                                      }                          
+                              }
+                            
+                        }
+                  }
+}
+}
+}
+}
+                     $comp = ($count/($count+$count1+1))*100;
+                     $comp1=round($comp,2);
+                     //$prof_status=$comp1.''.'%';
+                    }
+      
+            $data->user = $user_res; 
+            if (is_array($data->user) || is_object($data->user))
+            {
+                foreach ($data->user as $value) 
+                {
+                  if($value != '')
+                  {
+                     ++$count;
+                   }
+                   else
+                   {
+                   ++$count1;
+                    }
+                 }    
+                    $comp = ($count/($count+$count1+1))*100;
+                     $comp2=round($comp,2);
+                    // $user_status=$comp1.''.'%';
+            }
+
+$Total_profile = ($comp1+$comp2)/200*100;     // Total user and profile Status calculate
+$prof_status=$Total_profile;
+$data->profile = (int)$Total_profile;
+$res  = json_encode($data);//json_encode($data); 
+$user = array('status' => 1, 'data'=> json_decode($res), 'msg'=>'Success');
+echo json_encode($user);
+
+}
+
+
+else if($_REQUEST['act'] == 'createjob')
+{
+   $data = json_decode(file_get_contents("php://input"));
+   
+   $item = new stdClass();
+    
+	//print_r($data);
+	
+    $item->id                        = 0;
+    $item->userid                    = $data->userid;
+    $item->title                     = $data->title;
+    $item->location                  = $data->location;
+    $item->gender                    = $data->gender;
+    $item->sport                     = $data->sport;
+    $item->type                      = $data->type;
+    $item->job_link                  = $data->job_link;
+    $item->work_experience           = $data->work_experience;
+    $item->description               = $data->description;
+    $item->key_requirement           = $data->key_requirement;
+    $item->org_address1              = $data->org_address1;
+    $item->org_address2              = $data->org_address2;
+    $item->org_city                  = $data->org_city;
+    $item->org_state                 = $data->org_state;
+    $item->org_pin                   = $data->org_pin;
+    $item->organisation_name         = $data->organisation_name;
+    $item->about                     = $data->about;
+    $item->address1                  = $data->address1;
+    $item->address2                  = $data->address2;
+    $item->state                     = $data->state;
+    // $item->city                      = $data->city;
+    $item->pin                       = $data->pin;
+    $item->contact                   = $data->contact;
+    $item->email                     = $data->email;
+    $item->image                     = $data->image; 
+
+    $req    =   new angularapi();
+    $res = $req->createjob($item);     
+    echo json_encode($res);
+}
+
 ?>
