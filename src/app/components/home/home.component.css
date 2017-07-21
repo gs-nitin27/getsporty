@@ -68,99 +68,26 @@ nav .brand-logo {
     padding-left: 50px;
     background-color: #f2f2f2
 }
+.pd30{
+  padding-top: 30px;
+}
 .backform1{
         background-color: rgba(0, 0, 0, 0.10)!important;
        margin-top: -20px;
     padding-top: 20px;
     padding-bottom: 45px;
 }
-.side-nav{
-    width:230px;
-}
+
 .border{
     border:2px solid black;
 }
 
-.loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 14px;
-  color: #FFF;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
-  outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
-}
 
-
-/* Facebook */
-.loginBtn--facebook {
-  background-color: #4C69BA;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 #354C8C;
-}
-.loginBtn--facebook:before {
-  border-right: #364e92 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
-}
-.loginBtn--facebook:hover,
-.loginBtn--facebook:focus {
-  background-color: #5B7BD5;
-  background-image: linear-gradient(#5B7BD5, #4864B1);
-}
-.side-nav li>a {
-    color: rgba(255, 255, 255, 0.7);
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    height: 48px;
-    line-height: 48px;
-    padding: 0 32px;
-}
-
-.side-nav li>a:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-    color: white;
-}
-
-/* Google */
-.loginBtn--google {
-  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
-  background: #DD4B39;
-}
-.loginBtn--google:before {
-  border-right: #BB3F30 1px solid;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
-}
-.loginBtn--google:hover,
-.loginBtn--google:focus {
-  background: #E74B37;
-}
 
 .input-field1{
         margin-top: 0;
 }
-.card {
+/*.card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -219,4 +146,110 @@ nav .brand-logo {
 .card .card-action a:hover {
   color: #ffd8a6;
   text-decoration: none;
+}*/
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+   
+} .posrel{   position: relative; }
+
+ .nav-tabs>li {
+    width: 33.33%;
+ border-radius: 2px;   
+  color:white;
+      
+        
+        background-color: white;
+         }
+
+.nav-tabs>li>a{
+  text-align: center;
+  margin-right: 0px;
+  color: #000;
+  border-radius: 2px;
+  padding: 15px 0px;
+  border:none;
+}
+  .nav-tabs {
+     border-bottom: none;
+   }
+.mr30{
+  margin-top: 30px;
+}
+.nav-tabs{
+    background: white;
+   
+}
+.blue{
+  background-color: #aed581;
+
+}
+.yellow{
+  background-color: #ffcc80;
+
+}
+.red{
+  background-color: #ff8a65;
+
+}
+.blue:hover {
+  background-color: #8ac14a;
+
+}
+.yellow:hover {
+  background-color: #ffb950;
+
+}
+.red:hover {
+  background-color: #f56436;
+
+}
+
+.nav-tabs>li.active>.blue, .nav-tabs>li.active>.blue:focus, .nav-tabs>li.active>.blue:hover{
+  border:none;
+  background-color: #8ac14a;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav-tabs>li.active>.yellow, .nav-tabs>li.active>.yellow:focus, .nav-tabs>li.active>.ywllow:hover{
+  border:none;
+  background-color: #ffb950;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav-tabs>li.active>.red, .nav-tabs>li.active>.red:focus, .nav-tabs>li.active>.red:hover{
+  border:none;
+  background-color: #f56436;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.nav>li>.blue:focus, .nav>li>.blue:hover{
+  background-color: #8ac14a;
+
+}
+.nav>li>.yellow:focus, .nav>li>.yellow:hover{
+  background-color: #ffb950;
+
+}
+.nav>li>.red:focus, .nav>li>.red:hover{
+  background-color: #f56436;
+
+}
+.shadow{
+      padding-top: 25px;
+  box-shadow: 0 2px 15px 0 rgba(0,0,0,.2), 0 0px 15px 0 rgba(0,0,0,.19);
+}
+.btn-primary {
+    background: #03A9F4;
+    border:none;
+}
+.btn-primary:hover{
+      background-color: #4FC3F7!important;
+}
+.btn{
+      transition: .2s ease-out;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
