@@ -1,0 +1,236 @@
+<app-dashboard></app-dashboard>
+<div style=" background-color: #d8f3ff;      margin-top: -2%;padding-top: 2%;">
+<div class="container">
+<h2>Create Jobs</h2>
+<div style="background-color: white;border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;margin-bottom: 20px;">
+<ul class="nav nav-tabs">
+<li class="active"><a class="nooutline" data-toggle="tab" href="#home">Job Details</a></li>
+<li><a class="nooutline" data-toggle="tab" href="#menu1">Organization</a></li>
+<li><a class="nooutline" data-toggle="tab" href="#menu2">Requirements</a></li>  
+</ul>
+<div class="tab-content">
+<div id="home" class="tab-pane fade in active">
+<div class="box1">
+<h2>Job Details:</h2>
+<div class="form-group">
+<input type="hidden" name="title"    required=""><a href="#" class=" icon user"></a>
+</div>
+<input type="hidden" name="title" [(ngModel)]="Job.userid" class="form-control" value="title" required="">
+<div>
+
+
+
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi'  [(ngModel)]="Job.title" type="text" onblur="hi()"  id="first" value="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="title"><span class="input__label-content input__label-content--hoshi">Job Title</span></label></span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.description" name="desciption">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="desciption"><span class="input__label-content input__label-content--hoshi">Job Description</span></label>
+</span>
+</div >
+<div class="form-group">
+<label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Job Type</label>
+<select class="form-control mr5" name="game"  [(ngModel)] = "Job.type" style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<option> Select</option>
+<option> Part Time</option>
+<option> Full Time</option>
+</select>  
+</div>
+<div *ngIf="sports">
+<div class="form-group">
+<label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Job Sport</label>
+<select class="form-control mr5" name="game" [(ngModel)]="Job.sport" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
+</select>
+</div>
+</div>
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.address1" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address line 1</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)] = "Job.address2" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address line 2</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)] = "Job.location" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Location</span></label>
+</span>
+</div>
+<div class=" wd60 pd0 fl">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)] = "Job.state" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
+</span>
+</div >
+<div class="wd60 pd0 fr">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)] = "Job.pin" type="text" name="title" >
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">PIN</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)] = "Job.job_link" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Link</span></label>
+</span>
+</div >
+<div >
+</div>
+</div>
+</div>
+
+       <!-- Tab 2 start -->
+    
+
+    <div id="menu1" class="tab-pane fade">  
+    
+<div class="box1">
+<h2>Organisation Details:</h2>
+  <div>
+  <span class="input input--hoshi">
+ 
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.organisation_name" type="text" name="title">
+   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Organisation Name</span></label>
+  </span>
+  </div >
+    <div>
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.about" name="title">
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">About Organisation</span></label>
+    </span>
+  </div >
+  <div>
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.org_address1" name="title">
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 1</span></label>
+  </span>
+  </div >
+  
+  <div>
+   <span class="input input--hoshi">
+  <input type="text" name="title" [(ngModel)] = "Job.org_address2"  class="input__field input__field--hoshi validate datepicker">
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 2</span></label>
+  </span>
+  </div >
+   
+  <div class=" wd60 pd0 fl">
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_city" type="text" name="title">
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Location</span></label>
+    </span>
+  </div >
+  <div class="wd60 pd0 fr">
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_state" type="text" name="title">
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
+  </span>
+  </div >
+  <div class=" wd60 pd0 fl">
+       <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.contact" type="text" name="title">
+    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Mobile No.</span></label>
+    </span>
+  </div >
+  <div class="wd60 pd0 fr">
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_pin" type="text" name="title">
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">PIN</span></label>
+  </span>
+  </div >
+  
+  
+  <div>
+   <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)] = "Job.email">
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Email</span></label>
+  </span>
+  </div >
+  
+</div>
+    </div>
+
+<!-- new Tab 3 -->
+
+
+  <div id="menu2" class="tab-pane fade">
+   
+  <div class="box1">
+  <h2>Requirement:</h2>
+  <div>
+  <span class="input input--hoshi">
+  <input  type="text" name="title"  [(ngModel)] = "Job.work_experience" class="input__field input__field--hoshi validate datepicker" >
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Work Experience</span></label>
+  </span>
+  </div >
+  <div>
+  <span class="input input--hoshi">
+  <input type="text" name="title"  [(ngModel)] = "Job.qualification" class="input__field input__field--hoshi validate datepicker" >
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Qualification</span></label>
+  </span>
+  </div >
+  <div>
+  <span class="input input--hoshi">
+  <input type="text" name="title" [(ngModel)] = "Job.desired_skills"  class="input__field input__field--hoshi validate datepicker" >
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Desired Skill</span></label>
+  </span>
+  </div >
+  <div>
+  <span class="input input--hoshi">
+  <input  type="text" name="title"  [(ngModel)] = "Job.key_requirement" class="input__field input__field--hoshi validate datepicker" >
+  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Key Requirements</span></label>
+  </span>
+  </div>
+  <div class="form-group">
+  <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Gender</label>
+  <select class="form-control mr5" name="game"  [(ngModel)] = "Job.gender" style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+  <option> Select</option>
+  <option> Male</option>
+  <option> Female</option>
+  </select>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="container">
+  <div class="row">    
+  <div class="col-xs-6 col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2" style="margin-bottom: 20px;   float: left;margin-left: 0%;">  
+            <!-- image-preview-filename input [CUT FROM HERE]-->
+  <div class="input-group image-preview">
+  <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input class="files1" (change)="handleFileSelect($event)" type="file" accept="image/png, image/jpeg, image/gif" id="Jimage" name="file"  />
+                        
+                         <!-- rename it -->
+                    </div>
+                     <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;">
+                    
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]--> 
+        </div>
+    </div>
+</div>
+ <input type="hidden" name="image"  [(ngModel)] = "Job.image" class="form-control">
+   <div class="p-container">
+    <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;" type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >
+    <div class="clear"> </div>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -1,8 +1,14 @@
 import { Injectable, Inject } from '@angular/core';
-import {HttpModule, Http,Response} from '@angular/http';
+import { Http , Headers, RequestOptions} from '@angular/http'
+import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map'
 import {xhrHeaders} from "./xhr-headers";
+
+import 'rxjs/Rx'; 
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 import { JobModule } from '../model/job.model';
 import { APP_CONFIG } from '../../app.config';
 import { IAppConfig }  from '../../app.iconfig';
@@ -30,6 +36,14 @@ CreatJob(job)
     return this._http.get(this.sportlistUrl)
       .map(res => res.json())
   }
+
+
+
+ getJobdetails(id : string) : Observable<any>
+ {
+    return this._http.get(this.baseurl+ "/angularapi.php?act=getjobdetails&id="+id).map(res => <JobModule[]> res.json());
+
+ } 
 	
 
 }

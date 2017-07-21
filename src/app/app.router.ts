@@ -8,12 +8,12 @@ import { viewContentComponent } from './components/content/view_content/viewCont
 import { CreateContentComponent } from './components/content/create_content/createContent.component';
 import { CreateEventComponent } from './components/event/createevent/createEvent.component';
 import { LoginComponent } from './components/useraccount/login.component';
-import { JobComponent } from './components/job/job.component';
+import { JobComponent } from './components/job/createJob/job.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
 import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
-
+import { EditJobComponent } from './components/job/editJob/editJob.component';
 
 
 export const router:Routes = [
@@ -31,7 +31,8 @@ export const router:Routes = [
       {path : 'registration' , component: RegistrationComponent},
       {path : 'profile' , component :ProfileComponent},
       {path : 'job',component:JobComponent},
-      {path : 'viewEvent/:id' , component : ViewEventComponent}
+      {path : 'viewEvent/:id' , component : ViewEventComponent},
+      {path : 'editJob/:id',component:EditJobComponent}
 
 
 ];

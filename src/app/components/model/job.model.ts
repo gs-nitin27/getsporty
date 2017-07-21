@@ -1,5 +1,6 @@
 export class JobModule
 {
+    id : string;
 	userid  : string;
 	title   : string; 
 	location  : string; 	

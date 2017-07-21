@@ -17,18 +17,19 @@
   
  
   <input type="hidden" name="title" [(ngModel)]="events.userid" class="form-control" value="title" required="">
+  <input type="hidden" name="title" [(ngModel)]="events.id" class="form-control" value="0" required="">
   </div >
   <div>
   <span class="input input--hoshi">
   
-  <input id="first" class='input__field input__field--hoshi' [(ngModel)]="events.name" type="text" name="description" onblur="hi()" value="description" >
+  <input id="first" class='input__field input__field--hoshi' [(ngModel)]="events.name" type="text" name="description" onblur="hi()">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="description"><span class="input__label-content input__label-content--hoshi">Event Name</span></label></span>
   </div >
   <div>
     <span class="input input--hoshi">
 
   
-  <input class='input__field input__field--hoshi' [(ngModel)]="events.description" type="text" name="title"  value="title" >
+  <input class='input__field input__field--hoshi' [(ngModel)]="events.description" type="text" name="title" >
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Description</span></label>
   </span>
   </div >

@@ -1,5 +1,5 @@
-import { JobModule } from '../model/job.model';
-import { JobServices } from '../services/job.services';
+import { JobModule } from '../../model/job.model';
+import { JobServices } from '../../services/job.services';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -34,6 +34,7 @@ constructor(private _JobServices : JobServices, private _http : Http)
   ngOnInit() {
 
   this.Job.userid =  localStorage.getItem('currentUserid');
+  this.Job.id = "0";
   this.Sportlist();
   
   

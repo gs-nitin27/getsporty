@@ -36,6 +36,8 @@ terms_cond : Object = {};
 
 
 
+
+
   constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { 
 
     
@@ -91,6 +93,7 @@ terms_cond : Object = {};
     this.events.terms_cond = inputTermValue;
 
     this.events.userid =  localStorage.getItem('currentUserid'); 
+    this.events.id = "0";
 
     
     this._event.saveEvent(this.events);
