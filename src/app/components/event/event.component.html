@@ -1,140 +1,57 @@
 <app-dashboard></app-dashboard>
 
-<div class="container">
-  <h2>Create Event</h2>
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-  </ul>
+<!-- <h1>Harshvardhan Kumar </h1>
+<h2>{{userid}}</h2> -->
+<section class="content-header">
+<h1>
+     List Events 
+<small></small>
+</h1>
+</section>
+<section class="content">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Custom Tabs -->
+         <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+               <li class="active"><a href="#content" data-toggle="tab">Events</a></li>
+               <li class="pull-right"><a routerLink="/createevent" class="btn btn-info"><i class="fa fa-plus-square"></i> ADD</a></li>
+            </ul>
+            <div class="tab-content">
+               <div class="tab-pane active" id="content">
+                  <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                           <tr>
+                              <th class="text-center" >#</th>
+                              <th class="text-center" >Name</th>
+                              <th class="text-center" >Location</th>
+                              <th class="text-center" >Sport</th>
+                            <!--   <th class="text-center" >url</th> -->
+                              <th class="text-center" ></th>
+                           </tr>
+                        </thead>
+                        <tbody >
+                           <tr *ngFor='let events of Event' >
+                              <td class="text-center">{{ events.id }}</td>
+                              <td class="text-center">{{ events.name }}</td>
+                              <td class="text-center">{{ events.location }}</td>
+                              <td class="text-center">{{ events.sport_name }}</td>
+                            <!--   <td class="text-center">{{ events. }}</td> -->
+                              <td class="text-center"><a href="javascript:void(0)" (click)= "editEvent(events.id)">Edit</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-
-
-
-     <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-
-
-
-
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-
-
-
-     <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-
-
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-
-
-     <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-
-
-    
-    <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-          <div class="form-group">
-          <label for="address1">Address Line1</label>
-          <input type="text" class="form-control"  id="add1" placeholder="Enter Address">
-          <label id="address_line1_error" hidden>Address Line1 is required .</label> 
-          </div >
-
-    </div>
-  </div>
-</div>
+               <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+         </div>
+         <!-- nav-tabs-custom -->
+      </div>
+      <!-- /.col -->
+   </div>
+</section>
+<!-- /.content -->

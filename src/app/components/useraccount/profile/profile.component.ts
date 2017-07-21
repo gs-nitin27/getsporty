@@ -139,6 +139,8 @@ profile()
 {
        this._accountService.profiledata(this.userid).subscribe(data => { 
        this.Users = data ;
+
+      // alert(JSON.stringify(this.Users));
        });
 
 

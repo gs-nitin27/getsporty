@@ -1,0 +1,111 @@
+<app-dashboard></app-dashboard>
+
+<!--  <p>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" name="nameInput"   [(ngModel)]="viewEvent.name"/>
+    <span class="displayValue">{{viewEvent.name}}</span>
+    </p> -->
+
+<!-- <div *ngFor = 'let event of viewEvent'> -->
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+<label >User Name </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.name" class="form-control">
+</div>
+
+<div class="form-group">
+<label >Event type </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.type" class="form-control">
+</div>
+<div class="form-group">
+<label >Event feetype </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.feetype" class="form-control">
+</div>
+<div class="form-group">
+<label >Event address_1 </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.address_1" class="form-control">
+</div>
+<div class="form-group">
+<label >Event address_2 </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.address_2" class="form-control">
+</div>
+<div class="form-group">
+<label >Event location </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.location" class="form-control">
+</div>
+<div class="form-group">
+<label >Event state </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.state" class="form-control">
+</div>
+<div class="form-group">
+<label >Event PIN </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.PIN" class="form-control">
+</div>
+<div class="form-group">
+<label >Event description </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.description" class="form-control">
+</div>
+<div class="form-group">
+<label >Event sport_name </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.sport_name" class="form-control">
+</div>
+<div class="form-group">
+<label >Event eligibility1 </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.eligibility1" class="form-control">
+</div>
+
+<div class="form-group">
+<label >Event organizer_name </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_name" class="form-control">
+</div>
+<div class="form-group">
+<label >Event mobile </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.mobile" class="form-control">
+</div>
+
+<div class="form-group">
+<label >Event organizer_address_line1 </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_address_line1" class="form-control">
+</div><div class="form-group">
+<label >Event organizer_address_line2 </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_address_line2" class="form-control">
+</div><div class="form-group">
+<label >Event organizer_city </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_city" class="form-control">
+</div><div class="form-group">
+<label >Event organizer_pin </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_pin" class="form-control">
+</div><div class="form-group">
+<label >Event organizer_state </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.organizer_state" class="form-control">
+</div><div class="form-group">
+<label >Event event_links </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.event_links" class="form-control">
+</div>
+<div class="form-group">
+<label >Event start_date </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.start_date" class="form-control">
+</div>
+
+<div class="form-group">
+<label >Event end_date </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.end_date" class="form-control">
+</div>
+<div class="form-group">
+<label >Event email_app_collection </label>
+<input type="text" name="name" [(ngModel)] = "viewEvent.email_app_collection" class="form-control">
+</div>
+
+
+<div class="p-container">
+<input  style="outline: none;" type="submit" (click) ="Create(viewEvent)" class="btn btn-primary" value="Submit" >
+</div>
+

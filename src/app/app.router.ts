@@ -12,6 +12,7 @@ import { JobComponent } from './components/job/job.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
+import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
 
 
 
@@ -29,7 +30,8 @@ export const router:Routes = [
       {path : 'main' , component: AppComponent},
       {path : 'registration' , component: RegistrationComponent},
       {path : 'profile' , component :ProfileComponent},
-      {path : 'job',component:JobComponent}
+      {path : 'job',component:JobComponent},
+      {path : 'viewEvent/:id' , component : ViewEventComponent}
 
 
 ];

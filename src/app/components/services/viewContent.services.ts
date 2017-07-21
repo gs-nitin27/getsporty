@@ -3,7 +3,7 @@ import { Http , Headers, RequestOptions} from '@angular/http'
 import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 import { Router, ActivatedRoute } from '@angular/router';
 import {xhrHeaders} from "./xhr-headers";
-import { contentModel } from  '../model/viewContent.model';
+
 import 'rxjs/Rx'; 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { APP_CONFIG } from '../../app.config';
 import { IAppConfig }  from '../../app.iconfig';
+import { contentModel } from  '../model/viewContent.model';
 
 
 

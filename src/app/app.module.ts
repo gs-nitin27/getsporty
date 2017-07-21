@@ -21,6 +21,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
 import { UserdataComponent } from './userdata.component';
+import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { UserdataComponent } from './userdata.component';
     CreateEventComponent,
     ProfileComponent,
     viewContentComponent,
-    JobComponent
+    JobComponent,
+    ViewEventComponent
   ],
   imports: [
     BrowserModule,

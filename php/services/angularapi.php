@@ -80,6 +80,23 @@ public function getContent($userid)
    }    
 }
 
+public function getuserevent($userid)
+{
+  $query = mysql_query("SELECT `id`,`userid`,`name`,`location`,`sport_name` FROM `gs_eventinfo` WHERE `userid` = '$userid'");
+
+  $row = mysql_num_rows($query);
+  if($row)
+  {
+   while ($data = mysql_fetch_assoc($query)) 
+   {
+     $result[] = $data;
+   }
+     return $result;
+  }
+
+}
+
+
 
 public function createcontent($item)
 {
@@ -128,6 +145,26 @@ public function userdata($id)
          return 0;
         }
     }
+
+
+  public function geteventdetails($id)
+  {
+    $query = mysql_query("SELECT * FROM `gs_eventinfo` WHERE `id` = '$id'");
+    if(mysql_num_rows($query))
+    {
+       while ($row = mysql_fetch_assoc($query)) {
+
+         $data = $row;
+       }
+    return $data;
+    }
+    else
+    {
+      return 0;
+    }
+
+
+  }  
 
 public function listuserdata($userid)
     {

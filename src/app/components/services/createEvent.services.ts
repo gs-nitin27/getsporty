@@ -1,15 +1,25 @@
 import { Injectable, Inject } from '@angular/core';
-import {HttpModule, Http,Response} from '@angular/http';
+import { Http , Headers, RequestOptions} from '@angular/http'
+import {Observable, BehaviorSubject, Subject} from "rxjs/Rx";
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map'
 import {xhrHeaders} from "./xhr-headers";
+
+import 'rxjs/Rx'; 
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 import { CreateEvent } from  '../model/createEvent.module';
 import { APP_CONFIG } from '../../app.config';
 import { IAppConfig }  from '../../app.iconfig';
 
+
+
   
 @Injectable()
 export class createEventServices {
+ 
+
     public createeventurl: string;
     public sportlistUrl : string;
 
@@ -33,6 +43,21 @@ constructor(private _http: Http,
                 err => console.log("An Error Occured While Processing Your Request"));
 
     }
+
+
+ getCreateEventList(id : string) : Observable<any> 
+ {
+   
+  return this._http.get(this.createeventurl + "/angularapi.php?act=getuserevent&userid="+id).map(res => <CreateEvent[] > res.json());
+
+ }  
+
+getEventDetails(id : string) : Observable<any>
+{
+  
+  return this._http.get(this.createeventurl + "/angularapi.php?act=geteventdetails&id="+id).map(res => < CreateEvent[]> res.json());
+
+}
 }
 
 

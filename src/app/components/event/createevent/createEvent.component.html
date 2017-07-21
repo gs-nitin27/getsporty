@@ -1,7 +1,6 @@
 <app-dashboard></app-dashboard>
 <div style=" background-color: #d8f3ff;      margin-top: -2%;padding-top: 2%;">
 <div class="container">
-<!-- <<<<<<< HEAD -->
   <h2>Create Event</h2>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
@@ -9,14 +8,12 @@
     <li><a data-toggle="tab" href="#menu2">Eligibility Criteria:</a></li>
     <li><a data-toggle="tab" href="#menu3">Ticket Details</a></li>
   </ul>
-  <div class="tab-content">
+<div class="tab-content">
  
-   <div id="home" class="tab-pane fade in active">
-
-  <div class="box1">
- <div class="form-group">
+<div id="home" class="tab-pane fade in active">
+<div class="box1">
+<div class="form-group">
  
-
   
  
   <input type="hidden" name="title" [(ngModel)]="events.userid" class="form-control" value="title" required="">
@@ -43,38 +40,6 @@
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Entry Type</span></label>
   </span>
   </div >
-<!-- =======
-<h2>Create Event</h2>
-<ul class="nav nav-tabs">
-<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-<li><a data-toggle="tab" href="#menu1">Organization Address</a></li>
-<li><a data-toggle="tab" href="#menu2">Eligibility Criteria:</a></li>
-<li><a data-toggle="tab" href="#menu3">Ticket Details</a></li>
-</ul>
-<div class="tab-content"> 
-<div id="home" class="tab-pane fade in active">
-<div class="box1">
-<div class="form-group">
-<input type="hidden" name="title" [(ngModel)]="events.userid" class="form-control" value="title" required="">
-</div>
-<div>
-<span class="input input--hoshi">  
-<input class='input__field input__field--hoshi' [(ngModel)]="events.name" type="text" name="description"  value="description" >
-<label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="description"><span class="input__label-content input__label-content--hoshi">Event Name</span></label></span>
-</div>
->>>>>>> 8234f46dbd7a83d8640c0ebe356c8c251896e967 -->
-<!-- <div>
-<span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.description" type="text" name="title"  value="title" >
-<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Description</span></label>
-</span>
-</div>
-<div>
-<span class="input input--hoshi">  
-<input class='input__field input__field--hoshi' type="text"  [(ngModel)]="events.entry_type" name="title"  value="title">
-<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Entry Type</span></label>
-</span>
-</div > -->
 <div>
 <span class="input input--hoshi">
 <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="events.event_link" value="title">

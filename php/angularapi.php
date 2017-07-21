@@ -40,7 +40,25 @@ else if($_REQUEST['act'] == 'contentangularlex')
   $userid      =  $_REQUEST['userid'];
 	$req    =   new angularapi();
 	$res= $req->getContent($userid);
-    echo json_encode($res); 
+   
+  echo json_encode($res); 
+}
+
+else if($_REQUEST['act'] == 'getuserevent')
+{
+   $userid = $_REQUEST['userid'];
+   $req = new angularapi();
+   $res = $req->getuserevent($userid);
+   echo json_encode($res);
+}
+
+else if($_REQUEST['act'] == 'geteventdetails')
+{
+   $id = $_REQUEST['id'];
+   $req = new angularapi();
+   $res = $req->geteventdetails($id);
+   echo json_encode($res);
+
 }
 
 else if($_REQUEST['act'] == 'createcontent')
