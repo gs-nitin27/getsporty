@@ -40,7 +40,7 @@ editEvent(id : string)
    //alert(atob("NTA="));
 
 
-    this._router.navigate(["/viewEvent",id]);
+    this._router.navigate(["/editEvent",id]);
 
 }
 

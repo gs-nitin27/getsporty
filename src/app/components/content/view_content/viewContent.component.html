@@ -53,3 +53,24 @@
    </div>
 </section>
 <!-- /.content -->
+
+
+<table>
+<tr>
+<td>Item</td>
+<td>Qty</td>
+<td>UP</td>
+<td>Total</td>
+</tr>
+<tr *ngFor="let row of invoiceItemsData; let i = index">
+   <td><input type="text" class="form-control" required [(ngModel)]="row.item_id" value="{{row.item_id}}" name="item_id"></td>
+   <td><input type="text" class="form-control" required [(ngModel)]="row.qty" value="{{row.qty}}" name="qty"></td>
+<td><input type="text" class="form-control" required [(ngModel)]="row.unit_price" value="{{row.unit_price}}" name="unit_price"></td>
+<td><input type="text" class="form-control" required [(ngModel)]="row.total" value="{{row.total}}" name="total"></td>
+<a class="btn btn-primary" (click)="addNewRow()">New</a>
+</tr>
+   {{invoiceItemsData|json}}
+</table>
+
+
+
