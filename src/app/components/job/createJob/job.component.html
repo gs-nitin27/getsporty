@@ -15,10 +15,11 @@
 <div class="form-group">
 <input type="hidden" name="title"    required=""><a href="#" class=" icon user"></a>
 </div>
-<input type="hidden" name="title" [(ngModel)]="Job.userid" class="form-control" value="title" required="">
+<input type="hidden" name="title" [(ngModel)]="Job.userid" class="form-control"  required="">
+<input type="hidden"  [(ngModel)]="Job.id" class="form-control"  required="">
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi'  [(ngModel)]="Job.title" type="text">
+<input class='input__field input__field--hoshi'  [(ngModel)]="Job.title" type="text" onblur="hi()"  id="first" value="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="title"><span class="input__label-content input__label-content--hoshi">Job Title</span></label></span>
 </div >
 <div>

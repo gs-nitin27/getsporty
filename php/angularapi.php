@@ -40,7 +40,34 @@ else if($_REQUEST['act'] == 'contentangularlex')
   $userid      =  $_REQUEST['userid'];
 	$req    =   new angularapi();
 	$res= $req->getContent($userid);
-    echo json_encode($res); 
+   
+  echo json_encode($res); 
+}
+
+else if($_REQUEST['act'] == 'getuserevent')
+{
+   $userid = $_REQUEST['userid'];
+   $req = new angularapi();
+   $res = $req->getuserevent($userid);
+   echo json_encode($res);
+}
+
+else if($_REQUEST['act'] == 'geteventdetails')
+{
+   $id = $_REQUEST['id'];
+   $req = new angularapi();
+   $res = $req->geteventdetails($id);
+   echo json_encode($res);
+
+}
+
+else if($_REQUEST['act'] == 'getjobdetails')
+{
+  $id = $_REQUEST['id'];
+  $req = new angularapi();
+  $res = $req->getjobdetails($id);
+  echo json_encode($res);
+
 }
 
 else if($_REQUEST['act'] == 'createcontent')
@@ -257,7 +284,7 @@ else if($_REQUEST['act'] == 'createjob')
    
    $item = new stdClass();
 
-    $item->id                        = 0;
+    $item->id                        = $data->id;
     $item->userid                    = $data->userid;
     $item->title                     = $data->title;
     $item->location                  = $data->location;
@@ -274,7 +301,7 @@ else if($_REQUEST['act'] == 'createjob')
     $item->org_state                 = $data->org_state;
     $item->org_pin                   = $data->org_pin;
     $item->organisation_name         = $data->organisation_name;
-    $item->about                     = $data->about;
+    $item->qualification             = $data->qualification;
     $item->address1                  = $data->address1;
     $item->address2                  = $data->address2;
     $item->state                     = $data->state;

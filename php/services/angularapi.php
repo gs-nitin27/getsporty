@@ -80,6 +80,23 @@ public function getContent($userid)
    }    
 }
 
+public function getuserevent($userid)
+{
+  $query = mysql_query("SELECT `id`,`userid`,`name`,`location`,`sport_name` FROM `gs_eventinfo` WHERE `userid` = '$userid'");
+
+  $row = mysql_num_rows($query);
+  if($row)
+  {
+   while ($data = mysql_fetch_assoc($query)) 
+   {
+     $result[] = $data;
+   }
+     return $result;
+  }
+
+}
+
+
 
 public function createcontent($item)
 {
@@ -129,6 +146,44 @@ public function userdata($id)
         }
     }
 
+
+  public function geteventdetails($id)
+  {
+    $query = mysql_query("SELECT * FROM `gs_eventinfo` WHERE `id` = '$id'");
+    if(mysql_num_rows($query))
+    {
+       while ($row = mysql_fetch_assoc($query)) {
+
+         $data = $row;
+       }
+    return $data;
+    }
+    else
+    {
+      return 0;
+    }
+
+
+  }  
+
+public function getjobdetails($id)
+{
+  $query = mysql_query("SELECT * FROM `gs_jobinfo` WHERE `id` = '$id'");
+  if(mysql_num_rows($query))
+  {
+   while( $row = mysql_fetch_assoc($query))
+   {
+      $data = $row;
+   }
+  return $data;
+  }
+  else
+  {
+    return 0;
+  }
+
+}
+
 public function listuserdata($userid)
     {
       
@@ -152,7 +207,7 @@ public function listuserdata($userid)
 public function createjob($item)
 {
 
-$insert = mysql_query("INSERT INTO `gs_jobinfo`(`id`,`userid`,`title`,`location`,`gender`,`sport`,`type`,`job_link`,`work_experience`,`description`,`key_requirement`,`org_address1`,`org_address2`,`org_city`,`org_state`,`org_pin`,`organisation_name`,`about`,`address1`,`address2`,`state`,`pin`,`contact`,`email`,`image`,`date_created`)  VALUES ('$item->id','$item->userid','$item->title','$item->location','$item->gender','$item->sport','$item->type','$item->job_link','$item->work_experience','$item->description','$item->key_requirement','$item->org_address1','$item->org_address2','$item->org_city','$item->org_state','$item->org_pin','$item->organisation_name','$item->about','$item->address1','$item->address2','$item->state','$item->pin','$item->contact','$item->email','$item->image',CURDATE())");
+$insert = mysql_query("INSERT INTO `gs_jobinfo`(`id`,`userid`,`title`,`location`,`gender`,`sport`,`type`,`job_link`,`work_experience`,`description`,`key_requirement`,`org_address1`,`org_address2`,`org_city`,`org_state`,`org_pin`,`organisation_name`,`qualification`,`address1`,`address2`,`state`,`pin`,`contact`,`email`,`image`,`date_created`)  VALUES ('$item->id','$item->userid','$item->title','$item->location','$item->gender','$item->sport','$item->type','$item->job_link','$item->work_experience','$item->description','$item->key_requirement','$item->org_address1','$item->org_address2','$item->org_city','$item->org_state','$item->org_pin','$item->organisation_name','$item->qualification','$item->address1','$item->address2','$item->state','$item->pin','$item->contact','$item->email','$item->image',CURDATE()) ON DUPLICATE KEY UPDATE `title` = '$item->title' , `location` = '$item->location' , `gender` = '$item->gender',`sport` = '$item->sport' , `type` = '$item->type',`job_link` = '$item->job_link' , `work_experience` = '$item->work_experience' , `description` = '$item->description' , `key_requirement` = '$item->key_requirement' , `org_address1` = '$item->org_address1' , `org_address2` = '$item->org_address2' , `org_city` = '$item->org_city' , `org_state` = '$item->org_state' , `org_pin` = '$item->org_pin' , `organisation_name` = '$item->organisation_name' , `qualification` = '$item->qualification' ,`address1` = '$item->address1' , `address2` = '$item->address2' , `state` = '$item->state', `pin` = '$item->pin' , `contact` = '$item->contact' , `email` = '$item->email',`image` = '$item->image' ");
 
   if($insert)
   {

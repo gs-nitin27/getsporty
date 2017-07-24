@@ -9,7 +9,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { EventComponent } from './components/event/event.component';
 import { TournamentComponent } from './components/tournament/tournament.component';
 import { HomeComponent } from './components/home/home.component';
-import { JobComponent } from './components/job/job.component';
+import { JobComponent } from './components/job/createJob/job.component';
 import { viewContentComponent } from './components/content/view_content/viewContent.component';
 import { viewContentServices } from './components/services/viewContent.services';
 import { APP_CONFIG, AppConfig } from './app.config';
@@ -21,6 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
 import { UserdataComponent } from './userdata.component';
+import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
+import { EditJobComponent } from './components/job/editJob/editJob.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { UserdataComponent } from './userdata.component';
     CreateEventComponent,
     ProfileComponent,
     viewContentComponent,
-    JobComponent
+    JobComponent,
+    EditJobComponent,
+    ViewEventComponent
   ],
   imports: [
     BrowserModule,
