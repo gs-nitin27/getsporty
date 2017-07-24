@@ -23,6 +23,7 @@ import { ProfileComponent } from './components/useraccount/profile/profile.compo
 import { UserdataComponent } from './userdata.component';
 import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
 import { EditJobComponent } from './components/job/editJob/editJob.component';
+import { EditEventComponent } from './components/event/editEvent/editEvent.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { EditJobComponent } from './components/job/editJob/editJob.component';
     viewContentComponent,
     JobComponent,
     EditJobComponent,
+    EditEventComponent,
     ViewEventComponent
   ],
   imports: [

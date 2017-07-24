@@ -22,18 +22,18 @@ export class CreateEventComponent implements OnInit {
 
  
 public myForm: FormGroup;
-myGroupName = ['ticket'];
-
-public termForm: FormGroup;
-termCondition = ['term'];
+//myGroupName = ['ticket'];
+//
+//public termForm: FormGroup;
+//termCondition = ['term'];
 
 sports: any[];
 sportslist: Object = {};
 image :string;
 name : string;
 ticket :Object = {};
-terms_cond : Object = {};
-
+terms_cond1 : Object = {};
+id : any;
 
 
 
@@ -47,37 +47,34 @@ terms_cond : Object = {};
   responseStatus:Object= [];
   ngOnInit() {
 
-
+   
     this.Sportlist();
     this.events = new CreateEvent();
+     this.events.id = "0";
 
-    this.myForm = this._fb.group({
-            myArray: this._fb.array([
-                this._fb.group({  
-                   ticket: this._fb.group({
-                            TName:[''],
-                            Price:[''],
-                            Number:[''],
-                     
-                    })
-                }), 
-            ])
-        }); 
+//    this.myForm = this._fb.group({
+//            myArray: this._fb.array([
+//                this._fb.group({  
+//                   ticket: this._fb.group({
+//                            TName:[''],Price:[''],Number:[''],})
+//                }), 
+//            ])
+//        }); 
 
 
 
-    this.termForm = this._fb.group({
-            myArray: this._fb.array([
-                this._fb.group({  
-                   term: this._fb.group({
-                            term:[''],
-                            
-                     
-                    })
-                }), 
-
-            ])
-        });
+//    this.termForm = this._fb.group({
+//            myArray: this._fb.array([
+//                this._fb.group({  
+//                   term: this._fb.group({
+//                            term:[''],
+//                            
+//                     
+//                    })
+//                }), 
+//
+//            ])
+//        });
   }
 
   Create(events) : void  {     
@@ -86,16 +83,19 @@ terms_cond : Object = {};
 
 
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
-     this.events.ticket = inputValue;
+     this.events.ticket_detail = inputValue;
 
 
-    var inputTermValue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
-    this.events.terms_cond = inputTermValue;
+
 
     this.events.userid =  localStorage.getItem('currentUserid'); 
     this.events.id = "0";
 
     
+   var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value1")).value;
+   this.events.terms_cond1 =  termvalue;
+   alert(JSON.stringify(this.events));
+
     this._event.saveEvent(this.events);
 
   }
@@ -154,48 +154,61 @@ terms_cond : Object = {};
 
     }
 
- addArray(newName:string) {
-        const control = <FormArray>this.myForm.controls['myArray'];
-        this.myGroupName.push(newName);
-        control.push(this.initArray(newName));
-    }
+// addArray(newName:string) {
+//        const control = <FormArray>this.myForm.controls['myArray'];
+//        this.myGroupName.push(newName);
+//        control.push(this.initArray(newName));
+//    }
+
+
+//
+//  removeDataKey(i: number) {
+//       const control = <FormArray>this.myForm.controls['myArray'];
+//       control.removeAt(i);
+//       this.myGroupName.splice(i,1);
+//    }
 
 
 
-  removeDataKey(i: number) {
-       const control = <FormArray>this.myForm.controls['myArray'];
-       control.removeAt(i);
-       this.myGroupName.splice(i,1);
-    }
+//     inittermArray(nameObj:any) {
+//
+//      return  this._fb.group({  
+//                [nameObj]: this._fb.group({
+//            
+//                          term : [''],
+//                          
+//                    })
+//                })  
+//    }
+//
+// addtermArray(newTerm:string) {
+//        const control = <FormArray>this.termForm.controls['myArray'];
+//        this.termCondition.push(newTerm);
+//        control.push(this.inittermArray(newTerm));
+//
+//           
+//    }
+
+//
+//  removeterm(i: number) {
+//       const control = <FormArray>this.termForm.controls['myArray'];
+//       control.removeAt(i);
+//       this.termCondition.splice(i,1);
+//    }
 
 
 
-     inittermArray(nameObj:any) {
+//     public myForm12: FormGroup;
+       public termCondition = [{'term':''}];
+       addNewRow(){
+          this.termCondition.push({'term':''});
+        }
+       
 
-      return  this._fb.group({  
-                [nameObj]: this._fb.group({
-            
-                          term : [''],
-                          
-                    })
-                })  
-    }
-
- addtermArray(newTerm:string) {
-        const control = <FormArray>this.termForm.controls['myArray'];
-        this.termCondition.push(newTerm);
-        control.push(this.inittermArray(newTerm));
-
-           
-    }
-
-
-  removeterm(i: number) {
-       const control = <FormArray>this.termForm.controls['myArray'];
-       control.removeAt(i);
-       this.termCondition.splice(i,1);
-    }
-
+     public ticketdetials = [{'ticket_name':'','ticket_price':'','number':''}];
+       addNewticket(){
+          this.ticketdetials.push({'ticket_name':'','ticket_price':'','number':''});
+        }  
 } 
 
  

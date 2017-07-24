@@ -1,0 +1,177 @@
+<app-dashboard></app-dashboard>
+
+<!-- {{viewEvent | json}}
+ -->
+
+<div style=" background-color: #d8f3ff;      margin-top: -2%;padding-top: 2%;">
+<div class="container">
+<h2>Create Event</h2>
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+<li><a data-toggle="tab" href="#menu1">Organization Address</a></li>
+<li><a data-toggle="tab" href="#menu2">Eligibility Criteria:</a></li>
+<li><a data-toggle="tab" href="#menu3">Ticket Details</a></li>
+</ul>
+<div class="tab-content"> 
+<div id="home" class="tab-pane fade in active">
+<div class="box1">
+<div class="form-group">
+<input type="hidden" name="id" [(ngModel)]="viewEvent.id" class="form-control"  required="">
+<input type="hidden" name="title" [(ngModel)]="viewEvent.userid" class="form-control"  required="">
+</div>
+<div>
+<span class="input input--hoshi">  
+<input id="first" class='input__field input__field--hoshi' [(ngModel)]="viewEvent.name" type="text" name="description" onblur="hi()">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1"   for="description"><span class="input__label-content input__label-content--hoshi">Event Name</span></label></span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.description" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Description</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">  
+<input class='input__field input__field--hoshi' type="text"  [(ngModel)]="viewEvent.type" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Entry Type</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="viewEvent.event_links">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Link</span></label>
+</span>
+</div>
+<div>
+<div *ngIf="sports">
+<div class="form-group">
+<label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Sport</label>
+<select class="form-control mr5" name="game" [(ngModel)]="viewEvent.sport" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</div>
+       <!-- Tab 2 start -->
+<div id="menu1" class="tab-pane fade">        
+<div class="box1">
+<div>
+<span class="input input--hoshi"> 
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.address_1" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Address</span></label>
+</span>
+</div>
+<div class=" wd60 pd0 fl">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.location" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event City</span></label>
+</span>
+</div>
+<div class="wd60 pd0 fr">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.state" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event State</span></label>
+</span>
+</div >
+<div class="wd60 pd0 fl">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.start_date" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Start Date</span></label>
+</span>
+</div>
+<div class="wd60 pd0 fr">
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.end_date" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event End Date</span></label>
+</span>
+</div>
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.email_app_collection" type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Organizer Email</span></label>
+</span>
+</div>
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.mobile"  type="text" name="title">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Mobile</span></label>
+</span>
+</div >
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.eligibility1" type="text" name="title">
+ <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Eligibility</span></label>
+</span>
+</div>
+</div>
+</div>
+
+<!-- new Tab 3 -->
+
+<div id="menu2" class="tab-pane fade">
+
+<div *ngFor="let viewEvent of termCondition; let i = index">
+<div class="form-group">
+<span class="input input--hoshi">Terms & Condition {{i + 1}}
+<input type="text" class="form-control" required [(ngModel)]="viewEvent.term" value="{{viewEvent.term}}" name="term">
+</span>
+</div>
+<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="viewEvent.termCondition" value="{{termCondition | json}}">
+<div class="form-group">
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.terms_cond" class="form-control" value="{{terms_cond}}">
+</div>
+</div>
+<div class="p-container">
+<input  style="outline: none;" type="submit" (click)="addNewRow()" class="btn btn-primary" value="Add term & Condition" >
+<div class="clear"> 
+</div>
+</div>
+</div>
+
+
+<!-- new Tab 4 -->
+
+<div id="menu3" class="tab-pane fade">
+<div class="row">
+<div class="form-group">
+<h2>Ticket Details</h2>
+</div>
+<div *ngFor="let viewEvent of ticket; let i = index">
+<div class="form-group">
+<span class="input input--hoshi">Ticket {{i + 1}}
+<div class="form-group">
+<input type="text" class="form-control" required [(ngModel)]="viewEvent.ticket_name" value="{{viewEvent.ticket_name}}" name="term">
+</div>
+<div class="form-group">
+<input type="text" class="form-control" required [(ngModel)]="viewEvent.ticket_price" value="{{viewEvent.ticket_price}}" name="term">
+</div>
+<div class="form-group">
+<input type="text" class="form-control" required [(ngModel)]="viewEvent.number" value="{{viewEvent.number}}" name="term">
+</div>
+</span>
+</div>
+<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="this.viewEvent.ticket" value="{{ticket | json}}">
+<div class="form-group">
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{terms_cond}}">
+</div>
+</div>
+<div class="p-container">
+<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add term & Condition" >
+<div class="clear"> 
+</div>
+</div>
+
+
+</div>
+
+</div>
+<div class="p-container">
+<input  style="outline: none;" type="submit" (click) ="Create(viewEvent)" class="btn btn-primary" value="Submit" >
+<div class="clear"> 
+</div>
+</div>
+</div>
+</div>
+</div>

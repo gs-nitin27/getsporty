@@ -4,18 +4,18 @@ export class CreateEvent
       userid: string;
       name: string;
       description: string;
-      entry_type : string;
+      type : string;
       sport: string;
-      address: string;
-      city: string;
+      address_1: string;
+      location: string;
       state: string;
-      event_link: string;
+      event_links: string;
       start_date: string;
       end_date: string;
-      organizer_email: string;
+      email_app_collection: string;
       mobile: string;
-      eligibility: string;
-      terms_cond: string;
-      ticket : string;
+      eligibility1: string;
+      terms_cond1: string;
+      ticket_detail : string;
       image  : string;
 }

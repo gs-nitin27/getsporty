@@ -37,13 +37,13 @@
   <div>
   <span class="input input--hoshi">
   
-  <input class='input__field input__field--hoshi' type="text"  [(ngModel)]="events.entry_type" name="title"  value="title">
+  <input class='input__field input__field--hoshi' type="text"  [(ngModel)]="events.type" name="title"  value="title">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Entry Type</span></label>
   </span>
   </div >
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="events.event_link" value="title">
+<input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="events.event_links" value="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Link</span></label>
 </span>
 </div>
@@ -51,7 +51,7 @@
 <div *ngIf="sports">
 <div class="form-group">
 <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Sport</label>
-<select class="form-control mr5" name="game" [(ngModel)]="events.sport" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<select class="form-control mr5" name="game" [(ngModel)]="events.sport_name" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
 <option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
 </select>
 </div>
@@ -64,13 +64,13 @@
 <div class="box1">
 <div>
 <span class="input input--hoshi"> 
-<input class='input__field input__field--hoshi' [(ngModel)]="events.address" type="text" name="title"  value="title">
+<input class='input__field input__field--hoshi' [(ngModel)]="events.address_1" type="text" name="title"  value="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Address</span></label>
 </span>
 </div>
 <div class=" wd60 pd0 fl">
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.city" type="text" name="title"   value="title">
+<input class='input__field input__field--hoshi' [(ngModel)]="events.location" type="text" name="title"   value="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event City</span></label>
 </span>
 </div>
@@ -94,7 +94,7 @@
 </div>
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.organizer_email" type="text" name="title"   value="title">
+<input class='input__field input__field--hoshi' [(ngModel)]="events.email_app_collection" type="text" name="title"   value="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Organizer Email</span></label>
 </span>
 </div>
@@ -106,7 +106,7 @@
 </div >
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.eligibility" type="text" name="title"   value="title" >
+<input class='input__field input__field--hoshi' [(ngModel)]="events.eligibility1" type="text" name="title"   value="title" >
  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Eligibility</span></label>
 </span>
 </div>
@@ -117,107 +117,74 @@
 
 
 <div id="menu2" class="tab-pane fade">
-<form [formGroup]="termForm" novalidate>    
-<div formArrayName="myArray"> 
-<div *ngFor="let myGroup of termForm.controls.myArray.controls; let i=index" class="panel panel-default">
-<div [formGroupName]="i" class="panel-body"> 
-<span *ngIf="termForm.controls.myArray.controls.length > 1" 
-                    (click)="removeterm(i)" class="glyphicon glyphicon-remove pull-right">
-</span>
-<h5>Term And Condition {{i + 1 }}</h5>
-<div [formGroupName]="termCondition[i]" class="panel-body"> 
+
+
+<div *ngFor="let events of termCondition; let i = index">
 <div class="form-group">
-<span class="input input--hoshi">
-<input class='input__field input__field--hoshi'  type="text"  formControlName="term" >
-<label class="input__label input__label--hoshi input__label--hoshi-color-1" ><span class="input__label-content input__label-content--hoshi">Terms & Condition</span></label>
+<span class="input input--hoshi">Terms & Condition {{i + 1}}
+<input type="text" class="form-control" required [(ngModel)]="events.term" value="{{events.term}}" name="term">
 </span>
 </div>
-</div>
-</div>
-</div>  
-</div>
-<div class="margin-20">
-<input #newTerm
-             type="hidden" style="width:30%" id="newTerm"  value="term">
-<a (click)="addtermArray(newTerm.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
-</div>
-<br/><br/>
-       <!--  <div class="margin-20">
-          <div>myForm details:-</div>
-          <pre>form value: <br>{{termForm.value | json}}</pre>
-        </div> -->
-      
-</form>
+
+<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="this.events.termCondition" value="{{termCondition | json}}">
+
+
 <div class="form-group">
-<input type="hidden"  name="terms_cond" [(ngModel)]="events.terms_cond" class="form-control" value="{{terms_cond}}">
-</div>
-<div class="form-group">
-<input type="hidden" id="terms_cond_value" class="form-control" [(ngModel)]="this.events.terms_cond" value="{{termForm.value | json}}">
+<input type="hidden"  name="terms_cond" [(ngModel)]="events.terms_cond1" class="form-control" value="{{terms_cond1}}">
 </div>
 </div>
+<div class="p-container">
+<input  style="outline: none;" type="submit" (click)="addNewRow()" class="btn btn-primary" value="Add term & Condition" >
+<div class="clear"> 
+</div>
+</div>
+
+
+</div>
+
 
 
 <!-- new Tab 4 -->
 
 <div id="menu3" class="tab-pane fade">
 <div class="row">
-<div class="form-group">
-<h2>Ticket Details</h2>
-</div>
-<form [formGroup]="myForm" novalidate> 
-<div formArrayName="myArray"> 
-<div *ngFor="let myGroup of myForm.controls.myArray.controls; let i=index" class="panel panel-default">
-<div [formGroupName]="i" class="panel-body"> 
-<span *ngIf="myForm.controls.myArray.controls.length > 1" 
-                    (click)="removeDataKey(i)" class="glyphicon glyphicon-remove pull-right">
-</span>
-<h5>Ticket Detail {{i + 1 }}</h5>
-<div [formGroupName]="myGroupName[i]" class="panel-body"> 
+
+<div *ngFor="let events of ticketdetials; let i = index">
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' type="text"  formControlName="TName" >
+<input class='input__field input__field--hoshi' type="text"  [(ngModel)] = "events.ticket_name" >
 <label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Ticket Name</span></label>
 </span>
 </div>
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' type="text" formControlName="Price" >
+<input class='input__field input__field--hoshi' type="text"  [(ngModel)] = "events.ticket_price">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Price</span></label>
 </span>
 </div> 
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' type="text"  formControlName="Number" >
+<input class='input__field input__field--hoshi' type="text" [(ngModel)]= "events.number" >
 <label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Number</span></label>
 </span>
 </div>
 </div>
-              <!--[formGroupName]="myGroupName[i]"-->
+ <div class="p-container">
+<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add term & Condition" >
+<div class="clear"> 
 </div>
-         <!--[formGroupName]="i" -->
-</div> 
 </div>
-     <!-- myArray array-->
+
 <div class="form-group">
-<input #newName
-       type="hidden" style="width:30%" id="newName"  value="ticket">
-        <a (click)="addArray(newName.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
-        </div>
-          <br/><br/>
-       <!--  <div class="margin-20">
-          <div>myForm details:-</div>
-          
-          <pre>form value: <br>{{myForm.value | json}}</pre>
-        </div> -->
-      
-</form>
+<input type="hidden"  name="ticket" [(ngModel)]="events.ticket_detail" class="form-control" value="{{ticket_detail}}">
+</div>
+
 <div class="form-group">
-<input type="hidden"  name="ticket" [(ngModel)]="events.ticket" class="form-control" value="{{ticket}}">
+<input type="hidden" id="myValue" class="form-control" [(ngModel)]="this.events.ticket" value="{{ticketdetials | json}}">
 </div>
-<div class="form-group">
-<input type="hidden" id="myValue" class="form-control" [(ngModel)]="this.events.ticket" value="{{myForm.value | json}}">
+
 </div>
-</div>
+
 <div class="form-group">
 <input type="file" (change)="handleFileSelect($event)" required class="form-control " name="attach_file" id="attach_file">
 </div>  
