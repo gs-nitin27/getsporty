@@ -79,25 +79,17 @@ id : any;
 
   Create(events) : void  {     
 
-
-
-
     var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
      this.events.ticket_detail = inputValue;
-
-
-
 
     this.events.userid =  localStorage.getItem('currentUserid'); 
     this.events.id = "0";
 
-    
    var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value1")).value;
    this.events.terms_cond1 =  termvalue;
-   alert(JSON.stringify(this.events));
+  // alert(JSON.stringify(this.events));
 
     this._event.saveEvent(this.events);
-
   }
 
    Sportlist() {

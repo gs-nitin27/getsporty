@@ -29,11 +29,8 @@ id: any;
 //term_cond1 : any[];
 //testtt  : any;
 
-
-  
 constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute) 
 {}
-
 ngOnInit() 
 {
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
@@ -55,25 +52,19 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
     {
      if(key == 'ticket_detail')
      {
-        //ticket_details.push(res[key]);
-
-        //alert(res[key]);
-        this.oldticket(res[key]);
+        this.oldticket(res[key]);    
      }
      else if(key == 'terms_cond1')
      {
-        //term_cond.push(res[key]);
         this.oldtermcond(res[key]);
      }
      else
      {
         otherdetails.push(res);
      }
+       
     } 
-    this.viewEvent = res ;
-   // this.term_cond1 = term_cond; 
-   // this.ticket_details1 = ticket_details
-   // this.otherdetails1 = otherdetails;
+    this.viewEvent = res;
     });
 
    
@@ -81,8 +72,31 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
 
 Create(event): void  { 
 
- alert(JSON.stringify(event));
- this._eventservices.saveEvent(event);
+var inputValue = (<HTMLInputElement>document.getElementById("ticketdetails")).value;
+if(inputValue)
+{
+	this.viewEvent.ticket_detail = inputValue;
+}else
+{
+    this.viewEvent.ticket_detail =  JSON.stringify(this.ticket);
+
+	//this.viewEvent.ticket_detail =  inputValue;
+}
+
+
+var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
+
+if(termvalue)
+{
+	this.viewEvent.terms_cond1 =  termvalue;
+}else
+{
+	this.viewEvent.terms_cond1 =  JSON.stringify(this.termCondition);
+}
+
+//alert(JSON.stringify(event));
+
+this._eventservices.saveEvent(event);
 }
 
 addNewRow()
@@ -97,21 +111,36 @@ addNewticket()
 
 oldtermcond(term_cond)
 {  
-var data = JSON.parse(term_cond)
+
+if(term_cond) 
+{
+var data = JSON.parse(term_cond);
 var lenght = data.length;
 for(var i =0 ;i<lenght; i++)
 {
   this.termCondition.push(data[i]);
 }
-}       
+}
+else
+{
+    this.termCondition.push({'term':''});
+	
+}  
+}     
 
 oldticket(ticket_data)
 {
+    if(ticket_data)
+    {
 	var tdata = JSON.parse(ticket_data);
 	var tlenght = tdata.length;
 	for(var j =0 ;j<tlenght; j++)
     {
     this.ticket.push(tdata[j]);
+    }
+    }else
+    {
+     this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
     }
 }  
 }

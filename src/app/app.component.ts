@@ -32,7 +32,6 @@ constructor(private router: Router){
 
  logout() :void {
     localStorage.clear();
-
     this.router.navigate(["main"]);
     }
 
