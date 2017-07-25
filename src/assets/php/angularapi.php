@@ -104,23 +104,23 @@ else if($_REQUEST['act'] == 'createevent')
         
 
 
-        $item->id                        = 0;
+        $item->id                        = $data->id;
         $item->userid                    = $data->userid;
         $item->name                      = $data->name;
         $item->description               = $data->description;
-        $item->type                      = $data->entry_type;
-        $item->sport                     = $data->sport;
-        $item->address1                  = $data->address;
-        $item->city                      = $data->city;
+        $item->type                      = $data->type;
+        $item->sport_name                = $data->sport_name;
+        $item->address_1                 = $data->address_1;
+        $item->location                  = $data->location;
         $item->state                     = $data->state;
-        $item->event_links               = $data->event_link;
+        $item->event_links               = $data->event_links;
         $item->start_date                = $data->start_date;
         $item->end_date                  = $data->end_date;
-        $item->email_app_collection      = $data->organizer_email;
+        $item->email_app_collection      = $data->email_app_collection;
         $item->mobile                    = $data->mobile;
-        $item->eligibility1              = $data->eligibility;
-        $item->tandc1                    = $data->terms_cond;
-        $item->ticket_detail             = $data->ticket;
+        $item->eligibility1              = $data->eligibility1;
+        $item->tandc1                    = $data->terms_cond1;
+        $item->ticket_detail             = $data->ticket_detail;
         $item->image                     = $data->image;
 
         $req    =   new angularapi();
