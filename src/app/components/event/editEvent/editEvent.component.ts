@@ -4,6 +4,7 @@ import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
 import { ActivatedRoute } from '@angular/router';
 declare var $:any;
+declare var timepicker: any;
 
 @Component({
   selector: 'app-editevent',
@@ -24,15 +25,17 @@ viewEvent: CreateEvent = new CreateEvent();
 
 public userid = localStorage.getItem('currentUserid');
 id: any;
-//otherdetails1 : any[];
-//ticket_details1 : any[];
-//term_cond1 : any[];
-//testtt  : any;
+
 
 constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute) 
 {}
 ngOnInit() 
 {
+   $(function() {
+   $( "#startD" ).datepicker();
+   $( "#endD" ).datepicker();
+   });
+
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
 this.editEvent();
 }
@@ -94,7 +97,12 @@ if(termvalue)
 	this.viewEvent.terms_cond1 =  JSON.stringify(this.termCondition);
 }
 
-//alert(JSON.stringify(event));
+var startdate = (<HTMLInputElement>document.getElementById("startD")).value;
+var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
+
+this.viewEvent.start_date = startdate;
+this.viewEvent.end_date = enddate;
+alert(JSON.stringify(event));
 
 this._eventservices.saveEvent(event);
 }
