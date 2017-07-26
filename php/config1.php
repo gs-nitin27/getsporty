@@ -1,5 +1,4 @@
 <?php
-
 if (strtolower($_SERVER['REQUEST_METHOD']) === 'options') {
          header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
          header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
@@ -8,14 +7,18 @@ if (strtolower($_SERVER['REQUEST_METHOD']) === 'options') {
         echo 'Allowed';
         exit;
 }
-$con = mysql_connect('localhost','getsport_staging','7UNMH?n#VtGy');
+
+$con = mysql_connect('localhost','root','');
 if($con)
 {
      $selected = mysql_select_db('getsport_staging') or die("Could not select databasename");
+
+     
 
 }
 else
 {
 echo "could not connect";
 } 
-?> 
+
+?>
