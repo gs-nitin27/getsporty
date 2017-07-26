@@ -120,36 +120,44 @@
 
 
 <div *ngFor="let events of termCondition; let i = index" class="">
+<div class="box1">
+<div>
+<span class="input input--hoshi">
+<input type="text" class="class='input__field input__field--hoshi" required [(ngModel)]="events.term" value="{{events.term}}" name="term" style="border:none; outline:none;">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="term"><span class="input__label-content input__label-content--hoshi">Terms & Condition {{i + 1}}</span></label>
+<!-- =======
 <div class="form-group">
-<span class="input input--hoshi">Terms & Condition {{i + 1}}
+<span class="input input hoshi">Terms & Condition {{i + 1}}
 <input type="text" class="form-control" required [(ngModel)]="events.term" value="{{events.term}}" name="term">
+>>>>>>> c65c8283e582b8dd616f8ece5183c94c9295e349 -->
 </span>
 </div>
+<input type="hidden" id="terms_cond_value1" [(ngModel)]="this.events.termCondition" value="{{termCondition | json}}">
 
-<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="this.events.termCondition" value="{{termCondition | json}}">
 
-
-<div class="form-group">
-<input type="hidden"  name="terms_cond" [(ngModel)]="events.terms_cond1" class="form-control" value="{{terms_cond1}}">
+<div>
+<input type="hidden"  name="terms_cond" [(ngModel)]="events.terms_cond1"  value="{{terms_cond1}}">
+</div>
 </div>
 </div>
 <div class="p-container">
-<input  style="outline: none;" type="submit" (click)="addNewRow()" class="btn btn-primary" value="Add term & Condition" >
+<input  style="outline: none;" type="submit" (click)="addNewRow()" class="btn btn-primary" value="Add Term & Condition" >
 <div class="clear"> 
 </div>
+
+
+
 </div>
-
-
 </div>
-
 
 
 <!-- new Tab 4 -->
 
 <div id="menu3" class="tab-pane fade">
-<div class="row">
 
-<div *ngFor="let events of ticketdetials; let i = index">
+
+<div *ngFor="let events of ticketdetials; let i = index" class="">
+<div class="box1">
 <div>
 <span class="input input--hoshi">
 <input class='input__field input__field--hoshi' type="text"  [(ngModel)] = "events.ticket_name" >
@@ -169,8 +177,9 @@
 </span>
 </div>
 </div>
+</div>
  <div class="p-container">
-<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add term & Condition" >
+<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add Ticket" >
 <div class="clear"> 
 </div>
 </div>
@@ -183,7 +192,7 @@
 <input type="hidden" id="myValue" class="form-control" [(ngModel)]="this.events.ticket" value="{{ticketdetials | json}}">
 </div>
 
-</div>
+
 
 <div class="form-group">
 <input type="file" (change)="handleFileSelect($event)" required class="form-control " name="attach_file" id="attach_file">
@@ -193,7 +202,7 @@
 </div>
 </div>
 <div class="p-container">
-<input  style="outline: none;" type="submit" (click) ="Create(events)" class="btn btn-primary" value="Submit" >
+<input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(events)" class="btn btn-primary" value="Submit" >
 <div class="clear"> 
 </div>
 </div>

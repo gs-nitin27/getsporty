@@ -9,6 +9,7 @@ if (strtolower($_SERVER['REQUEST_METHOD']) === 'options') {
 
         exit;
 }
+
 $con = mysql_connect('localhost','root','');
 if($con)
 {
