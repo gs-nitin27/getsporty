@@ -5,7 +5,7 @@ include('services/angularapi.php');
 include('services/getListingService.php');
 
 
-   
+    
 
 if($_REQUEST['act'] == 'contentangular')
 {
