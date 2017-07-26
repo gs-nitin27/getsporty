@@ -58,6 +58,14 @@ getEventDetails(id : string) : Observable<any>
   return this._http.get(this.createeventurl + "/angularapi.php?act=geteventdetails&id="+id).map(res => < CreateEvent[]> res.json());
 
 }
+
+ getEventList(id : string) : Observable<any> 
+ {
+   
+  return this._http.get(this.createeventurl + "/angularapi.php?act=getuserdashboardevent&userid="+id).map(res => <CreateEvent[] > res.json());
+
+ } 
+
 }
 
 

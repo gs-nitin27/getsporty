@@ -96,6 +96,22 @@ public function getuserevent($userid)
 
 }
 
+public function getuserdashboardevent($userid)
+{
+$query = mysql_query("SELECT `id`,`userid`,`name`,`location`,`sport_name` ,`description` FROM `gs_eventinfo` WHERE `userid` = '$userid' limit 6");
+
+  $row = mysql_num_rows($query);
+  if($row)
+  {
+   while ($data = mysql_fetch_assoc($query)) 
+   {
+     $result[] = $data;
+   }
+     return $result;
+  }
+
+}
+
 
 
 public function createcontent($item)

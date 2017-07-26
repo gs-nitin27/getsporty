@@ -112,15 +112,30 @@
 
 <div id="menu2" class="tab-pane fade">
 
-<div *ngFor="let viewEvent of termCondition; let i = index">
+<div *ngFor="let viewEvent of termCondition; let i = index" class="">
+<div class="box1">
+
+<div>
+<span class="input input--hoshi">
+<input type="text" class="class='input__field input__field--hoshi" required [(ngModel)]="viewEvent.term" value="{{viewEvent.term}}" name="term" style="border:none; outline:none;">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="term"><span class="input__label-content input__label-content--hoshi">Terms & Condition {{i + 1}}</span></label>
+<!-- =======
 <div class="form-group">
-<span class="input input--hoshi">Terms & Condition {{i + 1}}
-<input type="text" class="form-control" required [(ngModel)]="viewEvent.term" value="{{viewEvent.term}}" name="term">
+<span class="input input hoshi">Terms & Condition {{i + 1}}
+<input type="text" class="form-control" required [(ngModel)]="events.term" value="{{events.term}}" name="term">
+>>>>>>> c65c8283e582b8dd616f8ece5183c94c9295e349 -->
 </span>
 </div>
+
+
+<!-- <span class="input input--hoshi">Terms & Condition {{i + 1}}
+<input type="text" class="form-control" required [(ngModel)]="viewEvent.term" value="{{viewEvent.term}}" name="term">
+</span> -->
+
 <input type="hidden" id="terms_cond_value" class="form-control" [(ngModel)]="viewEvent.termCondition" value="{{termCondition | json}}">
 <div class="form-group">
 <input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.terms_cond1" class="form-control" value="{{terms_cond1}}">
+</div>
 </div>
 </div>
 <div class="p-container">
@@ -138,8 +153,31 @@
 <div class="form-group">
 <h2>Ticket Details</h2>
 </div>
-<div *ngFor="let viewEvent of ticket; let i = index">
-<div class="form-group">
+<div *ngFor="let viewEvent of ticket; let i = index" class= "">
+
+
+<div class="box1">
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text"  [(ngModel)]="viewEvent.ticket_name" value="{{viewEvent.ticket_name}}" >
+<label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Ticket Name</span></label>
+</span>
+</div>
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text"   [(ngModel)]="viewEvent.ticket_price" value="{{viewEvent.ticket_price}}">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Price</span></label>
+</span>
+</div> 
+<div>
+<span class="input input--hoshi">
+<input class='input__field input__field--hoshi' type="text" [(ngModel)]="viewEvent.number" value="{{viewEvent.number}}">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1"><span class="input__label-content input__label-content--hoshi">Number</span></label>
+</span>
+</div>
+</div>
+
+<!-- <div class="form-group">
 <span class="input input--hoshi">Ticket {{i + 1}}
 <div class="form-group">
 <input type="text" class="form-control" required [(ngModel)]="viewEvent.ticket_name" value="{{viewEvent.ticket_name}}" name="term">
@@ -151,24 +189,26 @@
 <input type="text" class="form-control" required [(ngModel)]="viewEvent.number" value="{{viewEvent.number}}" name="term">
 </div>
 </span>
-</div>
+</div> -->
+
+
 <input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
 <div class="form-group">
 <input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
 </div> 
 </div>
-<div class="p-container">
-<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add term & Condition" >
+
+ <div class="p-container">
+<input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add Ticket" >
 <div class="clear"> 
 </div>
 </div>
-
-
 </div>
 
 </div>
+
 <div class="p-container">
-<input  style="outline: none;" type="submit" (click) ="Create(viewEvent)" class="btn btn-primary" value="Submit" >
+<input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(viewEvent)" class="btn btn-primary" value="Submit" >
 <div class="clear"> 
 </div>
 </div>
