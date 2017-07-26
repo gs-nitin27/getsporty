@@ -5,7 +5,7 @@ include('services/angularapi.php');
 include('services/getListingService.php');
 
 
-   
+    
 
 if($_REQUEST['act'] == 'contentangular')
 {
@@ -102,7 +102,7 @@ else if($_REQUEST['act'] == 'createevent')
         $data =  json_decode(file_get_contents("php://input"));
         $item                     =  new stdClass();
         
-
+       
 
         $item->id                        = $data->id;
         $item->userid                    = $data->userid;

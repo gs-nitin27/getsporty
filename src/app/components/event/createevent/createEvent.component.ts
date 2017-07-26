@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
 declare var $:any;
+declare var timepicker: any;
 
 @Injectable()
 
@@ -37,17 +38,15 @@ id : any;
 
 
 
-
-  constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { 
-
-    
-
-  }
+constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { }
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
+  $(function() {
+  $("#startD").datepicker();
+  $("#endD").datepicker();
+  });
 
-   
     this.Sportlist();
     this.events = new CreateEvent();
      this.events.id = "0";
@@ -77,27 +76,25 @@ id : any;
 //        });
   }
 
-  Create(events) : void  {     
+Create(events) : void  {     
 
+  var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
+  this.events.ticket_detail = inputValue;
 
+  this.events.userid =  localStorage.getItem('currentUserid'); 
+  this.events.id = "0";
 
+  var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value1")).value;
+  this.events.terms_cond1 =  termvalue;
 
-    var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
-     this.events.ticket_detail = inputValue;
+  var startdate = (<HTMLInputElement>document.getElementById("startD")).value;
+  this.events.start_date = startdate;
+  var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
+  this.events.end_date = enddate;
 
-
-
-
-    this.events.userid =  localStorage.getItem('currentUserid'); 
-    this.events.id = "0";
-
-    
-   var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value1")).value;
-   this.events.terms_cond1 =  termvalue;
    alert(JSON.stringify(this.events));
 
     this._event.saveEvent(this.events);
-
   }
 
    Sportlist() {

@@ -3,6 +3,8 @@ import { contentModel } from '../../model/viewContent.model';
 import { viewContentServices } from '../../services/viewContent.services';
 import { Globledataservices } from '../../services/globaldata.services';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+declare var $:any;
+declare var timepicker: any;
 
 @Component({
    moduleId: module.id,
@@ -19,6 +21,10 @@ export class viewContentComponent implements OnInit {
     ngOnInit() 
       {
           this.viewcontent();
+
+  $(function() {
+    $( "#startD" ).datepicker();
+  });
       }
 
    viewcontent()
@@ -31,11 +37,11 @@ export class viewContentComponent implements OnInit {
       alert(contentid);
     }
     
-     public myForm: FormGroup;
-       public invoiceItemsData = [{'item_id':'','qty':'','unit_price':'','total':''}] ;
+   //  public myForm: FormGroup;
+     //  public invoiceItemsData = [{'item_id':'','qty':'','unit_price':'','total':''}] ;
 
 
-       addNewRow(){
-          this.invoiceItemsData.push({'item_id':'','qty':'','unit_price':'','total':''})
-        }
+      // addNewRow(){
+         // this.invoiceItemsData.push({'item_id':'','qty':'','unit_price':'','total':''})
+      //  }
 }

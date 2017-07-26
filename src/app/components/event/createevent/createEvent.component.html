@@ -82,25 +82,25 @@
 </div >
 <div class="wd60 pd0 fl">
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="events.start_date" type="text" name="title"   value="title">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="events.start_date" type="text" name="title"  id="startD" >
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Start Date</span></label>
 </span>
 </div>
 <div class="wd60 pd0 fr">
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="events.end_date" type="text" name="title"  value="title">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="events.end_date" type="text" name="title"  id="endD">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event End Date</span></label>
 </span>
 </div>
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.email_app_collection" type="text" name="title"   value="title">
+<input class='input__field input__field--hoshi' [(ngModel)]="events.email_app_collection" type="text" name="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Organizer Email</span></label>
 </span>
 </div>
 <div>
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi' [(ngModel)]="events.mobile"  type="text" name="title"   value="title" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+<input class='input__field input__field--hoshi' [(ngModel)]="events.mobile"  type="text" name="title">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Mobile</span></label>
 </span>
 </div >
@@ -125,6 +125,11 @@
 <span class="input input--hoshi">
 <input type="text" class="class='input__field input__field--hoshi" required [(ngModel)]="events.term" value="{{events.term}}" name="term" style="border:none; outline:none;">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="term"><span class="input__label-content input__label-content--hoshi">Terms & Condition {{i + 1}}</span></label>
+<!-- =======
+<div class="form-group">
+<span class="input input hoshi">Terms & Condition {{i + 1}}
+<input type="text" class="form-control" required [(ngModel)]="events.term" value="{{events.term}}" name="term">
+>>>>>>> c65c8283e582b8dd616f8ece5183c94c9295e349 -->
 </span>
 </div>
 <input type="hidden" id="terms_cond_value1" [(ngModel)]="this.events.termCondition" value="{{termCondition | json}}">

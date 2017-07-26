@@ -4,7 +4,9 @@ if (strtolower($_SERVER['REQUEST_METHOD']) === 'options') {
          header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
          header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Range, Content-Disposition, Content-Type, Authorization');
          header('Access-Control-Allow-Credentials: true');
-        echo 'Allowed';
+
+        echo 'Allowed'; 
+
         exit;
 }
 

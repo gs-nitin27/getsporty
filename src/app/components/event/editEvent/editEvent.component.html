@@ -77,13 +77,13 @@
 </div >
 <div class="wd60 pd0 fl">
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.start_date" type="text" name="title">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.start_date" type="text" name="title" id="startD">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Start Date</span></label>
 </span>
 </div>
 <div class="wd60 pd0 fr">
 <span class="input input--hoshi">
-<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.end_date" type="text" name="title">
+<input class='input__field input__field--hoshi validate datepicker' [(ngModel)]="viewEvent.end_date" type="text" name="title" id="endD">
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event End Date</span></label>
 </span>
 </div>
@@ -118,9 +118,9 @@
 <input type="text" class="form-control" required [(ngModel)]="viewEvent.term" value="{{viewEvent.term}}" name="term">
 </span>
 </div>
-<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="viewEvent.termCondition" value="{{termCondition | json}}">
+<input type="hidden" id="terms_cond_value" class="form-control" [(ngModel)]="viewEvent.termCondition" value="{{termCondition | json}}">
 <div class="form-group">
-<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.terms_cond" class="form-control" value="{{terms_cond}}">
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.terms_cond1" class="form-control" value="{{terms_cond1}}">
 </div>
 </div>
 <div class="p-container">
@@ -152,10 +152,10 @@
 </div>
 </span>
 </div>
-<input type="hidden" id="terms_cond_value1" class="form-control" [(ngModel)]="this.viewEvent.ticket" value="{{ticket | json}}">
+<input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
 <div class="form-group">
-<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{terms_cond}}">
-</div>
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
+</div> 
 </div>
 <div class="p-container">
 <input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add term & Condition" >
