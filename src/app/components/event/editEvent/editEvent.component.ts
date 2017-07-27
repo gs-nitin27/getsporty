@@ -102,7 +102,7 @@ var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
-alert(JSON.stringify(event));
+//alert(JSON.stringify(event));
 
 this._eventservices.saveEvent(event);
 }

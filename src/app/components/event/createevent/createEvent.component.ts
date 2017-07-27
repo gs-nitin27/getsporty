@@ -92,7 +92,7 @@ Create(events) : void  {
   var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
   this.events.end_date = enddate;
 
-   alert(JSON.stringify(this.events));
+  // alert(JSON.stringify(this.events));
 
     this._event.saveEvent(this.events);
   }
