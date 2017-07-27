@@ -7,13 +7,10 @@ import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
-
-
 declare var $:any;
 declare var timepicker: any;
 
 @Injectable()
-
 @Component({
   selector: 'app-createevent',
   templateUrl: './createEvent.component.html',

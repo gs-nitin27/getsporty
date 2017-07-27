@@ -27,7 +27,6 @@ constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobSe
 
 ngOnInit()
 {
-
 this._activatedRoute.params.subscribe(params => {
             this.id = +params['id']; 
   });
