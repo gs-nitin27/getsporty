@@ -64,21 +64,25 @@ handleFileSelect(evt){
 
   _handleReaderLoaded(readerEvt) {
      var binaryString = readerEvt.target.result;
-            this.uploadimage(btoa(binaryString));
+           // this.uploadimage(btoa(binaryString));
+
+     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => this.Job.image = data
+    )       
+   
     }
 
 
-    uploadimage(binaryString)
-    {
-            this._http.post('http://localhost/testingapp/angularapi.php?act=upload', binaryString)
-            .map(res => res.json())
-            .catch(error => Observable.throw(error))
-            .subscribe(
-                data => {
-                this.Job.image = data;
-                },
-                error => console.log(error)
-    ) }
+   // uploadimage(binaryString)
+   // {
+           // this._http.post('http://localhost/testingapp/angularapi.php?act=upload', binaryString)
+           // .map(res => res.json())
+           // .catch(error => Observable.throw(error))
+           // .subscribe(
+           //     data => {
+           //     this.Job.image = data;
+            //    },
+            //    error => console.log(error)
+  //  ) }
 
  Sportlist() {
     this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)

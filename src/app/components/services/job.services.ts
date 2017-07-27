@@ -50,6 +50,13 @@ CreatJob(job)
    return this._http.get(this.baseurl + "/angularapi.php?act=getjoblist&id="+userid).map(res=> <JobModule[]> res.json());
 
  }
+
+ 
+uploadimage(binaryString)
+  {
+    return  this._http.post(this.baseurl+"/angularapi.php?act=upload", binaryString)
+            .map(res => res.json());
+  }
 	
 
 }
