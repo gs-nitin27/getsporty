@@ -112,6 +112,24 @@ $query = mysql_query("SELECT `id`,`userid`,`name`,`location`,`sport_name` ,`desc
 
 }
 
+public function getjoblist($userid)
+{
+  $query = mysql_query("SELECT `id`,`userid`,`title`,`description`,`sport`,`job_link` FROM `gs_jobinfo` WHERE `userid` = '$userid' limit 6");
+  $row = mysql_num_rows($query);
+  if($row)
+  {
+        while($data = mysql_fetch_assoc($query))
+        {
+          $result [] = $data;
+        }
+        return $result;
+  }else
+  {
+    return 0;
+  }
+
+}
+
 
 
 public function createcontent($item)

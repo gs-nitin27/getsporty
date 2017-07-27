@@ -1,4 +1,3 @@
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
@@ -8,6 +7,8 @@ import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
+
+
 declare var $:any;
 declare var timepicker: any;
 
@@ -38,7 +39,7 @@ id : any;
 
 
 
-constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder) { }
+constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder ) { }
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
@@ -120,19 +121,16 @@ Create(events) : void  {
 
   _handleReaderLoaded(readerEvt) {
      var binaryString = readerEvt.target.result;
-            this.uploadimage(btoa(binaryString));
-    }
+           // this._event.uploadimage(btoa(binaryString));
+
+  this._event.uploadimage(btoa(binaryString)).subscribe( data => this.events.image = data
+    )
+    
+
+    
+}
 
 
-    uploadimage(binaryString)
-    {
-            this.http.post('http://localhost/testingapp/angularapi.php?act=upload', binaryString)
-            .map(res => res.json())
-            .catch(error => Observable.throw(error))
-            .subscribe(
-                data => this.events.image = data,
-                error => console.log(error)
-    ) }
 
 
      initArray(nameObj:any) {

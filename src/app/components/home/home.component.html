@@ -1,10 +1,4 @@
 <app-dashboard></app-dashboard>
-
-<!-- <div *ngFor = 'let evt of Event'>
-  <span>{{evt.name}}</span>
-
-</div> -->
-<!-- {{Event || json}} -->
 <div class="container">
 <div class="row">
 <div class="posrel">
@@ -26,13 +20,10 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   
 
+<div *ngIf="Event"> 
+
 
 <div class="carousel-inner">
-
-
-
-
-
 <div class="item active">
 <div class="container">
 <div class="row">
@@ -154,6 +145,29 @@
        
       </div> -->
     </div>
+  </div>
+    <div *ngIf="!Event">
+      
+   <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://www.entrytime.com/wp-content/uploads/2015/07/Marathon.jpg" alt="Los Angeles" style="width:100%; height: 450px !important;">
+      </div>
+
+      <div class="item">
+        <img src="http://aztecmm.com/wp-content/uploads/2015/01/sports-large-2.jpg" alt="Chicago" style="width:100%; height: 450px !important;">
+      </div>
+    
+      <div class="item">
+        <img src="http://www.evertrue.com/app/uploads/2013/10/fenway_park_2009.jpg" alt="New york" style="width:100%; height: 450px !important;">
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+
 
 
 
@@ -442,16 +456,8 @@
   
     <div class="col-md-12">
 <div id="myCarousel2" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-   <!--  <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol> -->
+   
 
-    <!-- Wrapper for slides -->
-
-    
     <div class="carousel-inner">
       <div class="item active">
         <img src="https://www.entrytime.com/wp-content/uploads/2015/07/Marathon.jpg" alt="Los Angeles" style="width:100%; height: 450px !important;">

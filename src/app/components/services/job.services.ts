@@ -44,6 +44,12 @@ CreatJob(job)
     return this._http.get(this.baseurl+ "/angularapi.php?act=getjobdetails&id="+id).map(res => <JobModule[]> res.json());
 
  } 
+
+ getJobList(userid : string) : Observable<any>
+ {
+   return this._http.get(this.baseurl + "/angularapi.php?act=getjoblist&id="+userid).map(res=> <JobModule[]> res.json());
+
+ }
 	
 
 }

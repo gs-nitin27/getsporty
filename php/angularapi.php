@@ -69,6 +69,13 @@ else if($_REQUEST['act'] == 'getuserdashboardevent')
   echo json_encode($res); 
 
 }
+else if($_REQUEST['act'] == 'getjoblist')
+{
+  $userid = $_REQUEST['id'];
+  $req = new angularapi();
+  $res = $req->getjoblist($userid);
+  echo json_encode($res);
+}
 
 else if($_REQUEST['act'] == 'getjobdetails')
 {
