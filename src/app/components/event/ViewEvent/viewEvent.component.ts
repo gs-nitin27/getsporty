@@ -18,9 +18,10 @@ export class ViewEventComponent implements OnInit {
  @Input() event: CreateEvent;
 
     public Event : CreateEvent[];
-    //public viewEvent : CreateEvent;
+    public termCondition = [];
+    public ticket = [];
 
-     viewEvent: CreateEvent = new CreateEvent();
+    viewEvent: CreateEvent = new CreateEvent();
 
     public userid = localStorage.getItem('currentUserid');
     id: any;
@@ -58,21 +59,17 @@ editEvent()
 
 this._eventservices.getEventDetails(this.id).subscribe(res => 
 {
-
-    
-
-
-    for(let key in res)
-    {
-     if(key == 'ticket_detail')
+  for(let key in res)
+  {
+    if(key == 'ticket_detail')
      {
-       // alert("ticketdetails");
-         ticket_details.push(res[key]);
-         res['ticket_detail'] = "";
+        this.ticketdetails(res[key]);
+        res['ticket_detail'] = "";
      }
      else if(key == 'terms_cond1')
      {
-        term_cond.push(res[key]);
+      
+        this.termcondition(res[key]);
         res['terms_cond1'] = "";
      }
      else
@@ -89,9 +86,6 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
     this.ticket_details1 = ticket_details
     this.otherdetails1 = otherdetails;
     //alert(JSON.stringify(this.viewEvent));
-
-
-
     });
    
 }
@@ -100,5 +94,42 @@ Create(eventt): void  {
 
  alert(JSON.stringify(eventt));
 }
+
+termcondition(term_cond)
+{
+if(term_cond) 
+{
+var data = JSON.parse(term_cond);
+var lenght = data.length;
+for(var i =0 ;i<lenght; i++)
+{
+  this.termCondition.push(data[i]);
+}
+}
+else
+{
+    this.termCondition.push({'term':''});
+  
+}
+
+}
+
+ticketdetails(ticket_data)
+{
+  if(ticket_data)
+  {
+  var tdata = JSON.parse(ticket_data);
+  var tlenght = tdata.length;
+  for(var j =0 ;j<tlenght; j++)
+  {
+    this.ticket.push(tdata[j]);
+    }
+    }else
+    {
+     this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
+    }
+}
+
+
 
 }
