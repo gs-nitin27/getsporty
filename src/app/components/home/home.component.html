@@ -1,7 +1,7 @@
 <app-dashboard></app-dashboard>
 <div class="container">
 <div class="row">
-<div class="posrel">
+<div class="posrel"> 
 
 <ul class="nav nav-tabs">
   <li class="active"><a  class="blue" data-toggle="tab" href="#home">Create Event</a></li>
@@ -30,7 +30,7 @@
 <div *ngFor = 'let evt of Event ; let i = index' class= ''>
 
 <div class="col-md-4" *ngIf = 'i<3'>
-<div class="card">
+<div class="card" >
 <div class="card-image">
 <img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
 <span class="card-title">{{evt.name}} </span>
@@ -40,9 +40,9 @@
                 </div>
                 
                 <div class="card-action">
-                    <a href="#" target="new_blank">{{i}}</a>
-                    <a href="#" target="new_blank">Link</a>
-                    <a href="#" target="new_blank">Link</a>  
+                    <a routerLink ="/viewEvent/{{evt.id}}" target="new_blank">View</a>
+                    <a routerLink ="/editEvent/{{evt.id}}" target="new_blank">Edit</a>
+                    <!-- <a href="#" target="new_blank">Link</a> -->  
                 
                 </div>
             </div>
@@ -69,9 +69,9 @@
       <p>{{evt.description}}</p>
       </div>        
       <div class="card-action">
-      <a href="#" target="new_blank"> {{j}}</a>
-      <a href="#" target="new_blank">Link</a>
-      <a href="#" target="new_blank">Link</a>  
+      <a routerLink ="/viewEvent/{{evt.id}}" target="new_blank">View</a>
+      <a routerLink ="/editEvent/{{evt.id}}" target="new_blank">View</a>
+     <!--  <a href="#" target="new_blank">Link</a>  --> 
       </div>
       </div>
       </div>
@@ -425,9 +425,9 @@
                 </div>
                 
                 <div class="card-action">
-                    <a href="#" target="new_blank">Link</a>
-                    <a href="#" target="new_blank">Link</a>
-                    <a href="#" target="new_blank">Link</a>  
+                    <a routerLink="/editJob/{{job.id}}" target="new_blank">Edit</a>
+<!--                     <a href="#" target="new_blank">Link</a>
+                    <a href="#" target="new_blank">Link</a> -->  
                 
                 </div>
             </div>
@@ -452,9 +452,9 @@
       <p>{{job.description}}</p>
       </div>        
       <div class="card-action">
-      <a href="#" target="new_blank">Link</a>
-      <a href="#" target="new_blank">Link</a>
-      <a href="#" target="new_blank">Link</a>  
+      <a routerLink="/editJob/{{job.id}}" target="new_blank">Edit</a>
+      <!-- <a href="#" target="new_blank">Link</a>
+      <a href="#" target="new_blank">Link</a>   -->
       </div>
       </div>
       </div>
@@ -506,7 +506,7 @@
     <div class="row">
   
 <div class="col-md-12" style="text-align: right;">   
-<a routerLink="/createevent"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Create Event</a>
+<a routerLink="/job"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Create Job</a>
 </div>  
 </div> 
 </div>

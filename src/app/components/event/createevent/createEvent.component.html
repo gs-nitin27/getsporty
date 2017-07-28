@@ -34,13 +34,19 @@
   </span>
   </div >
 
-  <div>
-  <span class="input input--hoshi">
-  
-  <input class='input__field input__field--hoshi' type="text"  [(ngModel)]="events.type" name="title"  value="title">
-  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Entry Type</span></label>
-  </span>
-  </div >
+
+
+  <div class="form-group">
+  <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Entry Type</label>
+  <select class="form-control mr5" name="game"  [(ngModel)] = "events.type" style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+  <option> Select</option>
+  <option> Free</option>
+  <option> Paid </option>
+  </select>
+  </div>
+
+
+
 <div>
 <span class="input input--hoshi">
 <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="events.event_links" value="title">
@@ -58,6 +64,13 @@
 </div>
 </div>
 </div>
+<div class="form-group">
+<input type="file" (change)="handleFileSelect($event)" required class="form-control " name="attach_file" id="attach_file">
+</div>  
+<div class="form-group">
+<input type="hidden"  name="image" [(ngModel)]="events.image" class="form-control" value="{{image}}">
+</div>
+
 </div>
        <!-- Tab 2 start -->
 <div id="menu1" class="tab-pane fade">        
@@ -155,9 +168,9 @@
 
 <div id="menu3" class="tab-pane fade">
 
+<div *ngIf = 'events.type == "Paid"'>
 
 <div *ngFor="let events of ticketdetials; let i = index" class="">
-
 <div class="box1">
 <div>
 <span class="input input--hoshi">
@@ -185,6 +198,8 @@
 </div>
 </div>
 
+</div>
+
 <div class="form-group">
 <input type="hidden"  name="ticket" [(ngModel)]="events.ticket_detail" class="form-control" value="{{ticket_detail}}">
 </div>
@@ -194,14 +209,8 @@
 </div>
 
 
+</div>
 
-<div class="form-group">
-<input type="file" (change)="handleFileSelect($event)" required class="form-control " name="attach_file" id="attach_file">
-</div>  
-<div class="form-group">
-<input type="hidden"  name="image" [(ngModel)]="events.image" class="form-control" value="{{image}}">
-</div>
-</div>
 <div class="p-container">
 <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(events)" class="btn btn-primary" value="Submit" >
 <div class="clear"> 

@@ -138,12 +138,12 @@ else
 
 oldticket(ticket_data)
 {
-    if(ticket_data)
-    {
+ if(ticket_data)
+  {
 	var tdata = JSON.parse(ticket_data);
 	var tlenght = tdata.length;
 	for(var j =0 ;j<tlenght; j++)
-    {
+  {
     this.ticket.push(tdata[j]);
     }
     }else
