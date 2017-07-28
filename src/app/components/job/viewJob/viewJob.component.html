@@ -1,0 +1,114 @@
+<app-dashboard></app-dashboard>
+<!-- {{Job | json}} -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="http://localhost/getsporty/php/avatar_hat.jpg" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-white">
+          <h2>{{Job.organisation_name}}</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+           <h5 class="w3-opacity"><b>Job Title </b></h5>
+          <p>{{Job.title}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+           <h5 class="w3-opacity"><b>Job Location </b></h5>
+          <p>{{Job.location}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+
+           <h5 class="w3-opacity"><b>Gender </b></h5>
+          <p>{{Job.gender}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+
+           <h5 class="w3-opacity"><b>Sport </b></h5>
+          <p>{{Job.sport}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+
+           <h5 class="w3-opacity"><b>Job Type </b></h5>
+          <p>{{Job.type}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+
+           <h5 class="w3-opacity"><b>Qualification</b></h5>
+          <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{Job.qualification}}</span></h6>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+
+           <h5 class="w3-opacity"><b>Key Requirement </b></h5>
+          <h6 class="w3-text-teal"><span class="w3-tag w3-red w3-round">{{Job.key_requirement}}</span></h6>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+          <hr>
+
+          
+          <br>
+
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Other Details</h2>
+        <div class="w3-container">
+        <h6 class="w3-text-teal"><b>Email- </b>{{Job.email}}</h6>
+          <h6 class="w3-text-teal"><b>Job Link - </b>{{Job.work_experience}}</h6>
+           <h6 class="w3-text-teal"><b>Job Eligibility - </b>{{Job.desired_skills}}</h6>
+           <h5 class="w3-opacity"><b>Job Description</b></h5>
+          <p>{{Job.description}}</p>
+          <hr>
+       </div>
+      </div>
+
+
+ <div class="w3-container w3-card-2 w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Organization Address Details</h2>
+        
+         <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i> </b></p>
+          <h5 class="w3-opacity"><b>Address  </b></h5>
+          <p>{{Job.org_address1}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          </div>
+          <h5 class="w3-opacity"><b>Address  </b></h5>
+          <p>{{Job.org_address2}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+           
+          </div>
+          <h5 class="w3-opacity"><b>Organization Location  </b></h5>
+          <p>{{Job.org_city}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+            </div>
+          </div>
+           <h5 class="w3-opacity"><b>Organization State  </b></h5>
+          <p>{{Job.org_state}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+            </div>
+          </div>
+          <h5 class="w3-opacity"><b>Pin</b></h5>
+          <p>{{Job.org_pin}}</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+          
+          </div>
+   
+      </div> 
+  
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>

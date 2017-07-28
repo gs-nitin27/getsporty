@@ -24,6 +24,7 @@ import { UserdataComponent } from './userdata.component';
 import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
 import { EditJobComponent } from './components/job/editJob/editJob.component';
 import { EditEventComponent } from './components/event/editEvent/editEvent.component';
+import { ViewJob } from './components/job/viewJob/viewJob.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { EditEventComponent } from './components/event/editEvent/editEvent.compo
     JobComponent,
     EditJobComponent,
     EditEventComponent,
-    ViewEventComponent
+    ViewEventComponent,
+    ViewJob
   ],
   imports: [
     BrowserModule,
