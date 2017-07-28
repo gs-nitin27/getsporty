@@ -40,8 +40,8 @@
                 </div>
                 
                 <div class="card-action">
-                    <a routerLink ="/viewEvent/{{evt.id}}" target="new_blank">View</a>
-                    <a routerLink ="/editEvent/{{evt.id}}" target="new_blank">Edit</a>
+                    <a routerLink ="/viewEvent/{{evt.id}}">View</a>
+                    <a routerLink ="/editEvent/{{evt.id}}">Edit</a>
                     <!-- <a href="#" target="new_blank">Link</a> -->  
                 
                 </div>
@@ -69,8 +69,8 @@
       <p>{{evt.description}}</p>
       </div>        
       <div class="card-action">
-      <a routerLink ="/viewEvent/{{evt.id}}" target="new_blank">View</a>
-      <a routerLink ="/editEvent/{{evt.id}}" target="new_blank">View</a>
+      <a routerLink ="/viewEvent/{{evt.id}}">View</a>
+      <a routerLink ="/editEvent/{{evt.id}}">View</a>
      <!--  <a href="#" target="new_blank">Link</a>  --> 
       </div>
       </div>
@@ -425,9 +425,10 @@
                 </div>
                 
                 <div class="card-action">
-                    <a routerLink="/editJob/{{job.id}}" target="new_blank">Edit</a>
-<!--                     <a href="#" target="new_blank">Link</a>
-                    <a href="#" target="new_blank">Link</a> -->  
+                <a routerLink="/viewjob/{{job.id}}">View</a>
+                <a routerLink="/editJob/{{job.id}}">Edit</a>
+                
+               <!--      <a href="#" target="new_blank">Link</a>  -->
                 
                 </div>
             </div>
@@ -452,9 +453,9 @@
       <p>{{job.description}}</p>
       </div>        
       <div class="card-action">
-      <a routerLink="/editJob/{{job.id}}" target="new_blank">Edit</a>
-      <!-- <a href="#" target="new_blank">Link</a>
-      <a href="#" target="new_blank">Link</a>   -->
+      <a routerLink="/viewjob/{{job.id}}">View</a>
+      <a routerLink="/editJob/{{job.id}}">Edit</a>
+    <!--   <a href="#" target="new_blank">Link</a>    -->
       </div>
       </div>
       </div>

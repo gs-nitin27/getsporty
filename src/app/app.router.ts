@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/useraccount/profile/profile.compo
 import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
 import { EditJobComponent } from './components/job/editJob/editJob.component';
 import { EditEventComponent } from './components/event/editEvent/editEvent.component';
+import {ViewJob} from './components/job/viewJob/viewJob.component';
 
 
 export const router:Routes = [
@@ -34,7 +35,8 @@ export const router:Routes = [
       {path : 'job',component:JobComponent},
       {path : 'viewEvent/:id' , component : ViewEventComponent},
       {path : 'editJob/:id',component:EditJobComponent},
-      {path : 'editEvent/:id' , component : EditEventComponent }
+      {path : 'editEvent/:id' , component : EditEventComponent},
+      {path : 'viewjob/:id' , component :ViewJob}
 
 
 ];
