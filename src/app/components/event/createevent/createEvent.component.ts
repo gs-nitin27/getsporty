@@ -19,7 +19,7 @@ declare var timepicker: any;
 })
 export class CreateEventComponent implements OnInit {
 
- 
+myVar: boolean;
 public myForm: FormGroup;
 //myGroupName = ['ticket'];
 //
@@ -40,6 +40,10 @@ constructor(private _event: createEventServices,private router: Router,private h
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
+
+  this.myVar = false;
+
+
   $(function() {
   $("#startD").datepicker();
   $("#endD").datepicker();
@@ -74,7 +78,9 @@ constructor(private _event: createEventServices,private router: Router,private h
 //        });
   }
 
-Create(events) : void  {     
+Create(events) : void  {  
+
+  this.myVar = true;   
 
   var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
   this.events.ticket_detail = inputValue;
@@ -101,6 +107,8 @@ Create(events) : void  {
   }
 
   handleFileSelect(evt){
+
+      this.myVar = true;
       var files = evt.target.files;
       var file = files[0];
 
@@ -120,7 +128,9 @@ Create(events) : void  {
      var binaryString = readerEvt.target.result;
            // this._event.uploadimage(btoa(binaryString));
 
-  this._event.uploadimage(btoa(binaryString)).subscribe( data => this.events.image = data
+  this._event.uploadimage(btoa(binaryString)).subscribe( data => { this.events.image = data ; 
+
+  this.myVar = false; }
     )
     
 
