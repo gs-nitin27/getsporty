@@ -19,6 +19,9 @@ import 'rxjs/add/operator/map';
 })
 export class JobComponent implements OnInit {
 
+
+myVar: boolean;
+
 public userid :string;
 public image : string;
 public sports : any[];
@@ -26,18 +29,14 @@ public sports : any[];
 constructor(private _JobServices : JobServices, private _http : Http) 
 {
      this.Job = new JobModule(); 
-
 }
-
    @Input() Job: JobModule;
 
   ngOnInit() {
-
+  this.myVar = false;
   this.Job.userid =  localStorage.getItem('currentUserid');
   this.Job.id = "0";
-  this.Sportlist();
-  
-  
+  this.Sportlist();  
   }
 
 
@@ -47,6 +46,9 @@ CreateJob(job) : void
 }
 
 handleFileSelect(evt){
+    
+      this.myVar = true;
+ 
       var files = evt.target.files;
       var file = files[0];
 
@@ -63,10 +65,12 @@ handleFileSelect(evt){
 
 
   _handleReaderLoaded(readerEvt) {
+
      var binaryString = readerEvt.target.result;
            // this.uploadimage(btoa(binaryString));
 
-     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => this.Job.image = data
+     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => { this.Job.image = data ;
+     this.myVar = false; }
     )       
    
     }

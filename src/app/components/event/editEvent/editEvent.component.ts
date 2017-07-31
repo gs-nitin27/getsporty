@@ -15,17 +15,14 @@ declare var timepicker: any;
 
 export class EditEventComponent implements OnInit {
 	
- @Input() event: CreateEvent;
-
+@Input() event: CreateEvent;
+myVar : boolean;
 public Event : CreateEvent[];
-    //public viewEvent : CreateEvent;
 public termCondition = [];
 public ticket = [];
 viewEvent: CreateEvent = new CreateEvent();
-
 public userid = localStorage.getItem('currentUserid');
 id: any;
-
 
 constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute) 
 {}
@@ -35,7 +32,6 @@ ngOnInit()
    $( "#startD" ).datepicker();
    $( "#endD" ).datepicker();
    });
-
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
 this.editEvent();
 }
@@ -75,6 +71,7 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
 
 Create(event): void  { 
 
+this.myVar = true;
 var inputValue = (<HTMLInputElement>document.getElementById("ticketdetails")).value;
 if(inputValue)
 {
@@ -150,5 +147,36 @@ oldticket(ticket_data)
     {
      this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
     }
-}  
+} 
+
+  handleFileSelect(evt){
+
+      this.myVar = true;
+      var files = evt.target.files;
+      var file = files[0];
+
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+       
+    }
+  }
+
+
+
+  _handleReaderLoaded(readerEvt) {
+     var binaryString = readerEvt.target.result;
+           // this._event.uploadimage(btoa(binaryString));
+
+  this._eventservices.uploadimage(btoa(binaryString)).subscribe( data => { this.viewEvent.image = data ; 
+
+  this.myVar = false; }
+    )
+    
+
+    
+} 
 }
