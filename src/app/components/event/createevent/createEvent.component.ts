@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from '../../services/createEvent.services';
 declare var $:any;
-declare var timepicker: any;
+
 
 @Injectable()
 @Component({
@@ -44,10 +44,7 @@ constructor(private _event: createEventServices,private router: Router,private h
   this.myVar = false;
 
 
-  $(function() {
-  $("#startD").datepicker();
-  $("#endD").datepicker();
-  });
+ 
 
     this.Sportlist();
     this.events = new CreateEvent();
