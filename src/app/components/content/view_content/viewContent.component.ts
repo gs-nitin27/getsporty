@@ -7,9 +7,9 @@ declare var $:any;
 declare var timepicker: any;
 
 @Component({
-   moduleId: module.id,
   selector: 'app-viewcontent',
-  templateUrl: './viewContent.component.html'
+  templateUrl: './viewContent.component.html',
+  styleUrls:['./viewContent.component.css']
 })
 export class viewContentComponent implements OnInit {
      public Contents: contentModel[];

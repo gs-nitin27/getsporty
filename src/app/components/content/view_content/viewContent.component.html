@@ -1,5 +1,5 @@
 <app-dashboard></app-dashboard>
-<section class="content-header">
+<!-- <section class="content-header">
    <h1>
      List Content 
       <small></small>
@@ -9,7 +9,6 @@
 <section class="content">
    <div class="row">
       <div class="col-md-12">
-         <!-- Custom Tabs -->
          <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                <li class="active"><a href="#content" data-toggle="tab">Content</a></li>
@@ -42,42 +41,295 @@
                      </table>
                   </div>
                </div>
-
-               <!-- /.tab-pane -->
             </div>
-            <!-- /.tab-content -->
          </div>
-         <!-- nav-tabs-custom -->
       </div>
-      <!-- /.col -->
    </div>
 </section>
-<!-- /.content -->
-
 <div class="form-group">
 <label for="link">Start Date</label>
 <input type="text" class="form-control"  id="startD" placeholder="Enter Start Date">
 <label id="start_date_error" hidden>Start Date is required .</label> 
 </div >
- <input type="date" name="" class="form-control">
+ <input type="date" name="" class="form-control"> -->
+
+
+
+<div class="wrapper" style="background-color: #efefef; margin-top: 50px;">
+<div class="content-wrapper">
+<div class="container">
+<div class="row">
+<div class="col-lg-11 col-sm-11">
+    <div class="card hovercard">
+        <div class="card-background">
+
+             
+          <!--   <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/"> -->
+            <!-- http://lorempixel.com/850/280/people/9/ -->
+             <img class="card-bkimg" alt="" src="#" alt="User profile picture">
+        </div>
+        <div class="useravatar">
+
+           <img class="card-bkimg" alt="" src="#" alt="User profile picture">
+                <img class="card-bkimg" alt="" src="#" alt="User profile picture">
+
+          <img class="card-bkimg" alt="" src="#" alt="User profile picture">
+         
+        </div>
+        <div class="card-info"><span class="card-title">Harshvardhan</span></div>
+    
+         <div class="card-name" ><span ><b>Coach</b></span></div>
+         
+    </div>
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Education</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <div class="hidden-xs">Experience</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <div class="hidden-xs">Others</div>
+            </button>
+        </div>
+        <!-- <div class="btn-group" role="group">
+            <button type="button" id="basic" class="btn btn-default" href="#tab4" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">Favorites</div>
+            </button>
+        </div> -->
+    </div>
+
+
+      <div class="tab-content">
+       <div class="tab-pane fade in active" id="tab1">
+           
+          <div class="row">
+          <div class="col-md-12">
+          <div class="box box-primary" style="margin-top:5%;">
+          <div class="box-body box-profile">
+          <input type="hidden" name="userid" id="uid" value="">
+           <input type="hidden" name="prof_id" id="prof_id" value="">
+
+           <div class="panel panel-primary">
+              <div class="panel-heading clearfix">
+
+              <div>
+                <h4 class="panel-title" style="font-weight: bold;font-size: 17px;">Sports Education</h4>
+                </div>
+                 <div> 
+                    <div class="box-header with-border">
+                     <div id="SportTicket" >
+                     </div>
+                     </div>
+                    </div>
+                <div class="btn-group pull-right">
+                  <input type="button" id="addSportEdu" class="btn btn-danger btn1" value="Add Sport Education" />
+                </div>
+              </div>
+    </div>
+          
+          
+
+               
+      <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+      <div>
+      <h4 class="panel-title" style="font-weight: bold;font-size: 17px;">Formal Education</h4>
+      </div>
+      <div>
+      <div class="box-header with-border">
+      <div id="FormalEducation" ></div>
+      </div>
+      </div>   
+      <div class="btn-group pull-right">
+      <input type="button" id="addSportFormal" class="btn btn-danger btn1" value="Add Formal Education" />
+      </div>
+      </div>
+      </div>
+               
+               
+          
+          
+
+ <div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+    <div>
+    <h4 class="panel-title" style="font-weight: bold;font-size: 17px;">Certification</h4>
+    </div>
+    <div>
+    <div class="box-header with-border">  
+    <div id="OtherEducation" ></div>
+    </div>
+    </div>
+    <div class="btn-group pull-right">
+    <input type="button" id="addothereducation" class="btn btn-danger btn1" value="Add Certification" />
+    </div>
+    </div>
+    </div>
+
+
+
+            
+            </div>
+          </div>
+         
+
+</div>
+     
+            </div>
+
+        </div>
+        <div class="tab-pane fade in" id="tab2">
+        <div class="row"> 
+        <div class="col-md-12">
+        <div class="box box-primary" style="margin-top:5%;">
+            <div class="box-header with-border">
+          
+
+  <div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+
+    <div>
+      <h4 class="panel-title" style="font-weight: bold;font-size: 17px;">Work Experience</h4>
+      </div>
+      <div id="workexpericence"></div>
+      <div class="btn-group pull-right">
+        <input type="button" id="workexp" class="btn btn-danger btn1" value="Add Work Experience" />
+      </div>
+
+    </div>
+    </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+
+    <div>
+      <h4 class="panel-title" style="font-weight: bold;font-size: 17px;">Experience as a Player</h4>
+
+      </div>
+      <div id="playerexp"></div>
+      <div class="btn-group pull-right">
+       <input type="button" id="asplayerexp" class="btn btn-danger btn1" value="Add Experience as player" />
+      </div>
+    </div>
+    </div>
+           
+            
+         
+          </div>
+         </div>
+         </div>
+            
+            </div>
+             
+        </div>
+        <div class="tab-pane fade in" id="tab3">
+        <div class="row"> 
+        <div class="col-md-12">
+        <div class="box box-primary" style="margin-top:5%;">
+        <div class="box-header with-border">
+        <div class='box-body'  style='background-color: white; border-color: black; border-radius: 4px;padding: 10px 20px;margin-bottom: 30px;margin-top: 10px; box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
+
+        <div>
+          <span class="input input--hoshi">
+        
+        <input type="text" class='input__field input__field--hoshi' name="dob" id="dob" value="<?php echo $value['dob'];?>" disabled>
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="dob"><span class="input__label-content input__label-content--hoshi">Date Of Birth</span></label>
+        </span>
+        </div>
+         
+
+        <div>
+          <span class="input input--hoshi">
+        
+        <input type="text" class='input__field input__field--hoshi' name="prof_language" id="prof_language" value="<?php echo $value['prof_language'];?>"  >
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="prof_language"><span class="input__label-content input__label-content--hoshi">Language Known</span></label>
+        </span>
+        </div>
+
+        <div>
+          <span class="input input--hoshi">
+       
+        <input type="text" class='input__field input__field--hoshi' name="rurl" id="rurl" >
+         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="exampleInputEmail1"><span class="input__label-content input__label-content--hoshi">Age Group Coach</span></label>
+        </span>
+        </div>
+
+        <div>
+          <span class="input input--hoshi">
+        
+        <input type="text" class='input__field input__field--hoshi' name="prof_name" id="prof_name" value="<?php echo $value['prof_name'];?>" disabled>
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="prof_name"><span class="input__label-content input__label-content--hoshi">Profession</span></label>
+        </span>
+        </div>
+        <div>
+          <span class="input input--hoshi">
+        
+        <input type="text" class='input__field input__field--hoshi' name="sport" id="sport" value="<?php echo $value['sport'];?>"  disabled>
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="sport"><span class="input__label-content input__label-content--hoshi">Sport</span></label>
+        </span>
+        </div>
+        <div>
+          <span class="input input--hoshi">
+       
+        <input type="text" class='input__field input__field--hoshi' name="gender" id="gender" value="<?php echo $value['gender'];?>"  disabled>
+         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="gender"><span class="input__label-content input__label-content--hoshi">Gender</span></label>
+        </span>
+        </div>
+        <div>
+          <span class="input input--hoshi">
+       
+        <input type="text" class='input__field input__field--hoshi' name="rurl" id="rurl" >
+         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="exampleInputEmail1"><span class="input__label-content input__label-content--hoshi">Link to personal Website</span></label>
+        </span>
+        </div>
+
+
+        <div>
+          <span class="input input--hoshi">
+        
+        <input type="text" class='input__field input__field--hoshi' name="academy_name" id="academy_name" >
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="academy_name"><span class="input__label-content input__label-content--hoshi">Academy / Business Name</span></label>
+        </span>
+        </div>
+        <div>
+          <span class="input input--hoshi">
+       
+        <input type="text" class='input__field input__field--hoshi' name="Location" id="location" >
+         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="location"><span class="input__label-content input__label-content--hoshi">Location</span></label>
+        </span>
+        </div>
+        <div>
+          <span class="input input--hoshi">
+       
+        <input type="text" class='input__field input__field--hoshi' name="Description" id="description" >
+        <input type="hidden" class='input__field input__field--hoshi' name="Prof" id="prof_name" value="">
+         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="description"><span class="input__label-content input__label-content--hoshi">Description</span></label>
+        </span>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
+      </div>
+
+      <div class="box-footer">
+      <input type="button" class="btn btn-lg btn-primary" id="save" onclick="" value="Submit" name="Submit">
+      </div>
+
+
+    </div>
+     </div>
+      </div>
+    </div>
+    
+    </div>
  
-
-<!-- <table>
-<tr>
-<td>Item</td>
-<td>Qty</td>
-<td>UP</td>
-<td>Total</td>
-</tr>
-<tr *ngFor="let row of invoiceItemsData; let i = index">
-   <td><input type="text" class="form-control" required [(ngModel)]="row.item_id" value="{{row.item_id}}" name="item_id"></td>
-   <td><input type="text" class="form-control" required [(ngModel)]="row.qty" value="{{row.qty}}" name="qty"></td>
-<td><input type="text" class="form-control" required [(ngModel)]="row.unit_price" value="{{row.unit_price}}" name="unit_price"></td>
-<td><input type="text" class="form-control" required [(ngModel)]="row.total" value="{{row.total}}" name="total"></td>
-<a class="btn btn-primary" (click)="addNewRow()">New</a>
-</tr>
-   {{invoiceItemsData|json}}
-</table> -->
-
-
-
