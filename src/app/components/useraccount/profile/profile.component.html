@@ -1,56 +1,42 @@
 <app-dashboard></app-dashboard>
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-white">
+<div class="w3-row-padding">
+<div class="w3-third">
+<div class="w3-white w3-text-grey w3-card-4">
+<div class="w3-display-container">
+<img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar">
+<div class="w3-display-bottomleft w3-container w3-text-white">
           <h2>{{user.name}}</h2>
           </div>
         </div>
         <div class="w3-container">
-           
-           <h5 class="w3-opacity"><b>Profession</b></h5>
-          <p>{{user.prof_name}}</p>
+           <h5 class="w3-opacity"><b>Profession - </b>{{user.prof_name}}</h5>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-           <h5 class="w3-opacity"><b>Email</b></h5>
-          <p>{{user.email}}</p>
+           <h5 class="w3-opacity"><b>Email - </b> {{user.email}}</h5>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-
-           <h5 class="w3-opacity"><b>Contact No </b></h5>
-          <p>{{user.contact_no}}</p>
+           <h5 class="w3-opacity"><b>Contact No - </b>{{user.contact_no}}</h5>
+          <p></p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-
-           <h5 class="w3-opacity"><b>Sport </b></h5>
-          <p>{{user.sport}}</p>
+           <h5 class="w3-opacity"><b>Sport - </b>{{user.sport}}</h5>
+          <p></p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-
-           <h5 class="w3-opacity"><b>Gender</b></h5>
-          <p>{{user.gender}}</p>
+           <h5 class="w3-opacity"><b>Gender - </b>{{user.gender}}</h5>
+          <p></p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-
            <h5 class="w3-opacity"><b>DOB</b></h5>
           <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{user.dob}}</span></h6>
           <div class="w3-light-grey w3-round-xlarge w3-small">
           </div>
-
-          <!--  <h5 class="w3-opacity"><b>Event End Date </b></h5>
-          <h6 class="w3-text-teal"><span class="w3-tag w3-red w3-round">{{viewEvent.end_date}}</span></h6>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div> -->
           <hr>
-
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Address Details</b></p>
           <h5 class="w3-opacity"><b>Location  </b></h5>
           <p>{{user.location}}</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <!-- <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div> -->
           </div>
           <h5 class="w3-opacity"><b>Languages Known  </b></h5>
           <p>{{user.languages_known}}</p>
@@ -61,33 +47,16 @@
           <h5 class="w3-opacity"><b>acamedy</b></h5>
           <p>{{headerdetails.acamedy}}</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-          
           </div>
           <h5 class="w3-opacity"><b>description</b></h5>
           <p>{{headerdetails.description}}</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-          
           </div>
           <h5 class="w3-opacity"><b>designation</b></h5>
           <p>{{headerdetails.designation}}</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-          
           </div>
           <br>
-
-      <!--     <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Other Details</b></p>
-          <h5 class="w3-opacity"><b>Event Description</b></h5>
-          <p>{{viewEvent.description}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-          <h5 class="w3-opacity"><b>Event Link </b></h5>
-          <p>{{viewEvent.event_links}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-          <h5 class="w3-opacity"><b>Eligibility</b></h5>
-          <p>{{viewEvent.eligibility1}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div> -->
           <br>
         </div>
       </div><br>
@@ -158,228 +127,3 @@
     </div>
     </div>
     </div>
-
-<!-- <div class="container"> 
-	<div class="row">
-		<div class="col-sm-15 col-md-15 user-details">
-            <div class="user-image">
-            <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g"  class="img-circle">
-            </div>
-            <div class="user-info-block">
-            <div *ngFor='let userdata of Users'>
-            <div class="user-heading">
-            <h3>{{ userdata.name}}</h3>
-            <span class="help-block">{{userdata.prof_name}}</span>
-            </div>
-            <ul class="navigation">
-            <li class="active">
-            <a data-toggle="tab" href="#information">
-            <span class="glyphicon glyphicon-user"> Basic Details</span>
-            </a>
-            </li>
-            <li>
-            <a data-toggle="tab" href="#settings">
-            <span class="glyphicon glyphicon-cog"> Education Details</span>
-            </a>
-            </li>
-            <li>
-            <a data-toggle="tab" href="#email">
-            <span class="glyphicon glyphicon-envelope"> Personal Details</span>
-            </a>
-            </li>
-            <li>
-            <a data-toggle="tab" href="#events">
-            <span class="glyphicon glyphicon-calendar"></span>
-            </a>
-            </li>
-            </ul>
-            <div class="user-body">
-            <div class="tab-content">
-            <div id="information" class="tab-pane active">
-            <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" [(ngModel)]= "userdata.name">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.email">
-            </div> 
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.userType">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.contact_no">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.sport">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.gender">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address1">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address2">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.address3">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.dob">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.prof_name">
-            </div>
-            <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" class="form-control" [(ngModel)]= "userdata.prof_language">
-            </div>
-            </div>
-
-            <div id="settings" class="tab-pane">
-            <h4>Settings</h4>
-            </div>
-
-            <div id="email" class="tab-pane">
-            <h4>Send Message</h4>
-            </div>
-
-            <div id="events" class="tab-pane">
-            <span>Formal Education</span> -->
-
-          <!--   <div *ngFor='let porfiledata of formalEducation1'>
-            <div *ngFor='let porfiledata1 of porfiledata'>
-            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.degree}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.organisation}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.stream}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.courseDuration}}">
-            </div>
-            </div>
-            </div> 
-            </div> -->
-             
-         <!--     <span>Sport Education</span>
-            <div *ngFor='let sportEducationdata of   sportEducation1'>
-            <div *ngFor='let sportEducationdata1 of sportEducationdata'>
-            
-           <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.degree}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.organisation}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.stream}}">
-            </div>
-
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{sportEducationdata1.courseDuration}}">
-            </div>
-
-            </div>
-            </div> 
-            </div> -->
-
-           <!--  <div *ngFor='let porfiledata of formalEducation1'>
-            <div *ngFor='let porfiledata1 of porfiledata'>
-            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.degree}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.organisation}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.stream}}">
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" value="{{porfiledata1.courseDuration}}">
-            </div>
-            </div>
-            </div>
-            </div>
-
-    <form [formGroup]="termForm" novalidate>
-    <div formArrayName="myArray">
-    <div *ngFor="let myGroup of termForm.controls.myArray.controls; let i=index" class="panel panel-default">
-          
-           <div [formGroupName]="i" class="panel-body"> 
-              <span *ngIf="termForm.controls.myArray.controls.length > 1" 
-                    (click)="removeterm(i)" class="glyphicon glyphicon-remove pull-right">
-                </span>
-            <h5>Formal Education</h5>
-            <div [formGroupName]="termCondition[i]" class="panel-body"> 
-            <div class='box-body'  style='background-color: white; border-color: black;border-radius: 4px; padding: 10px 20px; margin-bottom: 30px;margin-top: 10px;    box-shadow: 0px 0px 3px #bbbdbd;    -webkit-box-shadow: 0px 0px 3px #bbbdbd;'>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" formControlName="degree" >
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" formControlName="organisation" >
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" formControlName="stream" >
-            </div>
-            <div class="form-group">
-            <input type="text" name="degree" class="form-control" formControlName="from" >
-            </div>
-             <div class="form-group">
-            <input type="text" name="degree" class="form-control" formControlName="to" >
-            </div>
-            </div>
-
-
-
-      </div>
-      </div>
-      </div>
-
-
-    </div>
-        <div class="margin-20">
-        <input #newTerm
-             type="hidden" style="width:30%" id="newTerm"  value="formalEducation">
-        <a (click)="addtermArray(newTerm.value)" style="cursor: default" class="btn btn-primary">Add Ticket Details  </a>
-        </div>
-          <br/><br/>
-        <div class="margin-20">
-          <div>myForm details:-</div>
-          <pre>form value: <br>{{termForm.value | json}}</pre>
-        </div>
-          
-          <input type="text" name="t" id="formalEdu" class="form-control" value="{{termForm.value | json}}">
-      
-      </form>
-
-         <button (click) = "cheakjson();">Push</button>
- 
-
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-                   
-	    </div>
-</div>
-</div>
-
- -->

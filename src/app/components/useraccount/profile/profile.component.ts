@@ -29,12 +29,11 @@ workExperience = [];
  ngOnInit()
 { 
   this.profile();
-  this.newtesting(); 
 }
 
-newtesting()
+profile()
 {
-this._accountService.send_request(this.userid).then((result) =>
+this._accountService.profiledata(this.userid).then((result) =>
 {
 for(let key in result)
  {
@@ -84,27 +83,6 @@ for(let key in result)
   );
 
  }
-
-profile()
-{
-       this._accountService.profiledata(this.userid).subscribe(data => { 
-       //this.Users = data ;
-
-      // alert(JSON.stringify(this.Users));
-       });
-
-
-}
-
-getprofiledata()
-{
-   this._accountService.getprofiledata(this.userid).subscribe(data => 
-   {
-    //this.newdata = data ;
-   });
-
-
-}  
 
 formalEducationdata(formal_data)
 {
