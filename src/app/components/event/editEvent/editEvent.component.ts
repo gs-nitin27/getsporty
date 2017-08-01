@@ -4,7 +4,7 @@ import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
 import { ActivatedRoute } from '@angular/router';
 declare var $:any;
-declare var timepicker: any;
+
 
 @Component({
   selector: 'app-editevent',
@@ -28,10 +28,6 @@ constructor(private _eventservices : createEventServices, private _activatedRout
 {}
 ngOnInit() 
 {
-   $(function() {
-   $( "#startD" ).datepicker();
-   $( "#endD" ).datepicker();
-   });
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
 this.editEvent();
 }
