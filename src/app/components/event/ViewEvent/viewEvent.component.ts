@@ -116,6 +116,8 @@ else
 
 ticketdetails(ticket_data)
 {
+
+ //alert(JSON.stringify(ticket_data));
   if(ticket_data)
   {
   var tdata = JSON.parse(ticket_data);

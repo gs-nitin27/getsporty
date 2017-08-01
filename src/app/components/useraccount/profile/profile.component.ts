@@ -15,121 +15,71 @@ declare var $:any;
 export class ProfileComponent implements OnInit
 {
 
-  @Input() userdata: User;
-
+@Input() userdata: User;
+user : User = new User();
+headerdetails : User = new User();
 public userid  = localStorage.getItem('currentUserid');
-
-public termForm: FormGroup;
-termCondition = ['formalEducation'];
-
-
-
-terms_cond : Object = {};
-public Users: User;
-public newdata: User;
-testing : any[];
-inner1 : any[];
-outer1: any[];
-formalEducation1 : any[];
-otherCertification1 : any[];
-sportEducation1 : any[];
-experienceAsPlayer1 :any[];
-workExperience1 : any[];  
-//a: User;
+formalEducation = [];
+otherCertification  = [];
+sportEducation  = [];
+experienceAsPlayer = [];
+workExperience = [];
 
  constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
  ngOnInit()
 { 
   this.profile();
- // this.getprofiledata();
-  this.newtesting();
-  
-  
-      this.termForm = this.fb.group({
-            myArray: this.fb.array([
-                this.fb.group({  
-                   formalEducation: this.fb.group({
-                            degree:[''],
-                            organisation:[''],
-                            stream:[''],
-                            from:[''],
-                            to:[''],
-                            
-                     
-                    })
-                }), 
+  this.newtesting(); 
+}
 
-            ]),
-             myArray1: this.fb.array([
-                this.fb.group({  
-                   formalEducation: this.fb.group({
-                            degree:[''],
-                            organisation:[''],
-                            stream:[''],
-                            from:[''],
-                            to:[''],
-                            
-                     
-                    })
-                }), 
-
-            ])
-        });
-  
-  }
-
- newtesting()
+newtesting()
+{
+this._accountService.send_request(this.userid).then((result) =>
+{
+for(let key in result)
  {
- this._accountService.send_request(this.userid).then((result) =>
-  {  
-//       this.a=result;
-    
-let formalEducation = [];
-let otherCertification = [];
-let sportEducation = [];
-let experienceAsPlayer = [];
-let workExperience = [];       
-let keys = [];
-let outer = [];
-let inner = []; 
-for(let key in result){
-    if(result.hasOwnProperty(key)){
-      for(let key1 in result[key]){
-      if(result[key].hasOwnProperty(key1))
-      { 
+  if(key == "user")
+  {
+    this.user = result[key];
+  }
+  else if(key == "HeaderDetails")
+  {
+     this.headerdetails = result[key];
+  }
+  else
+  {
+  if(result.hasOwnProperty(key))
+  {
+    for(let key1 in result[key])
+      {
+       if(result[key].hasOwnProperty(key1))
+        { 
            if(key1 =="formalEducation")
            {
-               formalEducation.push(result[key][key1]);
+                this.formalEducationdata(result[key][key1]); 
            }
            else if(key1== "otherCertification")
            {
-              otherCertification.push(result[key][key1]);
+              this.otherCertificationdata(result[key][key1]);
            }else if(key1 == "sportEducation")
            {
-               sportEducation.push(result[key][key1]);
+             this.sportEducationdata(result[key][key1]);
            }else if(key1 == "experienceAsPlayer")
            {
-               experienceAsPlayer.push(result[key][key1]);
+              this.experienceAsPlayerdata(result[key][key1]);
            }else if(key1 == "workExperience")
            {
-               workExperience.push(result[key][key1]);
+               this.workExperiencedata(result[key][key1]);
+           }
+           else
+           {
+                 //alert(JSON.stringify(result[key]));
            }
        }     
      }    
 }
+}
 }  
-   this.workExperience1 = workExperience;
-   this.experienceAsPlayer1 = experienceAsPlayer;
-   this.sportEducation1  = sportEducation;
-   this.otherCertification1 = otherCertification; 
-   this.formalEducation1 = formalEducation ;
-    
-//    this.inner1 = inner;
-//    this.outer1 = outer;
-   //alert("formalEducation1" + JSON.stringify(this.formalEducation1));
-//    alert("inner"+JSON.stringify( this.outer1));
-  //this.testing = keys;
-  //alert(JSON.stringify(this.testing));
   }
   );
 
@@ -138,7 +88,7 @@ for(let key in result){
 profile()
 {
        this._accountService.profiledata(this.userid).subscribe(data => { 
-       this.Users = data ;
+       //this.Users = data ;
 
       // alert(JSON.stringify(this.Users));
        });
@@ -150,50 +100,75 @@ getprofiledata()
 {
    this._accountService.getprofiledata(this.userid).subscribe(data => 
    {
-    this.newdata = data ;
-
-
-    //alert(JSON.stringify(this.newdata));
-     
-
+    //this.newdata = data ;
    });
 
 
 }  
 
-     inittermArray(nameObj:any) {
-      return  this.fb.group({
-                [nameObj]: this.fb.group({
-                            degree:[''],
-                            organisation:[''],
-                            stream:[''],
-                            from:[''],
-                            to:[''],
-                          
-                    })
-                })  
-    }
-
- addtermArray(newTerm:string) {
-        const control = <FormArray>this.termForm.controls['myArray'];
-        this.termCondition.push(newTerm);
-        control.push(this.inittermArray(newTerm));    
-    }
-
-
-  removeterm(i: number) {
-       const control = <FormArray>this.termForm.controls['myArray'];
-       control.removeAt(i);
-       this.termCondition.splice(i,1);
-    }
-
-cheakjson()
+formalEducationdata(formal_data)
 {
-    var inputValue = (<HTMLInputElement>document.getElementById("formalEdu")).value;
-    alert(inputValue);
+if(formal_data)
+{
+  var formal_lenght = formal_data.length;
+  for(var i = 0; i< formal_lenght ; i++)
+  {
+     this.formalEducation.push(formal_data[i]);
+  }
+}
 }
 
-  
+sportEducationdata(sport_data)
+{ 
+  if(sport_data)
+  {
+   var sport_lenght = sport_data.length;
+   for(var j = 0; j<sport_lenght ; j++)
+   {
+     this.sportEducation.push(sport_data[j]);
+   }
+  }
+}
+
+otherCertificationdata(other_data)
+{
+  if(other_data)
+  {
+  var other_length = other_data.length;
+  for(var i = 0 ; i <other_length ; i++)
+  {
+    this.otherCertification.push(other_data[i]);
+  }
+  }
+}
+
+workExperiencedata(work_data)
+{
+  if(work_data)
+  {
+    var work_length = work_data.length;
+    for(var i = 0 ; i<work_length;i++)
+    {
+     this.workExperience.push(work_data[i]);
+    }
+  }
+}
+
+experienceAsPlayerdata(exp_data)
+{
+
+  if(exp_data)
+  {
+    var exp_length = exp_data.length;
+    for(var i =0 ; i<exp_length ; i++)
+    {
+     this.experienceAsPlayer.push(exp_data[i]);
+    }
+  }
+}
+
+
+
 
 
 
