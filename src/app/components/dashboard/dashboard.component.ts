@@ -9,15 +9,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
  
-
+public mycreatonshow : boolean;
 public showMenu : boolean;
 public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
+public user_image  = localStorage.getItem('user_image');
 
  ngOnInit() {
   }
 
-constructor(private router: Router){
+constructor(private router: Router)
+{
+
+if(this.router.url === "/home")
+{
+  this.mycreatonshow = true;
+}
+else
+{
+  this.mycreatonshow = false;
+}
+
  if(this.userid) 
  {
 

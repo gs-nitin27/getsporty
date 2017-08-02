@@ -20,9 +20,7 @@
 <div class="item active">
 <div class="container">
 <div class="row">
-
 <div *ngFor = 'let evt of Event ; let i = index' class= ''>
-
 <div class="col-md-4" *ngIf = 'i<3'>
 <div class="card" >
 <div class="card-image">
@@ -30,8 +28,8 @@
 <span class="card-title">{{evt.name}} </span>
 </div>  
 <div class="card-content">
-                    <p>{{evt.description}}</p>
-                </div>
+<p>{{evt.description}}</p>
+</div>
                 
                 <div class="card-action">
                     <a routerLink ="/viewEvent/{{evt.id}}">View</a>
@@ -762,7 +760,3 @@
 </div>
     </div>
     </div>
-
- 
- 
-

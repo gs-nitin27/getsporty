@@ -48,8 +48,9 @@ login() : void {
                 let user = data;
                 if (user) {
                     localStorage.clear();
-                    localStorage.setItem('currentUser',data.customer);
+                    localStorage.setItem('currentUser',data.name);
                     localStorage.setItem('currentUserid',data.userId);
+                    localStorage.setItem('user_image',data.user_image);
                     }
                       this.router.navigate(["/home"]);
                       }

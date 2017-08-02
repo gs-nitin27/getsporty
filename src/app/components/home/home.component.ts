@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     public Event : CreateEvent[];
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
+    
 
   constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices) { }
 
