@@ -9,27 +9,10 @@ declare var $:any;
 })
 export class RegistrationComponent {
 
+constructor() { }
 
-
-
-  constructor() { }
-
-  ngOnInit() {
-
-  $(document).ready(function() {
-    $('select').material_select();
-  });
- 
-
- $('.datepicker').pickadate({   
-            selectMonths: true, 
-            selectYears: 100,
-            format: 'dd/mm/yyyy',
-            min: 0,
-            max: true,
-            closeOnSelect: true,
-            closeOnClear: true,
-        });
-  }
+ngOnInit() 
+{
+}
 
 }

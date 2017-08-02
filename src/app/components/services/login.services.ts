@@ -49,9 +49,9 @@ saveEvent(events:CreateEvent) {
          ;
     }
 
-profiledata(id: String) 
+profiledata(id: String , prof_id :string) 
 {       
-   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id=2')
+   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id)
         .toPromise()
         .then( res => res.json().data);
 

@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit
 user : User = new User();
 headerdetails : User = new User();
 public userid  = localStorage.getItem('currentUserid');
+public prof_id = localStorage.getItem('prof_id');
 formalEducation = [];
 otherCertification  = [];
 sportEducation  = [];
@@ -33,7 +34,7 @@ workExperience = [];
 
 profile()
 {
-this._accountService.profiledata(this.userid).then((result) =>
+this._accountService.profiledata(this.userid,this.prof_id).then((result) =>
 {
 for(let key in result)
  {
@@ -81,9 +82,7 @@ for(let key in result)
 }  
   }
   );
-
- }
-
+}
 formalEducationdata(formal_data)
 {
 if(formal_data)
@@ -95,7 +94,6 @@ if(formal_data)
   }
 }
 }
-
 sportEducationdata(sport_data)
 { 
   if(sport_data)
@@ -107,7 +105,6 @@ sportEducationdata(sport_data)
    }
   }
 }
-
 otherCertificationdata(other_data)
 {
   if(other_data)
@@ -119,7 +116,6 @@ otherCertificationdata(other_data)
   }
   }
 }
-
 workExperiencedata(work_data)
 {
   if(work_data)
@@ -131,7 +127,6 @@ workExperiencedata(work_data)
     }
   }
 }
-
 experienceAsPlayerdata(exp_data)
 {
 
@@ -144,10 +139,4 @@ experienceAsPlayerdata(exp_data)
     }
   }
 }
-
-
-
-
-
-
 }

@@ -51,6 +51,7 @@ login() : void {
                     localStorage.setItem('currentUser',data.name);
                     localStorage.setItem('currentUserid',data.userId);
                     localStorage.setItem('user_image',data.user_image);
+                    localStorage.setItem('prof_id' , data.prof_id);
                     }
                       this.router.navigate(["/home"]);
                       }
