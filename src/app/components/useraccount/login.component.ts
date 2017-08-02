@@ -12,22 +12,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    public loginModel: User = new User();
-    public form: FormGroup;
-    public userid  = localStorage.getItem('currentUserid');
+public invalid : boolean;
+public myVar : boolean;
+public loginModel: User = new User();
+public form: FormGroup;
+public userid  = localStorage.getItem('currentUserid');
 
-  ngOnInit() 
-  {
-        if(this.userid)
-        {
-             this.router.navigate(["/home"]);
-
-        }
-  }
-
-    
-
-
+ngOnInit() 
+{    
+    this.myVar = false;
+    if(this.userid)
+    {
+      this.router.navigate(["/home"]);
+    }
+}
  constructor(private fb: FormBuilder,
         private _accountService: loginServices,private router: Router
     ) {
@@ -42,15 +40,33 @@ export class LoginComponent implements OnInit {
      * @returns void
      */
      
-    login() : void {
-        var formData = this.form.value;
-        this._accountService.login(formData);
+login() : void {
+      this.myVar = true;
+      var formData = this.form.value;
+      this._accountService.login(formData).subscribe(
+                (data) => { if(data != null){ 
+                let user = data;
+                if (user) {
+                    localStorage.clear();
+                    localStorage.setItem('currentUser',data.customer);
+                    localStorage.setItem('currentUserid',data.userId);
+                    }
+                      this.router.navigate(["/home"]);
+                      }
+                         else
+                         { 
+                           this.myVar = false;
+                           this.invalid=true;
+                           //this.router.navigate(["/login"]);
+                         }
+             }, (err) => console.log("Error" + err),
+            );
+
+        
+
     }
-
     logout() :void {
-
     localStorage.clear();
-
     }
 
 

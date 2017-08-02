@@ -41,29 +41,12 @@ saveEvent(events:CreateEvent) {
       .map(res => res.json())
   }
 
-  public login(login: User) : void {
-
+  public login(login: User) {
         let headers      = new Headers({ 'Content-Type': 'application/json' }); 
         let options       = new RequestOptions({ headers: headers });
-
         let url = this.baseUrl + "/angularapi.php?act=angulartest" + "&email=" + login['email'] + "&password=" + login['password'];
-        this._http.get(url,options).map((res => res.json()))
-            .subscribe(
-                (data) => { if(data != null){ 
-                let user = data;
-                if (user) {
-                    localStorage.clear();
-                    localStorage.setItem('currentUser',data.customer);
-                    localStorage.setItem('currentUserid',data.userId);
-                    }
-                         this.router.navigate(["/home"]);
-                         }
-                         else
-                         {
-                           this.router.navigate(["/login"]);
-                         }
-             }, (err) => console.log("Error" + err),
-            );
+       return this._http.get(url,options).map((res => res.json()))
+         ;
     }
 
 profiledata(id: String) 

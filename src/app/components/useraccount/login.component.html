@@ -1,11 +1,17 @@
 
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+<div class="loader">
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+</div>
+ </div>
  <div class="section"></div>
  <div style="text-align:center;">
   <main>
-
-      <img class="responsive-img"  src="http://portal.getsporty.in/img/logo.png" />
-      <div class="section"></div>
-      <div class="section"></div>
+    <img class="responsive-img" style="width:20%; margin-top: 10%" src="http://portal.getsporty.in/img/logo.png" />
+    <div class="section"></div>
+    <div class="section"></div>
 
       <div class="container">
         <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
@@ -14,17 +20,12 @@
               <div class='col s12'>
               </div>
             </div>
-
             <div class='row'>
-            
-              <div class='input-field col s12'>
-
-               <input id="email" #email autocomplete="off" type="email" class="validate"  [(ngModel)]="loginModel.email" formControlName="email"   placeholder="Email" [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">
-                <label for='email'>Username</label>
-              </div>
-
+            <div class='input-field col s12'>
+            <input id="email" #email autocomplete="off" type="email" class="validate"  [(ngModel)]="loginModel.email" formControlName="email"   placeholder="Email" [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">
+            <label for='email'>Username</label>
             </div>
-
+            </div>
             <div class='row'>
               <div class='input-field col s12'>
               <input id="password" type="password" class="validate" #password [(ngModel)]="loginModel.password" formControlName="password" placeholder="Password" [class.invalid]="form.controls['password'].touched && !form.controls['password'].valid">
@@ -52,14 +53,17 @@
               </label>
        
           </form>
+
         </div>
       </div>
       
-
+<div *ngIf="invalid" ><h4 style="color: red;"><span>Invalid Credentials</span></h4></div>
 
 
   </main>
+
   </div>
+
 
 
 
