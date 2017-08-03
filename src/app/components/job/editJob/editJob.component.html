@@ -208,6 +208,15 @@
   </div>
   </div>
   </div>
+<div *ngIf="datafailure" class="alert alert-danger box-msg" role="alert">
+    <strong>Oh !</strong> An Error Occured While Processing Your Request.
+</div>
+<div *ngIf="edited" class="alert alert-success box-msg" role="alert">
+    <strong>Image!</strong> has been uploaded.
+</div>
+<div *ngIf="notresponse" class="alert alert-danger box-msg" role="alert">
+    <strong>Image!</strong> has  not uploaded.
+</div>
   <div class="container">
   <div class="row">    
   <div class="col-xs-6 col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2" style="margin-bottom: 20px;   float: left;margin-left: 0%;">  
@@ -227,7 +236,8 @@
                         
                          <!-- rename it -->
                     </div>
-                     <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;">
+                    
+                    <!--  <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;"> -->
                     
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 

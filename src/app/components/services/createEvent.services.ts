@@ -35,12 +35,8 @@ constructor(private _http: Http,
   }
 
   public saveEvent(events:CreateEvent) {
-   
-
      return this._http.post(this.createeventurl + "/angularapi.php?act=createevent", events, xhrHeaders)
-            .map((res => res.json())).subscribe(
-                data => { this.router.navigate(["/home"]); },
-                err => console.log("An Error Occured While Processing Your Request"));
+            .map((res => res.json()));
 
     }
 

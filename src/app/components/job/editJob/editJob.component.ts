@@ -2,7 +2,7 @@ import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@ang
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { JobModule } from '../../model/job.model';
 import { JobServices } from '../../services/job.services';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute,Router} from '@angular/router';
 
 
 
@@ -14,14 +14,13 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EditJobComponent implements OnInit {
 myVar: boolean;
-
-//public job  : JobModule;
-
+public edited : boolean;
+public datafailure : boolean;
+public notresponse : boolean;
 Job: JobModule = new JobModule();
-
 id : any;
 
-constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices)
+constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,private router : Router)
 {
 	
 }
@@ -32,8 +31,6 @@ this._activatedRoute.params.subscribe(params => {
             this.id = +params['id']; 
             this.myVar = false;
   });
-
-	//alert(this.id);
 	this.getJobdetails();
 }
 
@@ -45,9 +42,29 @@ getJobdetails()
 CreateJob(job) : void
 {
     this.myVar = true;
-	 //alert(JSON.stringify(job));
-	 this._JobServices.CreatJob(job);
-
+	 this._JobServices.CreatJob(job).subscribe( 
+   data=>{ 
+                if(data != "0")
+                {
+                this.myVar = false;
+                this.router.navigate(["/home"]); 
+                }else
+                {
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                }
+                },err =>  
+                { 
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                });
+  
 }
 
 handleFileSelect(evt){
@@ -74,9 +91,24 @@ handleFileSelect(evt){
      var binaryString = readerEvt.target.result;
            // this.uploadimage(btoa(binaryString));
 
-     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => { this.Job.image = data ;
-     this.myVar = false; }
-    )       
+     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => {
+        this.myVar = false;
+        if(data != "Null")
+        {
+        this.Job.image = data
+        this.edited = true;
+           setTimeout(function() {
+           this.edited = false;
+           }.bind(this), 3000);
+        }else
+        {
+        this.notresponse = true;
+        this.Job.image ="";
+          setTimeout(function(){
+          this.notresponse = false;
+        }.bind(this),3000);
+}
+} );      
    
     }
 

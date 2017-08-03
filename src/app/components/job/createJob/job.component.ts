@@ -1,7 +1,5 @@
 import { JobModule } from '../../model/job.model';
 import { JobServices } from '../../services/job.services';
-
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
@@ -19,14 +17,16 @@ import 'rxjs/add/operator/map';
 })
 export class JobComponent implements OnInit {
 
-
 myVar: boolean;
+public edited : boolean;
+public datafailure : boolean;
+public notresponse : boolean;
 
 public userid :string;
 public image : string;
 public sports : any[];
 
-constructor(private _JobServices : JobServices, private _http : Http) 
+constructor(private _JobServices : JobServices, private _http : Http, private router : Router) 
 {
      this.Job = new JobModule(); 
 }
@@ -42,51 +42,71 @@ constructor(private _JobServices : JobServices, private _http : Http)
 
 CreateJob(job) : void
 {
-     this._JobServices.CreatJob(job);
+     this._JobServices.CreatJob(job).subscribe( 
+     data=>{ 
+                if(data != "0")
+                {
+                this.myVar = false;
+                this.router.navigate(["/home"]); 
+                }else
+                {
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                }
+                },err =>  
+                { 
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                //alert("An Error Occured While Processing Your Request")
+                });
+
+
 }
 
 handleFileSelect(evt){
-    
       this.myVar = true;
- 
       var files = evt.target.files;
       var file = files[0];
-
-    if (files && file) {
+       if (files && file) {
         var reader = new FileReader();
-
         reader.onload =this._handleReaderLoaded.bind(this);
-
         reader.readAsBinaryString(file);
-       
     }
   }
 
 
 
-  _handleReaderLoaded(readerEvt) {
+_handleReaderLoaded(readerEvt) {
 
-     var binaryString = readerEvt.target.result;
-           // this.uploadimage(btoa(binaryString));
-
-     this._JobServices.uploadimage(btoa(binaryString)).subscribe( data => { this.Job.image = data ;
-     this.myVar = false; }
-    )       
+  var binaryString = readerEvt.target.result;
+  this._JobServices.uploadimage(btoa(binaryString)).subscribe( data =>
+    {
+        this.myVar = false;
+        if(data != "Null")
+        {
+        this.Job.image = data
+        this.edited = true;
+           setTimeout(function() {
+           this.edited = false;
+           }.bind(this), 3000);
+        }else
+        {
+        this.notresponse = true;
+        this.Job.image ="";
+          setTimeout(function(){
+          this.notresponse = false;
+        }.bind(this),3000);
+}
+} 
+    );       
    
     }
-
-
-   // uploadimage(binaryString)
-   // {
-           // this._http.post('http://localhost/testingapp/angularapi.php?act=upload', binaryString)
-           // .map(res => res.json())
-           // .catch(error => Observable.throw(error))
-           // .subscribe(
-           //     data => {
-           //     this.Job.image = data;
-            //    },
-            //    error => console.log(error)
-  //  ) }
 
  Sportlist() {
     this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)

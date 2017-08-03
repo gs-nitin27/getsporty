@@ -19,7 +19,12 @@ declare var $:any;
 })
 export class CreateEventComponent implements OnInit {
 
-myVar: boolean;
+public ticketdetials = [{'ticket_name':'','ticket_price':'','number':''}];
+public termCondition = [{'term':''}];
+public myVar: boolean;
+public edited : boolean;
+public datafailure : boolean;
+public notresponse : boolean;
 public myForm: FormGroup;
 //myGroupName = ['ticket'];
 //
@@ -35,20 +40,15 @@ terms_cond1 : Object = {};
 id : any;
 
 
-
 constructor(private _event: createEventServices,private router: Router,private http: Http,private _fb: FormBuilder ) { }
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
 
   this.myVar = false;
-
-
- 
-
-    this.Sportlist();
-    this.events = new CreateEvent();
-     this.events.id = "0";
+  this.Sportlist();
+  this.events = new CreateEvent();
+  this.events.id = "0";
 
 //    this.myForm = this._fb.group({
 //            myArray: this._fb.array([
@@ -94,64 +94,87 @@ Create(events) : void  {
   this.events.end_date = enddate;
 
   //alert(JSON.stringify(this.events));
+    this._event.saveEvent(this.events).subscribe(
+                data => 
+                { 
+                if(data != "0")
+                {
+                this.myVar = false;
+                this.router.navigate(["/home"]); 
+                }else
+                {
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                }
+                },
+                err => 
+                { 
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                //alert("An Error Occured While Processing Your Request")
+                }
+                );
 
-    this._event.saveEvent(this.events);
+
   }
 
-   Sportlist() {
-    this._event.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
-      })
-  }
+Sportlist() {
+  this._event.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
+    })
+}
 
-  handleFileSelect(evt){
-
+handleFileSelect(evt){
       this.myVar = true;
       var files = evt.target.files;
       var file = files[0];
-
-    if (files && file) {
-        var reader = new FileReader();
-
-        reader.onload =this._handleReaderLoaded.bind(this);
-
-        reader.readAsBinaryString(file);
-       
-    }
-  }
-
-
-
-  _handleReaderLoaded(readerEvt) {
-     var binaryString = readerEvt.target.result;
-           // this._event.uploadimage(btoa(binaryString));
-
-  this._event.uploadimage(btoa(binaryString)).subscribe( data => { this.events.image = data ; 
-
-  this.myVar = false; }
-    )
-    
-
-    
+      if (files && file) {
+            var reader = new FileReader();
+            reader.onload =this._handleReaderLoaded.bind(this);
+            reader.readAsBinaryString(file);
+            }
 }
 
+_handleReaderLoaded(readerEvt) 
+{
+var binaryString = readerEvt.target.result;
+this._event.uploadimage(btoa(binaryString)).subscribe( data => 
+{
+this.myVar = false;
+if(data != "Null")
+{
+this.events.image = data ;
+this.edited = true;
+   setTimeout(function() {
+       this.edited = false;
+   }.bind(this), 3000);
+}else
+{
+  this.notresponse = true;
+  this.events.image ="";
+  setTimeout(function(){
+   this.notresponse = false;
+  }.bind(this),3000);
+}
+}
+)    
+}
 
-
-
-     initArray(nameObj:any) {
-
-      return  this._fb.group({  
-                [nameObj]: this._fb.group({
-            
-                          TName: [''],
-                          Price: [''],
-                          Number: [''],
-                        
-                    })
-                })
-      
-
-
-    }
+//initArray(nameObj:any) {
+ //     return  this._fb.group({  
+    //            [nameObj]: this._fb.group({
+    //                      TName: [''],
+     //                     Price: [''],
+      //                    Number: [''],
+      //                  
+       //             })
+       //         })
+   // }
 
 // addArray(newName:string) {
 //        const control = <FormArray>this.myForm.controls['myArray'];
@@ -197,17 +220,14 @@ Create(events) : void  {
 
 
 
-//     public myForm12: FormGroup;
-       public termCondition = [{'term':''}];
-       addNewRow(){
-          this.termCondition.push({'term':''});
-        }
-       
-
-     public ticketdetials = [{'ticket_name':'','ticket_price':'','number':''}];
-       addNewticket(){
-          this.ticketdetials.push({'ticket_name':'','ticket_price':'','number':''});
-        }  
+addNewRow()
+{
+  this.termCondition.push({'term':''});
+}
+addNewticket()
+{
+  this.ticketdetials.push({'ticket_name':'','ticket_price':'','number':''});
+}  
 } 
 
  

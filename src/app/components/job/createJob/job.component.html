@@ -207,6 +207,17 @@
   </div>
   </div>
   </div>
+
+<div *ngIf="datafailure" class="alert alert-danger box-msg" role="alert">
+    <strong>Oh !</strong> An Error Occured While Processing Your Request.
+</div>
+<div *ngIf="edited" class="alert alert-success box-msg" role="alert">
+    <strong>Image!</strong> has been uploaded.
+</div>
+<div *ngIf="notresponse" class="alert alert-danger box-msg" role="alert">
+    <strong>Image!</strong> has  not uploaded.
+</div>
+
   <div class="container">
   <div class="row">    
   <div class="col-xs-6 col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2" style="margin-bottom: 20px;   float: left;margin-left: 0%;">  
@@ -223,23 +234,15 @@
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
                         <input class="files1" (change)="handleFileSelect($event)" type="file" accept="image/png, image/jpeg, image/gif" id="Jimage" name="file"  />
-                        
                          <!-- rename it -->
                     </div>
-                     <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;">
+                <!--      <input id="button" type="submit" class="btn btn-danger" value="Upload Image" name="submit" style="    background-color: #03a9f4; border-color: #03a9f4;"> -->
                     
                 </span>
             </div><!-- /input-group image-preview [TO HERE]--> 
         </div>
     </div>
 </div>
-
-<!--    <div class="col-md-2 mediaContainer">
- <ul>
-    <div class="loader" [hidden]="myVar"></div>
-  </ul>
-</div> -->
-
  <input type="hidden" name="image"  [(ngModel)] = "Job.image" class="form-control">
    <div class="p-container">
     <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;" type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >

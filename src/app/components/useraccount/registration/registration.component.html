@@ -1,101 +1,124 @@
+<div class="background">
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+<div class="loader">
+<div class="inner one"></div>
+<div class="inner two"></div>
+<div class="inner three"></div>
+</div>
+</div>
+<div class="section"></div>
+<div style="text-align:center; ">
 <main>
-    <div style="text-align: center;">
-      <img class="responsive-img"  src="http://portal.getsporty.in/img/logo.png" />
-      <div class="section"></div>
-
-    
-
-      <div class="container">
-        <div class="z-depth-4 grey lighten-4 row" style=" display: inline-block; padding: 4% 4% 4% 4%; border: 1px solid #EEE;">
-<div class="row">
-
-<h4> Register</h4>
-          <div class="row">
-              <form class="col s12">
-
-                   
-                <div class="row">
-                      <div class="input-field col s12">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Name</label>
-        </div></div>
-                <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Email</label>
-        </div></div>
-                 <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">phonelink_ring</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Phone No</label>
-        </div></div>
-                <div class="row">
-        
-                  <div class="input-field col s6">
-                     <i class="material-icons prefix"></i> 
-                      <select>
-                              <option value="" disabled selected>Choose your option</option>
-                                <option value="1">Option 1</option>
-                                 <option value="2">Option 2</option>
-                                 <option value="3">Option 3</option>
-                       </select>
-                      <label>Choose sports</label>
-                    </div>
-        <div class="input-field col s6">
-          <input id="email"  type="email" class="validate datepicker">
-          <label for="email" data-error="wrong" data-success="right">Date Of Birth</label>
-        </div>
-  </div>
-                <div class="row">
-         <div class="input-field col s6">
-        <i class="material-icons prefix"></i> 
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Choose profession</label>
-  </div>
-         <div class="input-field col s6">
-       
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Gender</label>
-  </div></div>
-                 <div class="row">
-                           <div class="input-field col s4">
-                           <label style='float: right;'>
-                <a class='pink-text' href='#!'><b>Already registered?</b></a>
-              </label>
-                          </div>
-
-                          <div class="input-field col s8">
-                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Sign UP
-                              
-                            </button>
-                          </div>
-                        </div>
-                    
-                    </form>
-                  </div>
-        </div>
-      </div>
-      
-    
-    <div class="section"></div>
-    <div class="section"></div>
-    </div>
-
-  </div>
-
-
-  
+<div class="section"></div>
+<div class="section"></div>
+<div class="container-fluid" style="margin-top: 6%">
+<div class="row-fluid" >
+<div class="col-md-offset-4 col-md-4" id="box" style="background-color:#2698ed; ">
+<img class="responsive-img" style="width:50%; margin-top: 10%" src="http://portal.getsporty.in/img/logo.png" />              
+<hr>                     
+<form class="form-horizontal"  role="form"  id="contact_form">
+<fieldset>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input id="Name"  autocomplete="off" type="Name" class="form-control"   f name="first_name"   placeholder="User Name">
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+<input id="email" type="email" class="form-control"   placeholder="Email">
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+<input id="phone" type="number" class="form-control"  min="9" max="11"  placeholder="Mobile No">
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+<input id="phone" type="date" class="form-control"  placeholder="Mobile No">
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon">Sport</span>
+<select id="country" class="form-control">
+<option>-Select-</option>
+<option>Cricket</option>
+<option>Football</option>
+<option>Cambodia</option>
+<option>Denmark</option>
+<option>Ecuador</option>
+<option>Gabon</option>
+<option>Haiti</option>
+</select>
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon">Profession</span>
+<select id="country" class="form-control">
+<option>-Select-</option>
+<option>Cricket</option>
+<option>Football</option>
+<option>Cambodia</option>
+<option>Denmark</option>
+<option>Ecuador</option>
+<option>Fiji</option>
+<option>Gabon</option>
+<option>Haiti</option>
+</select>
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="col-md-12">
+<div class="input-group">
+<span class="input-group-addon">Gender</span>
+<select id="country" class="form-control">
+<option>-Select-</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+</div>
+</div>
+<label style='float: left;'>
+<a class='pink-text' routerLink="/login"><h4 style="color: white"><b>Already have a account ?</b></h4></a>
+</label>
+<div class="form-group">
+<div class="col-md-12">
+<button type="submit" class="btn btn-md btn-danger pull-right">Login </button>
+</div>
+</div>
+</fieldset>
+</form>
+</div> 
+</div>
+</div>
+<div>
+<div class="alert alert-danger" style="text-align: center; width: 20%; margin-left: 40%;margin-top: 5%" role="alert">
+  <strong style="text-align: center; ">Oh No!</strong> Invalid Credentials.
+</div>
+</div>
   </main>
+  </div></div>
+
+
+
+
+

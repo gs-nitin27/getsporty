@@ -1,8 +1,9 @@
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
-import { ActivatedRoute } from '@angular/router';
+
 declare var $:any;
 
 
@@ -17,6 +18,9 @@ export class EditEventComponent implements OnInit {
 	
 @Input() event: CreateEvent;
 myVar : boolean;
+public edited : boolean;
+public datafailure : boolean;
+public notresponse : boolean;
 public Event : CreateEvent[];
 public termCondition = [];
 public ticket = [];
@@ -24,7 +28,7 @@ viewEvent: CreateEvent = new CreateEvent();
 public userid = localStorage.getItem('currentUserid');
 id: any;
 
-constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute) 
+constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute,private router: Router) 
 {}
 ngOnInit() 
 {
@@ -97,7 +101,32 @@ this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
 //alert(JSON.stringify(event));
 
-this._eventservices.saveEvent(event);
+this._eventservices.saveEvent(event).subscribe(
+                data => 
+                { 
+                if(data != "0")
+                {
+                this.myVar = false;
+                this.router.navigate(["/home"]); 
+                }else
+                {
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                }
+                },
+                err => 
+                { 
+                this.myVar = false;
+                this.datafailure = true;
+                setTimeout(function(){
+                this.datafailure=false;
+                }.bind(this),3000);
+                //alert("An Error Occured While Processing Your Request")
+                }
+                );
 }
 
 addNewRow()

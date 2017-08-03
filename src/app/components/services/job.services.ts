@@ -29,7 +29,7 @@ constructor(private _http: Http,@Inject(APP_CONFIG) private _config: IAppConfig 
 
 CreatJob(job)
 {
-     return this._http.post(this.baseurl + "/angularapi.php?act=createjob",job , xhrHeaders).map((res=>res.json())).subscribe( data=> { this.router.navigate(["/home"]); }  ,err => alert("failed"));
+     return this._http.post(this.baseurl + "/angularapi.php?act=createjob",job , xhrHeaders).map((res=>res.json()));
 }
 
  Sportlist() {

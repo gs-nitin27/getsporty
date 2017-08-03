@@ -17,8 +17,7 @@ if($_REQUEST['act'] == 'contentangular')
 else if($_REQUEST['act'] == 'angulartest')
 {
 	     $username       =  $_REQUEST['email'];
-		   $password       =  md5($_REQUEST['password']); 
-      // print_r($_REQUEST);die;  
+		   $password       =  md5($_REQUEST['password']);
          $req    =   new angularapi();
          $res = $req->angulartest($username, $password);
          if($res)
@@ -154,10 +153,8 @@ $angle = 0;
 $imageName = 'res_'.time().'.jpeg';
 $rotate = imagerotate($source, $angle, 0); 
 $imageSave = imagejpeg($rotate,$imageName,100);
-
 $newpath = "/image/";
 move_uploaded_file($imageSave,$newpath.$imageSave);
-
 echo json_encode($imageName);
 
 }
