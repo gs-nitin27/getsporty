@@ -47,7 +47,7 @@ CreateJob(job) : void
                 if(data != "0")
                 {
                 this.myVar = false;
-                this.router.navigate(["/home"]); 
+                this.router.navigate(["/viewjob" ,data]); 
                 }else
                 {
                 this.myVar = false;
