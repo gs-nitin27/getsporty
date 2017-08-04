@@ -3,6 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
+
+
 
 declare var $:any;
 
@@ -26,10 +30,15 @@ public termCondition = [];
 public ticket = [];
 viewEvent: CreateEvent = new CreateEvent();
 public userid = localStorage.getItem('currentUserid');
+public imageurl : string;
 id: any;
 
-constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute,private router: Router) 
-{}
+constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute,private router: Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
+{
+  this.imageurl = _config.dir_url;
+
+
+}
 ngOnInit() 
 {
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});

@@ -7,4 +7,5 @@ export interface IAppConfig {
     createeventurl:string;
     sportlist : string;
     loginUrl  : string;
+    dir_url : string;
 }
