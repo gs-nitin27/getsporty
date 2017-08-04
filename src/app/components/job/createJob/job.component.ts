@@ -86,6 +86,7 @@ _handleReaderLoaded(readerEvt) {
   var binaryString = readerEvt.target.result;
   this._JobServices.uploadimage(btoa(binaryString)).subscribe( data =>
     {
+         alert(data);
         this.myVar = false;
         if(data != "Null")
         {
