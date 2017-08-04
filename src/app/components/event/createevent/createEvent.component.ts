@@ -100,7 +100,7 @@ Create(events) : void  {
                 if(data != "0")
                 {
                 this.myVar = false;
-                this.router.navigate(["/home"]); 
+                this.router.navigate(["/viewEvent",data]); 
                 }else
                 {
                 this.myVar = false;
@@ -139,7 +139,6 @@ handleFileSelect(evt){
             reader.readAsBinaryString(file);
             }
 }
-
 _handleReaderLoaded(readerEvt) 
 {
 var binaryString = readerEvt.target.result;

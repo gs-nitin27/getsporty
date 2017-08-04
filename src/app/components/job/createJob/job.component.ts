@@ -47,7 +47,7 @@ CreateJob(job) : void
                 if(data != "0")
                 {
                 this.myVar = false;
-                this.router.navigate(["/home"]); 
+                this.router.navigate(["/viewjob",data]); 
                 }else
                 {
                 this.myVar = false;
@@ -63,7 +63,6 @@ CreateJob(job) : void
                 setTimeout(function(){
                 this.datafailure=false;
                 }.bind(this),3000);
-                //alert("An Error Occured While Processing Your Request")
                 });
 
 

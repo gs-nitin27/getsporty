@@ -117,7 +117,7 @@
     <div class="row">
   
 <div class="col-md-12" style="text-align: right;">   
-<a routerLink="/createevent"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Create Event</a>
+<a routerLink="/createevent"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Event</a>
 </div>  
 </div> 
 </div>
@@ -363,39 +363,27 @@
     </a>
   </div>
   </div>
- 
   </div>
-   <div class="row">
-  
-    <div class="col-md-12" style="text-align: right;">
-    <input  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" type="submit" value="Create Tournament">
-    </div>
-    
-    </div>
+  <div class="row">
+  <div class="col-md-12" style="text-align: right;">
+  <input  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" type="submit" value="Tournament">
+  </div>
+  </div>
   </div>
   </div>
 
    
 <div id="menu3" class="tab-pane fade">
-    
-
 <div class="container shadow">
-<div class="row">
-   
+<div class="row">  
 <div class="col-md-12">
 <div id="myCarousel2" class="carousel slide" data-ride="carousel">
-  
-
 <div *ngIf="Job"> 
-
-
 <div class="carousel-inner">
 <div class="item active">
 <div class="container">
 <div class="row">
-
 <div *ngFor = 'let job of Job ; let i = index' class= ''>
-
 <div class="col-md-4" *ngIf = 'i<3' >
 <div class="card">
 <div class="card-image">
@@ -403,15 +391,11 @@
 <span class="card-title">{{job.title}} </span>
 </div>  
 <div class="card-content">
-                    <p>{{job.description}}</p>
+                <p>{{job.description}}</p>
                 </div>
-                
                 <div class="card-action">
                 <a routerLink="/viewjob/{{job.id}}">View</a>
                 <a routerLink="/editJob/{{job.id}}">Edit</a>
-                
-               <!--      <a href="#" target="new_blank">Link</a>  -->
-                
                 </div>
             </div>
       </div>
@@ -489,7 +473,7 @@
     <div class="row">
   
 <div class="col-md-12" style="text-align: right;">   
-<a routerLink="/job"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Create Job</a>
+<a routerLink="/job"  class="btn btn-primary" style="    padding: 10px 20px; outline: none; margin: 20px 0px;" >Job</a>
 </div>  
 </div> 
 </div>

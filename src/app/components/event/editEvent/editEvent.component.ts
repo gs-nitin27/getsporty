@@ -107,7 +107,7 @@ this._eventservices.saveEvent(event).subscribe(
                 if(data != "0")
                 {
                 this.myVar = false;
-                this.router.navigate(["/home"]); 
+                this.router.navigate(["/viewEvent",data]); 
                 }else
                 {
                 this.myVar = false;

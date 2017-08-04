@@ -215,23 +215,22 @@
 </div>
 </span>
 </div> -->
-
-
 <input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
 <div class="form-group">
 <input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
 </div> 
 </div>
-
- <div class="p-container">
+<div class="p-container">
 <input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add Ticket" >
 <div class="clear"> 
 </div>
 </div>
 </div>
-
 </div>
 
+<div class="w3-display-container">
+<img src="/assets/images/avatar_hat.jpg" style="width:20%" alt="Avatar">
+</div>
 <div class="p-container">
 <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(viewEvent)" class="btn btn-primary" value="Submit" >
 <div class="clear"> 
