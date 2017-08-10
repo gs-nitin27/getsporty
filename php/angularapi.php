@@ -145,7 +145,6 @@ else if($_REQUEST['act'] == 'createevent')
 
 else if($_REQUEST['act'] == 'eventimage')
 {   
-
 $data =  file_get_contents("php://input");
 $imageData = base64_decode($data);
 $source = imagecreatefromstring($imageData);
@@ -155,14 +154,11 @@ $rotate = imagerotate($source, $angle, 0);
 $imageSave = imagejpeg($rotate,$imageName,100);
 $newpath = "image/event/".$imageName;
 rename($imageName,$newpath);
-//$test = move_uploaded_file($imageName,$newpath);
 echo json_encode($imageName);
-
 }
 
 else if($_REQUEST['act'] == 'jobimage')
 {   
-
 $data =  file_get_contents("php://input");
 $imageData = base64_decode($data);
 $source = imagecreatefromstring($imageData);
@@ -172,9 +168,7 @@ $rotate = imagerotate($source, $angle, 0);
 $imageSave = imagejpeg($rotate,$imageName,100);
 $newpath = "image/job/".$imageName;
 rename($imageName,$newpath);
-//$test = move_uploaded_file($imageName,$newpath);
 echo json_encode($imageName);
-
 }
 
 else if($_REQUEST['act'] == 'test')
