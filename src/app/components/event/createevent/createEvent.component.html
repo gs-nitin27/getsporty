@@ -43,17 +43,14 @@
 
 
 
-  <div class="form-group">
-  <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Entry Type</label>
-  <select class="form-control mr5" name="game"  [(ngModel)] = "events.type" style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
-  <option> Select</option>
-  <option> Free</option>
-  <option> Paid </option>
-  </select>
-  </div>
-
-
-
+<div class="form-group">
+<label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Entry Type</label>
+<select class="form-control mr5" name="game"  [(ngModel)] = "events.type" style=" width: 98.5%; border-radius: 0;     padding-left: 0px;  border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<option> Select</option>
+<option> Free</option>
+<option> Paid </option>
+</select>
+</div>
 <div>
 <span class="input input--hoshi">
 <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)]="events.event_links" value="title">

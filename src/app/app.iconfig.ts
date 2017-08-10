@@ -8,4 +8,5 @@ export interface IAppConfig {
     sportlist : string;
     loginUrl  : string;
     dir_url : string;
+    localimageurl :string;
 }
