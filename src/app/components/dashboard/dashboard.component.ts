@@ -10,6 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DashboardComponent implements OnInit {
  
 public mycreatonshow : boolean;
+public createjob : boolean;
+public viewjob : boolean;
+public createevent : boolean;
+public viewevent : boolean;
+public createtournament : boolean;
+public viewtournament : boolean;
 public showMenu : boolean;
 public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
@@ -25,10 +31,34 @@ if(this.router.url === "/home")
 {
   this.mycreatonshow = true;
 }
-else
+else if(this.router.url === "/createevent")
 {
-  this.mycreatonshow = false;
+  this.createevent = true;
 }
+else if(this.router.url === "/viewEvent")
+{
+  this.viewevent = true;
+}
+else if(this.router.url === "/job")
+{
+  this.createjob = true;
+}
+else if(this.router.url === "/viewjob")
+{
+  this.viewjob = true;
+}
+//else if(this.router.url === "/home")
+//{
+//  this.mycreatonshow = false;
+//}
+//else if(this.router.url === "/home")
+//{
+ // this.mycreatonshow = false;
+//}
+//else if(this.router.url === "/home")
+//{
+  //this.mycreatonshow = false;
+//}
 
  if(this.userid) 
  {

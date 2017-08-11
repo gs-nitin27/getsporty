@@ -1,5 +1,6 @@
 <app-dashboard></app-dashboard>
-<div class="container">
+
+<div class="container" >
 <div class="row">
 <div class="posrel"> 
 <ul class="nav nav-tabs">
@@ -13,9 +14,10 @@
 <div id="home" class="tab-pane fade in active">
 <!-- <h2>Event</h2> -->
 <!-- end_date -->
+<a class="btn icon-btn btn-success event" routerLink="/createevent"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span><b>Create Event</b></a>
+<!-- <a  class="event" routerLink="/createevent"><i class="glyphicon glyphicon-plus glyph_class"></i><b>Create Event</b></a> -->
 
-<button class="event">Create Event</button>
-
+<!-- <a  class="event" routerLink="/createevent"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>Create Event</a> -->
 
 <div *ngIf="Event ; else elseBlock">
 <div class="row">
@@ -32,8 +34,8 @@
             <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
             <div class="post-content" >
               <div class="category" style="background-color:#8ac14a;">{{evt.name}}</div>
-             <!--  <h2 class="title"> {{ evt.end_date | date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'}}</h2>
-            <div *ngIf= "evt.end_date |date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'" > asdf</div> -->
+              <h2 class="title"> {{ currentDate | date: 'dd/MM/yyyy'}}</h2>
+            <div *ngIf= "evt.end_date |date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'" > asdf</div>
               <h2 class="sub_title">{{evt.name}}</h2>
               <div class="post-meta"><span class="timestamp">Location - {{evt.location}}</span><span class="comments">Sports - {{evt.sport_name}}</span></div>
             </div>
@@ -97,7 +99,14 @@
 
 </div>
 <div id="menu3" class="tab-pane fade">
-<button class="job"><b>Create Job</b></button>
+
+<!-- <a class="job" routerLink="/job"> Create Job</a> -->
+
+<a class="btn icon-btn btn-danger job" routerLink="/job"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span><b>Create Job</b></a>
+
+
+
+
 <div *ngIf="Job"> 
 <div class="row">
 <div *ngFor = 'let job of Job ; let i = index' class= ''>
@@ -106,7 +115,7 @@
           <div class="post-module"> 
             <div class="thumbnail">
           <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}">
-                <i class="glyphicon glyphicon-eye-open"></i>
+                <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
                 </a> </div>
             <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
             <div class="post-content">
