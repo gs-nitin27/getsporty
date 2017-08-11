@@ -18,4 +18,5 @@ export class CreateEvent
       terms_cond1: string;
       ticket_detail : string;
       image  : string;
+
 }
