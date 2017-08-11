@@ -13,6 +13,8 @@ import { JobServices } from '../services/job.services';
 })
 export class HomeComponent implements OnInit {
 
+    today: number = Date.now();
+    currentDate = new Date();
     public Event : CreateEvent[];
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
