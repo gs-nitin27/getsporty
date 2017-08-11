@@ -208,3 +208,14 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-white,.w3-hover-border-white:hover{border-color:#fff!important}
 .w3-border-black,.w3-hover-border-black:hover{border-color:#000!important}
 .w3-border-grey,.w3-hover-border-grey:hover,.w3-border-gray,.w3-hover-border-gray:hover{border-color:#bbb!important}
+
+.job 
+{
+ width: 80px;
+ position: fixed;
+ z-index: 3000;
+ top: 85%;
+ right: 1%;
+}
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}

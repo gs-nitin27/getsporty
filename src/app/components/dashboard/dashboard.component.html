@@ -8,12 +8,17 @@
   <ul class="nav navbar-nav">
   <a routerLink="/home" ><img style="width:15%" src="http://www.getsporty.in/img/logo.png"></a>
   </ul>
+
   <ul class="nav navbar-nav navbar-center" *ngIf="mycreatonshow">
-  <h2><span class="label label-primary">MyCreation</span></h2>
+  <h2><span class="label label-default">MyCreation</span></h2>
   </ul>
 
   <ul class="nav navbar-nav navbar-center" *ngIf="createjob">
   <h2><span class="label label-primary">Create Job</span></h2>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-center" *ngIf="editjob">
+  <h2><span class="label label-primary">Edit Job</span></h2>
   </ul>
 
   <ul class="nav navbar-nav navbar-center" *ngIf="viewjob">
@@ -26,6 +31,10 @@
 
   <ul class="nav navbar-nav navbar-center" *ngIf="viewevent">
   <h2><span class="label label-primary">View Event</span></h2>
+  </ul>
+
+   <ul class="nav navbar-nav navbar-center" *ngIf="editevent">
+  <h2><span class="label label-primary">Edit Event</span></h2>
   </ul>
 
   <ul class="nav navbar-nav navbar-center" *ngIf="createtournament">
