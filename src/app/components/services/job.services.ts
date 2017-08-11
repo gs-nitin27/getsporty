@@ -54,7 +54,7 @@ CreatJob(job)
  
 uploadimage(binaryString)
   {
-    return  this._http.post(this.baseurl+"/angularapi.php?act=upload", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
+    return  this._http.post(this.baseurl+"/angularapi.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
   }
 	
 

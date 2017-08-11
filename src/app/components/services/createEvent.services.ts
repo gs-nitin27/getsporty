@@ -64,7 +64,7 @@ getEventDetails(id : string) : Observable<any>
 
 uploadimage(binaryString)
     {
-        return  this._http.post(this.createeventurl+"/angularapi.php?act=upload", binaryString)
+        return  this._http.post(this.createeventurl+"/angularapi.php?act=eventimage", binaryString)
             .map(res => res.json());
     }
 

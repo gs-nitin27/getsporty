@@ -3,6 +3,8 @@ import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
 import {ActivatedRoute} from '@angular/router';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
 
 
  
@@ -20,6 +22,7 @@ export class ViewEventComponent implements OnInit {
     public Event : CreateEvent[];
     public termCondition = [];
     public ticket = [];
+    public imageurl : string;
 
     viewEvent: CreateEvent = new CreateEvent();
 
@@ -31,8 +34,9 @@ export class ViewEventComponent implements OnInit {
 
 
   
-constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute) 
+constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
+this.imageurl = _config.dir_url;
 }
 
 ngOnInit() {

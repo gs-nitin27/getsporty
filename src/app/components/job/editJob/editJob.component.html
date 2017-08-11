@@ -99,8 +99,7 @@
        <!-- Tab 2 start -->
     
 
-    <div id="menu1" class="tab-pane fade">  
-    
+<div id="menu1" class="tab-pane fade">  
 <div class="box1">
 <h2>Organisation Details:</h2>
   <div>
@@ -244,6 +243,8 @@
         </div>
     </div>
 </div>
+
+<img src="{{imageurl}}job/{{Job.image}}" style="width:20%;margin-top:-7%;margin-left:75%;" alt="No Image">
  <input type="hidden" name="image"  [(ngModel)] = "Job.image" class="form-control">
    <div class="p-container">
     <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;" type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >
