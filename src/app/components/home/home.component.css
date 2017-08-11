@@ -261,6 +261,7 @@ nav .brand-logo {
   width:1%;
 }
 
+
 .post-module {
   position: relative;
   z-index: 1;
@@ -357,7 +358,9 @@ nav .brand-logo {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+  width: 100%;
 }
+
 .post-module .post-content .title {
   margin: 0;
   padding: 0 0 10px;
@@ -365,6 +368,7 @@ nav .brand-logo {
   font-size: 24px !important;
   font-weight: 700;    margin: 40px 0 0 !important;
 }
+
 .post-module .post-content .sub_title {
   margin: 0;
   padding: 0 0 20px;
@@ -433,6 +437,38 @@ nav .brand-logo {
 .container .info span .fa {
   color: #2698ed;
 }
+
+.event 
+{
+ width: 55px;
+ height: 55px;
+ border-radius: 50%;
+ background: #8ac14a;
+ cursor: pointer;
+ box-shadow: 0px 2px 5px #666;
+ bottom: 0;
+ right: 0;
+ position: fixed;
+ z-index: 3000;
+ top: 50%;
+ color:#e6e6e6;
+}
+.job 
+{
+ width: 55px;
+ height: 55px;
+ border-radius: 50%;
+ background: #f56436;
+ cursor: pointer;
+ box-shadow: 0px 2px 5px #666;
+ bottom: 0;
+ right: 1%;
+ position: fixed;
+ z-index: 3000;
+ top: 50%;
+ color:#e6e6e6;
+}
+
 
 
 

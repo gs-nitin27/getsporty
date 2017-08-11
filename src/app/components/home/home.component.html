@@ -9,8 +9,13 @@
 </ul>
 </div>   
 <div class="tab-content">
+
 <div id="home" class="tab-pane fade in active">
 <!-- <h2>Event</h2> -->
+<!-- end_date -->
+
+<button class="event">Create Event</button>
+
 
 <div *ngIf="Event ; else elseBlock">
 <div class="row">
@@ -19,15 +24,16 @@
       <div class="column"> 
           
          
-          <div class="post-module"> 
-            <div class="thumbnail">
-          <div class="date"> <a routerLink ="/viewEvent/{{evt.id}}">view
-                <div class="day"><i class="fa fa-bars" aria-hidden="true"></i></div>
+          <div class="post-module" > 
+          <div class="thumbnail" >
+          <div class="date" style="background-color:#8ac14a;"> <a title="view" routerLink ="/viewEvent/{{evt.id}}">
+                <div class="day"><i class="glyphicon glyphicon-eye-open"></i></div>
                 </a> </div>
             <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
-            <div class="post-content">
-              <div class="category">{{evt.name}}sfasdf</div>
-              <h2 class="title"></h2>
+            <div class="post-content" >
+              <div class="category" style="background-color:#8ac14a;">{{evt.name}}</div>
+             <!--  <h2 class="title"> {{ evt.end_date | date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'}}</h2>
+            <div *ngIf= "evt.end_date |date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'" > asdf</div> -->
               <h2 class="sub_title">{{evt.name}}</h2>
               <div class="post-meta"><span class="timestamp">Location - {{evt.location}}</span><span class="comments">Sports - {{evt.sport_name}}</span></div>
             </div>
@@ -41,6 +47,9 @@
 
 
 </ng-template>
+
+
+
 </div>
 
 
@@ -87,10 +96,8 @@
 </div>
 
 </div>
-
-   
 <div id="menu3" class="tab-pane fade">
-<h2>Job</h2>
+<button class="job"><b>Create Job</b></button>
 <div *ngIf="Job"> 
 <div class="row">
 <div *ngFor = 'let job of Job ; let i = index' class= ''>
@@ -98,12 +105,12 @@
       <div class="column"> 
           <div class="post-module"> 
             <div class="thumbnail">
-          <div class="date"> <a routerLink ="/viewjob/{{job.id}}">view
-                <div class="day"><i class="fa fa-bars" aria-hidden="true"></i></div>
+          <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}">
+                <i class="glyphicon glyphicon-eye-open"></i>
                 </a> </div>
             <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
             <div class="post-content">
-              <div class="category">{{job.title}}sfasdf</div>
+              <div class="category" style="background-color:#f56436;">{{job.title}}</div>
               <h2 class="title"></h2>
               <h2 class="sub_title">{{job.title}}</h2>
               <div class="post-meta"><span class="timestamp">Location - {{job.location}}</span><span class="comments">Sports - {{job.sport}}</span></div>
@@ -115,6 +122,7 @@
 </div>
 </div>
 </div>
+
 
 </div>
 </div>
