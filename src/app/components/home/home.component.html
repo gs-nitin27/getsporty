@@ -34,10 +34,23 @@
             <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
             <div class="post-content" >
               <div class="category" style="background-color:#8ac14a;">{{evt.name}}</div>
-              <h2 class="title"> {{ currentDate | date: 'dd/MM/yyyy'}}</h2>
-            <div *ngIf= "evt.end_date |date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'" > asdf</div>
-              <h2 class="sub_title">{{evt.name}}</h2>
-              <div class="post-meta"><span class="timestamp">Location - {{evt.location}}</span><span class="comments">Sports - {{evt.sport_name}}</span></div>
+              <h4 class="title"> </h4>
+             <div class="row">
+             <span class="glyphicon glyphicon-globe"> {{evt.location}}   </span><br>
+            <span class="glyphicon glyphicon-calendar"><b>Event Start </b></span><h5>{{ evt.start_date | date: 'yMMMd'}}</h5>
+            
+            <div style="margin-top: -20%;    margin-left: 62%;" >
+            <span class="glyphicon glyphicon-calendar"><b>Event End </b></span><h5>{{ evt.end_date | date: 'yMMMd'}}</h5>
+            </div>
+            </div>
+              <div *ngIf= "evt.end_date |date: 'dd/MM/yyyy' > currentDate | date: 'dd/MM/yyyy'" > asdf</div>
+              <div style=" position: relative; top: -320px;left: -29px">  
+              <div *ngIf="hello(evt.end_date)"><h4><span class="label label-success"><b>Active</b></span></h4></div>
+              <div *ngIf ="!hello(evt.end_date)"><h4><span class="label label-danger"><b>Inactive</b></span></h4></div>
+              </div>
+              <!-- <h2 class="sub_title">{{evt.name}}</h2> -->
+            <!--       -->
+              <!-- <span class="comments"> Sports - {{evt.sport_name}}</span> --><!-- </div> -->
             </div>
           </div>
         </div>

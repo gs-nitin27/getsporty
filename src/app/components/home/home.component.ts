@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
 
     today: number = Date.now();
     currentDate = new Date();
+
+    public test = new Date(this.currentDate).getHours();
     
     public Event : CreateEvent[];
     public Job : JobModule[];
@@ -44,4 +46,21 @@ viewjob()
 this._router.navigate(["/editJob",25]);
 }
 
+hello(end_date)
+{
+
+  var eventStartTime = new Date(this.currentDate);
+  var eventEndTime = new Date(end_date);
+  var duration = eventEndTime.valueOf() - eventStartTime.valueOf();
+
+  if(duration >0 )
+  {
+  return true;
+  }
+  else
+  {
+  return false;
+  }
+   
+}
 }
