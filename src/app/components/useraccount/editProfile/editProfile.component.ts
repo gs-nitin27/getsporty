@@ -1,20 +1,17 @@
-import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
+import { Component,OnInit,Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
-import { APP_CONFIG } from '../../../app.config';
-import { IAppConfig }  from '../../../app.iconfig';
 declare var $:any;
- 
 
 @Component({
-	 selector : 'app-profile',
-	 templateUrl : './profile.component.html',
-	 styleUrls : ['./profile.component.css'],
+	 selector : 'app-editprofile',
+	 templateUrl : './editProfile.component.html',
+	 styleUrls : ['./editProfile.component.css'],
 })
-export class ProfileComponent implements OnInit
+export class EditProfileComponent implements OnInit
 {
 
 @Input() userdata: User;
@@ -27,13 +24,9 @@ otherCertification  = [];
 sportEducation  = [];
 experienceAsPlayer = [];
 workExperience = [];
-public imageurl : any;
 
- constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
- {
- this.imageurl = _config.dir_url;
- }
- ngOnInit()
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
+ngOnInit()
 { 
   this.profile();
 }
@@ -62,21 +55,18 @@ for(let key in result)
         { 
            if(key1 =="formalEducation")
            {
-              this.formalEducationdata(result[key][key1]); 
+                this.formalEducationdata(result[key][key1]); 
            }
            else if(key1== "otherCertification")
            {
               this.otherCertificationdata(result[key][key1]);
-           }
-           else if(key1 == "sportEducation")
+           }else if(key1 == "sportEducation")
            {
              this.sportEducationdata(result[key][key1]);
-           }
-           else if(key1 == "experienceAsPlayer")
+           }else if(key1 == "experienceAsPlayer")
            {
               this.experienceAsPlayerdata(result[key][key1]);
-           }
-           else if(key1 == "workExperience")
+           }else if(key1 == "workExperience")
            {
                this.workExperiencedata(result[key][key1]);
            }
@@ -99,21 +89,23 @@ if(formal_data)
   var formal_lenght = formal_data.length;
   for(var i = 0; i< formal_lenght ; i++)
   {
-    this.formalEducation.push(formal_data[i]);
+     this.formalEducation.push(formal_data[i]);
   }
 }
 }
+
 sportEducationdata(sport_data)
 { 
   if(sport_data)
   {
-  var sport_lenght = sport_data.length;
-  for(var j = 0; j<sport_lenght ; j++)
-  {
-    this.sportEducation.push(sport_data[j]);
-  }
+   var sport_lenght = sport_data.length;
+   for(var j = 0; j<sport_lenght ; j++)
+   {
+     this.sportEducation.push(sport_data[j]);
+   }
   }
 }
+
 otherCertificationdata(other_data)
 {
   if(other_data)
@@ -125,6 +117,7 @@ otherCertificationdata(other_data)
   }
   }
 }
+
 workExperiencedata(work_data)
 {
   if(work_data)
@@ -147,5 +140,11 @@ experienceAsPlayerdata(exp_data)
      this.experienceAsPlayer.push(exp_data[i]);
     }
   }
+}
+
+
+Create(user)
+{
+	alert(JSON.stringify(user));
 }
 }

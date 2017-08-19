@@ -25,6 +25,8 @@ import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.compo
 import { EditJobComponent } from './components/job/editJob/editJob.component';
 import { EditEventComponent } from './components/event/editEvent/editEvent.component';
 import { ViewJob } from './components/job/viewJob/viewJob.component';
+import { EditProfileComponent } from './components/useraccount/editProfile/editProfile.component';
+import { OtherUserProfileComponent } from './components/useraccount/otherUserProfile/otherUserProfile.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { ViewJob } from './components/job/viewJob/viewJob.component';
     EditJobComponent,
     EditEventComponent,
     ViewEventComponent,
-    ViewJob
+    ViewJob,
+    EditProfileComponent,
+    OtherUserProfileComponent
   ],
   imports: [
     BrowserModule,

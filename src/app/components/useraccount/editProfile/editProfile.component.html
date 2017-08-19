@@ -4,14 +4,10 @@
 <div class="w3-third">
 <div class="w3-white w3-text-grey w3-card-4">
 <div class="w3-display-container">
-<div *ngIf='!user.user_image'>
-<img src="assets/images/user.jpg" style="width:100%" alt="Avatar">
-</div>
-<div *ngIf='user.user_image'>
-<img src="{{imageurl}}event/{{viewEvent.image}}" style="width:100%" alt="Avatar">
-
-</div>
+<img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar">
 <div class="w3-display-bottomleft w3-container w3-text-white">
+
+
         <h2>{{user.name}}</h2>
         </div>
         </div>
@@ -132,4 +128,5 @@
     </div>
     </div>
     </div>
+    <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(user)" class="btn btn-primary" value="Submit" >
     </div>

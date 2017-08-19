@@ -42,8 +42,23 @@ constructor(private _eventservices : createEventServices, private _activatedRout
 ngOnInit() 
 {
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
+
+
+//alert(btoa("20-event"));
+
+var encodedData = window.btoa('20'); // encode a string
+
+
+var decodedData = window.atob(encodedData); // decode the string
+
+alert(encodedData);
+
 this.editEvent();
+
+
 }
+
+
 
 editEvent()
 {
@@ -94,7 +109,6 @@ if(inputValue)
 
 
 var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
-
 if(termvalue)
 {
 	this.viewEvent.terms_cond1 =  termvalue;
@@ -108,7 +122,7 @@ var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
-//alert(JSON.stringify(event));
+alert(JSON.stringify(event));
 
 this._eventservices.saveEvent(event).subscribe(
                 data => 
@@ -128,6 +142,7 @@ this._eventservices.saveEvent(event).subscribe(
                 },
                 err => 
                 { 
+
                 this.myVar = false;
                 this.datafailure = true;
                 setTimeout(function(){

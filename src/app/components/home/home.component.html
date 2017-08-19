@@ -5,7 +5,7 @@
 <div class="posrel"> 
 <ul class="nav nav-tabs">
 <li class="active"><a  class="blue" data-toggle="tab" href="#home">Event</a></li>  
-<li><a class="yellow" data-toggle="tab" href="#menu2">Tornaments</a></li>
+<!-- <li><a class="yellow" data-toggle="tab" href="#menu2">Tornaments</a></li> -->
 <li><a  class="red" data-toggle="tab" href="#menu3">Jobs</a></li>
 </ul>
 </div>   
@@ -18,7 +18,7 @@
 <!-- <a  class="event" routerLink="/createevent"><i class="glyphicon glyphicon-plus glyph_class"></i><b>Create Event</b></a> -->
 
 <!-- <a  class="event" routerLink="/createevent"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>Create Event</a> -->
-
+<!-- {{Event | json}} -->
 <div *ngIf="Event ; else elseBlock">
 <div class="row">
 <div *ngFor = 'let evt of Event ; let i = index' class= ''>
@@ -29,9 +29,14 @@
           <div class="post-module" > 
           <div class="thumbnail" >
           <div class="date" style="background-color:#8ac14a;"> <a title="view" routerLink ="/viewEvent/{{evt.id}}">
-                <div class="day"><i class="glyphicon glyphicon-eye-open"></i></div>
-                </a> </div>
-            <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
+          <div class="day"><i class="glyphicon glyphicon-eye-open"></i></div></a> </div>
+          <div *ngIf='evt.image'>
+          <img src="{{imageurl}}/event/{{evt.image}}" class="img-responsive" style="width:100%;" alt="">
+           </div>
+          <div *ngIf='!evt.image'>
+          <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
+            </div>
+            </div>
             <div class="post-content" >
               <div class="category" style="background-color:#8ac14a;">{{evt.name}}</div>
               <h4 class="title"> </h4>
@@ -68,8 +73,8 @@
 </div>
 
 
-<div id="menu2" class="tab-pane fade">   
-<!-- <h2>Tournament</h2> -->
+<!-- <div id="menu2" class="tab-pane fade">   
+
 
 <div id="carousel-example" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -110,7 +115,9 @@
   </a>
 </div>
 
-</div>
+</div> -->
+
+
 <div id="menu3" class="tab-pane fade">
 
 <!-- <a class="job" routerLink="/job"> Create Job</a> -->
@@ -130,7 +137,15 @@
           <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}">
                 <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
                 </a> </div>
-            <img src="assets/images/img_fjords.jpg" class="img-responsive" style="width:100%;" alt=""></div>
+          <div *ngIf='job.image'>
+          <img src="{{imageurl}}/job/{{job.image}}" class="img-responsive" style="width:100%;" alt="">
+           </div>
+          <div *ngIf='!job.image'>
+          <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
+            </div>
+
+
+            </div>
             <div class="post-content">
               <div class="category" style="background-color:#f56436;">{{job.title}}</div>
               <h2 class="title"></h2>

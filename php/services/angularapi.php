@@ -111,7 +111,7 @@ $query = mysql_query("SELECT * FROM `gs_eventinfo` WHERE `userid` = '$userid' OR
 
 public function getjoblist($userid)
 {
-  $query = mysql_query("SELECT `id`,`userid`,`title`,`description`,`sport`,`job_link` FROM `gs_jobinfo` WHERE `userid` = '$userid' ORDER BY id DESC");
+  $query = mysql_query("SELECT `id`,`userid`,`title`,`description`,`sport`,`job_link`,`image` FROM `gs_jobinfo` WHERE `userid` = '$userid' ORDER BY id DESC");
   $row = mysql_num_rows($query);
   if($row)
   {
@@ -249,6 +249,39 @@ public function listuserdata($userid)
          return 0;
         }
 
+
+}
+
+
+public function participantList($event_id)
+{
+  $query = mysql_query("SELECT `userid`,`prof_id`,`name`,`email`,`location`,`gender`,`contact_no`,`dob`,  `user_image`,`prof_name` FROM `user` WHERE `userid` IN ( SELECT `userid` FROM `user_events` WHERE `userevent` = '$event_id' )");
+  if(mysql_num_rows($query)>0)
+  {
+   while ($row = mysql_fetch_assoc($query)) {
+     $data[] = $row;
+   }
+   return $data;
+
+  }else {
+  return 0;
+}
+}
+
+
+public function jobapplyUser($jobid)
+{
+ $query = mysql_query("SELECT `userid`,`prof_id`,`name`,`email`,`location`,`gender`,`contact_no`,`dob`,  `user_image`,`prof_name` FROM `user` WHERE `userid` IN ( SELECT `userid` FROM `user_jobs` WHERE `userjob` = '$jobid' )");
+  if(mysql_num_rows($query)>0)
+  {
+   while ($row = mysql_fetch_assoc($query)) {
+     $data[] = $row;
+   }
+   return $data;
+
+  }else {
+  return 0;
+}
 
 }
 
