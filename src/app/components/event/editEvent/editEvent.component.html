@@ -196,16 +196,18 @@
 </span>
 </div>
 </div>
-<input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
-<div class="form-group">
-<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
-</div> 
+ 
 </div>
 <div class="p-container">
 <input  style="outline: none;" type="submit" (click)="addNewticket()" class="btn btn-primary" value="Add Ticket" >
 <div class="clear"> 
 </div>
 </div>
+</div>
+
+<input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
+<div class="form-group">
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
 </div>
 
 

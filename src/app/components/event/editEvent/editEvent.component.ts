@@ -42,20 +42,7 @@ constructor(private _eventservices : createEventServices, private _activatedRout
 ngOnInit() 
 {
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
-
-
-//alert(btoa("20-event"));
-
-var encodedData = window.btoa('20'); // encode a string
-
-
-var decodedData = window.atob(encodedData); // decode the string
-
-alert(encodedData);
-
 this.editEvent();
-
-
 }
 
 
@@ -85,16 +72,12 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
      {
         otherdetails.push(res);
      }
-       
     } 
     this.viewEvent = res;
-    });
-
-   
+    });  
 }
 
 Create(event): void  { 
-
 this.myVar = true;
 var inputValue = (<HTMLInputElement>document.getElementById("ticketdetails")).value;
 if(inputValue)
@@ -122,7 +105,7 @@ var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
-alert(JSON.stringify(event));
+//alert(JSON.stringify(event));
 
 this._eventservices.saveEvent(event).subscribe(
                 data => 
