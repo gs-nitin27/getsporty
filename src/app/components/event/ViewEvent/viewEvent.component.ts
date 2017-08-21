@@ -23,6 +23,8 @@ export class ViewEventComponent implements OnInit {
     public termCondition = [];
     public ticket = [];
     public imageurl : string;
+    public participantlist : any;
+
 
     viewEvent: CreateEvent = new CreateEvent();
 
@@ -45,10 +47,14 @@ this._activatedRoute.params.subscribe(params => {
   });
 
   this.editEvent();
+  this.participantList();
   }
 
 
-
+participantList()
+{
+  this._eventservices.participantList("12").subscribe(res =>this.participantlist = res );
+}
 
 editEvent()
 {
@@ -135,6 +141,7 @@ ticketdetails(ticket_data)
      this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
     }
 }
+
 
 
 

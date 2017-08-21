@@ -1,117 +1,170 @@
+
 <app-dashboard></app-dashboard>
-<!-- {{Job | json}} -->
 
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-        <!-- <img src="{{imageurl}}job/{{Job.image}}" style="width:20%;margin-top:-7%;margin-left:75%;" alt="No Image"> -->
-          <img src="{{imageurl}}job/{{Job.image}}" style="width:100%" alt="No Image">
-          <div class="w3-display-bottomleft w3-container w3-text-white">
-          <h2>{{Job.organisation_name}}</h2>
-          </div>
-        </div>
-        <div class="w3-container">
-           <h5 class="w3-opacity"><b>Job Title </b></h5>
-          <p>{{Job.title}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-           <h5 class="w3-opacity"><b>Job Location </b></h5>
-          <p>{{Job.location}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
+<img style="height: 400px;width: 80%;margin-left: 10%; text-align: center;" src="assets/images/job_back.jpg"/>
 
-           <h5 class="w3-opacity"><b>Gender </b></h5>
-          <p>{{Job.gender}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-
-           <h5 class="w3-opacity"><b>Sport </b></h5>
-          <p>{{Job.sport}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-
-           <h5 class="w3-opacity"><b>Job Type </b></h5>
-          <p>{{Job.type}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-
-           <h5 class="w3-opacity"><b>Qualification</b></h5>
-          <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{Job.qualification}}</span></h6>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-
-           <h5 class="w3-opacity"><b>Key Requirement </b></h5>
-          <h6 class="w3-text-teal"><span class="w3-tag w3-red w3-round">{{Job.key_requirement}}</span></h6>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-          <hr>
-
-          
-          <br>
-
-          <br>
-        </div>
-      </div><br>
-
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Other Details</h2>
-        <a routerLink="/editJob/{{id}}"  class="btn btn-primary" style="position: absolute;top:22%;right: 3%;" >Edit</a>
-        <div class="w3-container">
-        <h6 class="w3-text-teal"><b>Email- </b>{{Job.email}}</h6>
-          <h6 class="w3-text-teal"><b>Job Link - </b>{{Job.work_experience}}</h6>
-           <h6 class="w3-text-teal"><b>Job Eligibility - </b>{{Job.desired_skills}}</h6>
-           <h5 class="w3-opacity"><b>Job Description</b></h5>
-          <p>{{Job.description}}</p>
-          <hr>
-       </div>
-      </div>
-
-
- <div class="w3-container w3-card-2 w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Organization Address Details</h2>
-        
-         <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i> </b></p>
-          <h5 class="w3-opacity"><b>Address  </b></h5>
-          <p>{{Job.org_address1}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          </div>
-          <h5 class="w3-opacity"><b>Address  </b></h5>
-          <p>{{Job.org_address2}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-           
-          </div>
-          <h5 class="w3-opacity"><b>Organization Location  </b></h5>
-          <p>{{Job.org_city}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-            </div>
-          </div>
-           <h5 class="w3-opacity"><b>Organization State  </b></h5>
-          <p>{{Job.org_state}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-            </div>
-          </div>
-          <h5 class="w3-opacity"><b>Pin</b></h5>
-          <p>{{Job.org_pin}}</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-          
-          </div>
-   
-      </div> 
-  
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
+<div class="caption">
+<h2>{{Job.organisation_name}}</h2>
 </div>
+<div class="tabbable-panel">
+    <div class="tabbable-line">
+    <ul class="nav nav-tabs ">
+    <li class="active">
+    <a href="#tab_default_1" data-toggle="tab">
+        Details </a>
+    </li>
+    <li>
+    <a href="#tab_default_2" data-toggle="tab">
+     Participant </a>
+    </li>
+    <li>
+    <a href="#tab_default_3" data-toggle="tab">
+      Accounting </a>
+    </li>
+    <li>
+    <a href="#tab_default_4" data-toggle="tab">
+       Manage </a>
+    </li>
+    <li>
+    <a href="#tab_default_5" data-toggle="tab">
+        Tab 3 </a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div class="tab-pane active" id="tab_default_1">
+            
+<div class="container">
+<div class="row grid-divider">
+<div class="col-sm-4">
+<div class="col-padding"> 
+<h4>
+       Title -
+<small class="text-muted">{{Job.title}}</small>
+</h4>
+<h4>
+   Job Location -
+<small class="text-muted">{{Job.location}}</small>
+</h4>
+<h4>
+   Gender -
+<small class="text-muted">{{Job.gender}}</small>
+</h4>
+<h4>
+<p class="text-muted"><b>Sport -</b> {{Job.sport}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Job Type -</b> {{Job.type}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Job Qualification -</b> {{Job.qualification}}</p>
+</h4>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="col-padding">
+<h4>
+<p class="text-muted"><b>Key Requirement -</b> {{Job.key_requirement}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Email -</b> {{Job.email}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Work Experience -</b> {{Job.work_experience}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Desired Skills -</b> {{Job.desired_skills}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Eligibility -</b> {{Job.eligibility1}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Event Description -</b> {{Job.description}}</p>
+</h4>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="col-padding">
+<h4>
+<p class="text-muted"><b>Org Address -</b> {{Job.org_address1}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>org Address -</b> {{Job.org_address2}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Crg City -</b> {{Job.org_city}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Org State -</b> {{Job.org_state}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Org Pin -</b> {{Job.org_pin}}</p>
+</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane" id="tab_default_2">
+<p>
+     Howdy, I'm in Tab 2.
+</p>
+<p>
+   Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation. 
+
+
+
+</p>
+              <p>
+                <a class="btn btn-warning" href="#" target="_blank">
+                  Click for more features...
+                </a>
+              </p>
+            </div>
+            <div class="tab-pane" id="tab_default_3">
+              <p>
+                Howdy, I'm in Tab 3.
+              </p>
+              <p>
+                Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat
+              </p>
+              <p>
+                <a class="btn btn-info" href="#" target="_blank">
+                  Learn more...
+                </a>
+              </p>
+            </div>
+              <div class="tab-pane" id="tab_default_4">
+              <p>
+                Howdy, I'm in Tab 2.
+              </p>
+              <p>
+                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
+              </p>
+              <p>
+                <a class="btn btn-warning" href="#" target="_blank">
+                  Click for more features...
+                </a>
+              </p>
+            </div>
+              <div class="tab-pane" id="tab_default_5">
+              <p>
+                Howdy, I'm in Tab 2.
+              </p>
+              <p>
+                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.
+              </p>
+              <p>
+                <a class="btn btn-warning" href="#" target="_blank">
+                  Click for more features...
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+<a class="btn icon-btn btn-danger job" routerLink="/editJob/{{id}}"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a>
+
+
+  
+    
+

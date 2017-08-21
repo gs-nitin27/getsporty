@@ -45,6 +45,8 @@ this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
 this.editEvent();
 }
 
+
+
 editEvent()
 {
    //alert(this.id); 
@@ -70,16 +72,12 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
      {
         otherdetails.push(res);
      }
-       
     } 
     this.viewEvent = res;
-    });
-
-   
+    });  
 }
 
 Create(event): void  { 
-
 this.myVar = true;
 var inputValue = (<HTMLInputElement>document.getElementById("ticketdetails")).value;
 if(inputValue)
@@ -94,7 +92,6 @@ if(inputValue)
 
 
 var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
-
 if(termvalue)
 {
 	this.viewEvent.terms_cond1 =  termvalue;
@@ -128,6 +125,7 @@ this._eventservices.saveEvent(event).subscribe(
                 },
                 err => 
                 { 
+
                 this.myVar = false;
                 this.datafailure = true;
                 setTimeout(function(){

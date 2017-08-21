@@ -17,6 +17,7 @@ import { IAppConfig }  from '../../../app.iconfig';
 export class ViewJob implements OnInit
 {
 Job: JobModule = new JobModule();
+userList : JobModule = new JobModule();
 id : any;
 public imageurl : string;
 constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig)
@@ -26,17 +27,20 @@ constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobSe
 
 ngOnInit()
 {
-this._activatedRoute.params.subscribe(params => {
-            this.id = +params['id']; 
-  });
-
-	//alert(this.id);
+this._activatedRoute.params.subscribe(params => { this.id = +params['id']; });
 	this.getJobdetails();
+  this.jobapplyUser();
 }
 
 getJobdetails()
 {
     this._JobServices.getJobdetails(this.id).subscribe(res => { this.Job = res; });
+}
+
+jobapplyUser()
+{
+   this._JobServices.jobapplyUser(this.id).subscribe(res => {this.userList = res ; });
+
 }
 
 }

@@ -43,6 +43,22 @@ else if($_REQUEST['act'] == 'contentangularlex')
   echo json_encode($res); 
 }
 
+else if($_REQUEST['act'] == "participantList")
+{
+  $event_id = $_REQUEST['event_id'];
+  $req = new angularapi();
+  $res = $req->participantList($event_id);
+  echo json_encode($res);
+}
+
+else if($_REQUEST['act'] == 'jobapplyUser')
+{
+  $job_id = $_REQUEST['id'];
+  $req = new angularapi();
+  $res = $req->jobapplyUser($job_id);
+  echo json_encode($res);
+
+}
 else if($_REQUEST['act'] == 'getuserevent')
 {
    $userid = $_REQUEST['userid'];
@@ -50,23 +66,19 @@ else if($_REQUEST['act'] == 'getuserevent')
    $res = $req->getuserevent($userid);
    echo json_encode($res);
 }
-
 else if($_REQUEST['act'] == 'geteventdetails')
 {
    $id = $_REQUEST['id'];
    $req = new angularapi();
    $res = $req->geteventdetails($id);
    echo json_encode($res);
-
 }
-
 else if($_REQUEST['act'] == 'getuserdashboardevent')
 {
   $id = $_REQUEST['userid'];
   $req = new angularapi();
   $res = $req->getuserdashboardevent($id);
-  echo json_encode($res); 
-
+  echo json_encode($res);
 }
 else if($_REQUEST['act'] == 'getjoblist')
 {

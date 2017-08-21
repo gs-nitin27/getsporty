@@ -13,6 +13,8 @@ public mycreatonshow : boolean;
 public createjob : boolean;
 public viewjob : boolean;
 public createevent : boolean;
+public editevent : boolean;
+public editjob : boolean;
 public viewevent : boolean;
 public createtournament : boolean;
 public viewtournament : boolean;
@@ -20,13 +22,16 @@ public showMenu : boolean;
 public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
 public user_image  = localStorage.getItem('user_image');
+public id : any;
 
  ngOnInit() {
   }
 
-constructor(private router: Router)
+constructor(private router: Router, private _route: ActivatedRoute)
 {
 
+ this._route.params.subscribe(params => { this.id = +params['id'];});
+// alert(this.id);
 if(this.router.url === "/home")
 {
   this.mycreatonshow = true;
@@ -35,7 +40,7 @@ else if(this.router.url === "/createevent")
 {
   this.createevent = true;
 }
-else if(this.router.url === "/viewEvent")
+else if(this.router.url === "/viewEvent/"+this.id)
 {
   this.viewevent = true;
 }
@@ -43,22 +48,19 @@ else if(this.router.url === "/job")
 {
   this.createjob = true;
 }
-else if(this.router.url === "/viewjob")
+else if(this.router.url === "/viewjob/"+this.id)
 {
   this.viewjob = true;
 }
-//else if(this.router.url === "/home")
-//{
-//  this.mycreatonshow = false;
-//}
-//else if(this.router.url === "/home")
-//{
- // this.mycreatonshow = false;
-//}
-//else if(this.router.url === "/home")
-//{
-  //this.mycreatonshow = false;
-//}
+else if(this.router.url === "/editEvent/"+this.id)
+{
+  this.editevent = true;
+}
+else if(this.router.url === "/editJob/"+this.id)
+{
+  this.editjob = true;
+}
+
 
  if(this.userid) 
  {

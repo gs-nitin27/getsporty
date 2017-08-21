@@ -164,7 +164,7 @@ nav .brand-logo {
 } .posrel{   position: relative; }
 
  .nav-tabs>li {
-    width: 33.33%;
+    width: 50%;
  border-radius: 2px;   
   color:white;
       
@@ -440,8 +440,6 @@ nav .brand-logo {
 
 .event 
 {
- 
-
  width: 137px;
  position: fixed;
  z-index: 3000;
@@ -451,16 +449,11 @@ nav .brand-logo {
 }
 .job 
 {
-
  width: 127px;
  position: fixed;
  z-index: 3000;
  top: 85%;
  right: 1%;
-
 }
-
-
-
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
