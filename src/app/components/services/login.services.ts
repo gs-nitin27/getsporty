@@ -41,7 +41,7 @@ saveEvent(events:CreateEvent) {
       .map(res => res.json())
   }
 
-  public login(login: User) {
+public login(login: User) {
         let headers      = new Headers({ 'Content-Type': 'application/json' }); 
         let options       = new RequestOptions({ headers: headers });
         let url = this.baseUrl + "/angularapi.php?act=angulartest" + "&email=" + login['email'] + "&password=" + login['password'];
@@ -60,7 +60,10 @@ profiledata(id: String , prof_id :string)
 
 
 
-
+public Sociallogin(login: User) 
+{
+    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => res.json()));
+ }
 
 
 

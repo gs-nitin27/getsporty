@@ -18,6 +18,7 @@ public function getContentInfo()
 public function angulartest($username,$password)
 {
   $query = mysql_query("SELECT  * FROM `user` WHERE `email` = '$username' AND `password` = '$password'");
+       
         if($query)
           {
             while($row = mysql_fetch_assoc($query))
@@ -41,6 +42,33 @@ public function angulartest($username,$password)
 	
 	
 	
+}
+
+public function socialLogin($email,$password,$name)
+{   
+
+  $insert = mysql_query("INSERT INTO `user`(`email`,`password`,`name`,`userType`,`prof_id`) VALUES('$email','$password','$name','104','1')");
+   if($insert)
+   {
+
+      $data['Name'] = $name;
+      $data['userType'] = "104";
+      $data['prof_id'] =  "1";
+      $data['name']     = $name;
+      $data['password'] =$password;
+      $data['userId'] = mysql_insert_id();;
+      $data['email'] =$email;
+      $data['user_image'] =""; 
+      return $data;
+   } 
+   else
+   {
+    return 0;
+   }
+
+        
+
+
 }
 
 public function profiledata($userid)
