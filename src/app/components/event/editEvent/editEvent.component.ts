@@ -90,6 +90,7 @@ if(inputValue)
 	//this.viewEvent.ticket_detail =  inputValue;
 }
 
+alert(this.viewEvent.ticket_detail);
 
 var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
 if(termvalue)
@@ -105,7 +106,9 @@ var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
-//alert(JSON.stringify(event));
+
+
+alert(JSON.stringify(event));
 
 this._eventservices.saveEvent(event).subscribe(
                 data => 

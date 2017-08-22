@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Angular2SocialLoginModule } from "angular2-social-login";
+
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -27,7 +29,21 @@ import { EditEventComponent } from './components/event/editEvent/editEvent.compo
 import { ViewJob } from './components/job/viewJob/viewJob.component';
 import { EditProfileComponent } from './components/useraccount/editProfile/editProfile.component';
 import { OtherUserProfileComponent } from './components/useraccount/otherUserProfile/otherUserProfile.component';
+import {AthleteLoginComponent} from './components/useraccount/Athlete/athleteLogin.component';
+import { FacebookModule } from 'ngx-facebook';
 
+let providers = {
+    "google": {
+      "clientId": "238802611732-ooc7lqgdvqlrh056om7ma3f7dngiqslr.apps.googleusercontent.com"
+    }//,
+//    "linkedin": {
+//      "clientId": "LINKEDIN_CLIENT_ID"
+//    },
+   // "facebook": {
+      //"clientId": "725906707597625",
+      //"apiVersion": "v2.9"
+   // }
+  };
 
 @NgModule({
   declarations: [
@@ -49,7 +65,8 @@ import { OtherUserProfileComponent } from './components/useraccount/otherUserPro
     ViewEventComponent,
     ViewJob,
     EditProfileComponent,
-    OtherUserProfileComponent
+    OtherUserProfileComponent,
+    AthleteLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +74,9 @@ import { OtherUserProfileComponent } from './components/useraccount/otherUserPro
     HttpModule,
     ReactiveFormsModule,
     routes,
-    RouterModule
+    RouterModule,
+    Angular2SocialLoginModule,
+    FacebookModule.forRoot()
   ],
   providers: [
   viewContentServices,loginServices,
@@ -67,3 +86,5 @@ import { OtherUserProfileComponent } from './components/useraccount/otherUserPro
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+Angular2SocialLoginModule.loadProvidersScripts(providers);
