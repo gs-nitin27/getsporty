@@ -96,7 +96,30 @@ else if($_REQUEST['act'] == 'getjobdetails')
   echo json_encode($res);
 
 }
+else if($_REQUEST['act'] == 'socialLogin')
+{
+  $data = json_decode(file_get_contents("php://input"));
+  $email  = $data->email;
+  $name   = $data->name;
+  $password = md5($email);
+  $req = new angularapi();
+  $res = $req->angulartest($email, $password);
+  if($res)
+  {
+    echo json_encode($res);
+  }else
+  {
+    $res = $req->socialLogin($email,$password,$name);
+    echo json_encode($res);
+  }
 
+
+ // $res = $req->socialLogin($email,$password,$name);
+
+ 
+
+
+}
 else if($_REQUEST['act'] == 'createcontent')
 {        
 
