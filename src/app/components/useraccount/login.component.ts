@@ -67,9 +67,11 @@ login() : void {
         
 
     }
-    logout() :void {
+
+logout() :void 
+{
     localStorage.clear();
-    }
+}
 
 
 

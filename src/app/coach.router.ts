@@ -18,15 +18,13 @@ import { EditEventComponent } from './components/Coach/event/editEvent/editEvent
 import {ViewJob} from './components/Coach/job/viewJob/viewJob.component';
 import {EditProfileComponent} from './components/useraccount/editProfile/editProfile.component';
 import {OtherUserProfileComponent} from './components/useraccount/otherUserProfile/otherUserProfile.component';
-import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
-import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 
 
-export const router:Routes = [
 
-      {path : '',redirectTo:'login' , pathMatch: 'full'},
-      {path : 'login',component: LoginComponent},
-      {path : 'home',component: HomeComponent},
+
+
+export const CoachRouter : Routes = [
+     
       {path : 'event',component: EventComponent},
       {path : 'tournament' , component: TournamentComponent},
       {path : 'contentview' , component: viewContentComponent},
@@ -42,11 +40,6 @@ export const router:Routes = [
       {path : 'editEvent/:id' , component : EditEventComponent},
       {path : 'viewjob/:id' , component :ViewJob},
       {path : 'editProfile', component:EditProfileComponent},
-      {path : 'userProfile/:id/:prof_id',component:OtherUserProfileComponent},
-      {path : 'athletelogin' , component:AthleteLoginComponent},
-      {path : 'athletedashboard' , component:AthleteDashboardComponent}
+      {path : 'userProfile/:id/:prof_id',component:OtherUserProfileComponent}
 
-
-];
-
-export const routes: ModuleWithProviders = RouterModule.forRoot(router);
+]

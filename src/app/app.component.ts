@@ -12,20 +12,17 @@ public showMenu : boolean;
 public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
 
-    ngOnInit() 
-    {
-      
-    }
+ngOnInit() 
+{}
     
-
 constructor(private router: Router){
- if(this.userid) 
- {
-             this.showMenu = true;
- }
- else
+if(this.userid) 
 {
-       this.showMenu = false;
+    this.showMenu = true;
+}
+else
+{
+    this.showMenu = false;
 }
         
 }
@@ -34,9 +31,4 @@ constructor(private router: Router){
     localStorage.clear();
     this.router.navigate(["main"]);
     }
-
-
-
-
-  
 }
