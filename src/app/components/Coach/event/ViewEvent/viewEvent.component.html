@@ -1,0 +1,194 @@
+<app-dashboard></app-dashboard>
+<img style="height: 400px;width: 80%;margin-left: 10%; text-align: center;" src="{{imageurl}}event/{{viewEvent.image}}"/>
+
+<div class="caption">
+<h2>{{viewEvent.name}}</h2>
+</div>
+<div class="tabbable-panel">
+    <div class="tabbable-line">
+    <ul class="nav nav-tabs ">
+    <li class="active">
+    <a href="#tab_default_1" data-toggle="tab">
+        Details </a>
+    </li>
+    <li>
+    <a href="#tab_default_2" data-toggle="tab">
+     Participant </a>
+    </li>
+    <li>
+    <a href="#tab_default_3" data-toggle="tab">
+      Accounting </a>
+    </li>
+    <li>
+    <a href="#tab_default_4" data-toggle="tab">
+       Manage </a>
+    </li>
+    <li>
+    <a href="#tab_default_5" data-toggle="tab">
+        Tab 3 </a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div class="tab-pane active" id="tab_default_1">
+            
+<div class="container">
+<div class="row grid-divider">
+<div class="col-sm-4">
+<div class="col-padding"> 
+<h4>
+       Event Type -
+<small class="text-muted">{{viewEvent.type}}</small>
+</h4>
+<h4>
+   Sport -
+<small class="text-muted">{{viewEvent.sport_name}}</small>
+</h4>
+<h4>
+   Email -
+<small class="text-muted">{{viewEvent.email_app_collection}}</small>
+</h4>
+<h4>
+<p class="text-muted"><b>Contact -</b> {{viewEvent.mobile}}</p>
+</h4>
+<h4>
+<p class="text-success"><b>Event Start Date -</b> {{viewEvent.start_date}}</p>
+</h4>
+<h4>
+<p class="text-danger"><b>Event End Date -</b> {{viewEvent.end_date}}</p>
+</h4>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="col-padding">
+<h4>
+<p class="text-muted"><b>Address -</b> {{viewEvent.address_1}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Location -</b> {{viewEvent.location}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>State -</b> {{viewEvent.state}}</p>
+</h4>
+</div>
+</div>
+    <div class="col-sm-4">
+      <div class="col-padding">
+
+       
+<h4>
+<p class="text-muted"><b>Event Link -</b> {{viewEvent.event_links}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Eligibility -</b> {{viewEvent.eligibility1}}</p>
+</h4>
+<h4>
+<p class="text-muted"><b>Event Description -</b> {{viewEvent.description}}</p>
+</h4>
+
+
+      </div>
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div class="tab-pane" id="tab_default_2">
+
+<!-- {{participantlist | json}} -->
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="panel panel-default user_panel" style="min-width:100%;">
+<div class="panel-heading">
+<h3 class="panel-title">User List</h3>
+</div>
+<div class="panel-body">
+<div class="table-container">
+<table class="table-users table" border="0">
+ <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Mobile</th>
+      <th>DOB</th>
+      <th>Profile</th>
+     <!--  <th>View</th> -->
+    </tr>
+  </thead>
+<tbody>
+<tr *ngFor = 'let participant of participantlist'>
+<td width="10" align="center">
+<img class="pull-left img-circle nav-user-photo" width="50" src="http://getsporty.in/img/team/team-04.jpg" />                           
+</td>
+<td>
+{{participant.name}}
+<br><i class="fa fa-envelope"></i>
+</td>
+<td>
+{{participant.location}}
+</td>
+<td >
+{{participant.email}}<br>
+ </td>
+ <td >
+{{participant.gender}}<br>
+ </td>
+ <td >
+{{participant.contact_no}}<br>
+ </td>
+ <td >
+{{participant.dob}}<br>
+ </td>
+<td>
+  {{participant.prof_name}}
+</td>
+<!--  <td align="center">
+  <div *ngIf='participant.prof_id=="1"'>
+  <a routerLink="/userProfile/{{participant.userid}}/{{participant.prof_id}}" class="btn btn-primary btn-block btn-sm">Profile</a>
+  </div>
+ </td> -->
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+  
+
+</div>
+
+</div>
+            <div class="tab-pane" id="tab_default_3">
+              <p>
+               Accounting
+              </p>
+           
+          
+            </div>
+              <div class="tab-pane" id="tab_default_4">
+              <p>
+               Manage
+              </p>
+              
+            </div>
+              <div class="tab-pane" id="tab_default_5">
+              <p>
+               Tab 5
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+<a class="btn icon-btn btn-success event" routerLink="/editEvent/{{id}}"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-success"></span><b>Edit</b></a>
+
+
+  
+    

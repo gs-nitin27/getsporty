@@ -7,29 +7,32 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.router';
 import { AppComponent } from './app.component';
+import { Guard } from './userType-cheak';
+import { AthleteCheak } from './athlete-cheak';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { EventComponent } from './components/event/event.component';
-import { TournamentComponent } from './components/tournament/tournament.component';
-import { HomeComponent } from './components/home/home.component';
-import { JobComponent } from './components/job/createJob/job.component';
-import { viewContentComponent } from './components/content/view_content/viewContent.component';
+import { EventComponent } from './components/Coach/event/event.component';
+import { TournamentComponent } from './components/Coach/tournament/tournament.component';
+import { HomeComponent } from './components/Coach/home/home.component';
+import { JobComponent } from './components/Coach/job/createJob/job.component';
+import { viewContentComponent } from './components/Coach/content/view_content/viewContent.component';
 import { viewContentServices } from './components/services/viewContent.services';
 import { APP_CONFIG, AppConfig } from './app.config';
-import { CreateContentComponent } from './components/content/create_content/createContent.component';
-import { CreateEventComponent } from './components/event/createevent/createEvent.component';
+import { CreateContentComponent } from './components/Coach/content/create_content/createContent.component';
+import { CreateEventComponent } from './components/Coach/event/createevent/createEvent.component';
 import { LoginComponent } from './components/useraccount/login.component';
 import { loginServices } from './components/services/login.services';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './components/Coach/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
 import { UserdataComponent } from './userdata.component';
-import { ViewEventComponent } from './components/event/ViewEvent/viewEvent.component';
-import { EditJobComponent } from './components/job/editJob/editJob.component';
-import { EditEventComponent } from './components/event/editEvent/editEvent.component';
-import { ViewJob } from './components/job/viewJob/viewJob.component';
+import { ViewEventComponent } from './components/Coach/event/ViewEvent/viewEvent.component';
+import { EditJobComponent } from './components/Coach/job/editJob/editJob.component';
+import { EditEventComponent } from './components/Coach/event/editEvent/editEvent.component';
+import { ViewJob } from './components/Coach/job/viewJob/viewJob.component';
 import { EditProfileComponent } from './components/useraccount/editProfile/editProfile.component';
 import { OtherUserProfileComponent } from './components/useraccount/otherUserProfile/otherUserProfile.component';
-import {AthleteLoginComponent} from './components/useraccount/Athlete/athleteLogin.component';
+import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
+import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import { FacebookModule } from 'ngx-facebook';
 
 let providers = {
@@ -66,7 +69,8 @@ let providers = {
     ViewJob,
     EditProfileComponent,
     OtherUserProfileComponent,
-    AthleteLoginComponent
+    AthleteLoginComponent,
+    AthleteDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,10 @@ let providers = {
     FacebookModule.forRoot()
   ],
   providers: [
-  viewContentServices,loginServices,
+  viewContentServices,
+  loginServices,
+  AthleteCheak,
+  Guard,
   [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   [{ provide: APP_CONFIG, useValue: AppConfig }]
   ],
