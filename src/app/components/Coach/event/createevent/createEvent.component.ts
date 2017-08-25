@@ -26,11 +26,6 @@ public edited : boolean;
 public datafailure : boolean;
 public notresponse : boolean;
 public myForm: FormGroup;
-//myGroupName = ['ticket'];
-//
-//public termForm: FormGroup;
-//termCondition = ['term'];
-
 sports: any[];
 sportslist: Object = {};
 image :string;
@@ -49,30 +44,7 @@ constructor(private _event: createEventServices,private router: Router,private h
   this.Sportlist();
   this.events = new CreateEvent();
   this.events.id = "0";
-
-//    this.myForm = this._fb.group({
-//            myArray: this._fb.array([
-//                this._fb.group({  
-//                   ticket: this._fb.group({
-//                            TName:[''],Price:[''],Number:[''],})
-//                }), 
-//            ])
-//        }); 
-
-
-
-//    this.termForm = this._fb.group({
-//            myArray: this._fb.array([
-//                this._fb.group({  
-//                   term: this._fb.group({
-//                            term:[''],
-//                            
-//                     
-//                    })
-//                }), 
-//
-//            ])
-//        });
+  
   }
 
 Create(events) : void  {  

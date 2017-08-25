@@ -34,6 +34,7 @@ import { OtherUserProfileComponent } from './components/useraccount/otherUserPro
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import { FacebookModule } from 'ngx-facebook';
+import { NotFoundComponent } from './not-found.component';
 
 let providers = {
     "google": {
@@ -70,7 +71,8 @@ let providers = {
     EditProfileComponent,
     OtherUserProfileComponent,
     AthleteLoginComponent,
-    AthleteDashboardComponent
+    AthleteDashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
