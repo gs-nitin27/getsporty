@@ -6,4 +6,5 @@ export class Class
 	email:string;
 	student_code : string;
 	user_info : any;
+	deviceType : string;
 }
