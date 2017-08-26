@@ -18,6 +18,8 @@ declare var $:any;
 export class AthleteDashboardComponent implements OnInit
 {
 
+public joined : boolean;
+public notresponse : boolean;
 public user_id : any;
 public prof_id : any;
 user : User = new User();
@@ -135,7 +137,26 @@ JoinClass()
      alert(JSON.stringify(this.classdata));
 
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
-      { alert(result); });
+      { 
+
+      //alert(result); 
+      if(result.status == "1")
+      {
+        this.joined = true;
+        setTimeout(function() {
+        this.joined = false;
+        }.bind(this), 3000);
+      }
+      else
+      {
+        this.notresponse = true;
+        setTimeout(function() {
+        this.notresponse = false;
+        }.bind(this), 3000);
+      }
+
+
+      });
 
 	}
 }
