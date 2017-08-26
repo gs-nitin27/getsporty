@@ -100,10 +100,18 @@
 <input type="text" name="classcode" class="form-control" [(ngModel)] = "classdata.student_code">
 </div>
 <div class="form-group">
-<input type="button" name="Submit" class="btn btn-primary"  value="Submit" (click) = "JoinClass()">
+<input type="button" name="Submit" class = "btn btn-primary btn-lg btn-block"  value="Submit" (click) = "JoinClass()">
 </div>
+
+<div *ngIf="joined" class="alert alert-success box-msg" role="alert">
+      <strong>Congratulations!</strong> You join the Class.
 </div>
-<div class="bs-callout bs-callout-danger">
+<div *ngIf="notresponse" class="alert alert-danger box-msg" role="alert">
+      <strong>Ohh!</strong> Worng Class Code.
+</div>
+
+</div>
+<!-- <div class="bs-callout bs-callout-danger">
 <h4>Research Interests</h4>
 <p>
                      Software Engineering, Machine Learning, Image Processing,
@@ -236,7 +244,7 @@
                         </tr>
                      </tbody>
                   </table>
-               </div>
+               </div> -->
             </div>
          </div>
         <!-- resume -->
