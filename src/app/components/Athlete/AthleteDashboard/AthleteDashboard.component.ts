@@ -5,6 +5,8 @@ import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
 import { Class } from '../../model/class.model';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
+
+
 declare var $:any;
  
 
@@ -128,6 +130,8 @@ JoinClass()
 	else
 	{
      this.classdata.user_info = this.user;
+     this.classdata.deviceType = "2";
+
      alert(JSON.stringify(this.classdata));
 
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
@@ -135,4 +139,12 @@ JoinClass()
 
 	}
 }
+
+logout()
+{
+    localStorage.clear();
+    this._router.navigate(["/login"]);
+
+}
+
 }

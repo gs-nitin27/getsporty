@@ -24,7 +24,7 @@ import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athl
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import { NotFoundComponent } from './not-found.component';
 
-
+ 
 export const router:Routes = [
 
       {path : '',redirectTo:'login' , pathMatch: 'full'},
