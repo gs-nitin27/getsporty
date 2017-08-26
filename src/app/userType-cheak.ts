@@ -8,7 +8,6 @@ import { Profiledata } from './components/model/profile.model';
 @Injectable()
 export class Guard implements CanActivate {
  constructor(private _router: Router) {}
-
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     {
         if (localStorage.getItem('prof_id')  == "1") 

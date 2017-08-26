@@ -10,6 +10,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/throw';
 import { User } from '../model/login.model';
+import { Class } from '../model/class.model';
 import { xhrHeaders} from "./xhr-headers";
 import { CreateEvent } from  '../model/createEvent.module';
 import { APP_CONFIG } from '../../app.config';
@@ -57,15 +58,16 @@ profiledata(id: String , prof_id :string)
 
 }
 
-
-
-
 public Sociallogin(login: User) 
 {
     return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => res.json()));
- }
+}
 
-
+public JoinClass(classdata:Class)
+{
+  return this._http.post(this.baseUrl + "/connect_user.php?act=add_joining_code", classdata, xhrHeaders)
+            .map((res => res.json()));
+}
 
 
 }

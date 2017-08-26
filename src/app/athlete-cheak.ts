@@ -10,12 +10,16 @@ export class AthleteCheak implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     {
-                if (localStorage.getItem('prof_id') == "1") 
+        if (localStorage.getItem('prof_id') == "1") 
         {
             return true;
         }
+        else
+        {
+          this._router.navigate(['/page-not-found']);
+          return false;      
+        }
        
-        this._router.navigate(['/login']);
-        return false;              
+                
     }
 }
