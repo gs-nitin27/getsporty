@@ -51,11 +51,11 @@ console.log('Initializing Facebook');
                     localStorage.setItem('prof_id' , data.prof_id);
                     }
                       this.router.navigate(["/athletedashboard"]);
-                      }
-                         else
-                         { 
+                  }
+                  else
+                    { 
                            this.myVar = false;
-                           //this.router.navigate(["/login"]);
+                           this.router.navigate(["/login"]);
                          }
              }, (err) => console.log("Error" + err),
             );
