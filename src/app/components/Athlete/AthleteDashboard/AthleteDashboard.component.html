@@ -22,13 +22,13 @@
 <!-- <input type="button" name="Submit" class="btn btn-primary" style="right: 1%" value="Logout" (click) = "logout()"> -->
 <div class="row">
 <div class="col-sm-3">
-
-<ul class="list-group" *ngIf="classlist">
-<li class="list-group-item">{{classlist.class_title}}</li>
-
+<div  *ngIf="classlist">
+<ul class="list-group" *ngFor="let classdetails of classlist">
+<li class="list-group-item">{{classdetails.class_title}}</li>
 </ul>
-<ul class="list-group" *ngIf="!classlist">
+</div>
 
+<ul class="list-group" *ngIf="!classlist">
 <li class="list-group-item">No Class joined</li>
 </ul>
 
