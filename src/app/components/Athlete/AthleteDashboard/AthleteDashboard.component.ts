@@ -166,16 +166,10 @@ getClassList()
 {
   this._accountService.getClassList(this.user_id).subscribe((res) => 
   {
-  this.classlist = res;
-  if(res.status == "0")
-   {
-    
+  if(res.status == "1")
+  {
      this.classlist = res.data;
-
-    //alert(JSON.stringify(res.data.class_title));
-   
-
-   }
+  }
 
 
 
