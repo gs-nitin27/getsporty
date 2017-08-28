@@ -20,6 +20,7 @@ export class AthleteLoginComponent implements OnDestroy {
   public user;
   sub: any;
   public myVar : boolean;
+  
 constructor(public _auth: AuthService,private fb: FacebookService , private _loginServices:loginServices, private router:Router)
 { 
 

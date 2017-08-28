@@ -69,6 +69,12 @@ public JoinClass(classdata:Class)
             .map((res => res.json()));
 }
 
+getClassList(userid : string)
+{
+  return this._http.get(this.baseUrl + "/connect_user.php?act=class_info&userid=" + userid).map((res => res.json()));
+
+}
+
 
 }
 

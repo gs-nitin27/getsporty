@@ -17,11 +17,11 @@ declare var $:any;
 })
 export class AthleteDashboardComponent implements OnInit
 {
-
 public joined : boolean;
 public notresponse : boolean;
 public user_id : any;
 public prof_id : any;
+public classlist : any;
 user : User = new User();
 headerdetails : User = new User();
 bio : User = new User();
@@ -37,9 +37,10 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 ngOnInit()
 {
 
-    this.prof_id = localStorage.getItem('prof_id');
-    this.user_id = localStorage.getItem('currentUserid');
+  this.prof_id = localStorage.getItem('prof_id');
+  this.user_id = localStorage.getItem('currentUserid');
 	this.getUserData();
+  this.getClassList();
 }
 
 getUserData()
@@ -159,6 +160,28 @@ JoinClass()
       });
 
 	}
+}
+
+getClassList()
+{
+  this._accountService.getClassList(this.user_id).subscribe((res) => 
+  {
+  this.classlist = res;
+  if(res.status == "0")
+   {
+    
+     this.classlist = res.data;
+
+    //alert(JSON.stringify(res.data.class_title));
+   
+
+   }
+
+
+
+
+  });
+
 }
 
 logout()
