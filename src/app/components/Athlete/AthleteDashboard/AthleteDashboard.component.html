@@ -23,12 +23,13 @@
 <div class="row">
 <div class="col-sm-3">
 
-<ul class="list-group">
-<li class="list-group-item">{{classlist | json}}</li>
-<!-- <li class="list-group-item">{{classlist.class_host}}</li> -->
-<!-- <li class="list-group-item">{{classlist.sport}}</li>
-<li class="list-group-item"><i class="fa fa-phone"></i>{{classlist.contact_no}}</li>
-<li class="list-group-item"><i class="fa fa-envelope"></i> {{classlist.email}}</li> -->
+<ul class="list-group" *ngIf="classlist">
+<li class="list-group-item">{{classlist.class_title}}</li>
+
+</ul>
+<ul class="list-group" *ngIf="!classlist">
+
+<li class="list-group-item">No Class joined</li>
 </ul>
 
 <!-- <a href="mail-compose.html" class="btn btn-danger btn-block btn-compose-email">Compose Email</a>
