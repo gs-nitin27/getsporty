@@ -135,7 +135,7 @@ JoinClass()
      this.classdata.user_info = this.user;
      this.classdata.deviceType = "2";
 
-     alert(JSON.stringify(this.classdata));
+     //alert(JSON.stringify(this.classdata));
 
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 
