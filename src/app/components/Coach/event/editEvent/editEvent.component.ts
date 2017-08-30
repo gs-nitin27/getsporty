@@ -6,11 +6,7 @@ import { createEventServices } from  '../../../services/createEvent.services';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
 
-
-
 declare var $:any;
-
-
 @Component({
   selector: 'app-editevent',
   templateUrl: './editEvent.component.html',
@@ -90,7 +86,7 @@ if(inputValue)
 	//this.viewEvent.ticket_detail =  inputValue;
 }
 
-alert(this.viewEvent.ticket_detail);
+//alert(this.viewEvent.ticket_detail);
 
 var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
 if(termvalue)
@@ -107,9 +103,7 @@ var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
 
-
-alert(JSON.stringify(event));
-
+//alert(JSON.stringify(event));
 this._eventservices.saveEvent(event).subscribe(
                 data => 
                 { 
@@ -138,20 +132,16 @@ this._eventservices.saveEvent(event).subscribe(
                 }
                 );
 }
-
 addNewRow()
 {
    this.termCondition.push({'term':''});
 }
-
 addNewticket()
 {
 	this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
 }
-
 oldtermcond(term_cond)
 {  
-
 if(term_cond) 
 {
 var data = JSON.parse(term_cond);
@@ -164,10 +154,8 @@ for(var i =0 ;i<lenght; i++)
 else
 {
     this.termCondition.push({'term':''});
-	
 }  
 }     
-
 oldticket(ticket_data)
 {
  if(ticket_data)
@@ -177,13 +165,12 @@ oldticket(ticket_data)
 	for(var j =0 ;j<tlenght; j++)
   {
     this.ticket.push(tdata[j]);
-    }
-    }else
-    {
+  }
+  }else
+  {
      this.ticket.push({'ticket_name':'','ticket_price':'','number':''});
-    }
+  }
 } 
-
   handleFileSelect(evt){
 
       this.myVar = true;
@@ -202,7 +189,7 @@ oldticket(ticket_data)
 
 
 
-  _handleReaderLoaded(readerEvt) {
+_handleReaderLoaded(readerEvt) {
      var binaryString = readerEvt.target.result;
            // this._event.uploadimage(btoa(binaryString));
 

@@ -75,6 +75,12 @@ getClassList(userid : string)
 
 }
 
+updateProfileData(proflie_json_data: string)
+{
+  
+ return this._http.post(this.baseUrl + "/angularapi.php?act=profile_data_update",proflie_json_data).map((res => res.json()));
+}
+
 
 }
 

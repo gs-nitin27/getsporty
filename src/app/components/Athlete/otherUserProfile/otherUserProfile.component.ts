@@ -3,50 +3,55 @@ import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
-import { Class } from '../../model/class.model';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
-
-
 declare var $:any;
  
 
 @Component({
-	selector:'app-athletedashboard',
-	templateUrl: './AthleteDashboard.component.html',
-	styleUrls:['./AthleteDashboard.component.css'],
+	 selector : 'app-otherprofile',
+	 templateUrl : './otherUserProfile.component.html',
+	 styleUrls : ['./otherUserProfile.component.css'],
 })
-export class AthleteDashboardComponent implements OnInit
+export class OtherUserProfileComponent implements OnInit
 {
-public joined : boolean;
-public notresponse : boolean;
+
 public user_id : any;
 public prof_id : any;
-public classlist : any;
 user : User = new User();
 headerdetails : User = new User();
 bio : User = new User();
 BestResults = [];
 Award = [];
 LatestResult = [];
+final : any;
 
-classdata : Class = new Class();
+Achivement : any;
+
 
  
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute){}
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute)
+{
+  
+
+}
 
 ngOnInit()
 {
+//this._activatedRoute.params.subscribe(params => { this.user_id = +params['id']; this.prof_id = //+params['prof_id']});	
+
+	// alert(this.prof_id);
 
   this.prof_id = localStorage.getItem('prof_id');
   this.user_id = localStorage.getItem('currentUserid');
+
 	this.getUserData();
-  this.getClassList();
 }
 
 getUserData()
 {
  this._accountService.profiledata(this.user_id,this.prof_id).then((result) => 
  { 
+
      for(let key in result)
      {
        if(key == 'Achivement')
@@ -88,9 +93,15 @@ getUserData()
   });
 }
 
+addLatestResult()
+{
+  this.LatestResult.push({'dateOfCompetation':'','detail':'','nameOfCompetation':'','opponent':'','result':'','round':'','score':''});
+
+}
+
 latestResults(latestResults_data)
 {
-  if(latestResults_data)
+  if(latestResults_data != " ")
   {
   var latestResults_lenght = latestResults_data.length;
   for(var j = 0; j<latestResults_lenght ; j++)
@@ -98,11 +109,19 @@ latestResults(latestResults_data)
     this.LatestResult.push(latestResults_data[j]);
   }
   }
-
+  else
+  {
+     this.LatestResult.push({'dateOfCompetation':'','detail':'','nameOfCompetation':'','opponent':'','result':'','round':'','score':''});
+  }
 }
+addAwards()
+{
+  this.Award.push({'date':'','description':'','nameOfAward':''});
+}
+
 awards(award_data)
 {
-   if(award_data)
+   if(award_data != " ")
    {
       var award_length = award_data.length;
       for(var k=0 ; k<award_length;k++)
@@ -110,11 +129,18 @@ awards(award_data)
        this.Award.push(award_data[k]);
       } 
    }  
-
+   else
+   { 
+    this.Award.push({'date':'','description':'','nameOfAward':''});
+   }
+}
+addBestResult()
+{
+  this.BestResults.push({'date':'','nameComptation':'','result':'','rounds':''});
 }
 bestResult(bestResult_data)
 {
-	if(bestResult_data)
+	if(bestResult_data != " ")
 	{
       var bestResult_length =bestResult_data.length; 
       for(var i = 0 ; i<bestResult_length;i++)
@@ -122,62 +148,24 @@ bestResult(bestResult_data)
         this.BestResults.push(bestResult_data[i]);
       }
 	}
-}
-
-JoinClass()
-{
-	if(!this.classdata.student_code)
-	{
-	  alert("Please Enter Class Code");
-	}
-	else
-	{
-     this.classdata.user_info = this.user;
-     this.classdata.deviceType = "2";
-
-     //alert(JSON.stringify(this.classdata));
-
-      this._accountService.JoinClass(this.classdata).subscribe((result) => 
-      { 
-
-      //alert(result); 
-      if(result.status == "1")
-      {
-        this.joined = true;
-        setTimeout(function() {
-        this.joined = false;
-        }.bind(this), 3000);
-      }
-      else
-      {
-        this.notresponse = true;
-        setTimeout(function() {
-        this.notresponse = false;
-        }.bind(this), 3000);
-      }
-
-
-      });
-
-	}
-}
-
-getClassList()
-{
-  this._accountService.getClassList(this.user_id).subscribe((res) => 
+  else
   {
-  if(res.status == "1")
-  {
-     this.classlist = res.data;
+   this.BestResults.push({'date':'','nameComptation':'','result':'','rounds':''});
   }
+}
 
+Submit()
+{
+  this.final ={'userid': this.user_id, 'prof_id' : this.prof_id,'profiledata': {'Achivement' : {'awards':this.Award,'bestResult': this.BestResults},'Bio': this.bio,'Header':this.headerdetails,'LatestResults' : this.LatestResult}};
 
+  console.log(JSON.stringify(this.final));
 
+  this._accountService.updateProfileData(this.final).subscribe( res => 
+  {
+
+  alert(res);
 
   });
-
 }
-
-
 
 }
