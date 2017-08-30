@@ -1,4 +1,11 @@
 <app-athleteheader></app-athleteheader>
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+<div class="loader">
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+</div>
+ </div>
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 <div class="w3-row-padding">
 <div class="w3-third">
@@ -88,20 +95,17 @@
     <label>level</label>
     <input type="text" class="form-control" name="level" [(ngModel)]="headerdetails.level" value="{{headerdetails.level}}" >
     </div>
-       <div class="form-group">
+    <div class="form-group">
     <label>Name Of Award</label>
     <input type="text" class="form-control" name="nameOfAward" [(ngModel)]="headerdetails.description" value="{{headerdetails.description}}" >
     </div>
-       <div class="form-group">
+    <div class="form-group">
     <label>Rank</label>
     <input type="text" class="form-control" name="Rank" [(ngModel)]="headerdetails.Rank" value="{{headerdetails.Rank}}" >
     </div>
     <hr>
     </div>
- 
     </div>
-
-
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Award</h2>
     <div *ngFor = 'let awards of Award' >

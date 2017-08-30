@@ -17,6 +17,7 @@ declare var $:any;
 })
 export class AthleteDashboardComponent implements OnInit
 {
+public myVar : boolean;
 public joined : boolean;
 public notresponse : boolean;
 public user_id : any;
@@ -132,6 +133,7 @@ JoinClass()
 	}
 	else
 	{
+     this.myVar = true;
      this.classdata.user_info = this.user;
      this.classdata.deviceType = "2";
 
@@ -143,13 +145,16 @@ JoinClass()
       //alert(result); 
       if(result.status == "1")
       {
+        this.myVar = false;
         this.joined = true;
         setTimeout(function() {
         this.joined = false;
         }.bind(this), 3000);
+        this._router.navigate(['/AthleteDashboardComponent']);
       }
       else
       {
+        this.myVar = false;
         this.notresponse = true;
         setTimeout(function() {
         this.notresponse = false;

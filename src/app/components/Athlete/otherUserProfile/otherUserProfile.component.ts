@@ -15,6 +15,7 @@ declare var $:any;
 export class OtherUserProfileComponent implements OnInit
 {
 
+public  myVar : boolean;
 public user_id : any;
 public prof_id : any;
 user : User = new User();
@@ -96,7 +97,6 @@ getUserData()
 addLatestResult()
 {
   this.LatestResult.push({'dateOfCompetation':'','detail':'','nameOfCompetation':'','opponent':'','result':'','round':'','score':''});
-
 }
 
 latestResults(latestResults_data)
@@ -155,15 +155,16 @@ bestResult(bestResult_data)
 }
 
 Submit()
-{
+{  
+   this.myVar = true;
   this.final ={'userid': this.user_id, 'prof_id' : this.prof_id,'profiledata': {'Achivement' : {'awards':this.Award,'bestResult': this.BestResults},'Bio': this.bio,'Header':this.headerdetails,'LatestResults' : this.LatestResult}};
 
-  console.log(JSON.stringify(this.final));
+ // console.log(JSON.stringify(this.final));
 
   this._accountService.updateProfileData(this.final).subscribe( res => 
   {
 
-  alert(res);
+  this.myVar = false;
 
   });
 }
