@@ -6,10 +6,8 @@ import { loginServices } from '../../services/login.services';
 import { Class } from '../../model/class.model';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 
-
 declare var $:any;
  
-
 @Component({
 	selector:'app-athletedashboard',
 	templateUrl: './AthleteDashboard.component.html',
@@ -32,12 +30,10 @@ LatestResult = [];
 
 classdata : Class = new Class();
 
- 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute){}
 
 ngOnInit()
 {
-
   this.prof_id = localStorage.getItem('prof_id');
   this.user_id = localStorage.getItem('currentUserid');
 	this.getUserData();
@@ -141,7 +137,7 @@ JoinClass()
 
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 
-
+       
       //alert(result); 
       if(result.status == "1")
       {

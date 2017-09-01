@@ -77,10 +77,18 @@ getClassList(userid : string)
 
 updateProfileData(proflie_json_data: string)
 {
-  
  return this._http.post(this.baseUrl + "/angularapi.php?act=profile_data_update",proflie_json_data).map((res => res.json()));
 }
 
+mobileVerify(mobileNo : any , user_id : string)
+{
+   return this._http.get(this.baseUrl + "/angularapi.php?act=mobileVerify&mobileNo=" + mobileNo + "&userid=" + user_id).map((res => res.json()));
+}
+
+OTPVerify(otpcode : any , user_id : string)
+{
+   return this._http.get(this.baseUrl + "/angularapi.php?act=OTPVerify&otpcode=" + otpcode + "&userid=" + user_id).map((res => res.json()));
+}
 
 }
 

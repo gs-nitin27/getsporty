@@ -70,7 +70,48 @@
 
   </main>
 
-  </div></div>
+  </div>
+  </div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+       <div class="modal-content">
+       <div class="modal-header">
+       <h4 class="modal-title" id="myModalLabel">Verify Mobile No</h4>
+       </div>
+       <div class="modal-body">
+       <div class="form-group">
+       <input type="text" name="phone" id="mobile" [(ngModel)] ="mobile" class="form-control" placeholder="Enter Mobile Number">
+       </div>
+       </div>
+       <div class="modal-footer">
+       <button type="button" class="btn btn-primary" (click)="mobileVerify()">Submit</button>
+       </div>
+       </div>
+    </div>
+</div>
+
+<div class="modal fade" id="VerifyMobile" tabindex="-1" role="dialog" aria-labelledby="myModalLabelone" aria-hidden="true">
+   <div class="modal-dialog">
+       <div class="modal-content">
+       <div class="modal-header">
+       <h4 class="modal-title" id="myModalLabelone">OTP code</h4>
+       </div>
+       <div class="modal-body">
+       <div class="form-group">
+       <input type="text" name="phone" [(ngModel)] = "verifycode"  class="form-control" placeholder="Enter OTP Code">
+       </div>
+       </div>
+       <div class="modal-footer">
+       <button type="button" class="btn btn-primary" (click)="OTPVerify()">Submit</button>
+       </div>
+       </div>
+    </div>
+</div>
+
+
 
 
 
