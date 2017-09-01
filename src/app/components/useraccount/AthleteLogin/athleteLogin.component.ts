@@ -120,7 +120,7 @@ OTPVerify()
     {
        $('#myModal').modal('hide');
       $('#VerifyMobile').modal('hide');
-      
+
       this.router.navigate(["/athletedashboard"]);
     }
     else

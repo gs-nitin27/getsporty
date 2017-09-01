@@ -1,9 +1,12 @@
-import { Component,OnInit,Input } from '@angular/core';
+
+import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
 import { Class } from '../../model/class.model';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 
 declare var $:any;
@@ -15,6 +18,8 @@ declare var $:any;
 })
 export class AthleteDashboardComponent implements OnInit
 {
+public src : string;
+public imageurl : any;
 public myVar : boolean;
 public joined : boolean;
 public notresponse : boolean;
@@ -30,7 +35,11 @@ LatestResult = [];
 
 classdata : Class = new Class();
 
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute){}
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+{
+  
+  this.imageurl = _config.dir_url;
+}
 
 ngOnInit()
 {
@@ -172,13 +181,12 @@ getClassList()
      this.classlist = res.data;
   }
 
-
-
-
   });
 
 }
 
-
+ errorHandler(event,image:string) {
+   event.target.src = this.imageurl + "/profile/" + image;
+ }
 
 }
