@@ -11,7 +11,17 @@
 <div class="w3-third">
 <div class="w3-white w3-text-grey w3-card-4">
 <div class="w3-display-container">
-<img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar">
+
+<!-- <img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar"> -->
+
+<div *ngIf="!user.user_image">
+<img style="width:100%" alt="Avatar" alt="" src="assets/images/user.jpg">
+</div>
+<div *ngIf="user.user_image">
+<img style="width:100%" alt="Avatar" [src]="user.user_image"  (error)="errorHandler($event,user.user_image)"/>
+</div>
+
+
 <div class="w3-display-bottomleft w3-container w3-text-white">
         <h2>{{user.name}}</h2>
         </div>

@@ -1,7 +1,9 @@
-import { Component,OnInit,Input } from '@angular/core';
+import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
 import { loginServices } from '../../services/login.services';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
@@ -14,7 +16,8 @@ declare var $:any;
 })
 export class AthleteProfileViewComponent implements OnInit
 {
-
+public src : any;
+public imageurl : any;
 public user_id : any;
 public prof_id : any;
 user : User = new User();
@@ -25,7 +28,11 @@ Award = [];
 LatestResult = [];
 
  
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute){}
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+{
+  this.imageurl = _config.dir_url;
+
+}
 
 ngOnInit()
 {
@@ -117,4 +124,10 @@ bestResult(bestResult_data)
       }
 	}
 }
+
+errorHandler(event,image:string) 
+{
+  event.target.src = this.imageurl + "/profile/" + image;
+}
+
 }

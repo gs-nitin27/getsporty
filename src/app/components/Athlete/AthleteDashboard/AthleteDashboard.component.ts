@@ -1,4 +1,3 @@
-
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
@@ -185,7 +184,8 @@ getClassList()
 
 }
 
- errorHandler(event,image:string) {
+
+errorHandler(event,image:string) {
    event.target.src = this.imageurl + "/profile/" + image;
  }
 

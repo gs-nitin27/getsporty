@@ -62,7 +62,7 @@ jobapplyUser(id : string) :Observable<any>
  
 uploadimage(binaryString)
   {
-    return  this._http.post(this.baseurl+"/angularapi.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
+    return  this._http.post(this.baseurl+"/angularapi_image.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
   }
 	
 

@@ -1,8 +1,10 @@
-import { Component,OnInit,Input } from '@angular/core';
+import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
  
@@ -16,6 +18,8 @@ export class OtherUserProfileComponent implements OnInit
 {
 
 public  myVar : boolean;
+public imageurl : any;
+public src : string;
 public user_id : any;
 public prof_id : any;
 user : User = new User();
@@ -30,10 +34,9 @@ Achivement : any;
 
 
  
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute)
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
 {
-  
-
+  this.imageurl = _config.dir_url;
 }
 
 ngOnInit()
@@ -156,7 +159,7 @@ bestResult(bestResult_data)
 
 Submit()
 {  
-   this.myVar = true;
+  this.myVar = true;
   this.final ={'userid': this.user_id, 'prof_id' : this.prof_id,'profiledata': {'Achivement' : {'awards':this.Award,'bestResult': this.BestResults},'Bio': this.bio,'Header':this.headerdetails,'LatestResults' : this.LatestResult}};
 
  // console.log(JSON.stringify(this.final));
@@ -168,5 +171,9 @@ Submit()
 
   });
 }
+
+errorHandler(event,image:string) {
+   event.target.src = this.imageurl + "/profile/" + image;
+ }
 
 }

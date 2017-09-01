@@ -111,6 +111,7 @@ handleFileSelect(evt){
             reader.readAsBinaryString(file);
             }
 }
+
 _handleReaderLoaded(readerEvt) 
 {
 var binaryString = readerEvt.target.result;

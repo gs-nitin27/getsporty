@@ -40,9 +40,8 @@ console.log('Initializing Facebook');
   
   signIn(provider){
     this.sub = this._auth.login(provider).subscribe(
-      (data) => {
-
-    //alert(JSON.stringify(data));
+      (data) => 
+      {
     this.user=data;
     this._loginServices.Sociallogin(this.user).subscribe( 
    (data) => 
