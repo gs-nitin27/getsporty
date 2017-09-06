@@ -50,7 +50,7 @@ ngOnInit()
 
 getUserData()
 {
- this._accountService.profiledata(this.user_id,this.prof_id).then((result) => 
+ this._accountService.profiledata(this.user_id,this.prof_id).subscribe((result) => 
  { 
      for(let key in result)
      {

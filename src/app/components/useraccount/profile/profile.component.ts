@@ -38,7 +38,7 @@ ngOnInit()
 }
 profile()
 {
-this._accountService.profiledata(this.userid,this.prof_id).then((result) =>
+this._accountService.profiledata(this.userid,this.prof_id).subscribe((result) =>
 {
 for(let key in result)
  {

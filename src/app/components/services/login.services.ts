@@ -50,17 +50,15 @@ public login(login: User) {
          ;
     }
 
-profiledata(id: String , prof_id :string) 
+profiledata(id: String , prof_id :string) : Observable<any>
 {       
-   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id)
-        .toPromise()
-        .then( res => res.json().data);
+   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
 
 }
 
-public Sociallogin(login: User) : Observable<any>
+public Sociallogin(login: User) 
 {
-    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => <User[]>res.json()));
+    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => res.json()));
 }
 
 public JoinClass(classdata:Class)
