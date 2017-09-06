@@ -22,12 +22,17 @@ public imageurl : any;
 public myVar : boolean;
 public joined : boolean;
 public notresponse : boolean;
-public user_id : any;
-public prof_id : any;
-public email : any;
-public name : any;
-public image :any;
-public contact : any;
+
+
+
+  public prof_id = localStorage.getItem('prof_id');
+  public user_id = localStorage.getItem('currentUserid');
+  public name     = localStorage.getItem('currentUser');
+  public image    = localStorage.getItem('user_image');
+  public contact  = localStorage.getItem('contact_no');
+  public email  = localStorage.getItem('email');
+
+
 public classlist : any;
 user : User = new User();
 headerdetails : User = new User();
@@ -42,17 +47,11 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 {
   
   this.imageurl = _config.dir_url;
-  this.prof_id = localStorage.getItem('prof_id');
-  this.user_id = localStorage.getItem('currentUserid');
+
+  //alert(this.name);
 
 
-  this.name     = localStorage.getItem('currentUser');
-  this.image    = localStorage.getItem('user_image');
-  this.contact  = localStorage.getItem('contact_no');
-  this.email  = localStorage.getItem('email');
-
-
-  this.getUserData();
+  //this.getUserData();
   this.getClassList();
 }
 
