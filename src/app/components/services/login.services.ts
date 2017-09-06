@@ -24,15 +24,10 @@ export class loginServices {
     public sportlistUrl : string;
     public loginurl     : string;
 
-constructor(private _http: Http,
-                 @Inject(APP_CONFIG) private _config: IAppConfig,private router: Router) {
-
- 
-
-                      this.baseUrl = this._config.apBaseUrl;
-                     
-
-                 }
+constructor(private _http: Http,@Inject(APP_CONFIG) private _config: IAppConfig,private router: Router) 
+{
+    this.baseUrl = this._config.apBaseUrl;                     
+}
 saveEvent(events:CreateEvent) {
        return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events, xhrHeaders).map(res =>  res.json()).share();      
     }
@@ -86,6 +81,11 @@ mobileVerify(mobileNo : any , user_id : string)
 OTPVerify(otpcode : any , user_id : string)
 {
    return this._http.get(this.baseUrl + "/angularapi.php?act=OTPVerify&otpcode=" + otpcode + "&userid=" + user_id).map((res => res.json()));
+}
+
+public AthletedashboardData(userid : string)
+{
+  return this._http.get(this.baseUrl + "/angularapi.php?act=AthletedashboardData&userid="+userid).map((res => res.json()));
 }
 
 }

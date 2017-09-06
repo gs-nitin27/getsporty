@@ -14,6 +14,7 @@ declare var $:any;
 	selector:'app-athletedashboard',
 	templateUrl: './AthleteDashboard.component.html',
 	styleUrls:['./AthleteDashboard.component.css'],
+  providers : [loginServices]
 })
 export class AthleteDashboardComponent implements OnInit
 {
@@ -32,6 +33,7 @@ public notresponse : boolean;
   public contact  = localStorage.getItem('contact_no');
   public email  = localStorage.getItem('email');
 
+AthleteUser : User = new User();
 
 public classlist : any;
 user : User = new User();
@@ -49,15 +51,19 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
   this.imageurl = _config.dir_url;
 
   //alert(this.name);
-
-
   //this.getUserData();
-  this.getClassList();
 }
 
 ngOnInit()
 {
+  this.getClassList();
+  this.AthletedashboardData();
+}
+
+AthletedashboardData()
+{
   
+  this._accountService.AthletedashboardData(this.user_id).subscribe(result => this.AthleteUser = result );
 }
 
 getUserData()
@@ -198,7 +204,7 @@ getClassList()
 
 
 errorHandler(event,image:string) {
-   event.target.src = this.imageurl + "/profile/" + image;
+   event.target.src = this.imageurl + "profile/" + image;
  }
 
 }
