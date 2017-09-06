@@ -58,9 +58,9 @@ profiledata(id: String , prof_id :string)
 
 }
 
-public Sociallogin(login: User) 
+public Sociallogin(login: User) : Observable<any>
 {
-    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => res.json()));
+    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => <User[]>res.json()));
 }
 
 public JoinClass(classdata:Class)
