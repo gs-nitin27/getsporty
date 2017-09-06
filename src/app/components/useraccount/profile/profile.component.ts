@@ -16,7 +16,6 @@ declare var $:any;
 })
 export class ProfileComponent implements OnInit
 {
-
 @Input() userdata: User;
 user : User = new User();
 headerdetails : User = new User();
@@ -29,18 +28,17 @@ experienceAsPlayer = [];
 workExperience = [];
 public imageurl : any;
 
- constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
- {
- this.imageurl = _config.dir_url;
- }
- ngOnInit()
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+{
+this.imageurl = _config.dir_url;
+}
+ngOnInit()
 { 
   this.profile();
 }
-
 profile()
 {
-this._accountService.profiledata(this.userid,this.prof_id).then((result) =>
+this._accountService.profiledata(this.userid,this.prof_id).subscribe((result) =>
 {
 for(let key in result)
  {

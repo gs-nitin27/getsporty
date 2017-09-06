@@ -11,6 +11,7 @@ export const AppConfig: IAppConfig = {
     dir_url :"http://getsporty.in/staging/uploads/",
     localimageurl:"http://localhost/getsporty/php/image/",
 
+
      loginUrl :  "http://localhost/testingapp/angularapi.php?act=angulartest",
      viewcontenturl: "http://localhost/testingapp/angularapi.php?act=contentangularlex",
      createcontenturl: "http://localhost/testingapp",

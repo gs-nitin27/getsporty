@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var body = require('body-parser')
 var mysql = require('mysql');
 
 
@@ -31,40 +32,16 @@ app.get('/test', function(request, response){
 app.get('/newtest', function(request, response)
 {
     response.send("response")
-    // response.header("Access-Control-Allow-Origin", "*");
-    // response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // app.use(bodyParser.json());
 });
 
 
-// app.post('/insert', function(req,res){
 
-
-//     req.header("Access-Control-Allow-Origin", "*");
-//     req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-       
-    // var queryString = "insert into members(firstName,lastName,email,phone) values('"+req.body.fname+"','"+req.body.lname+"','"+req.body.email+"','"+req.body.phone+"')";
-       
-   //   var queryString = "INSERT INTO gs_jobinfo(id,userid,title,location,gender,sport,type,job_link,work_experience,description,key_requirement,org_address1,org_address2,org_city,org_state,org_pin,organisation_name,qualification,address1,address2,state,pin,contact,email,image,about,desired_skills,date_created) values('"+req.body.id+"','"+req.body.userid+"','"+req.body.title+"','"+req.body.location+"','"+req.body.gender+"','"+req.body.sport+"','"+req.body.type+"','"+req.body.job_link+"','"+req.body.work_experience+"','"+req.body.description+"','"+req.body.key_requirement+"','"+req.body.org_address1+"','"+req.body.org_address2+"','"+req.body.org_state+"','"+req.body.org_pin+"','"+req.body.organisation_name+"','"+req.body.qualification+"','"+req.body.address1+"','"+req.body.address2+"','"+req.body.state+"','"+req.body.pin+"','"+req.body.contact+"','"+req.body.email+"','"+req.body.image+"','"+req.body.about+"','"+req.body.desired_skills+"','fdsasf')";
-   //  conn.query(queryString,function(error,results){
-   //         if(error)
-   //             {
-   //                 throw error;
-   //             }
-   //         else 
-   //             {
-   //               res.send('Inserted Successfully!')
-   //             }
-           
-   //     });
-   //     conn.release();
-   // });
     
-    
-app.post('/insert', function(req, res, next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  // var cope = req.body.params;
+app.get('/insert', function(req, res, next)
+{
+     // res.send("Harshvardhan")
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    var query = conn.query("INSERT INTO gs_jobinfo(id,userid,title,location,gender,sport,type,job_link,work_experience,description,key_requirement,org_address1,org_address2,org_city,org_state,org_pin,organisation_name,qualification,address1,address2,state,pin,contact,email,image,about,desired_skills) values('"+req.body.id+"','"+req.body.userid+"','"+req.body.title+"','"+req.body.location+"','"+req.body.gender+"','"+req.body.sport+"','"+req.body.type+"','"+req.body.job_link+"','"+req.body.work_experience+"','"+req.body.description+"','"+req.body.key_requirement+"','"+req.body.org_address1+"','"+req.body.org_address2+"','"+req.body.org_state+"','"+req.body.org_pin+"','"+req.body.organisation_name+"','"+req.body.qualification+"','"+req.body.address1+"','"+req.body.address2+"','"+req.body.state+"','"+req.body.pin+"','"+req.body.contact+"','"+req.body.email+"','"+req.body.image+"','"+req.body.about+"','"+req.body.desired_skills+"')", function(err, result) {
      if (err) {
        console.error(err);

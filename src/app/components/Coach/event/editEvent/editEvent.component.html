@@ -205,9 +205,9 @@
 </div>
 </div>
 
-<input type="text" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
+<input type="hidden" id="ticketdetails" class="form-control" [(ngModel)]="viewEvent.ticket" value="{{ticket | json}}">
 <div class="form-group">
-<input type="text"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
+<input type="hidden"  name="terms_cond" [(ngModel)]="viewEvent.ticket_detail" class="form-control" value="{{ticket_detail}}">
 </div>
 
 

@@ -7,8 +7,9 @@ import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CreateEvent } from '../../../model/createEvent.module';
 import { createEventServices } from '../../../services/createEvent.services';
-declare var $:any;
 
+declare var $:any;
+     
 
 @Injectable()
 @Component({
@@ -47,24 +48,20 @@ constructor(private _event: createEventServices,private router: Router,private h
   
   }
 
-Create(events) : void  {  
+
+Create(events) : void  {
 
   this.myVar = true;   
-
   var inputValue = (<HTMLInputElement>document.getElementById("myValue")).value;
   this.events.ticket_detail = inputValue;
-
   this.events.userid =  localStorage.getItem('currentUserid'); 
   this.events.id = "0";
-
   var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value1")).value;
   this.events.terms_cond1 =  termvalue;
-
   var startdate = (<HTMLInputElement>document.getElementById("startD")).value;
   this.events.start_date = startdate;
   var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
   this.events.end_date = enddate;
-
   //alert(JSON.stringify(this.events));
     this._event.saveEvent(this.events).subscribe(
                 data => 
@@ -92,8 +89,6 @@ Create(events) : void  {
                 //alert("An Error Occured While Processing Your Request")
                 }
                 );
-
-
   }
 
 Sportlist() {
@@ -111,6 +106,7 @@ handleFileSelect(evt){
             reader.readAsBinaryString(file);
             }
 }
+
 _handleReaderLoaded(readerEvt) 
 {
 var binaryString = readerEvt.target.result;

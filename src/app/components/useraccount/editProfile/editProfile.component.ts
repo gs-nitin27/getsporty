@@ -11,9 +11,10 @@ declare var $:any;
 	 templateUrl : './editProfile.component.html',
 	 styleUrls : ['./editProfile.component.css'],
 })
+
+
 export class EditProfileComponent implements OnInit
 {
-
 @Input() userdata: User;
 user : User = new User();
 headerdetails : User = new User();
@@ -33,7 +34,7 @@ ngOnInit()
 
 profile()
 {
-this._accountService.profiledata(this.userid,this.prof_id).then((result) =>
+this._accountService.profiledata(this.userid,this.prof_id).subscribe((result) =>
 {
 for(let key in result)
  {

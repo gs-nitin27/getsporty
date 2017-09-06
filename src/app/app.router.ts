@@ -19,10 +19,12 @@ import { EditJobComponent } from './components/Coach/job/editJob/editJob.compone
 import { EditEventComponent } from './components/Coach/event/editEvent/editEvent.component';
 import {ViewJob} from './components/Coach/job/viewJob/viewJob.component';
 import {EditProfileComponent} from './components/useraccount/editProfile/editProfile.component';
-import {OtherUserProfileComponent} from './components/useraccount/otherUserProfile/otherUserProfile.component';
+import {OtherUserProfileComponent} from './components/Athlete/otherUserProfile/otherUserProfile.component';
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import { NotFoundComponent } from './not-found.component';
+import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component'
+import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 
  
 export const router:Routes = [
@@ -45,10 +47,12 @@ export const router:Routes = [
       {path : 'editEvent/:id' , component : EditEventComponent , canActivate:[Guard]},
       {path : 'viewjob/:id' , component :ViewJob , canActivate:[Guard]},
       {path : 'editProfile', component:EditProfileComponent, canActivate:[Guard]},
-      {path : 'userProfile/:id/:prof_id',component:OtherUserProfileComponent, canActivate:[Guard]},
+      {path : 'userProfile',component:OtherUserProfileComponent, canActivate:[AthleteCheak]},
       {path : 'athletelogin' , component:AthleteLoginComponent },
       {path : 'athletedashboard' , component:AthleteDashboardComponent , canActivate:[AthleteCheak]},
-      {path : 'page-not-found' , component:NotFoundComponent}
+      {path : 'page-not-found' , component:NotFoundComponent},
+      {path : 'athleteheader' , component:AthleteHeaderComponent, canActivate:[AthleteCheak]},
+      {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]}
 
 
 ];

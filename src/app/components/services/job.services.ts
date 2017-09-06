@@ -30,8 +30,8 @@ constructor(private _http: Http,@Inject(APP_CONFIG) private _config: IAppConfig 
 CreatJob(job)
 {
 
-   // return this._http.post("http://localhost:3000/insert",job , xhrHeaders).map((res=>res.json()));
-    return this._http.post(this.baseurl + "/angularapi.php?act=createjob",job , xhrHeaders).map((res=>res.json()));
+    return this._http.post("http://localhost:3000/insert",job , xhrHeaders).map((res=>res.json()));
+    //return this._http.post(this.baseurl + "/angularapi.php?act=createjob",job , xhrHeaders).map((res=>res.json()));
 }
 
  Sportlist() {
@@ -62,7 +62,7 @@ jobapplyUser(id : string) :Observable<any>
  
 uploadimage(binaryString)
   {
-    return  this._http.post(this.baseurl+"/angularapi.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
+    return  this._http.post(this.baseurl+"/angularapi_image.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
   }
 	
 

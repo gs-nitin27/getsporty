@@ -30,8 +30,11 @@ import { EditJobComponent } from './components/Coach/job/editJob/editJob.compone
 import { EditEventComponent } from './components/Coach/event/editEvent/editEvent.component';
 import { ViewJob } from './components/Coach/job/viewJob/viewJob.component';
 import { EditProfileComponent } from './components/useraccount/editProfile/editProfile.component';
-import { OtherUserProfileComponent } from './components/useraccount/otherUserProfile/otherUserProfile.component';
+import { OtherUserProfileComponent } from './components/Athlete/otherUserProfile/otherUserProfile.component';
+import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component';
+
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
+import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import { FacebookModule } from 'ngx-facebook';
 import { NotFoundComponent } from './not-found.component';
@@ -72,6 +75,8 @@ let providers = {
     OtherUserProfileComponent,
     AthleteLoginComponent,
     AthleteDashboardComponent,
+    AthleteHeaderComponent,
+    AthleteProfileViewComponent,
     NotFoundComponent
   ],
   imports: [

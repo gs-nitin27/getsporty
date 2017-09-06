@@ -35,7 +35,7 @@ constructor(private _http: Http,
   }
 
   public saveEvent(events:CreateEvent) {
- // alert(JSON.stringify(events));
+ //alert(JSON.stringify(events));
      return this._http.post(this.createeventurl + "/angularapi.php?act=createevent", events, xhrHeaders)
             .map((res => res.json()));
 
@@ -65,7 +65,7 @@ getEventDetails(id : string) : Observable<any>
 
 uploadimage(binaryString)
     {
-        return  this._http.post(this.createeventurl+"/angularapi.php?act=eventimage", binaryString)
+        return  this._http.post(this.createeventurl+"/angularapi_image.php?act=eventimage", binaryString)
             .map(res => res.json());
     }
 

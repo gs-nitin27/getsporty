@@ -1,8 +1,10 @@
-import { Component,OnInit,Input } from '@angular/core';
+import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
+import { APP_CONFIG } from '../../../app.config';
+import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
  
@@ -15,6 +17,9 @@ declare var $:any;
 export class OtherUserProfileComponent implements OnInit
 {
 
+public  myVar : boolean;
+public imageurl : any;
+public src : string;
 public user_id : any;
 public prof_id : any;
 user : User = new User();
@@ -23,22 +28,34 @@ bio : User = new User();
 BestResults = [];
 Award = [];
 LatestResult = [];
+final : any;
+
+Achivement : any;
+
 
  
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute){}
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+{
+  this.imageurl = _config.dir_url;
+}
 
 ngOnInit()
 {
-this._activatedRoute.params.subscribe(params => { this.user_id = +params['id']; this.prof_id = +params['prof_id']});	
+//this._activatedRoute.params.subscribe(params => { this.user_id = +params['id']; this.prof_id = //+params['prof_id']});	
 
 	// alert(this.prof_id);
+
+  this.prof_id = localStorage.getItem('prof_id');
+  this.user_id = localStorage.getItem('currentUserid');
+
 	this.getUserData();
 }
 
 getUserData()
 {
- this._accountService.profiledata(this.user_id,this.prof_id).then((result) => 
+ this._accountService.profiledata(this.user_id,this.prof_id).subscribe((result) => 
  { 
+
      for(let key in result)
      {
        if(key == 'Achivement')
@@ -80,9 +97,14 @@ getUserData()
   });
 }
 
+addLatestResult()
+{
+  this.LatestResult.push({'dateOfCompetation':'','detail':'','nameOfCompetation':'','opponent':'','result':'','round':'','score':''});
+}
+
 latestResults(latestResults_data)
 {
-  if(latestResults_data)
+  if(latestResults_data != " ")
   {
   var latestResults_lenght = latestResults_data.length;
   for(var j = 0; j<latestResults_lenght ; j++)
@@ -90,11 +112,19 @@ latestResults(latestResults_data)
     this.LatestResult.push(latestResults_data[j]);
   }
   }
-
+  else
+  {
+     this.LatestResult.push({'dateOfCompetation':'','detail':'','nameOfCompetation':'','opponent':'','result':'','round':'','score':''});
+  }
 }
+addAwards()
+{
+  this.Award.push({'date':'','description':'','nameOfAward':''});
+}
+
 awards(award_data)
 {
-   if(award_data)
+   if(award_data != " ")
    {
       var award_length = award_data.length;
       for(var k=0 ; k<award_length;k++)
@@ -102,11 +132,18 @@ awards(award_data)
        this.Award.push(award_data[k]);
       } 
    }  
-
+   else
+   { 
+    this.Award.push({'date':'','description':'','nameOfAward':''});
+   }
+}
+addBestResult()
+{
+  this.BestResults.push({'date':'','nameComptation':'','result':'','rounds':''});
 }
 bestResult(bestResult_data)
 {
-	if(bestResult_data)
+	if(bestResult_data != " ")
 	{
       var bestResult_length =bestResult_data.length; 
       for(var i = 0 ; i<bestResult_length;i++)
@@ -114,5 +151,29 @@ bestResult(bestResult_data)
         this.BestResults.push(bestResult_data[i]);
       }
 	}
+  else
+  {
+   this.BestResults.push({'date':'','nameComptation':'','result':'','rounds':''});
+  }
 }
+
+Submit()
+{  
+  this.myVar = true;
+  this.final ={'userid': this.user_id, 'prof_id' : this.prof_id,'profiledata': {'Achivement' : {'awards':this.Award,'bestResult': this.BestResults},'Bio': this.bio,'Header':this.headerdetails,'LatestResults' : this.LatestResult}};
+
+ // console.log(JSON.stringify(this.final));
+
+  this._accountService.updateProfileData(this.final).subscribe( res => 
+  {
+
+  this.myVar = false;
+
+  });
+}
+
+errorHandler(event,image:string) {
+   event.target.src = this.imageurl + "/profile/" + image;
+ }
+
 }

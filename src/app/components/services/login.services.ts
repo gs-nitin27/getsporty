@@ -50,11 +50,9 @@ public login(login: User) {
          ;
     }
 
-profiledata(id: String , prof_id :string) 
+profiledata(id: String , prof_id :string) : Observable<any>
 {       
-   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id)
-        .toPromise()
-        .then( res => res.json().data);
+   return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
 
 }
 
@@ -69,6 +67,26 @@ public JoinClass(classdata:Class)
             .map((res => res.json()));
 }
 
+getClassList(userid : string)
+{
+  return this._http.get(this.baseUrl + "/connect_user.php?act=class_info&userid=" + userid).map((res => res.json()));
+
+}
+
+updateProfileData(proflie_json_data: string)
+{
+ return this._http.post(this.baseUrl + "/angularapi.php?act=profile_data_update",proflie_json_data).map((res => res.json()));
+}
+
+mobileVerify(mobileNo : any , user_id : string)
+{
+   return this._http.get(this.baseUrl + "/angularapi.php?act=mobileVerify&mobileNo=" + mobileNo + "&userid=" + user_id).map((res => res.json()));
+}
+
+OTPVerify(otpcode : any , user_id : string)
+{
+   return this._http.get(this.baseUrl + "/angularapi.php?act=OTPVerify&otpcode=" + otpcode + "&userid=" + user_id).map((res => res.json()));
+}
 
 }
 
