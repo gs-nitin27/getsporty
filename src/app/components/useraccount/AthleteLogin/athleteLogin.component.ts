@@ -69,7 +69,7 @@ console.log('Initializing Facebook');
                        $('#myModal').modal('show');
                       }else
                       {
-                      this.router.navigate(["/athletedashboard"]);
+                          this.router.navigate(["/athletedashboard"]);
                       }
                     }
                     }

@@ -38,14 +38,15 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 {
   
   this.imageurl = _config.dir_url;
+  this.prof_id = localStorage.getItem('prof_id');
+  this.user_id = localStorage.getItem('currentUserid');
+  this.getUserData();
+  this.getClassList();
 }
 
 ngOnInit()
 {
-  this.prof_id = localStorage.getItem('prof_id');
-  this.user_id = localStorage.getItem('currentUserid');
-	this.getUserData();
-  this.getClassList();
+  
 }
 
 getUserData()
