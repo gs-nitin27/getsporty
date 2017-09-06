@@ -51,11 +51,12 @@ console.log('Initializing Facebook');
                 if (users) 
                 {
                     localStorage.clear();
-                    localStorage.setItem('currentUser',data.name);
+                    localStorage.setItem('currentUser',data.Name);
                     localStorage.setItem('currentUserid',data.userId);
                     localStorage.setItem('user_image',data.user_image);
                     localStorage.setItem('prof_id' , data.prof_id);
                     localStorage.setItem('contact_no' , data.contact_no);
+                    localStorage.setItem('email' , data.email);
                     this.user_id = data.userId;
                 }
                     if(!data.contact_no)
