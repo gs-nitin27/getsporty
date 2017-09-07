@@ -140,11 +140,29 @@
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
   </span>
   </div >
-  <div class=" wd60 pd0 fl">
-       <span class="input input--hoshi">
+<div class=" wd60 pd0 fl">
+<span class="input input--hoshi">
+<input type="text" class="input__field input__field--hoshi" id="mobilenumber"
+               required
+               [(ngModel)]="Job.contact" name="mobilenumber"
+               pattern="[0-9]*"
+               minlength="10"
+               maxlength="10" 
+               #contact="ngModel">
+<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Mobile No.</span></label>
+  </span>
+        <div [hidden]="contact.valid || contact.pristine"
+             class="alert alert-danger">
+          <div [hidden]="!contact.hasError('minlength')">Mobile should be 10digit</div>
+          <div [hidden]="!contact.hasError('required')">Mobile is required</div>
+          <div [hidden]="!contact.hasError('pattern')">Mobile numberr should be only numbers</div>
+
+<!--   <span class="input input--hoshi">
   <input class='input__field input__field--hoshi' [(ngModel)] = "Job.contact" type="text" name="title">
     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Mobile No.</span></label>
-    </span>
+    </span> -->
+
+</div>
   </div >
   <div class="wd60 pd0 fr">
    <span class="input input--hoshi">
@@ -244,7 +262,7 @@
 </div>
  <input type="hidden" name="image"  [(ngModel)] = "Job.image" class="form-control">
    <div class="p-container">
-    <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;" type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >
+    <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;"  type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >
     <div class="clear"> </div>
     </div>
   </div>
