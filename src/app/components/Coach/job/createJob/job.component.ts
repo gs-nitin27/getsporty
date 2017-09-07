@@ -1,8 +1,9 @@
 import { JobModule } from '../../../model/job.model';
 import { JobServices } from '../../../services/job.services';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
+import { Injectable, Inject , OnInit, Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
+import {FormControl, FormBuilder, FormGroup, FormArray, NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+
 import { Observable } from 'rxjs/Observable';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import {HttpModule, Http,Response} from '@angular/http';
