@@ -14,9 +14,9 @@ declare var $:any;
 	 templateUrl : './otherUserProfile.component.html',
 	 styleUrls : ['./otherUserProfile.component.css'],
 })
+
 export class OtherUserProfileComponent implements OnInit
 {
-
 public  myVar : boolean;
 public imageurl : any;
 public src : string;
@@ -29,10 +29,7 @@ BestResults = [];
 Award = [];
 LatestResult = [];
 final : any;
-
 Achivement : any;
-
-
  
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
 {

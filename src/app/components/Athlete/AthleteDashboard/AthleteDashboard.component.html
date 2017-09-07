@@ -31,12 +31,12 @@
 <div class="col-xs-12 col-sm-4">
 
 <figure>
-<div *ngIf="!image">
+<div *ngIf="!AthleteUser.image">
 <img class="img-circle img-responsive" alt="" src="assets/images/user.jpg">
 </div>
-<div *ngIf="image">
+<div *ngIf="AthleteUser.image">
 
-<img class="img-circle img-responsive" [src]="image"  (error)="errorHandler($event,image)"/>
+<img class="img-circle img-responsive" [src]="AthleteUser.image"  (error)="errorHandler($event,AthleteUser.image)"/>
 
 </div>
 </figure>
@@ -44,11 +44,11 @@
 </div>
 <div class="col-xs-12 col-sm-8">
 <ul class="list-group">
-<li class="list-group-item">{{name}} <a routerLink="/athleteProfileView" style="float: right;">View</a></li>
-<!-- <li class="list-group-item">{{prof_name}}</li> -->
-<!-- <li class="list-group-item">{{user.sport}}</li> -->
-<li class="list-group-item"><i class="fa fa-phone"></i>{{contact}}</li>
-<li class="list-group-item"><i class="fa fa-envelope"></i> {{email}}</li>
+<li class="list-group-item">{{AthleteUser.name}} <a routerLink="/athleteProfileView" style="float: right;">View</a></li>
+<li class="list-group-item">{{AthleteUser.prof_name}}</li>
+<li class="list-group-item">{{AthleteUser.sport}}</li>
+<li class="list-group-item"><i class="fa fa-phone"></i>{{AthleteUser.contact_no}}</li>
+<li class="list-group-item"><i class="fa fa-envelope"></i> {{AthleteUser.email}}</li>
 </ul>
 </div>
 </div>
