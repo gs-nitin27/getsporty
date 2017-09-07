@@ -8,7 +8,7 @@ import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 
-declare var $:any;
+declare var $:any;  
  
 @Component({
 	selector:'app-athletedashboard',
@@ -62,7 +62,6 @@ ngOnInit()
 
 AthletedashboardData()
 {
-  
   this._accountService.AthletedashboardData(this.user_id).subscribe(result => this.AthleteUser = result );
 }
 
