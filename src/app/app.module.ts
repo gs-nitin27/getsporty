@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Angular2SocialLoginModule } from "angular2-social-login";
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule,enableProdMode } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -39,6 +39,8 @@ import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfile
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import { FacebookModule } from 'ngx-facebook';
 import { NotFoundComponent } from './not-found.component';
+
+enableProdMode();
 
 let providers = {
     "google": {
@@ -100,6 +102,7 @@ let providers = {
   [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   [{ provide: APP_CONFIG, useValue: AppConfig }]
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
