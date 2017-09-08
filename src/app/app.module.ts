@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Angular2SocialLoginModule } from "angular2-social-login";
-
+import {ToasterModule, ToasterService} from 'angular2-toaster';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -84,9 +85,11 @@ let providers = {
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
+    ToasterModule,
     routes,
     RouterModule,
     Angular2SocialLoginModule,
+    BrowserAnimationsModule,
     FacebookModule.forRoot()
   ],
   providers: [
