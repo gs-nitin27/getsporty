@@ -83,9 +83,9 @@ OTPVerify(otpcode : any , user_id : string)
    return this._http.get(this.baseUrl + "/angularapi.php?act=OTPVerify&otpcode=" + otpcode + "&userid=" + user_id).map((res => res.json()));
 }
 
-public AthletedashboardData(userid : string)
+public AthletedashboardData(userid : string) : Observable<any>
 {
-  return this._http.get(this.baseUrl + "/angularapi.php?act=AthletedashboardData&userid="+userid).map((res => res.json()));
+  return this._http.get(this.baseUrl + "/angularapi.php?act=AthletedashboardData&userid="+userid).map((res => <User[]> res.json()));
 }
 
 }

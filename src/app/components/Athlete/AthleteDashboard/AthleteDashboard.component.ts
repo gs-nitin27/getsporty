@@ -35,19 +35,16 @@ classdata : Class = new Class();
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
 {
-  //alert("hii");
+
   this.user_id = localStorage.getItem('currentUserid');
   this.imageurl = _config.dir_url;
-  this._accountService.AthletedashboardData(this.user_id).subscribe( result => this.AthleteUser = result );
 
 }
 
 ngOnInit()
 {
-
-  
   this.getClassList();
-  //this.AthletedashboardData();
+  this.AthletedashboardData();
 }
 
 AthletedashboardData()

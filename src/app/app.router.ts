@@ -27,7 +27,7 @@ import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athle
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 
  
-export const router:Routes = [
+ const router:Routes = [
 
       {path : '',redirectTo:'login' , pathMatch: 'full'},
       {path : 'login',component: LoginComponent},
