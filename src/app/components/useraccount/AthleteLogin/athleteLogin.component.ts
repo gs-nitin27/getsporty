@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild ,OnDestroy } from '@angular/core';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
+import { NotificationService } from '../../services/notification.service'
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Angular2SocialLoginModule } from "angular2-social-login";
@@ -26,7 +27,7 @@ export class AthleteLoginComponent implements OnDestroy {
   public verifycode : any;
   public myVar : boolean;
   
-constructor(public _auth: AuthService,private fb: FacebookService , private _loginServices:loginServices, private router:Router)
+constructor(public _auth: AuthService,private fb: FacebookService , private _loginServices:loginServices, private router:Router, private _notificationService :NotificationService)
 { 
 
 console.log('Initializing Facebook');
@@ -70,6 +71,7 @@ console.log('Initializing Facebook');
                        $('#myModal').modal('show');
                       }else
                       {
+
                           this.router.navigate(["/athletedashboard"]);
                       }
                     }

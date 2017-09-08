@@ -33,6 +33,7 @@ import { ViewJob } from './components/Coach/job/viewJob/viewJob.component';
 import { EditProfileComponent } from './components/useraccount/editProfile/editProfile.component';
 import { OtherUserProfileComponent } from './components/Athlete/otherUserProfile/otherUserProfile.component';
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component';
+import { NotificationService } from './components/services/notification.service';
 
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
@@ -96,6 +97,7 @@ let providers = {
   ],
   providers: [
   viewContentServices,
+  NotificationService,
   loginServices,
   AthleteCheak,
   Guard,

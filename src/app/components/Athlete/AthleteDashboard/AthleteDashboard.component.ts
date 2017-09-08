@@ -2,6 +2,7 @@ import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
+import { NotificationService } from '../../services/notification.service'
 import { loginServices } from '../../services/login.services';
 import { Class } from '../../model/class.model';
 import { APP_CONFIG } from '../../../app.config';
@@ -33,16 +34,18 @@ user : User = new User();
 classdata : Class = new Class();
 
 
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig, private _notificationService :NotificationService)
 {
 
   this.user_id = localStorage.getItem('currentUserid');
   this.imageurl = _config.dir_url;
+  this._notificationService.popToastSuccess('Welcome', 'Hello Athlete ');
 
 }
 
 ngOnInit()
 {
+  
   this.getClassList();
   this.AthletedashboardData();
 }
