@@ -94,6 +94,7 @@ JoinClass()
         setTimeout(function() {
         this.notresponse = false;
         }.bind(this), 3000);
+        this._notificationService.popToastError('Ohh', 'Worng Class Code ');
       }
 
 
