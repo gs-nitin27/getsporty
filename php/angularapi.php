@@ -376,5 +376,4 @@ else if($_REQUEST['act'] == 'createjob')
     $res = $req->createjob($item);     
     echo json_encode($res);
 }
-
 ?>

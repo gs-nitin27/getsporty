@@ -9,7 +9,7 @@ import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 
-declare var $:any;  
+declare var $:any;   
  
 @Component({
 	selector:'app-athletedashboard',
@@ -24,6 +24,8 @@ public imageurl : any;
 public myVar : boolean;
 public joined : boolean;
 public notresponse : boolean;
+public cheakpayment : any;
+public feepin : any ;
 
 
 public user_id : any;
@@ -45,7 +47,6 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 
 ngOnInit()
 {
-  
   this.getClassList();
   this.AthletedashboardData();
 }
@@ -55,10 +56,31 @@ AthletedashboardData()
   this._accountService.AthletedashboardData(this.user_id).subscribe( result => this.AthleteUser = result );
 }
 
+payment(Classid: string)
+{
+  this.cheakpayment = Classid;
+}
 
+proceed(classdetailsdata:User)
+{
+   // this._accountService.inventory(this.user_id).subscribe( result => this.feepin = result);
+}
 
+GeneratePdf()
+{
+    var d = new Date();
+    var m = ("0" + (d.getMonth() + 1)).slice(-2);
+    var y = d.getFullYear().toString().substr(-2);
 
+    var invoice = 'DHS/' + m + y + '/' + this.user_id ;
 
+    
+    alert(invoice);
+
+  // window.open('http://getsporty.in/', '_blank');
+    
+  //http://localhost/html_pdf/invoice.php?invoiceid=DHS/0417/1;
+}
 
 JoinClass()
 {

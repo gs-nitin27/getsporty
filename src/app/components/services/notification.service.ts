@@ -19,7 +19,7 @@ export class NotificationService {
    */
   constructor(private _toasterService: ToasterService){}
 
-  private toasterconfig : ToasterConfig =  new ToasterConfig({ positionClass: "toast-bottom-left", showCloseButton: true, tapToDismiss: true,  timeout: 10,});
+  private toasterconfig : ToasterConfig =  new ToasterConfig({ positionClass: "toast-bottom-left", showCloseButton: true, tapToDismiss: true,  timeout: 5,});
 
         // private toast: Toast = {
         //     type: 'success',
@@ -60,7 +60,8 @@ export class NotificationService {
      * 
      * @memberOf NotificationService
      */
-    popToastWarning(header:string,message:string){ 
+    popToastWarning(header:string,message:string)
+    { 
         this._toasterService.pop('warning', header, message);
     }
     
@@ -72,7 +73,8 @@ export class NotificationService {
      * 
      * @memberOf NotificationService
      */
-    popToastError(header:string,message:string){ 
+    popToastError(header:string,message:string)
+    { 
         this._toasterService.pop('error', header, message);
-     }
+    }
 }

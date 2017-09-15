@@ -1,7 +1,4 @@
-
 <app-athleteheader></app-athleteheader>
-
-
 <div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
 <div class="loader">
   <div class="inner one"></div>
@@ -15,14 +12,19 @@
 <h2><span class="label label-success" style="display: block; width: 100%;"><b>Class  List</b></span></h2>
 <div  *ngIf="classlist">
 <ul class="list-group" *ngFor="let classdetails of classlist">
-<li class="list-group-item list-group-item-success">{{classdetails.class_title}}</li>
+<li class="list-group-item list-group-item-success">
+<span>{{classdetails.class_title}}</span><br>
+<span>{{classdetails.class_start_timing}}-{{classdetails.class_end_timing}}</span>
+
+<button type="button" class="btn btn-info" data-toggle="modal" (click)="payment(classdetails.classid)" data-target="#myModal" style="margin-left: 12%;">PayFee</button>
+
+<!-- <input type="button" name="Submit" class = "btn btn-info"  value="PayFee" style="margin-bottom: 4%;margin-left: 12%; "> -->
+</li>
 </ul>
 </div>
 <ul class="list-group" *ngIf="!classlist">
 <li class="list-group-item list-group-item-danger">No Class joined</li>
 </ul>
-
-
 </div>
 <div class="col-sm-9">        
 
@@ -64,6 +66,17 @@
 <input type="text" name="classcode" class="form-control" [(ngModel)] = "classdata.student_code">
 </div>
 <div class="form-group">
+	<label for="sports">Payment Plan</label>
+	<select id="tage" name="age-group" class="form-control" [(ngModel)] = "classdata.payment_plan">
+	<option>-Select-</option>
+	<option value="1">Monthly</option>
+	<option  value="3">quarterly</option>
+	<option value="6">Half Yearly</option>
+	<option value="12">Yearly</option>
+	</select>
+</div>
+
+<div class="form-group">
 <input type="button" name="Submit" class = "btn btn-primary btn-lg btn-block"  value="Submit" (click) = "JoinClass()">
 </div>
 
@@ -76,9 +89,65 @@
 </div>
 
 
-            </div>
-         </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Modal Header</h4>
+    </div>
+    <div class="modal-body">
+    <div  *ngIf="classlist">
+    <div class="list-group" *ngFor="let classlistdata of classlist">
+    <div *ngIf="classlistdata.classid==cheakpayment">
+    	<span>{{classlistdata.name}}</span><br>
+    	<span>{{classlistdata.class_title}}</span><br>
+        <span>{{classlistdata.fees}}</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+
+ <button type="button" class="btn btn-info" data-toggle="modal" (click)="proceed(classlistdata)" data-target="#myModal2" style="margin-left: 12%;" data-dismiss="modal">Proceed</button>
+
+
+   <!--  <button type="button" class="btn btn-default" (click)="proceed(classlistdata)">Proceed</button> -->
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Modal Header</h4>
+    </div>
+    <div class="modal-body">
+    <div class="form-group">
+
+  <p class="text-muted">Payment Pin - 1818</p>
+  <p class="text-primary">Amount - 5000</p>
+  <p class="text-success">Coach - Anand Khare</p>
+  <p class="text-info">Ammount Paid - 5000</p>
+  <p class="text-warning">Session - March</p>
+<!--   <p class="text-danger">This text represents danger.</p> -->
 
 
     </div>
+     
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="GeneratePdf()">Generate Pdf</button>
+    </div>
+    </div>
+  </div>
 </div>

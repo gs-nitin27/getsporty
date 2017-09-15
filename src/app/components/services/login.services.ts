@@ -88,5 +88,12 @@ public AthletedashboardData(userid : string) : Observable<any>
   return this._http.get(this.baseUrl + "/angularapi.php?act=AthletedashboardData&userid="+userid).map((res => <User[]> res.json()));
 }
 
+public inventory(userid : any)
+{
+   return userid;
+   //return this._http.get(this.baseUrl + "/angularapi")
+
+}
+
 }
 

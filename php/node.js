@@ -13,7 +13,7 @@ var conn = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : '',
-    database : 'getsport_staging'
+    database : 'test'
 });
 conn.connect();
 app.get('/test', function(request, response){
@@ -27,7 +27,6 @@ app.get('/test', function(request, response){
         }
     });
 });
-
 
 app.get('/newtest', function(request, response)
 {
