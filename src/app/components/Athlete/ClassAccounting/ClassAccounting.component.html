@@ -1,0 +1,75 @@
+<app-athleteheader></app-athleteheader>
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+        </div>
+        <div class="w3-container">
+        <h4>Class Title - <small>{{classdata.class_title}}</small></h4>
+        <h4>Coach - <small>{{classdata.class_host}}</small></h4> 
+        <h4>Contact No - <small>{{classdata.contact_no}}</small></h4> 
+        <h4>Class Timing - <small>{{classdata.class_start_timing}} - {{classdata.class_end_timing}}</small></h4>
+        <h4>Class Description - <small>{{classdata.description}}</small></h4> 
+        </div>
+        </div><br>
+        </div>
+        <div class="w3-twothird">
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+        <div class="table-container">
+        <table class="table-users table" border="0">
+        <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Amount</th>
+      <th>Payment Status</th>
+    </tr>
+  </thead>
+<tbody>
+<tr *ngFor='let feelist of classfeeList'>
+<td>
+Harshvardhan Kumar
+</td>
+<td>
+Class Name
+</td>
+<td >
+{{feelist.payment_amount}}<br>
+ </td>
+ <td>
+<div *ngIf='feelist.status ==0'>
+
+<a class="btn btn-mini btn-danger">Pay</a>
+
+</div>
+
+<div *ngIf ='feelist.status == 1'>
+<h4><span class="label label-success">Paid</span></h4>	
+</div>
+
+
+
+
+
+<br>
+ 
+ </td>
+
+
+</tr>
+</tbody>
+</table>
+</div>
+<!-- </div>
+</div>
+</div>
+</div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -95,5 +95,15 @@ public inventory(userid : any)
 
 }
 
+public classdata(classid:any , student_id:any)
+{
+  return this._http.get(this.baseUrl + "/accountingController.php?act=ViewClassData&classid="+classid+"&student_id="+student_id).map((res => res.json()));  
+}
+
+public getClassFeeList(classid:any , student_id:any)
+{
+  return this._http.get(this.baseUrl + "/accountingController.php?act=getClassFeeList&classid="+classid+"&student_id="+student_id).map((res => res.json()));
+}
+
 }
 

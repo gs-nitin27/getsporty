@@ -1,5 +1,6 @@
 export class Class
 {
+
 	userid : string;
 	name : string;
 	prof_id : string;
@@ -7,4 +8,6 @@ export class Class
 	student_code : string;
 	user_info : any;
 	deviceType : string;
+	
+
 }

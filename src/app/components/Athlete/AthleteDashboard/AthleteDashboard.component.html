@@ -4,23 +4,70 @@
   <div class="inner one"></div>
   <div class="inner two"></div>
   <div class="inner three"></div>
-</div>
- </div>
+</div> 
+ </div>  
 <div class="container" style="margin-top: 3%;">
 <div class="row">
+
+
+
+
+
+
+
 <div class="col-sm-3">
-<h2><span class="label label-success" style="display: block; width: 100%;"><b>Class  List</b></span></h2>
+<h2><span class="label label-success" style="display: block; width: 100%;margin-left: 9%;"><b>Class  List</b></span></h2>
 <div  *ngIf="classlist">
-<ul class="list-group" *ngFor="let classdetails of classlist">
+
+<div class="container" *ngFor="let classdetails of classlist">
+<br><br>
+
+
+<!-- {{classlist|json}} -->
+  <div class="col-md-3">
+        <div class="alert alert-success">
+        <div class="panel-body">
+            <div class="con_ina">
+            <b>{{classdetails.class_title}}</b><br>
+               {{classdetails.class_host}}
+                <br>{{classdetails.class_start_timing}}-{{classdetails.class_end_timing}}
+            </div>             
+        </div>
+        <a  routerLink="/classaccounting/{{classdetails.id}}"><button type="button" class="btn btn-success btn-xs btn_inr">View Class</button></a>
+
+     <!-- <button type="button" class="btn btn-info" data-toggle="modal" (click)="payment(classdetails.classid)" data-target="#myModal" style="margin-left: 12%;">PayFee</button> -->
+
+        </div>
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+<!-- <ul class="list-group" *ngFor="let classdetails of classlist">
 <li class="list-group-item list-group-item-success">
 <span>{{classdetails.class_title}}</span><br>
 <span>{{classdetails.class_start_timing}}-{{classdetails.class_end_timing}}</span>
 
-<button type="button" class="btn btn-info" data-toggle="modal" (click)="payment(classdetails.classid)" data-target="#myModal" style="margin-left: 12%;">PayFee</button>
+<a class="btn icon-btn btn-success" routerLink="/classaccounting">
+< <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span> -->
+<!-- <b>View Class</b></a> -->
 
+<!-- <button type="button" class="btn btn-info" data-toggle="modal" (click)="payment(classdetails.classid)" data-target="#myModal" style="margin-left: 12%;">PayFee</button> -->
+  
 <!-- <input type="button" name="Submit" class = "btn btn-info"  value="PayFee" style="margin-bottom: 4%;margin-left: 12%; "> -->
-</li>
-</ul>
+
+
+<!-- </li>
+</ul> -->
 </div>
 <ul class="list-group" *ngIf="!classlist">
 <li class="list-group-item list-group-item-danger">No Class joined</li>

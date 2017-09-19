@@ -8,7 +8,7 @@ import { Class } from '../../model/class.model';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
-
+ 
 declare var $:any;   
  
 @Component({
@@ -73,13 +73,13 @@ GeneratePdf()
     var y = d.getFullYear().toString().substr(-2);
 
     var invoice = 'DHS/' + m + y + '/' + this.user_id ;
-
+    var url = 'http://getsporty.in/html_pdf/invoice.php?invoiceid='+invoice;
     
     alert(invoice);
 
-  // window.open('http://getsporty.in/', '_blank');
+     window.open(url, '_blank');
     
-  //http://localhost/html_pdf/invoice.php?invoiceid=DHS/0417/1;
+  
 }
 
 JoinClass()
@@ -91,10 +91,11 @@ JoinClass()
 	else
 	{
      this.myVar = true;
-     this.classdata.user_info = this.user;
+     this.classdata.user_info = this.AthleteUser;
      this.classdata.deviceType = "2";
 
      //alert(JSON.stringify(this.classdata));
+
 
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 

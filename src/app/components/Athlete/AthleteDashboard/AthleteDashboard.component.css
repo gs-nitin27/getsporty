@@ -12,7 +12,7 @@
     margin-top:40px;
 }
 .glyphicon-lg{
-    font-size:4em
+    font-size:4em 
 }
 .info-block{
     border-right:5px solid #E6E6E6;margin-bottom:25px
@@ -548,6 +548,26 @@ opacity:0.9;
 
 .progress-meter > .meter.meter-right > .meter-text {
   text-align: right;
+}
+
+
+.pic_ina
+{
+    height:50px;
+    width:30%;
+    float:left;
+}
+.con_ina
+{
+    height:40px;
+    width:67%;
+    margin-left:3%;
+    float:left;
+}
+.btn_inr
+{
+    float:right;
+    margine-top:25px;
 }
 
 

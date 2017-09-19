@@ -34,7 +34,7 @@ import { EditProfileComponent } from './components/useraccount/editProfile/editP
 import { OtherUserProfileComponent } from './components/Athlete/otherUserProfile/otherUserProfile.component';
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component';
 import { NotificationService } from './components/services/notification.service';
-
+import { ClassAccounting } from './components/Athlete/ClassAccounting/ClassAccounting.component';
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
@@ -81,7 +81,8 @@ let providers = {
     AthleteDashboardComponent,
     AthleteHeaderComponent,
     AthleteProfileViewComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ClassAccounting
   ],
   imports: [
     BrowserModule,
@@ -104,9 +105,7 @@ let providers = {
   [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   [{ provide: APP_CONFIG, useValue: AppConfig }]
   ],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 Angular2SocialLoginModule.loadProvidersScripts(providers);

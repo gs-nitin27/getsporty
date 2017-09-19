@@ -23,6 +23,7 @@ import {OtherUserProfileComponent} from './components/Athlete/otherUserProfile/o
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import {AthleteDashboardComponent} from './components/Athlete/AthleteDashboard/AthleteDashboard.component';
 import { NotFoundComponent } from './not-found.component';
+import { ClassAccounting } from './components/Athlete/ClassAccounting/ClassAccounting.component';
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component'
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 
@@ -52,7 +53,8 @@ import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfile
       {path : 'athletedashboard' , component:AthleteDashboardComponent , canActivate:[AthleteCheak]},
       {path : 'page-not-found' , component:NotFoundComponent},
       {path : 'athleteheader' , component:AthleteHeaderComponent, canActivate:[AthleteCheak]},
-      {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]}
+      {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]},
+      {path : 'classaccounting/:id' , component: ClassAccounting , canActivate:[AthleteCheak]}
 
 
 ];
