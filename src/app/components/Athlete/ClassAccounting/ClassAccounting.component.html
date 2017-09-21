@@ -17,6 +17,8 @@
         <div class="w3-twothird">
         <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+        <!-- total Pay - {{totalPay}} -->
+
         <div class="table-container">
         <table class="table-users table" border="0">
         <thead>
@@ -27,6 +29,31 @@
       <th>Payment Status</th>
     </tr>
   </thead>
+<tbody>
+<tr>
+<td>
+Total Fee
+</td>
+<td>
+Class Name
+</td>
+<td >
+{{totalPay}}<br>
+ </td>
+ <td>
+<a type="button" class="btn btn-mini btn-danger" data-toggle="modal"   data-target="#myModal">PayFee</a>
+<br>
+ 
+ </td>
+
+</tr>
+</tbody>
+<!-- </table>
+</div>
+
+    <div class="table-container">
+    <table class="table-users table" border="0"> -->
+        
 <tbody>
 <tr *ngFor='let feelist of classfeeList'>
 <td>
@@ -40,19 +67,14 @@ Class Name
  </td>
  <td>
 <div *ngIf='feelist.status ==0'>
+<!-- <a class="btn btn-mini btn-danger">Pay</a> -->
+<h4><span class="label label-danger">Pay</span></h4>	
 
-<a class="btn btn-mini btn-danger">Pay</a>
-
+<!-- <a type="button" class="btn btn-mini btn-danger" data-toggle="modal"  data-target="#myModal">PayFee</a> -->
 </div>
-
 <div *ngIf ='feelist.status == 1'>
 <h4><span class="label label-success">Paid</span></h4>	
 </div>
-
-
-
-
-
 <br>
  
  </td>
@@ -71,5 +93,62 @@ Class Name
   </div>
 </div>
 
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Modal Header</h4>
+    </div>
+    <div class="modal-body">
+
+   <div>
+
+    	<span>{{classdata.class_host}}</span><br>
+    	<span>{{classdata.class_title}}</span><br>
+        <span>{{totalPay}}</span>
+        <h4>Mode Of Payment - <small>Cash</small></h4>
+
+    </div>
+    </div>
+    <div class="modal-footer">
+
+ <button type="button" class="btn btn-info" data-toggle="modal"  data-target="#myModal2" style="margin-left: 12%;" data-dismiss="modal">Proceed</button>
+
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Modal Header</h4>
+    </div>
+    <div class="modal-body">
+    <div class="form-group">
+
+  <p class="text-muted">Payment Pin - 1818</p>
+  <p class="text-primary">Amount - {{totalPay}}</p>
+  <p class="text-success">Coach - {{classdata.class_host}}</p>
+  <p class="text-info">Ammount Paid - {{totalPay}}</p>
+  <!-- <p class="text-warning">Session - March</p> -->
+<!--   <p class="text-danger">This text represents danger.</p> -->
+
+
+    </div>
+     
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="GeneratePdf()">Generate Pdf</button>
+    </div>
+    </div>
+  </div>
+</div>
 
 

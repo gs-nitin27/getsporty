@@ -8,6 +8,7 @@ export class Class
 	student_code : string;
 	user_info : any;
 	deviceType : string;
+	payment_amount : number;
 	
 
 }
