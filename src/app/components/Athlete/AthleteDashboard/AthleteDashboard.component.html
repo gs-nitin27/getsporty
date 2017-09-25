@@ -23,17 +23,24 @@
                 <br>{{classdetails.class_start_timing}}-{{classdetails.class_end_timing}}
             </div>             
         </div>
-        <div *ngIf="classdetails.status == 1">
+        <div *ngIf="classdetails.status ==2">
         <a  routerLink="/classaccounting/{{classdetails.id}}"><button type="button" class="btn btn-success btn-xs btn_inr">View Class</button></a>
       </div>
 
-      <div *ngIf="classdetails.status == 0">
+      <div *ngIf="classdetails.status ==0 && classdetails.demo_code==''">
 
        <button type="button" class="btn btn-success btn-xs btn_inr" data-toggle="modal" data-target="#myModal" style="margin-left: 12%;">Activate</button>
 
 
       </div>
- 
+     <div *ngIf="classdetails.status ==0 && classdetails.demo_code!=''">
+      <h4><span class="label label-success btn_inr">Demo Pending</span></h4>
+      </div>
+
+       <div *ngIf="classdetails.status ==1 && classdetails.demo_code!=''">
+      <h4><span class="label label-success btn_inr">Decline Join Option</span></h4>
+      </div>
+
         </div>
   </div>
   </div>
