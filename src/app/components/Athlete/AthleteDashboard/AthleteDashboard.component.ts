@@ -34,7 +34,6 @@ public classlist : any;
 user : User = new User();
 classdata : Class = new Class();
 
-
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig, private _notificationService :NotificationService)
 {
   this.user_id = localStorage.getItem('currentUserid');
@@ -56,10 +55,7 @@ AthletedashboardData()
   this.contact_no =result.contact_no;
   this.getClassList();
 
-  });
-
-
-
+});
 }
 
 payment(Classid: string)
@@ -71,6 +67,7 @@ proceed(classdetailsdata:User)
 {
    // this._accountService.inventory(this.user_id).subscribe( result => this.feepin = result);
 }
+
 
 GeneratePdf() 
 {
@@ -119,6 +116,7 @@ JoinClass()
       });
 	}
 }
+
 getClassList()
 {
   this._accountService.getClassList(this.user_id,this.email,this.contact_no).subscribe((res) => 
