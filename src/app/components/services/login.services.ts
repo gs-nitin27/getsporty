@@ -62,9 +62,10 @@ public JoinClass(classdata:Class)
             .map((res => res.json()));
 }
 
-getClassList(userid : string)
+getClassList(userid : string, email:string, contact_no:string)
 {
-  return this._http.get(this.baseUrl + "/connect_user.php?act=class_info&userid=" + userid).map((res => res.json()));
+
+  return this._http.get(this.baseUrl + "/connect_user.php?act=class_info&userid=" + userid + "&email="+email + "&contact_no="+contact_no).map((res => res.json()));
 
 }
 

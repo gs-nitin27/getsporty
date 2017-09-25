@@ -9,7 +9,7 @@ import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
  
-declare var $:any;   
+declare var $:any;    
  
 @Component({
 	selector:'app-athletedashboard',
@@ -26,10 +26,9 @@ public joined : boolean;
 public notresponse : boolean;
 public cheakpayment : any;
 public feepin : any ;
-
-
+email : any;
+contact_no : any;
 public user_id : any;
-
 AthleteUser : User = new User();
 public classlist : any;
 user : User = new User();
@@ -38,22 +37,29 @@ classdata : Class = new Class();
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig, private _notificationService :NotificationService)
 {
-
   this.user_id = localStorage.getItem('currentUserid');
   this.imageurl = _config.dir_url;
   this._notificationService.popToastSuccess('Welcome', 'Hello Athlete ');
-
 }
 
 ngOnInit()
 {
-  this.getClassList();
   this.AthletedashboardData();
 }
 
 AthletedashboardData()
 {
-  this._accountService.AthletedashboardData(this.user_id).subscribe( result => this.AthleteUser = result );
+  this._accountService.AthletedashboardData(this.user_id).subscribe( 
+  result => { 
+  this.AthleteUser = result; 
+  this.email = result.email;
+  this.contact_no =result.contact_no;
+  this.getClassList();
+
+  });
+
+
+
 }
 
 payment(Classid: string)
@@ -66,20 +72,15 @@ proceed(classdetailsdata:User)
    // this._accountService.inventory(this.user_id).subscribe( result => this.feepin = result);
 }
 
-GeneratePdf()
+GeneratePdf() 
 {
     var d = new Date();
     var m = ("0" + (d.getMonth() + 1)).slice(-2);
     var y = d.getFullYear().toString().substr(-2);
-
     var invoice = 'DHS/' + m + y + '/' + this.user_id ;
     var url = 'http://getsporty.in/html_pdf/invoice.php?invoiceid='+invoice;
-    
-    alert(invoice);
-
-     window.open(url, '_blank');
-    
-  
+  //  alert(invoice);
+    window.open(url, '_blank');
 }
 
 JoinClass()
@@ -93,13 +94,9 @@ JoinClass()
      this.myVar = true;
      this.classdata.user_info = this.AthleteUser;
      this.classdata.deviceType = "2";
-
      //alert(JSON.stringify(this.classdata));
-
-
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 
-       
       //alert(result); 
       if(result.status == "1")
       {
@@ -119,29 +116,23 @@ JoinClass()
         }.bind(this), 3000);
         this._notificationService.popToastError('Ohh', 'Worng Class Code ');
       }
-
-
       });
-
 	}
 }
-
 getClassList()
 {
-  this._accountService.getClassList(this.user_id).subscribe((res) => 
+  this._accountService.getClassList(this.user_id,this.email,this.contact_no).subscribe((res) => 
   {
   if(res.status == "1")
   {
      this.classlist = res.data;
   }
-
   });
-
 }
 
 
-errorHandler(event,image:string) {
+errorHandler(event,image:string) 
+{
    event.target.src = this.imageurl + "profile/" + image;
  }
-
 }
