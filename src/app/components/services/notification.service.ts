@@ -51,7 +51,6 @@ export class NotificationService {
     popToastSuccess(header:string,message:string) {
         this._toasterService.pop('success', header, message);
     }
-
     /**
      * 
      * Function to display warning message
@@ -63,8 +62,7 @@ export class NotificationService {
     popToastWarning(header:string,message:string)
     { 
         this._toasterService.pop('warning', header, message);
-    }
-    
+    }    
     /**
      * 
      * Function to display erroe message

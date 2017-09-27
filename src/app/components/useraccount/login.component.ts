@@ -44,8 +44,16 @@ login() : void {
       this.myVar = true;
       var formData = this.form.value;
       this._accountService.login(formData).subscribe(
-                (data) => { if(data != null){ 
+                (data) => { if(data != null)
+                { 
+                    if(data == '0')
+                    {
+                        this.myVar = false;
+                        this.invalid=true;  
+                    }
                 let user = data;
+                    
+      
                 if (user) {
                     localStorage.clear();
                     localStorage.setItem('currentUser',data.name);

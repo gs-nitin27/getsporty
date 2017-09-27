@@ -9,8 +9,9 @@ import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
  
-declare var $:any;    
  
+declare var $:any;    
+
 @Component({
 	selector:'app-athletedashboard',
 	templateUrl: './AthleteDashboard.component.html',
@@ -57,7 +58,6 @@ AthletedashboardData()
 
 });
 }
-
 payment(Classid: string)
 {
   this.cheakpayment = Classid;
@@ -67,8 +67,6 @@ proceed(classdetailsdata:User)
 {
    // this._accountService.inventory(this.user_id).subscribe( result => this.feepin = result);
 }
-
-
 GeneratePdf() 
 {
     var d = new Date();

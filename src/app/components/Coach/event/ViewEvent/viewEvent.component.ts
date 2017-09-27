@@ -53,7 +53,7 @@ this._activatedRoute.params.subscribe(params => {
 
 participantList()
 {
-  this._eventservices.participantList("12").subscribe(res =>this.participantlist = res );
+  this._eventservices.participantList(this.id).subscribe(res =>this.participantlist = res );
 }
 
 editEvent()

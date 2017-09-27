@@ -26,6 +26,8 @@ export class AthleteLoginComponent implements OnDestroy {
   public user_id : any;
   public verifycode : any;
   public myVar : boolean;
+  public loginverify : boolean;
+  public prof_name : any;
   
 constructor(public _auth: AuthService,private fb: FacebookService , private _loginServices:loginServices, private router:Router, private _notificationService :NotificationService)
 { 
@@ -49,6 +51,16 @@ console.log('Initializing Facebook');
    { 
    if(data != null){ 
                 let users = data;
+
+                if(data.prof_id != "1")
+                {
+                  localStorage.clear();
+                  this.prof_name = data.prof_name;
+                  this.loginverify = true;
+                  return(0);
+                }
+                
+                else{
                 if (users) 
                 {
                     localStorage.clear();
@@ -60,6 +72,7 @@ console.log('Initializing Facebook');
                     localStorage.setItem('email' , data.email);
                     this.user_id = data.userId;
                 }
+             
                     if(!data.contact_no)
                     {
                       $('#myModal').modal('show');
@@ -75,6 +88,7 @@ console.log('Initializing Facebook');
                           this.router.navigate(["/athletedashboard"]);
                       }
                     }
+                  }
                     }
                   else
                     { 
