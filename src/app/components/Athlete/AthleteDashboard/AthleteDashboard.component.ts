@@ -92,7 +92,7 @@ JoinClass()
      //alert(JSON.stringify(this.classdata));
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 
-      //alert(result); 
+
       if(result.status == "1")
       {
         this.myVar = false;

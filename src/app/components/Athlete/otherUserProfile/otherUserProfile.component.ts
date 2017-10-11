@@ -38,10 +38,6 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 
 ngOnInit()
 {
-//this._activatedRoute.params.subscribe(params => { this.user_id = +params['id']; this.prof_id = //+params['prof_id']});	
-
-	// alert(this.prof_id);
-
   this.prof_id = localStorage.getItem('prof_id');
   this.user_id = localStorage.getItem('currentUserid');
 

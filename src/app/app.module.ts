@@ -40,10 +40,13 @@ import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfile
 import {AthleteLoginComponent } from './components/useraccount/AthleteLogin/athleteLogin.component';
 import { FacebookModule } from 'ngx-facebook';
 import { NotFoundComponent } from './not-found.component';
+import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
+import { Classdata } from './components/services/class.services';
+
 
 enableProdMode();
-
-let providers = {
+let providers = 
+{
     "google": {
       "clientId": "238802611732-ooc7lqgdvqlrh056om7ma3f7dngiqslr.apps.googleusercontent.com"
     }//,
@@ -82,7 +85,8 @@ let providers = {
     AthleteHeaderComponent,
     AthleteProfileViewComponent,
     NotFoundComponent,
-    ClassAccounting
+    ClassAccounting,
+    viewClass
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,7 @@ let providers = {
   viewContentServices,
   NotificationService,
   loginServices,
+  Classdata,
   AthleteCheak,
   Guard,
   [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

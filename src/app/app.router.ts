@@ -26,7 +26,7 @@ import { NotFoundComponent } from './not-found.component';
 import { ClassAccounting } from './components/Athlete/ClassAccounting/ClassAccounting.component';
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component'
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
-
+import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
  
  const router:Routes = [
 
@@ -54,9 +54,8 @@ import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfile
       {path : 'page-not-found' , component:NotFoundComponent},
       {path : 'athleteheader' , component:AthleteHeaderComponent, canActivate:[AthleteCheak]},
       {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]},
-      {path : 'classaccounting/:id' , component: ClassAccounting , canActivate:[AthleteCheak]}
-
+      {path : 'classaccounting/:id' , component: ClassAccounting , canActivate:[AthleteCheak]},
+      {path : 'viewclass/:classid' , component : viewClass , canActivate:[AthleteCheak]}
 
 ];
-
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     public Event : CreateEvent[];
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
+    publis : any;
     
 
   constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
@@ -53,9 +54,13 @@ viewjob()
 this._router.navigate(["/editJob",25]);
 }
 
+publish(jobid:any,publish:any)
+{
+  this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
+}
+
 hello(end_date)
 {
-
   var eventStartTime = new Date(this.currentDate);
   var eventEndTime = new Date(end_date);
   var duration = eventEndTime.valueOf() - eventStartTime.valueOf();

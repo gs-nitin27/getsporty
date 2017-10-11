@@ -142,15 +142,24 @@
            </div>
           <div *ngIf='!job.image'>
           <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
-            </div>
+          </div>
 
 
             </div>
             <div class="post-content">
               <div class="category" style="background-color:#f56436;">{{job.title}}</div>
               <h2 class="title"></h2>
-              <h2 class="sub_title">{{job.title}}</h2>
+
+              <!-- <h2 class="sub_title">{{job.publish}}</h2>  -->
+
               <div class="post-meta"><span class="timestamp">Location - {{job.location}}</span><span class="comments">Sports - {{job.sport}}</span></div>
+              <div *ngIf='job.publish ==0'>
+              <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(job.id,1)">Active</button>
+            </div>
+            <div *ngIf='job.publish ==1'>
+              <button type="button" style="float: right;" class="btn btn-success" (click)="publish(job.id , 0)">Deactive</button>
+            </div>
+
             </div>
           </div>
         </div>
