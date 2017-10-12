@@ -235,6 +235,8 @@
     <strong>Image!</strong> has  not uploaded.
 </div>
 
+
+
   <div class="container">
   <div class="row">    
   <div class="col-xs-6 col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2" style="margin-bottom: 20px;   float: left;margin-left: 0%;">  
@@ -260,6 +262,7 @@
         </div>
     </div>
 </div>
+<img src="{{imageurl}}job/{{Job.image}}" style="width:20%;margin-top:-4%;margin-left:75%;" alt="No Image">
  <input type="hidden" name="image"  [(ngModel)] = "Job.image" class="form-control">
    <div class="p-container">
     <input style="outline: none;    margin-left: 15px;margin-bottom: 15px;"  type="submit" (click) ="CreateJob(Job)" class="btn btn-primary" value="Submit" >

@@ -62,7 +62,7 @@
 <div *ngIf="sports">
 <div class="form-group">
 <label style="    font-weight: 100;margin-left: 10px; color:#717070;}" for="game">Event Sport</label>
-<select class="form-control mr5" name="game" [(ngModel)]="viewEvent.sport" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
+<select class="form-control mr5" name="game" [(ngModel)]="viewEvent.sport_name" style="     padding-left: 0px; width: 98.5%; border-radius: 0;   border: none;border-bottom: 1px solid   #5f5d5d; box-shadow: none;" required>
 <option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
 </select>
 </div>
@@ -133,13 +133,32 @@
 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Mobile</span></label>
 </span>
 </div >
-<div>
+<!-- <div>
 <span class="input input--hoshi">
 <input class='input__field input__field--hoshi' [(ngModel)]="viewEvent.eligibility1" type="text" name="title">
  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Event Eligibility</span></label>
 </span>
+</div> -->
 </div>
-</div>
+<div *ngFor="let viewEvent of eligibility; let i = index" class="">
+            <div class="box1">
+            <div>
+            <span class="input input--hoshi">
+            <input type="text" class="class='input__field input__field--hoshi" required [(ngModel)]="viewEvent.criteria" value="{{viewEvent.criteria}}" name="term" style="border:none; outline:none;">
+            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="term"><span class="input__label-content input__label-content--hoshi">Eligibility {{i + 1}}</span></label>
+            </span>
+            </div>
+            <input type="hidden" id="eligi_value" class="form-control" [(ngModel)]="viewEvent.eligibility" value="{{eligibility | json}}">
+            <div class="form-group">
+            <input type="hidden"  name="eligib" [(ngModel)]="viewEvent.eligibility1" class="form-control" value="{{eligibility1}}">
+            </div>
+            </div>
+            </div>
+            <div class="p-container">
+            <input  style="outline: none;" type="submit" (click)="addNewEligibility()" class="btn btn-primary" value="Add term & Condition" >
+            <div class="clear"> 
+            </div>
+            </div>
 </div>
 
 <!-- new Tab 3 -->
@@ -164,6 +183,7 @@
 <div class="clear"> 
 </div>
 </div>
+
 </div>
 <!-- new Tab 4 -->
 
@@ -174,7 +194,6 @@
 <div class="form-group">
 </div>
 <div *ngFor="let viewEvent of ticket; let i = index" class= "">
-
 
 <div class="box1">
 <div>

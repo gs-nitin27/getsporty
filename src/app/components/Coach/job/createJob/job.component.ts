@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { APP_CONFIG } from '../../../../app.config';
+import { IAppConfig }  from '../../../../app.iconfig';
 
 
 @Component({
@@ -22,14 +24,15 @@ myVar: boolean;
 public edited : boolean;
 public datafailure : boolean;
 public notresponse : boolean;
-
+public imageurl : string;
 public userid :string;
 public image : string;
 public sports : any[];
 
-constructor(private _JobServices : JobServices, private _http : Http, private router : Router) 
+constructor(private _JobServices : JobServices, private _http : Http, private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
      this.Job = new JobModule(); 
+     this.imageurl = _config.dir_url;
 }
    @Input() Job: JobModule;
 

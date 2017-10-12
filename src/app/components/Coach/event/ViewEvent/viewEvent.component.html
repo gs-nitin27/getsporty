@@ -71,24 +71,29 @@
 </h4>
 </div>
 </div>
-    <div class="col-sm-4">
-      <div class="col-padding">
-
-       
+<div class="col-sm-4">
+<div class="col-padding">    
 <h4>
 <p class="text-muted"><b>Event Link -</b> {{viewEvent.event_links}}</p>
 </h4>
 <h4>
-<p class="text-muted"><b>Eligibility -</b> {{viewEvent.eligibility1}}</p>
+<p class="text-muted"><b>Eligibility -</b></p>
 </h4>
+<div *ngFor='let list of eligibility1'>
+<p class="text-muted"> {{list.criteria}}</p>
+</div>
 <h4>
 <p class="text-muted"><b>Event Description -</b> {{viewEvent.description}}</p>
 </h4>
+<h4><p class="text-muted"><b>Term & Condition</b></p></h4>
+<div *ngFor='let term of termCondition'>
+<p class="text-muted">{{term.term}}</p>
+</div>
 
 
-      </div>
-    </div>
-    </div>
+</div>
+</div>
+</div>
 
 </div>
 </div>

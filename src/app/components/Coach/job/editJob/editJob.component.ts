@@ -20,6 +20,7 @@ public edited : boolean;
 public datafailure : boolean;
 public notresponse : boolean;
 public imageurl : string;
+public sports :any;
 Job: JobModule = new JobModule();
 id : any;
 
@@ -34,7 +35,13 @@ this._activatedRoute.params.subscribe(params => {
             this.id = +params['id']; 
             this.myVar = false;
   });
-	this.getJobdetails();
+  this.getJobdetails();
+  this.Sportlist();
+}
+
+Sportlist() {
+  this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
+    })
 }
 
 getJobdetails()

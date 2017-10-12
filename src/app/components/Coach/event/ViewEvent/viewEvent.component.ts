@@ -21,6 +21,7 @@ export class ViewEventComponent implements OnInit {
 
     public Event : CreateEvent[];
     public termCondition = [];
+    public eligibility1 = [];
     public ticket = [];
     public imageurl : string;
     public participantlist : any;
@@ -65,6 +66,7 @@ editEvent()
    let otherdetails = [];
    let ticket_details = [];
    let term_cond = [];
+   let eligibility1 = [];
 
 
 this._eventservices.getEventDetails(this.id).subscribe(res => 
@@ -82,6 +84,11 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
         this.termcondition(res[key]);
         res['terms_cond1'] = "";
      }
+     else if(key == 'eligibility1')
+     {
+        this.eligibility(res[key]);
+        res['eligibility1']= " ";
+     }
      else
      {
         
@@ -89,21 +96,35 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
         otherdetails.push(res);
      } 
 
-    } 
+    }   
 
     this.viewEvent = res ;
     this.term_cond1 = term_cond; 
     this.ticket_details1 = ticket_details
     this.otherdetails1 = otherdetails;
-    //alert(JSON.stringify(this.viewEvent));
     });
    
 }
 
-Create(eventt): void  { 
 
- alert(JSON.stringify(eventt));
+eligibility(eligibility)
+{
+  if(eligibility) 
+  {
+  var data = JSON.parse(eligibility);
+  var lenght = data.length;
+  for(var i =0 ;i<lenght; i++)
+  {
+    this.eligibility1.push(data[i]);
+  }
+  }
+  else
+  {
+      this.eligibility1.push({'criteria':''});
+  }
 }
+
+
 
 termcondition(term_cond)
 {
@@ -119,15 +140,11 @@ for(var i =0 ;i<lenght; i++)
 else
 {
     this.termCondition.push({'term':''});
-  
 }
-
 }
 
 ticketdetails(ticket_data)
 {
-
- //alert(JSON.stringify(ticket_data));
   if(ticket_data)
   {
   var tdata = JSON.parse(ticket_data);

@@ -23,11 +23,14 @@ public datafailure : boolean;
 public notresponse : boolean;
 public Event : CreateEvent[];
 public termCondition = [];
+public eligibility = [];
 public ticket = [];
+
 viewEvent: CreateEvent = new CreateEvent();
 public userid = localStorage.getItem('currentUserid');
 public imageurl : string;
 id: any;
+sports: any[];
 
 constructor(private _eventservices : createEventServices, private _activatedRoute: ActivatedRoute,private router: Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
@@ -39,6 +42,7 @@ ngOnInit()
 {
 this._activatedRoute.params.subscribe(params => { this.id = +params['id'];});
 this.editEvent();
+this.Sportlist();
 }
 
 
@@ -64,6 +68,10 @@ this._eventservices.getEventDetails(this.id).subscribe(res =>
      {
         this.oldtermcond(res[key]);
      }
+     else if(key == 'eligibility1')
+     {
+       this.Eligibility(res[key]);
+     }
      else
      {
         otherdetails.push(res);
@@ -82,11 +90,8 @@ if(inputValue)
 }else
 {
     this.viewEvent.ticket_detail =  JSON.stringify(this.ticket);
-
 	//this.viewEvent.ticket_detail =  inputValue;
 }
-
-//alert(this.viewEvent.ticket_detail);
 
 var termvalue = (<HTMLInputElement>document.getElementById("terms_cond_value")).value;
 if(termvalue)
@@ -97,13 +102,24 @@ if(termvalue)
 	this.viewEvent.terms_cond1 =  JSON.stringify(this.termCondition);
 }
 
+var eligib = (<HTMLInputElement>document.getElementById("eligi_value")).value;
+if(eligib)
+{
+
+	this.viewEvent.eligibility1 =  eligib;
+}else
+{
+	this.viewEvent.eligibility1 =  JSON.stringify(this.eligibility);
+}
+
+// alert(this.viewEvent.eligibility1);
+
 var startdate = (<HTMLInputElement>document.getElementById("startD")).value;
 var enddate = (<HTMLInputElement>document.getElementById("endD")).value;
 
 this.viewEvent.start_date = startdate;
 this.viewEvent.end_date = enddate;
 
-//alert(JSON.stringify(event));
 this._eventservices.saveEvent(event).subscribe(
                 data => 
                 { 
@@ -121,14 +137,12 @@ this._eventservices.saveEvent(event).subscribe(
                 }
                 },
                 err => 
-                { 
-
+                {
                 this.myVar = false;
                 this.datafailure = true;
                 setTimeout(function(){
                 this.datafailure=false;
                 }.bind(this),3000);
-                //alert("An Error Occured While Processing Your Request")
                 }
                 );
 }
@@ -155,7 +169,30 @@ else
 {
     this.termCondition.push({'term':''});
 }  
-}     
+}  
+
+addNewEligibility()
+{
+  this.eligibility.push({"criteria" :''})
+}
+
+Eligibility(eligibility)
+{
+  if(eligibility)
+  {
+    var edata = JSON.parse(eligibility);
+    var elength = edata.length;
+    for(var k = 0 ; k<elength;k++)
+    {
+      this.eligibility.push(edata[k]);
+    }
+  }
+  else
+  {
+   this.eligibility.push({"criteria":''});
+  }
+}
+
 oldticket(ticket_data)
 {
  if(ticket_data)
@@ -187,18 +224,16 @@ oldticket(ticket_data)
     }
   }
 
-
+Sportlist() {
+    this._eventservices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
+      })
+}
 
 _handleReaderLoaded(readerEvt) {
      var binaryString = readerEvt.target.result;
            // this._event.uploadimage(btoa(binaryString));
-
-  this._eventservices.uploadimage(btoa(binaryString)).subscribe( data => { this.viewEvent.image = data ; 
-
+  this._eventservices.uploadimage(btoa(binaryString)).subscribe( data => { this.viewEvent.image = data;
   this.myVar = false; }
-    )
-    
-
-    
+    ) 
 } 
 }
