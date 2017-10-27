@@ -7,7 +7,6 @@ import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
 
 
-
 @Component({
   selector: 'app-editjob',
   templateUrl: './editJob.component.html',
@@ -93,8 +92,6 @@ handleFileSelect(evt){
        
     }
   }
-
-
 
   _handleReaderLoaded(readerEvt) {
 

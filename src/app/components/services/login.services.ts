@@ -29,7 +29,7 @@ constructor(private _http: Http,@Inject(APP_CONFIG) private _config: IAppConfig,
     this.baseUrl = this._config.apBaseUrl;                     
 }
 saveEvent(events:CreateEvent) {
-       return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events, xhrHeaders).map(res =>  res.json()).share();      
+       return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events).map(res =>  res.json()).share();      
     }
 
  Sportlist() {
@@ -51,14 +51,22 @@ profiledata(id: String , prof_id :string) : Observable<any>
 
 }
 
+Socialloginpromise(login: User): Promise<any> {
+  return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login).toPromise()
+      .then(response => {
+          return response.json();
+      })
+      .catch(err => err);
+}
+
 public Sociallogin(login: User) 
 {
-    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login,xhrHeaders).map((res => res.json()));
+    return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login).map((res => res.json()));
 }
 
 public JoinClass(classdata:Class)
 {
-  return this._http.post(this.baseUrl + "/connect_user.php?act=add_joining_code", classdata, xhrHeaders)
+  return this._http.post(this.baseUrl + "/connect_user.php?act=add_joining_code", classdata)
             .map((res => res.json()));
 }
 

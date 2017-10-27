@@ -2,6 +2,7 @@ import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../model/login.model';
+import { NotificationService } from '../../services/notification.service'
 import { loginServices } from '../../services/login.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
@@ -31,7 +32,7 @@ LatestResult = [];
 final : any;
 Achivement : any;
  
-constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig)
+constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService)
 {
   this.imageurl = _config.dir_url;
 }
@@ -40,8 +41,10 @@ ngOnInit()
 {
   this.prof_id = localStorage.getItem('prof_id');
   this.user_id = localStorage.getItem('currentUserid');
+  this.getUserData();
+  this._notificationService.popToastSuccess('Welcome', 'Hello Athlete ');
 
-	this.getUserData();
+
 }
 
 getUserData()

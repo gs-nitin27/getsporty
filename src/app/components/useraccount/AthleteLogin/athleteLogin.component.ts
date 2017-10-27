@@ -40,13 +40,23 @@ console.log('Initializing Facebook');
     });
 
 }
+
+
+// load() {
+//   this._loginServices.Socialloginpromise(this.user).then(res => {
+//       this.hotels = res;
+      
+//     },
+//     err => err);
+// }
   
   signIn(provider){
     this.sub = this._auth.login(provider).subscribe(
       (data) => 
       {
     this.user=data;
-    this._loginServices.Sociallogin(this.user).subscribe( 
+    // this._loginServices.Sociallogin(this.user).subscribe( 
+    this._loginServices.Socialloginpromise(this.user).then(
    (data) => 
    { 
    if(data != null){ 
@@ -85,7 +95,10 @@ console.log('Initializing Facebook');
                       }else
                       {
 
-                          this.router.navigate(["/athletedashboard"]);
+                          this.router.navigate(["/athletedashboard"]).then(
+
+                            
+                          );
                       }
                     }
                   }
