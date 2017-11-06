@@ -21,6 +21,7 @@ import { IAppConfig }  from '../../app.iconfig';
 @Injectable()
 export class loginServices {
     public baseUrl: string;
+    public userProfileData :any;
     public sportlistUrl : string;
     public loginurl     : string;
 
@@ -45,11 +46,29 @@ public login(login: User) {
          ;
     }
 
+Athleteprofiledata(id: String , prof_id :string)
+{       
+   this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => res.json().data).subscribe(
+          (data) => {
+            
+            localStorage.setItem('prof_data',JSON.stringify(data));
+            // this.userProfileData = data;
+            //  this.athProfileData(data)
+            // this.ViewProfileData();
+          
+          }, (err) => console.log("Error" + err),
+      );
+       
+          return "1";
+    }
+
 profiledata(id: String , prof_id :string) : Observable<any>
 {       
    return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
 
 }
+
+
 
 Socialloginpromise(login: User): Promise<any> {
   return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login).toPromise()
@@ -112,6 +131,19 @@ public classdata(classid:any , student_id:any)
 public getClassFeeList(classid:any , student_id:any)
 {
   return this._http.get(this.baseUrl + "/accountingController.php?act=getClassFeeList&classid="+classid+"&student_id="+student_id).map((res => res.json()));
+}
+
+// athProfileData(profdata :any)
+// {
+  
+// this.userProfileData = profdata;
+// alert(JSON.stringify(this.userProfileData));
+// }
+ViewProfileData()
+{
+   
+ // return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
+  return  localStorage.getItem('prof_data');
 }
 
 }

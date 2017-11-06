@@ -9,7 +9,6 @@ import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
  
- 
 declare var $:any;    
 
 @Component({
@@ -30,14 +29,17 @@ public feepin : any ;
 email : any;
 contact_no : any;
 public user_id : any;
+public prof_id :any;
 AthleteUser : User = new User();
 public classlist : any;
 user : User = new User();
 classdata : Class = new Class();
+testdata : any;
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig, private _notificationService :NotificationService)
 {
   this.user_id = localStorage.getItem('currentUserid');
+  this.prof_id = localStorage.getItem('prof_id');
   this.imageurl = _config.dir_url;
   this._notificationService.popToastSuccess('Welcome', 'Hello Athlete ');
 }
@@ -90,10 +92,8 @@ JoinClass()
      this.myVar = true;
      this.classdata.user_info = this.AthleteUser;
      this.classdata.deviceType = "2";
-     //alert(JSON.stringify(this.classdata));
       this._accountService.JoinClass(this.classdata).subscribe((result) => 
       { 
-
       if(result.status == "1")
       {
         this.myVar = false;
@@ -127,6 +127,14 @@ getClassList()
   });
 }
 
+editProfile()
+{
+var  data =  this._accountService.Athleteprofiledata(this.user_id,this.prof_id);
+ if(data)
+ {
+ this._router.navigate(['./userProfile']);
+ }  
+}
 
 errorHandler(event,image:string) 
 {

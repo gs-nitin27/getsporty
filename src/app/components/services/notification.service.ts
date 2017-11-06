@@ -19,7 +19,7 @@ export class NotificationService {
    */
   constructor(private _toasterService: ToasterService){}
 
-  private toasterconfig : ToasterConfig =  new ToasterConfig({ positionClass: "toast-bottom-left", showCloseButton: true, tapToDismiss: true,  timeout: 5,});
+  private toasterconfig : ToasterConfig =  new ToasterConfig({ positionClass: "toast-bottom-left", showCloseButton: true, tapToDismiss: true,  timeout: 10,});
 
         // private toast: Toast = {
         //     type: 'success',

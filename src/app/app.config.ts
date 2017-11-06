@@ -6,10 +6,10 @@ export let APP_CONFIG = new OpaqueToken("app.config");
 export const AppConfig: IAppConfig = {  
 
 
-    apBaseUrl: "http://localhost/testingapp",
+    apBaseUrl: "https://localhost/testingapp",
     applocalhostUrl: "http://getsporty.in/testingapp",
     localimageurl :"http://getsporty.in/staging/uploads/",
-    dir_url:"http://localhost/staging/uploads/",
+    dir_url:"https://localhost/staging/uploads/",
 
      loginUrl :  "http://localhost/testingapp/angularapi.php?act=angulartest",
      viewcontenturl: "http://localhost/testingapp/angularapi.php?act=contentangularlex",

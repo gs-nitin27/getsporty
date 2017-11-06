@@ -49,9 +49,11 @@ ngOnInit()
 
 getUserData()
 {
- this._accountService.profiledata(this.user_id,this.prof_id).subscribe((result) => 
- { 
+//    var result =   this._accountService.ViewProfileData();
+//  alert(result);
 
+this._accountService.profiledata(this.user_id,this.prof_id).subscribe((result) => 
+{ 
      for(let key in result)
      {
        if(key == 'Achivement')
@@ -90,7 +92,8 @@ getUserData()
 
        }
      }
-  });
+});
+  
 }
 
 addLatestResult()

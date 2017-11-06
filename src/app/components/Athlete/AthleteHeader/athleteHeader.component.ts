@@ -28,9 +28,9 @@ ngOnInit()
 logout()
 {
     localStorage.clear();
-	//this._router.navigate(["/login"]);
+	this._router.navigate(["/login"]);
 	
-	window.location.replace('/login');
+	// window.location.replace('/login');
 
 }
 }
