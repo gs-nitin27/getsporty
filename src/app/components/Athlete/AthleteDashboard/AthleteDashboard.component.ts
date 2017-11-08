@@ -21,7 +21,7 @@ export class AthleteDashboardComponent implements OnInit
 {
 public src : string;
 public imageurl : any;
-public myVar : boolean;
+public myVar : boolean = true;
 public joined : boolean;
 public notresponse : boolean;
 public cheakpayment : any;
@@ -38,6 +38,7 @@ testdata : any;
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private _activatedRoute: ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig, private _notificationService :NotificationService)
 {
+  this.myVar= true;
   this.user_id = localStorage.getItem('currentUserid');
   this.prof_id = localStorage.getItem('prof_id');
   this.imageurl = _config.dir_url;
@@ -46,7 +47,7 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 
 ngOnInit()
 {
-  this.myVar= false;
+  this.myVar= true;
   this.AthletedashboardData();
 }
 
@@ -124,10 +125,11 @@ getClassList()
   if(res.status == "1")
   {
      this.classlist = res.data;
-     
+     this.myVar= false;
   }
-  this.myVar= true;
+  this.myVar= false;
   });
+  
 }
 
 editProfile()
