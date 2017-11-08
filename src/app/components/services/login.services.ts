@@ -42,7 +42,7 @@ public login(login: User) {
         let headers      = new Headers({ 'Content-Type': 'application/json' }); 
         let options       = new RequestOptions({ headers: headers });
         let url = this.baseUrl + "/angularapi.php?act=angulartest" + "&email=" + login['email'] + "&password=" + login['password'];
-       return this._http.get(url,options).map((res => res.json()))
+       return this._http.get(url).map((res => res.json()))
          ;
     }
 
