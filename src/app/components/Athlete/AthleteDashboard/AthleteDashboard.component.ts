@@ -46,6 +46,7 @@ constructor(private fb: FormBuilder,private _accountService: loginServices,priva
 
 ngOnInit()
 {
+  this.myVar= false;
   this.AthletedashboardData();
 }
 
@@ -123,6 +124,7 @@ getClassList()
   if(res.status == "1")
   {
      this.classlist = res.data;
+     this.myVar= true;
   }
   });
 }
