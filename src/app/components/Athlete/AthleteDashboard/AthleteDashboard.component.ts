@@ -124,8 +124,9 @@ getClassList()
   if(res.status == "1")
   {
      this.classlist = res.data;
-     this.myVar= true;
+     
   }
+  this.myVar= true;
   });
 }
 
