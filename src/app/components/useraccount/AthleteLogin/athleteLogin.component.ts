@@ -28,9 +28,11 @@ export class AthleteLoginComponent implements OnDestroy {
   public myVar : boolean;
   public loginverify : boolean;
   public prof_name : any;
+  public  lode : boolean ;
   
 constructor(public _auth: AuthService,private fb: FacebookService , private _loginServices:loginServices, private router:Router, private _notificationService :NotificationService)
 { 
+ this.lode = true;
 
 console.log('Initializing Facebook');
 
@@ -95,10 +97,8 @@ console.log('Initializing Facebook');
                       }else
                       {
 
-                          this.router.navigate(["/athletedashboard"]).then(
-
-                            
-                          );
+                          this.router.navigate(["/athletedashboard"])
+                          this.lode = false;
                       }
                     }
                   }
