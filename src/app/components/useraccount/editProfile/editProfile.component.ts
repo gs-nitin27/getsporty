@@ -15,6 +15,7 @@ declare var $:any;
 
 export class EditProfileComponent implements OnInit
 {
+public  myVar : boolean;
 @Input() userdata: User;
 user : User = new User();
 headerdetails : User = new User();
@@ -25,6 +26,8 @@ otherCertification  = [];
 sportEducation  = [];
 experienceAsPlayer = [];
 workExperience = [];
+final:any;
+dt:any;
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
 ngOnInit()
@@ -83,6 +86,11 @@ for(let key in result)
 });
 }
 
+
+AddEducationdata()
+{
+this.formalEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});  
+}
 formalEducationdata(formal_data)
 {
 if(formal_data)
@@ -93,6 +101,15 @@ if(formal_data)
      this.formalEducation.push(formal_data[i]);
   }
 }
+else
+{
+  this.formalEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});  
+}
+}
+
+addSportEdu()
+{
+  this.sportEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});
 }
 
 sportEducationdata(sport_data)
@@ -105,8 +122,17 @@ sportEducationdata(sport_data)
      this.sportEducation.push(sport_data[j]);
    }
   }
+  else
+  {
+    this.sportEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+  }
 }
 
+addotherCerti()
+{
+  this.otherCertification.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+
+}
 otherCertificationdata(other_data)
 {
   if(other_data)
@@ -116,7 +142,15 @@ otherCertificationdata(other_data)
   {
     this.otherCertification.push(other_data[i]);
   }
+  }else
+  {
+    this.otherCertification.push({'degree':'','organisation':'','stream':'','courseDuration':''});
   }
+}
+
+AddWorkExp()
+{
+  this.workExperience.push({'designation':'','organisationName':'','description':'','dateFrom':'','dateTo':''});
 }
 
 workExperiencedata(work_data)
@@ -128,24 +162,49 @@ workExperiencedata(work_data)
     {
      this.workExperience.push(work_data[i]);
     }
+  }else{
+    this.workExperience.push({'designation':'','organisationName':'','description':'','dateFrom':'','dateTo':''});
   }
 }
 
+experience_as_Player()
+{
+  this.experienceAsPlayer.push({'designation':'','organisationName':'','description':'','dateFrom':'','dateTo':''});
+}
 experienceAsPlayerdata(exp_data)
 {
-  if(exp_data)
-  {
-    var exp_length = exp_data.length;
-    for(var i =0 ; i<exp_length ; i++)
-    {
-     this.experienceAsPlayer.push(exp_data[i]);
-    }
-  }
+   if(exp_data != " ")
+   {
+      var exp_length = exp_data.length;
+      for(var k=0 ; k<exp_length;k++)
+      {
+       this.experienceAsPlayer.push(exp_data[k]);
+      } 
+   }  
+   else
+   { 
+    this.experienceAsPlayer.push({'designation':'','organisationName':'','description':'','dateFrom':'','dateTo':''});
+   }
 }
 
+splitdate(date_split)
+{
+ this.dt = date_split.split("to");
+ //alert(this.dt[1]);
+}
 
 Create(user)
 {
-	alert(JSON.stringify(user));
+  this.myVar = true;
+  this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
+
+   alert(JSON.stringify(this.final));
+  console.log(JSON.stringify(this.final));
+
+   this._accountService.updateProfileData(this.final).subscribe( res => 
+   {
+   this.myVar = false;
+   });
+  
 }
 }

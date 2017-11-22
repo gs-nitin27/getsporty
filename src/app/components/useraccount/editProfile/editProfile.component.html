@@ -1,4 +1,13 @@
 <app-dashboard></app-dashboard>
+
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+    <div class="loader">
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
+    </div>
+     </div>
+
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 <div class="w3-row-padding">
 <div class="w3-third">
@@ -68,64 +77,199 @@
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Formal Educations</h2>
     <div *ngFor = 'let formalEducations of formalEducation' >
     <div class="w3-container">
-    <h5 class="w3-opacity"><b>Degree Name -</b> {{formalEducations.degree}} </h5>
-    <h6 class="w3-text-teal"><b>Organisation Name -</b>{{formalEducations.organisation}}</h6>
-    <h6 class="w3-text-teal"><b>Stream  -</b> {{formalEducations.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{formalEducations.courseDuration}}</h6>
+    
+    <div class="form-group">
+    <label>Degree Name</label>
+    <input type="text" class="form-control" name="degree" [(ngModel)]="formalEducations.degree"  value="{{formalEducations.degree}}" >
+    </div> 
+
+    <div class="form-group">
+    <label>Organisation Name</label>
+    <input type="text" class="form-control" name="organisation"  [(ngModel)]="formalEducations.organisation" value="{{formalEducations.organisation}}" >
+    </div> 
+
+    <div class="form-group">
+    <label>Stream</label>
+    <input type="text" class="form-control" name="stream" [(ngModel)]="formalEducations.stream"  value="{{formalEducations.stream}}" >
+    </div> 
+    {{splitdate(formalEducations.courseDuration)}}
+    <div class="form-group">
+    <label>Course Duration </label><br>
+    <label>From- </label>
+    <input type="text" class="form-control" name="courseDuration"   value="{{dt[0]}}" >
+ 
+  </div> 
+
+  <div class="form-group">
+      <label>To - </label>
+      <input type="text" class="form-control" name="courseDuration1"  value="{{dt[1]}}" > 
+    </div> 
+  <hr>
+    </div>
     <hr>
     </div>
-    </div>
+    
+        
+    <div class="p-container">
+        <input  style="outline: none;" type="submit" (click)="AddEducationdata()" class="btn btn-primary" value="Add Formal Education" >
+        <div class="clear"> 
+        </div>
+        </div>
+    
+
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Sport Educations</h2>
     <div *ngFor = 'let sportEducations of sportEducation'> 
     <div class="w3-container">
-    <h5 class="w3-opacity"><b>Degree Name -</b> {{sportEducations.degree}} </h5>
-    <h6 class="w3-text-teal"><b>Organisation Name -</b>{{sportEducations.organisation}}</h6>
-    <h6 class="w3-text-teal"><b>Stream  -</b> {{sportEducations.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{sportEducations.courseDuration}}</h6>
-    <hr>
+    <div class="form-group">
+    <label>Degree Name</label>
+    <input type="text" class="form-control" name="courseDuration" [(ngModel)]="sportEducations.degree"  value="{{sportEducations.degree}}" >
+    </div> 
+            
+    <div class="form-group">
+    <label>Organisation Name</label>
+    <input type="text" class="form-control" name="courseDuration" [(ngModel)]="sportEducations.organisation"  value="{{sportEducations.organisation}}" >
+    </div> 
+
+    <div class="form-group">
+    <label>Stream</label>
+    <input type="text" class="form-control" name="courseDuration" [(ngModel)]="sportEducations.stream"  value="{{sportEducations.stream}}" >
+    </div> 
+                   
+    <div class="form-group">
+    <label>Course Duration</label>
+    <input type="text" class="form-control" name="courseDuration" [(ngModel)]="sportEducations.courseDuration"  value="{{sportEducations.courseDuration}}" >
+    </div>        
+
+     <hr> 
     </div>
     </div>
+    <div class="p-container">
+        <input  style="outline: none;" type="submit" (click)="addSportEdu()" class="btn btn-primary" value="Add Sport Education" >
+        <div class="clear"> 
+        </div>
+        </div>
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Other Educations</h2>
     <div *ngFor = 'let otherCertifications of otherCertification'> 
     <div class="w3-container">
-    <h5 class="w3-opacity"><b>Degree Name -</b> {{otherCertifications.degree}} </h5>
-    <h6 class="w3-text-teal"><b>Organisation Name -</b>{{otherCertifications.organisation}}</h6>
-    <h6 class="w3-text-teal"><b>Stream  -</b> {{otherCertifications.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{otherCertifications.courseDuration}}</h6>
+
+        <div class="form-group">
+            <label>Degree Name</label>
+            <input type="text" class="form-control" name="courseDuration" [(ngModel)]="otherCertifications.degree"  value="{{otherCertifications.degree}}" >
+            </div> 
+                    
+            <div class="form-group">
+            <label>Organisation Name</label>
+            <input type="text" class="form-control" name="courseDuration"  [(ngModel)]="otherCertifications.organisation" value="{{otherCertifications.organisation}}" >
+            </div> 
+        
+            <div class="form-group">
+            <label>Stream</label>
+            <input type="text" class="form-control" name="courseDuration" [(ngModel)]="otherCertifications.stream"  value="{{otherCertifications.stream}}" >
+            </div> 
+                           
+            <div class="form-group">
+            <label>Course Duration</label>
+            <input type="text" class="form-control" name="courseDuration"  [(ngModel)]="otherCertifications.courseDuration" value="{{otherCertifications.courseDuration}}" >
+            </div> 
+
     <hr>
     </div>
     </div>
+    <div class="p-container">
+        <input  style="outline: none;" type="submit" (click)="addotherCerti()" class="btn btn-primary" value="Add Other Certification" >
+        <div class="clear"> 
+        </div>
+        </div>
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience </h2>
     <div *ngFor = 'let workExperiences of workExperience'> 
     <div class="w3-container">
-    <h5 class="w3-opacity"><b>Designation Name -</b> {{workExperiences.designation}} </h5>
-    <h6 class="w3-text-teal"><b>Organisation Name -</b>{{workExperiences.organisationName}}</h6>
-    <h6 class="w3-text-teal"><b>Description  -</b> {{workExperiences.description}}</h6>
-    <h6 class="w3-text-teal"><b>From -</b> {{workExperiences.dateFrom}}</h6>
-    <h6 class="w3-text-teal"><b>To -</b> {{workExperiences.dateTo}}</h6>
+      
+        <div class="form-group">
+        <label>Designation Name</label>
+        <input type="text" class="form-control" name="designation" [(ngModel)]="workExperiences.designation"  value="{{workExperiences.designation}}" >
+        </div> 
+
+        <div class="form-group">
+        <label>Organisation Name</label>
+        <input type="text" class="form-control" name="organisationName"  [(ngModel)]="workExperiences.organisationName" value="{{workExperiences.organisationName}}" >
+        </div> 
+                    
+            <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="workExperiences.description"  value="{{workExperiences.description}}" >
+            </div> 
+        
+            <div class="form-group">
+            <label>From</label>
+            <input type="date" class="form-control" name="dateFrom" [(ngModel)]="workExperiences.dateFrom"  value="{{workExperiences.dateFrom}}" >
+            </div> 
+                           
+            <div class="form-group">
+            <label>To</label>
+            <input type="date" class="form-control" name="dateTo"  [(ngModel)]="workExperiences.dateTo" value="{{workExperiences.dateTo}}" >
+        </div>   
+
     <hr>
     </div>
+    <hr>
     </div>
+    
+    <div class="p-container">
+        <input  style="outline: none;" type="submit" (click)="AddWorkExp()" class="btn btn-primary" value="Add Work Experience" >
+        <div class="clear"> 
+        </div>
+        </div>
+
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experience As Player </h2>
+    
     <div *ngFor = 'let experienceAsPlayers of experienceAsPlayer'> 
     <div class="w3-container">
-    <h5 class="w3-opacity"><b>Designation Name -</b> {{experienceAsPlayers.designation}} </h5>
-    <h6 class="w3-text-teal"><b>Organisation Name -</b>{{experienceAsPlayers.organisationName}}</h6>
-    <h6 class="w3-text-teal"><b>Description  -</b> {{experienceAsPlayers.description}}</h6>
-    <h6 class="w3-text-teal"><b>From -</b> {{experienceAsPlayers.dateFrom}}</h6>
-    <h6 class="w3-text-teal"><b>To -</b> {{experienceAsPlayers.dateTo}}</h6>
+     
+        <div class="form-group">
+            <label>Degree Name</label>
+            <input type="text" class="form-control" name="designation" [(ngModel)]="experienceAsPlayers.designation"  value="{{experienceAsPlayers.designation}}" >
+            </div> 
+                    
+            <div class="form-group">
+            <label>Organisation Name</label>
+            <input type="text" class="form-control" name="organisationName"  [(ngModel)]="experienceAsPlayers.organisationName" value="{{experienceAsPlayers.organisationName}}" >
+            </div> 
+        
+            <div class="form-group">
+            <label>Stream</label>
+            <input type="text" class="form-control" name="description"  [(ngModel)]="experienceAsPlayers.description" value="{{experienceAsPlayers.description}}" >
+            </div> 
+                           
+            <div class="form-group">
+            <label>From</label>
+            <input type="date" class="form-control" name="dateFrom" [(ngModel)]="experienceAsPlayers.dateFrom"  value="{{experienceAsPlayers.dateFrom}}" >
+            </div> 
+            <div class="form-group">
+            <label>To</label>
+            <input type="date" class="form-control" name="dateTo"  [(ngModel)]="experienceAsPlayers.dateTo" value="{{experienceAsPlayers.dateTo}}" >
+            </div> 
+
     <hr>
     </div>
+    <hr>
+    </div>
+   
+    <div class="p-container">
+    <input  style="outline: none;" type="submit" (click)="experience_as_Player()" class="btn btn-primary" value="Experience As Player" >
+    <div class="clear"> 
     </div>
     </div>
+
+    </div>
+
     </div>
     </div>
     <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(user)" class="btn btn-primary" value="Submit" >

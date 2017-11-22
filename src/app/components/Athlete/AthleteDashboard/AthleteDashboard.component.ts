@@ -55,7 +55,7 @@ AthletedashboardData()
 {
   this._accountService.AthletedashboardData(this.user_id).subscribe( 
   result => { 
-    // alert(JSON.stringify(result));
+     alert(JSON.stringify(result));
   this.AthleteUser = result; 
   this.email = result.email;
   this.contact_no =result.contact_no;
@@ -129,7 +129,7 @@ getClassList()
   }
   this.myVar= false;
   });
-  
+  alert("class");
 }
 
 editProfile()

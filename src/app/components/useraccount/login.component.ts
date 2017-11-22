@@ -22,7 +22,7 @@ ngOnInit()
     this.myVar = false;
     if(this.userid)
     {
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/profile"]);
     }
 }
  constructor(private fb: FormBuilder,
@@ -60,9 +60,9 @@ login() : void {
                     localStorage.setItem('user_image',data.user_image);
                     localStorage.setItem('prof_id' , data.prof_id);
                     }
-                      this.router.navigate(["/home"]);
+                      this.router.navigate(["/profile"]);
                       }
-                         else
+                         else 
                          { 
                            this.myVar = false;
                            this.invalid=true;
