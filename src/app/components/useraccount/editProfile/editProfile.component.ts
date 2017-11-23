@@ -28,6 +28,11 @@ experienceAsPlayer = [];
 workExperience = [];
 final:any;
 dt:any;
+dt0:any;
+dt1:any;
+datesplit : any;
+mergedata : any;
+formalEducations :any;
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
 ngOnInit()
@@ -190,21 +195,42 @@ experienceAsPlayerdata(exp_data)
 splitdate(date_split)
 {
  this.dt = date_split.split("to");
- //alert(this.dt[1]);
+ this.dt0 = this.dt[0];
+ this.dt1 = this.dt[1];
+}
+
+mergedate($event) {
+   var split = $event.target.id.split("-");
+   var first = $("#from-"+split[1]).val();
+   var second = $("#to-"+split[1]).val();
+   var add_date = first+" to "+second;
+   //$("#cd"+split[1]).val(add_date);
+   (<HTMLInputElement>document.getElementById("cd"+split[1])).value = add_date;
+}
+
+
+testMethod($event) 
+{
+  this.formalEducations.courseDuration  = $event;
 }
 
 Create(user)
 {
   this.myVar = true;
-  this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
 
-   alert(JSON.stringify(this.final));
-  console.log(JSON.stringify(this.final));
+  alert(JSON.stringify(this.formalEducation));
+  console.log(JSON.stringify(this.formalEducation));
 
-   this._accountService.updateProfileData(this.final).subscribe( res => 
-   {
-   this.myVar = false;
-   });
+
+  // this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
+
+  //  alert(JSON.stringify(this.final));
+  // console.log(JSON.stringify(this.final));
+
+  //  this._accountService.updateProfileData(this.final).subscribe( res => 
+  //  {
+    this.myVar = false;
+  //  });
   
 }
 }

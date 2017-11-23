@@ -27,7 +27,7 @@ import { ClassAccounting } from './components/Athlete/ClassAccounting/ClassAccou
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component'
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
-
+import {MessageComponent} from './components/coach/message/message.component';
 import { AtheleteDataView } from './components/services/athlete.resolve.services';
  
  const router:Routes = [
@@ -57,7 +57,7 @@ import { AtheleteDataView } from './components/services/athlete.resolve.services
       {path : 'athleteheader' , component:AthleteHeaderComponent, canActivate:[AthleteCheak]},
       {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]},
       {path : 'classaccounting/:id' , component: ClassAccounting , canActivate:[AthleteCheak]},
-      {path : 'viewclass/:classid' , component : viewClass , canActivate:[AthleteCheak]}
-
+      {path : 'viewclass/:classid' , component : viewClass , canActivate:[AthleteCheak]},
+      {path : 'coach/message',component:MessageComponent,canActivate:[Guard]}
 ];
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
