@@ -42,9 +42,9 @@ import { FacebookModule } from 'ngx-facebook';
 import { NotFoundComponent } from './not-found.component';
 import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
 import { Classdata } from './components/services/class.services';
-import {MessageComponent} from './components/coach/message/message.component';
+import {MessageComponent} from './components/Coach/message/message.component';
 
-
+  
 enableProdMode();
 let providers = 
 {
