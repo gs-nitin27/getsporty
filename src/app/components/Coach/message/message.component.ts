@@ -12,10 +12,10 @@ declare var $:any;
 	 styleUrls : ['./message.component.css'],
 })
 
-
 export class MessageComponent implements OnInit
 {
+	ngOnInit()
+	{
 
-    ngOnInit(){}
-
+	}
 }

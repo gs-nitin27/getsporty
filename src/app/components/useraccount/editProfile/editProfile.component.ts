@@ -12,7 +12,6 @@ declare var $:any;
 	 styleUrls : ['./editProfile.component.css'],
 })
 
-
 export class EditProfileComponent implements OnInit
 {
 public  myVar : boolean;

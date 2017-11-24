@@ -40,12 +40,10 @@ constructor(private _event: createEventServices,private router: Router,private h
   @Input() events: CreateEvent;
   responseStatus:Object= [];
   ngOnInit() {
-
   this.myVar = false;
   this.Sportlist();
   this.events = new CreateEvent();
   this.events.id = "0";
-  
   }
  
 

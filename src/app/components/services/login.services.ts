@@ -30,12 +30,18 @@ constructor(private _http: Http,@Inject(APP_CONFIG) private _config: IAppConfig,
     this.baseUrl = this._config.apBaseUrl;                     
 }
 saveEvent(events:CreateEvent) {
-       return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events).map(res =>  res.json()).share();      
+       return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events).map(res =>  res.json());      
     }
 
  Sportlist() {
     return this._http.get(this.baseUrl + "/angularapi.php?act=sportlisting")
       .map(res => res.json())
+  }
+ 
+  professionList()
+  {
+   return this._http.get(this.baseUrl + "/getListingController.php?act=professionlisting")
+   .map(res => res.json().data);
   }
 
 public login(login: User) {
@@ -65,10 +71,7 @@ Athleteprofiledata(id: String , prof_id :string)
 profiledata(id: String , prof_id :string) : Observable<any>
 {       
    return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
-
 }
-
-
 
 Socialloginpromise(login: User): Promise<any> {
   return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login).toPromise()
@@ -141,9 +144,13 @@ public getClassFeeList(classid:any , student_id:any)
 // }
 ViewProfileData()
 {
-   
  // return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
   return  localStorage.getItem('prof_data');
+}
+
+Registration(user : any)
+{
+return this._http.post(this.baseUrl + "/create_database.php?act=registration", user).map(res =>  res.json()); 
 }
 
 }
