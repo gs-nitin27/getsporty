@@ -27,7 +27,7 @@ import { ClassAccounting } from './components/Athlete/ClassAccounting/ClassAccou
 import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athleteHeader.component'
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
-import {MessageComponent} from './components/coach/message/message.component';
+import {MessageComponent} from './components/Coach/message/message.component';
 import { AtheleteDataView } from './components/services/athlete.resolve.services';
  
  const router:Routes = [
