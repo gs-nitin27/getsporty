@@ -8,7 +8,7 @@
 <img src="assets/images/user.jpg" style="width:100%" alt="Avatar">
 </div>
 <div *ngIf='user.user_image'>
-<img src="{{imageurl}}profile/{{user.user_image}}" style="width:100%" alt="Avatar">
+<img src="{{user.user_image}}" style="width:100%" alt="Avatar">
 
 </div>
 <div class="w3-display-bottomleft w3-container w3-text-white">
@@ -35,7 +35,7 @@
         <div class="w3-light-grey w3-round-xlarge w3-small">
         </div>
         <h5 class="w3-opacity"><b>DOB</b></h5>
-        <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{user.dob}}</span></h6>
+        <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{user.dob | date}}</span></h6>
         <div class="w3-light-grey w3-round-xlarge w3-small">
         </div>
         <hr>
@@ -79,7 +79,8 @@
     <h5 class="w3-opacity"><b>Degree Name -</b> {{formalEducations.degree}} </h5>
     <h6 class="w3-text-teal"><b>Organisation Name -</b>{{formalEducations.organisation}}</h6>
     <h6 class="w3-text-teal"><b>Stream  -</b> {{formalEducations.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{formalEducations.courseDuration}}</h6>
+    <h6 class="w3-text-teal"><b>From -</b> {{formalEducations.dateFrom}}</h6>
+    <h6 class="w3-text-teal"><b>To -</b> {{formalEducations.dateTo}}</h6>
     <hr>
     </div>
     </div>
@@ -91,7 +92,8 @@
     <h5 class="w3-opacity"><b>Degree Name -</b> {{sportEducations.degree}} </h5>
     <h6 class="w3-text-teal"><b>Organisation Name -</b>{{sportEducations.organisation}}</h6>
     <h6 class="w3-text-teal"><b>Stream  -</b> {{sportEducations.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{sportEducations.courseDuration}}</h6>
+    <h6 class="w3-text-teal"><b>From -</b> {{sportEducations.dateFrom}}</h6>
+    <h6 class="w3-text-teal"><b>To -</b> {{sportEducations.dateTo}}</h6>
     <hr>
     </div>
     </div>
@@ -103,7 +105,8 @@
     <h5 class="w3-opacity"><b>Degree Name -</b> {{otherCertifications.degree}} </h5>
     <h6 class="w3-text-teal"><b>Organisation Name -</b>{{otherCertifications.organisation}}</h6>
     <h6 class="w3-text-teal"><b>Stream  -</b> {{otherCertifications.stream}}</h6>
-    <h6 class="w3-text-teal"><b>Course Duration -</b> {{otherCertifications.courseDuration}}</h6>
+    <h6 class="w3-text-teal"><b>From -</b> {{otherCertifications.dateFrom}}</h6>
+    <h6 class="w3-text-teal"><b>To -</b> {{otherCertifications.dateTo}}</h6>
     <hr>
     </div>
     </div>

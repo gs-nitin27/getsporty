@@ -1,13 +1,11 @@
 <app-dashboard></app-dashboard>
-
 <div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
-    <div class="loader">
+<div class="loader">
       <div class="inner one"></div>
       <div class="inner two"></div>
       <div class="inner three"></div>
-    </div>
-     </div>
-
+</div>
+</div>
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 <div class="w3-row-padding">
 <div class="w3-third">
@@ -15,7 +13,6 @@
 <div class="w3-display-container">
 <img src="assets/images/avatar_hat.jpg" style="width:100%" alt="Avatar">
 <div class="w3-display-bottomleft w3-container w3-text-white">
-
 
         <h2>{{user.name}}</h2>
         </div>
@@ -81,9 +78,11 @@
     <div class="form-group">
     <label>Degree Name</label>
     <input type="text" class="form-control" name="degree" [(ngModel)]="formalEducations.degree"  value="{{formalEducations.degree}}" >
-    </div> 
+   
+</div>
     <div class="form-group">
     <label>Organisation Name</label>
+
     <input type="text" class="form-control" name="organisation"  [(ngModel)]="formalEducations.organisation" value="{{formalEducations.organisation}}" >
     </div> 
 
@@ -91,18 +90,24 @@
     <label>Stream</label>
     <input type="text" class="form-control" name="stream" [(ngModel)]="formalEducations.stream"  value="{{formalEducations.stream}}" >
     </div> 
-    {{splitdate(formalEducations.courseDuration)}}
     <div class="form-group">
     <label>Course Duration </label><br>
     <label>From- </label>
-    <input type="date" class="form-control"  name="courseDuration"  id="from-{{i}}" (input)="mergedate($event)" value="{{dt0 | date:'yyyy-MM-dd'}}" >
-    
+    <input type="date" class="form-control"  name="courseDuration"  [(ngModel)]="formalEducations.dateFrom"  value="{{formalEducations.dateFrom}}" >    
 </div> 
+{{ischeakboxcheak(formalEducations.tillDate)}}
+<div [class]='dateToClass' id="formaledu_colaps{{i}}">
     <div class="form-group">
     <label>To - </label>
-    <input type="date" class="form-control" name="courseDuration1"  id="to-{{i}}" (input)="mergedate($event)" value="{{dt1 | date:'yyyy-MM-dd'}}" > 
+    <input type="date" class="form-control" name="courseDuration1"  [(ngModel)]="formalEducations.dateTo"  value="{{formalEducations.dateTo}}" > 
     </div>
-    <input type="hidden" class="form-control" name="courseDuration" id="cd{{i}}" [(ngModel)]="formalEducations.courseDuration" value="{{formalEducations.courseDuration}}" >
+    </div>
+
+   
+    <div class='checkbox col-sm-10'>
+    <label>
+     <input type='checkbox' id="formaledu_cheak{{i}}" data-toggle='collapse'  [attr.data-target]="'#formaledu_colaps'+i" aria-expanded='false' aria-controls='collapse3rdParty' [checked]="cheaktype">
+     Till Date</label></div> 
     <hr>
     </div>
     <hr>
@@ -111,12 +116,12 @@
         <input  style="outline: none;" type="submit" (click)="AddEducationdata()" class="btn btn-primary" value="Add Formal Education" >
         <div class="clear"> 
         </div>
-        </div>
+        </div><br>
 
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Sport Educations</h2>
-    <div *ngFor = 'let sportEducations of sportEducation'> 
+    <div *ngFor = 'let sportEducations of sportEducation let j = index'> 
     <div class="w3-container">
     <div class="form-group">
     <label>Degree Name</label>
@@ -131,18 +136,20 @@
     <div class="form-group">
     <label>Stream</label>
     <input type="text" class="form-control" name="courseDuration" [(ngModel)]="sportEducations.stream"  value="{{sportEducations.stream}}" >
-    </div> 
-    {{splitdate(sportEducations.courseDuration)}}         
+    </div>          
     <div class="form-group">
     <label>Course Duration</label><br>
     <label>From</label>
-    <input type="date" class="form-control" name="courseDuration"   value="{{dt[0] | date:'yyyy-MM-dd'}}" >
-    </div>    
-    
-    <div class="form-group">
-    <label>To</label>
-    <input type="date" class="form-control" name="courseDuration1"   value="{{dt[1] | date:'yyyy-MM-dd'}}" >
-    </div>
+    <input type="date" class="form-control"  name="courseDuration"  [(ngModel)]="sportEducations.dateFrom" value="{{sportEducations.dateFrom}}" >
+</div>  
+{{ischeakboxcheak(sportEducations.tillDate)}}  
+<div [class]='dateToClass' id="sportedu_colaps{{j}}">
+<div class="form-group">
+<label>To</label>
+<input type="date" class="form-control"  name="courseDuration"  [(ngModel)]="sportEducations.dateTo" value="{{sportEducations.dateTo}}" >    
+</div>
+</div>
+<div class='checkbox col-sm-10'><label><input type='checkbox' id="sportedu_cheak{{j}}" data-toggle='collapse'  [attr.data-target]="'#sportedu_colaps'+j" aria-expanded='false' aria-controls='collapse3rdParty' [checked]="cheaktype">Till Date</label></div>
      <hr> 
     </div>
     </div>
@@ -150,37 +157,37 @@
         <input  style="outline: none;" type="submit" (click)="addSportEdu()" class="btn btn-primary" value="Add Sport Education" >
         <div class="clear"> 
         </div>
-        </div>
+        </div><br>
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Other Educations</h2>
-    <div *ngFor = 'let otherCertifications of otherCertification'> 
+    <div *ngFor = 'let otherCertifications of otherCertification let k = index'> 
     <div class="w3-container">
-
         <div class="form-group">
             <label>Degree Name</label>
             <input type="text" class="form-control" name="courseDuration" [(ngModel)]="otherCertifications.degree"  value="{{otherCertifications.degree}}" >
             </div> 
-                    
             <div class="form-group">
             <label>Organisation Name</label>
             <input type="text" class="form-control" name="courseDuration"  [(ngModel)]="otherCertifications.organisation" value="{{otherCertifications.organisation}}" >
             </div> 
-        
             <div class="form-group">
             <label>Stream</label>
             <input type="text" class="form-control" name="courseDuration" [(ngModel)]="otherCertifications.stream"  value="{{otherCertifications.stream}}" >
-            </div> 
-            {{splitdate(otherCertifications.courseDuration)}}             
+            </div>            
             <div class="form-group">
             <label>Course Duration</label><br>
             <label>From</label>
-            <input type="date" class="form-control" name="courseDuration"   value="{{dt[0] | date : 'yyyy-MM-dd'}}" >
+            <input type="date" class="form-control"  name="courseDuration"  [(ngModel)]="otherCertifications.dateFrom" value="{{otherCertifications.dateFrom}}" >
             </div> 
+            {{ischeakboxcheak(otherCertifications.tillDate)}}
+            <div [class]='dateToClass' id="otheredu_colaps{{k}}">
             <div class="form-group">
             <label>To</label>
-            <input type="date" class="form-control" name="courseDuration"   value="{{dt[1] | date : 'yyyy-MM-dd'}}" >
-            </div> 
+            <input type="date" class="form-control"  name="courseDuration"  [(ngModel)]="otherCertifications.dateTo" value="{{otherCertifications.dateTo}}" > 
+        </div> </div>
+
+        <div class='checkbox col-sm-10'><label><input type='checkbox' id="otheredu_cheak{{k}}" data-toggle='collapse'  [attr.data-target]="'#otheredu_colaps'+k" aria-expanded='false' aria-controls='collapse3rdParty' [checked]="cheaktype">Till Date</label></div>
     <hr>
     </div>
     </div>
@@ -189,70 +196,59 @@
         <div class="clear"> 
         </div>
         </div>
+        <br>
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience </h2>
     <div *ngFor = 'let workExperiences of workExperience'> 
     <div class="w3-container">
-      
         <div class="form-group">
         <label>Designation Name</label>
         <input type="text" class="form-control" name="designation" [(ngModel)]="workExperiences.designation"  value="{{workExperiences.designation}}" >
         </div> 
-
         <div class="form-group">
         <label>Organisation Name</label>
         <input type="text" class="form-control" name="organisationName"  [(ngModel)]="workExperiences.organisationName" value="{{workExperiences.organisationName}}" >
-        </div> 
-                    
+        </div>  
             <div class="form-group">
             <label>Description</label>
             <input type="text" class="form-control" name="description" [(ngModel)]="workExperiences.description"  value="{{workExperiences.description}}" >
             </div> 
-        
             <div class="form-group">
             <label>From</label>
             <input type="date" class="form-control" name="dateFrom" [(ngModel)]="workExperiences.dateFrom"  value="{{workExperiences.dateFrom}}" >
-            </div> 
-                           
+            </div>           
             <div class="form-group">
             <label>To</label>
             <input type="date" class="form-control" name="dateTo"  [(ngModel)]="workExperiences.dateTo" value="{{workExperiences.dateTo}}" >
         </div>   
-
     <hr>
     </div>
     <hr>
     </div>
-    
     <div class="p-container">
-        <input  style="outline: none;" type="submit" (click)="AddWorkExp()" class="btn btn-primary" value="Add Work Experience" >
-        <div class="clear"> 
-        </div>
-        </div>
-
+    <input  style="outline: none;" type="submit" (click)="AddWorkExp()" class="btn btn-primary" value="Add Work Experience" >
+    <div class="clear"> 
+    </div>
+    </div>
+    <br>
     </div>
     <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experience As Player </h2>
-    
     <div *ngFor = 'let experienceAsPlayers of experienceAsPlayer'> 
     <div class="w3-container">
-     
         <div class="form-group">
             <label>Degree Name</label>
             <input type="text" class="form-control" name="designation" [(ngModel)]="experienceAsPlayers.designation"  value="{{experienceAsPlayers.designation}}" >
             </div> 
-                    
             <div class="form-group">
             <label>Organisation Name</label>
             <input type="text" class="form-control" name="organisationName"  [(ngModel)]="experienceAsPlayers.organisationName" value="{{experienceAsPlayers.organisationName}}" >
             </div> 
-        
             <div class="form-group">
             <label>Stream</label>
             <input type="text" class="form-control" name="description"  [(ngModel)]="experienceAsPlayers.description" value="{{experienceAsPlayers.description}}" >
-            </div> 
-                           
+            </div>                 
             <div class="form-group">
             <label>From</label>
             <input type="date" class="form-control" name="dateFrom" [(ngModel)]="experienceAsPlayers.dateFrom"  value="{{experienceAsPlayers.dateFrom}}" >
@@ -261,21 +257,19 @@
             <label>To</label>
             <input type="date" class="form-control" name="dateTo"  [(ngModel)]="experienceAsPlayers.dateTo" value="{{experienceAsPlayers.dateTo}}" >
             </div> 
-
     <hr>
     </div>
     <hr>
     </div>
-   
     <div class="p-container">
     <input  style="outline: none;" type="submit" (click)="experience_as_Player()" class="btn btn-primary" value="Experience As Player" >
     <div class="clear"> 
     </div>
-    </div>
-
-    </div>
-
+    </div><br>
     </div>
     </div>
-    <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(user)" class="btn btn-primary" value="Submit" >
     </div>
+    <div style="text-align:center;">
+    <input  style="outline: none; margin: 20px 0px;" type="submit" (click) ="Create(user)" class="btn btn-primary btn-lg" value="Submit" >
+</div>    
+</div>

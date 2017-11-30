@@ -32,6 +32,8 @@ dt1:any;
 datesplit : any;
 mergedata : any;
 formalEducations :any;
+cheaktype : boolean;
+dateToClass : any;
 
 constructor(private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute){}
 ngOnInit()
@@ -93,7 +95,7 @@ for(let key in result)
 
 AddEducationdata()
 {
-this.formalEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});  
+this.formalEducation.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});  
 }
 formalEducationdata(formal_data)
 {
@@ -107,13 +109,13 @@ if(formal_data)
 }
 else
 {
-  this.formalEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});  
+  this.formalEducation.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});  
 }
 }
 
 addSportEdu()
 {
-  this.sportEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+  this.sportEducation.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});
 }
 
 sportEducationdata(sport_data)
@@ -128,13 +130,13 @@ sportEducationdata(sport_data)
   }
   else
   {
-    this.sportEducation.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+    this.sportEducation.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});
   }
 }
 
 addotherCerti()
 {
-  this.otherCertification.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+  this.otherCertification.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});
 
 }
 otherCertificationdata(other_data)
@@ -148,7 +150,7 @@ otherCertificationdata(other_data)
   }
   }else
   {
-    this.otherCertification.push({'degree':'','organisation':'','stream':'','courseDuration':''});
+    this.otherCertification.push({'degree':'','organisation':'','stream':'','dateFrom':'','dateTo':'','tilldate':''});
   }
 }
 
@@ -200,36 +202,104 @@ splitdate(date_split)
 
 mergedate($event) {
    var split = $event.target.id.split("-");
-   var first = $("#from-"+split[1]).val();
-   var second = $("#to-"+split[1]).val();
-   var add_date = first+" to "+second;
-   //$("#cd"+split[1]).val(add_date);
-   (<HTMLInputElement>document.getElementById("cd"+split[1])).value = add_date;
+   if(split[0] == 'fe')
+   {
+    var first = $("#fe-from-"+split[2]).val();
+    var second = $("#fe-to-"+split[2]).val();
+    var add_date = first+" to "+second;
+    (<HTMLInputElement>document.getElementById("cd"+split[2])).value = add_date;
+   }else if(split[0] == 'se')
+   {
+    var first = $("#se-from-"+split[2]).val();
+    var second = $("#se-to-"+split[2]).val();
+    var add_date = first+" to "+second;
+    (<HTMLInputElement>document.getElementById("se"+split[2])).value = add_date; 
+
+   }
+   else if(split[0] == 'oc')
+   {
+    var first = $("#oc-from-"+split[2]).val();
+    var second = $("#oc-to-"+split[2]).val();
+    var add_date = first+" to "+second;
+    (<HTMLInputElement>document.getElementById("oc"+split[2])).value = add_date;
+
+   }
+
 }
 
-
-testMethod($event) 
+ischeakboxcheak(tilldate_cheak)
 {
-  this.formalEducations.courseDuration  = $event;
+  if(tilldate_cheak == 1)
+  {
+    this.cheaktype = true;
+    this.dateToClass = 'collapse';
+  }
+  else
+  {
+    this.cheaktype = false;
+   this.dateToClass = 'collapse in';
+  }
 }
 
 Create(user)
 {
   this.myVar = true;
+  var Formaledu_ln = this.formalEducation.length;
 
-  alert(JSON.stringify(this.formalEducation));
-  console.log(JSON.stringify(this.formalEducation));
+  for(var i=0;i<Formaledu_ln;i++)
+  {
+    if($("#formaledu_cheak"+i).is(':checked'))
+    {
+      this.formalEducation[i].dateTo = 'Till Date';
+      var tilldate = '1';
+    }
+    else
+    {
+     var tilldate = '0';
+    }
+  }
+
+  var otherC_len = this.otherCertification.length;
+  for(var j=0;j<otherC_len;j++)
+  {
+    if($("#otheredu_cheak"+j).is(':checked'))
+    {
+      this.otherCertification[j].dateTo = 'Till Date';
+      var tilldate = '1';
+    }
+    else
+    {
+     var tilldate = '0';
+    }
+  }
+
+  var sportedu_len = this.sportEducation.length;
+  for(var k=0;k<sportedu_len;k++)
+  {
+    if($("#sportedu_cheak"+k).is(':checked'))
+    {
+      this.sportEducation[k].dateTo = 'Till Date';
+      var tilldate = '1';
+    }
+    else
+    {
+     var tilldate = '0';
+    }
+  }
+
+  alert(JSON.stringify(this.sportEducation));
+  //console.log(JSON.stringify(this.formalEducation));
 
 
-  // this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
+   this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
 
-  //  alert(JSON.stringify(this.final));
+    //alert(JSON.stringify(this.final));
   // console.log(JSON.stringify(this.final));
 
-  //  this._accountService.updateProfileData(this.final).subscribe( res => 
-  //  {
+    this._accountService.updateProfileData(this.final).subscribe( res => 
+    {
     this.myVar = false;
-  //  });
+    });
   
 }
 }
