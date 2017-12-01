@@ -9,7 +9,6 @@
 </div>
 <div *ngIf='user.user_image'>
 <img src="{{user.user_image}}" style="width:100%" alt="Avatar">
-
 </div>
 <div class="w3-display-bottomleft w3-container w3-text-white">
         <h2>{{user.name}}</h2>
@@ -124,7 +123,7 @@
     </div>
     </div>
     </div>
-    <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+    <div class="w3-container w3-card-2 w3-white w3-margin-bottom" *ngIf="(prof_id == 2) && (prof_id == 8)">
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experience As Player </h2>
     <div *ngFor = 'let experienceAsPlayers of experienceAsPlayer'> 
     <div class="w3-container">
