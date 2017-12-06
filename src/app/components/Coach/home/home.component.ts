@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
 import { JobModule } from '../../model/job.model';
+import { OrgModel } from '../../model/org.model';
 import { JobServices } from '../../services/job.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
@@ -18,6 +19,7 @@ import { IAppConfig }  from '../../../app.iconfig';
 export class HomeComponent implements OnInit {
 
     today: number = Date.now();
+    org : OrgModel = new OrgModel();
     currentDate = new Date();
     public imageurl : any;
     public test = new Date(this.currentDate).getHours();
@@ -26,12 +28,11 @@ export class HomeComponent implements OnInit {
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
     publis : any;
-    
 
-  constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
-  { 
+constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
+{ 
     this.imageurl = _config.dir_url; 
-  }
+}
 
 ngOnInit() 
 {
@@ -41,9 +42,8 @@ ngOnInit()
 
 getJobList()
 {
-   this._jobservices.getJobList(this.userid).subscribe(res => { this.Job = res;});
+  this._jobservices.getJobList(this.userid).subscribe(res => { this.Job = res;});
 }
-
 getEventList()
 {
 	this._eventservices.getEventList(this.userid).subscribe(res => { this.Event = res;});
@@ -73,6 +73,11 @@ hello(end_date)
   {
   return false;
   }
-   
 }
+
+orgregister(org:any)
+{
+  alert(JSON.stringify(org));
+}
+
 }

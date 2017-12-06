@@ -1,22 +1,101 @@
 <app-dashboard></app-dashboard>
-
+<div style="text-align:center;">
+<button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Oraganization Details</button>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Create Organization</h4>
+</div>
+<div class="modal-body">
+<div class="form-group">
+<label for="org_name">Organization Name</label>
+<input type="text" [(ngModel)]="org.org_name" class="form-control" id="org_name">
+</div>
+      <div class="form-group">
+      <label for="about">About</label>
+      <input type="text" class="form-control" [(ngModel)]="org.about" id="about">
+      </div>
+      <div class="form-group">
+      <label for="orgname">Address 1</label>
+      <input type="text" class="form-control" [(ngModel)]="org.address1" id="address1">
+      </div>  
+      <div class="form-group">
+      <label for="address2">Address 2</label>
+      <input type="text" class="form-control" [(ngModel)]="org.address2" id="address2">
+      </div>
+      <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control" [(ngModel)]="org.city" id="city">
+      </div>
+      <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" class="form-control" [(ngModel)]="org.state"  id="state">
+      </div> 
+      <div class="form-group">
+      <label for="pin">Pin</label>
+      <input type="text" class="form-control" [(ngModel)]="org.pin" id="pin">
+      </div>
+      <div class="form-group">
+      <label for="mobile">Mobile No</label>
+      <input type="text" class="form-control" [(ngModel)]="org.mobile" id="mobile">
+      </div>
+      <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" [(ngModel)]="org.email" id="email">
+      </div>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="orgregister(org)">Submit</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
+      </div>
+      </div>
+      </div>
+  </div>
+<!--   
+  <div style="margin-left: 32%;">
+  <div class="w3-card-4 w3-margin" style="width:50% ">
+    <div class="w3-display-container w3-text-white">
+      <img src="assets/images/no-photo.png" alt="Lights" style="width:100%">
+    </div>
+    <div class="w3-large w3-padding">Hello This is Angular 2 Developer in Darkhorsesports Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in  </div>
+    <div class="w3-row">
+      <div class="w3-third w3-center">
+        <h3>Org Name</h3>
+      </div>
+      <div class="w3-third w3-center">
+        <h3>Location</h3>
+       
+      </div>
+      <div class="w3-third w3-center w3-margin-bottom">
+        <h3>Last Date</h3>
+      
+      </div>
+    </div>
+  </div>
+  </div> -->
+  
+<br><br>
 <div class="container" >
 <div class="row">
 <div class="posrel"> 
 <ul class="nav nav-tabs">
-<li class="active"><a  class="blue" data-toggle="tab" href="#home">Event</a></li>  
+<li class="active" ><a  class="blue" data-toggle="tab" href="#home">Event</a></li>  
 <!-- <li><a class="yellow" data-toggle="tab" href="#menu2">Tornaments</a></li> -->
 <li><a  class="red" data-toggle="tab" href="#menu3">Jobs</a></li>
 </ul>
-</div>   
-<div class="tab-content">
 
+
+
+</div>
+<div class="tab-content">
 <div id="home" class="tab-pane fade in active">
 <!-- <h2>Event</h2> -->
 <!-- end_date -->
 <a class="btn icon-btn btn-success event" routerLink="/createevent"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span><b>Create Event</b></a>
 <!-- <a  class="event" routerLink="/createevent"><i class="glyphicon glyphicon-plus glyph_class"></i><b>Create Event</b></a> -->
-
 <!-- <a  class="event" routerLink="/createevent"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>Create Event</a> -->
 <!-- {{Event | json}} -->
 <div *ngIf="Event ; else elseBlock">
@@ -123,10 +202,6 @@
 <!-- <a class="job" routerLink="/job"> Create Job</a> -->
 
 <a class="btn icon-btn btn-danger job" routerLink="/job"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span><b>Create Job</b></a>
-
-
-
-
 <div *ngIf="Job"> 
 <div class="row">
 <div *ngFor = 'let job of Job ; let i = index' class= ''>
@@ -168,6 +243,31 @@
 </div>
 </div>
 </div>
+<br>
+<br>
+<div style="margin-left: 32%;" *ngIf='!Job'>
+  <div class="col-md-4" style="margin-top: 2%; width: 50%;">
+    <div class="column"> 
+    <div class="post-module" > 
+    <div class="thumbnail" >
+    <img src="assets/images/no-photo.png" class="img-responsive" style="width:100%;" alt="">
+    </div>
+    <div class="post-content" >
+    <div class="category" style="background-color:#8ac14a;">Job Title</div>
+    <h4 class="title"> </h4>
+    <div class="row">
+    <span class="glyphicon glyphicon-globe"> evt.location   </span><br>
+    <span class="glyphicon glyphicon-calendar"><b>Event Start </b></span><h5> evt.start_date </h5> 
+    <div>
+    <span class="glyphicon glyphicon-calendar"><b>Event End </b></span><h5>evt.end_date </h5>
+    </div>
+    </div>  
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
 
 
 </div>

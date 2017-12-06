@@ -43,6 +43,8 @@ import { NotFoundComponent } from './not-found.component';
 import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
 import { Classdata } from './components/services/class.services';
 import {MessageComponent} from './components/Coach/message/message.component';
+import {OrgComponent} from './components/Coach/org/org.component';
+import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
 
   
 enableProdMode();
@@ -88,7 +90,9 @@ let providers =
     NotFoundComponent,
     ClassAccounting,
     viewClass,
-    MessageComponent
+    MessageComponent,
+    OrgComponent,
+    JobDashboard
   ],
   imports: [
     BrowserModule,

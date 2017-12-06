@@ -7,8 +7,6 @@ import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Va
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 declare var $:any;
- 
-
 @Component({
 	 selector : 'app-profile',
 	 templateUrl : './profile.component.html',

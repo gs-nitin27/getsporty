@@ -28,7 +28,10 @@ import { AthleteHeaderComponent } from './components/Athlete/AthleteHeader/athle
 import { AthleteProfileViewComponent } from './components/Athlete/AthleteProfileView/AthleteProfileView.component';
 import { viewClass } from  './components/Athlete/viewClass/viewClass.component';
 import {MessageComponent} from './components/Coach/message/message.component';
+import {OrgComponent} from './components/Coach/org/org.component';
 import { AtheleteDataView } from './components/services/athlete.resolve.services';
+import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
+
  
  const router:Routes = [
 
@@ -58,6 +61,8 @@ import { AtheleteDataView } from './components/services/athlete.resolve.services
       {path : 'athleteProfileView' , component:AthleteProfileViewComponent, canActivate:[AthleteCheak]},
       {path : 'classaccounting/:id' , component: ClassAccounting , canActivate:[AthleteCheak]},
       {path : 'viewclass/:classid' , component : viewClass , canActivate:[AthleteCheak]},
-      {path : 'coach/message',component:MessageComponent,canActivate:[Guard]}
+      {path : 'coach/message',component:MessageComponent,canActivate:[Guard]},
+      {path : 'coach/org',component:OrgComponent,canActivate:[Guard]},
+      {path : 'jobdashboard',component:JobDashboard,canActivate:[Guard]}
 ];
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

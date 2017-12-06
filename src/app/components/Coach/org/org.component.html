@@ -1,0 +1,80 @@
+<app-dashboard></app-dashboard>
+
+<div style="text-align:center;">
+<button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Oraganization Details</button>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Create Organization</h4>
+    </div>
+    <div class="modal-body">
+    <div class="form-group">
+    <label for="org_name">Organization Name</label>
+    <input type="text" [(ngModel)]="org.org_name" class="form-control" id="org_name">
+    </div>
+    <div class="form-group">
+    <label for="about">About</label>
+    <input type="text" class="form-control" [(ngModel)]="org.about" id="about">
+    </div>
+    <div class="form-group">
+    <label for="orgname">Address 1</label>
+    <input type="text" class="form-control" [(ngModel)]="org.address1" id="address1">
+    </div>  
+    <div class="form-group">
+    <label for="address2">Address 2</label>
+    <input type="text" class="form-control" [(ngModel)]="org.address2" id="address2">
+    </div>
+    <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" [(ngModel)]="org.city" id="city">
+    </div>
+    <div class="form-group">
+    <label for="state">State</label>
+    <input type="text" class="form-control" [(ngModel)]="org.state"  id="state">
+    </div> 
+    <div class="form-group">
+    <label for="pin">Pin</label>
+    <input type="text" class="form-control" [(ngModel)]="org.pin" id="pin">
+    </div>
+    <div class="form-group">
+    <label for="mobile">Mobile No</label>
+    <input type="text" class="form-control" [(ngModel)]="org.mobile" id="mobile">
+    </div>
+    <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" [(ngModel)]="org.email" id="email">
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="orgregister(org)">Submit</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div style="margin-left: 32%;">
+<div class="w3-card-4 w3-margin" style="width:50% ">
+  <div class="w3-display-container w3-text-white">
+    <img src="assets/images/no-photo.png" alt="Lights" style="width:100%">
+    <!-- <div class="w3-xlarge w3-display-bottomleft w3-padding"></div> -->
+  </div>
+  <div class="w3-large w3-padding">Hello This is Angular 2 Developer in Darkhorsesports Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in Hello This is Angular 2 Developer in  </div>
+  <div class="w3-row">
+    <div class="w3-third w3-center">
+      <h3>Org Name</h3>
+    </div>
+    <div class="w3-third w3-center">
+      <h3>Location</h3>
+     
+    </div>
+    <div class="w3-third w3-center w3-margin-bottom">
+      <h3>Last Date</h3>
+    
+    </div>
+  </div>
+</div>
+</div>

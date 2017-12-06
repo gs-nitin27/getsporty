@@ -1,24 +1,20 @@
 <nav class="navbar navbar-default" style="background-color: #1d8587" role="navigation" *ngIf="showMenu">
-  <div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-  </button>    
-  </div>
-  <div class="navbar-collapse collapse">
-  <ul class="nav navbar-nav">
-  <a routerLink="/home" ><img style="width:15%" src="https://www.getsporty.in/img/logo.png"></a>
-  </ul>
-
-  <ul class="nav navbar-nav navbar-center" >
-  <li>
-  <a style="color: #fff" routerLink="/coach/message"><span style="font-size: x-large;" class="glyphicon glyphicon-envelope"></span></a>
-  </li>
-  <li>
-      <a style="color: #fff" routerLink="/profile"><span style="font-size: x-large;" class=" glyphicon glyphicon-user"></span></a>
-      </li>
-  </ul>
-
- 
-  
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+</button>    
+</div>
+<div class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<a routerLink="/home" ><img style="width:15%" src="https://www.getsporty.in/img/logo.png"></a>
+</ul>
+<ul class="nav navbar-nav navbar-center" >
+<li>
+<a style="color: #fff" routerLink="/coach/message"><span style="font-size: x-large;" class="glyphicon glyphicon-envelope"></span></a>
+</li>
+<li>
+<a style="color: #fff" routerLink="/profile"><span style="font-size: x-large;" class=" glyphicon glyphicon-user"></span></a>
+</li>
+</ul>
 
   <!-- <ul class="nav navbar-nav navbar-center" *ngIf="mycreatonshow">
   <h2><span class="label label-default">MyCreation</span></h2>
@@ -49,13 +45,18 @@
   </ul> -->
  
   <ul class="nav navbar-nav navbar-right">
-
-      
-
 <!-- <li><a style="color: #fff" routerLink="/createcontent">Event</a></li> 
   <li><a style="color: #fff" routerLink="/editProfile">EditProfile</a></li> -->
-
-
+  <li class="dropdown">
+    <a class="dropdown-toggle" style="color: #fff" data-toggle="dropdown" href="#"><b>Page 1</b>
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a routerLink="/jobdashboard">Job</a></li>
+      <li><a href="#">Event</a></li>
+      <!-- <li><a href="#">Page 1-3</a></li> -->
+    </ul>
+  </li>
+ 
   <li class="dropdown">
   <a style="color: #fff" href="#" class="dropdown-toggle" data-toggle="dropdown">
   <span class="glyphicon glyphicon-user"></span> 
@@ -115,9 +116,6 @@
 </div>
 
 </div> -->
-
-
-
 <!-- 
 <nav class="navbar navbar-default" *ngIf="showMenu">
 

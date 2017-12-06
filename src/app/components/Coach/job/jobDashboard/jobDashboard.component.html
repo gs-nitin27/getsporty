@@ -1,0 +1,165 @@
+<app-dashboard></app-dashboard>
+<br><br>
+<div class="container" >
+<div class="row">
+<div class="posrel"> 
+<ul class="nav nav-tabs">
+<li class="active" ><a  class="blue" data-toggle="tab" href="#home">Active Jobs</a></li>  
+<li><a class="yellow" data-toggle="tab" href="#menu2">Closed Jobs</a></li>
+<li><a  class="red" data-toggle="tab" href="#menu3">Saved Jobs</a></li>
+</ul>
+</div>
+<div class="tab-content">
+<div id="home" class="tab-pane fade in active">
+
+        <a class="btn icon-btn btn-danger job" routerLink="/job"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span><b>Create Job</b></a>
+        <div *ngIf="activejob"> 
+        <div class="row">
+        <div *ngFor = 'let job of activejob ; let i = index' class= ''>
+            <div class="col-md-4" style="margin-top: 2%; width: 25%;">
+              <div class="column"> 
+                  <div class="post-module"> 
+                    <div class="thumbnail">
+                  <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}">
+                        <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
+                        </a> </div>
+                  <div *ngIf='job.image'>
+                  <img src="{{imageurl}}/job/{{job.image}}" class="img-responsive" style="width:100%;" alt="">
+                   </div>
+                  <div *ngIf='!job.image'>
+                  <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
+                  </div>
+        
+        
+                    </div>
+                    <div class="post-content">
+                      <div class="category" style="background-color:#f56436;">{{job.title}}</div>
+                      <h2 class="title"></h2>
+        
+                      <!-- <h2 class="sub_title">{{job.publish}}</h2>  -->
+        
+                      <div class="post-meta"><span class="timestamp">Location - {{job.location}}</span><span class="comments">Sports - {{job.sport}}</span></div>
+                      <div *ngIf='job.publish ==0'>
+                      <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(job.id,1)">Active</button>
+                    </div>
+                    <div *ngIf='job.publish ==1'>
+                      <button type="button" style="float: right;" class="btn btn-success" (click)="publish(job.id , 0)">Deactive</button>
+                    </div>
+        
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+        </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div style="margin-left: 32%;" *ngIf='!activejob'>
+          <div class="col-md-4" style="margin-top: 2%; width: 50%;">
+            <div class="column"> 
+            <div class="post-module" > 
+            <div class="thumbnail" >
+            <img src="assets/images/no-photo.png" class="img-responsive" style="width:100%;" alt="">
+            </div>
+            <div class="post-content" >
+            <div class="category" style="background-color:#8ac14a;">Job Title</div>
+            <h4 class="title"> </h4>
+            <div class="row">
+            <span class="glyphicon glyphicon-globe"> evt.location   </span><br>
+            <span class="glyphicon glyphicon-calendar"><b>Event Start </b></span><h5> evt.start_date </h5> 
+            <div>
+            <span class="glyphicon glyphicon-calendar"><b>Event End </b></span><h5>evt.end_date </h5>
+            </div>
+            </div>  
+            </div>
+            </div>
+            </div>
+            </div>
+          </div>
+
+
+</div>
+
+
+<div id="menu2" class="tab-pane fade">   
+
+ sadfsaf
+</div>
+
+
+<div id="menu3" class="tab-pane fade">
+
+<!-- <a class="job" routerLink="/job"> Create Job</a> -->
+
+<a class="btn icon-btn btn-danger job" routerLink="/job"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span><b>Create Job</b></a>
+<div *ngIf="savedjob"> 
+<div class="row">
+<div *ngFor = 'let sjob of savedjob ; let i = index' class= ''>
+    <div class="col-md-4" style="margin-top: 2%; width: 25%;">
+      <div class="column"> 
+          <div class="post-module"> 
+            <div class="thumbnail">
+          <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{sjob.id}}">
+                <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
+                </a> </div>
+          <div *ngIf='sjob.image'>
+          <img src="{{imageurl}}/job/{{sjob.image}}" class="img-responsive" style="width:100%;" alt="">
+           </div>
+          <div *ngIf='!sjob.image'>
+          <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
+          </div>
+
+
+            </div>
+            <div class="post-content">
+              <div class="category" style="background-color:#f56436;">{{sjob.title}}</div>
+              <h2 class="title"></h2>
+
+              <!-- <h2 class="sub_title">{{job.publish}}</h2>  -->
+
+              <div class="post-meta"><span class="timestamp">Location - {{sjob.location}}</span><span class="comments">Sports - {{sjob.sport}}</span></div>
+              <div *ngIf='sjob.publish ==0'>
+              <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(sjob.id,1)">Active</button>
+            </div>
+            <div *ngIf='sjob.publish ==1'>
+              <button type="button" style="float: right;" class="btn btn-success" (click)="publish(sjob.id , 0)">Deactive</button>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+</div>
+</div>
+<br>
+<br>
+<div style="margin-left: 32%;" *ngIf='!savedjob'>
+  <div class="col-md-4" style="margin-top: 2%; width: 50%;">
+    <div class="column"> 
+    <div class="post-module" > 
+    <div class="thumbnail" >
+    <img src="assets/images/no-photo.png" class="img-responsive" style="width:100%;" alt="">
+    </div>
+    <div class="post-content" >
+    <div class="category" style="background-color:#8ac14a;">Job Title</div>
+    <h4 class="title"> </h4>
+    <div class="row">
+    <span class="glyphicon glyphicon-globe"> evt.location   </span><br>
+    <span class="glyphicon glyphicon-calendar"><b>Event Start </b></span><h5> evt.start_date </h5> 
+    <div>
+    <span class="glyphicon glyphicon-calendar"><b>Event End </b></span><h5>evt.end_date </h5>
+    </div>
+    </div>  
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
