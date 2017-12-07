@@ -121,11 +121,11 @@
 
               <div class="post-meta"><span class="timestamp">Location - {{sjob.location}}</span><span class="comments">Sports - {{sjob.sport}}</span></div>
               <div *ngIf='sjob.publish ==0'>
-              <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(sjob.id,1)">Active</button>
+              <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(sjob.id,1)">Publish</button>
             </div>
-            <div *ngIf='sjob.publish ==1'>
-              <button type="button" style="float: right;" class="btn btn-success" (click)="publish(sjob.id , 0)">Deactive</button>
-            </div>
+            <!-- <div *ngIf='sjob.publish ==1'>
+              <button type="button" style="float: right;" class="btn btn-success" (click)="publish(sjob.id , 0)">UnP</button>
+            </div> -->
 
             </div>
           </div>

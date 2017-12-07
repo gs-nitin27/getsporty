@@ -45,7 +45,7 @@ import { Classdata } from './components/services/class.services';
 import {MessageComponent} from './components/Coach/message/message.component';
 import {OrgComponent} from './components/Coach/org/org.component';
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
-
+import {CostComponent } from './components/coach/Cost/Cost.component';
   
 enableProdMode();
 let providers = 
@@ -92,7 +92,8 @@ let providers =
     viewClass,
     MessageComponent,
     OrgComponent,
-    JobDashboard
+    JobDashboard,
+    CostComponent
   ],
   imports: [
     BrowserModule,

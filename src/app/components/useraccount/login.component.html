@@ -15,7 +15,26 @@
 <div class="row-fluid" >
 <div class="col-md-offset-4 col-md-4" id="box" style="background-color:#2698ed; ">
 <img class="responsive-img" style="width:50%; margin-top: 10%" src="http://portal.getsporty.in/img/logo.png" />              
-<hr>                     
+<hr>  
+<div class="form-group" >
+    <div class="col-md-12">
+    <div class="input-group" style="margin-left: 21%;">
+    <button (click)="signIn('google')" class="loginBtn loginBtn--google">
+    <span class="fa fa-google"></span> Sign in with Google
+    </button>
+    </div>
+    </div>
+    </div>
+    <div class="form-group" style="margin-top: 15%;margin-bottom:40%;margin-left: 18%;">
+    <div class="col-md-12">
+    <div class="input-group">
+    <button (click)="signIn('facebook')" class="loginBtn loginBtn--facebook">
+    <span class="fa fa-facebook"></span> Sign in with Facebook
+    </button>
+    </div>
+    </div>
+    </div>
+<hr>
 <form class="form-horizontal" [formGroup]="form" role="form" (ngSubmit)="login()" id="contact_form">
 <fieldset>
 <div class="form-group">

@@ -7,7 +7,6 @@ import { JobServices } from '../../../services/job.services';
 import { loginServices } from '../../../services/login.services';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
-
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
 
@@ -61,7 +60,9 @@ getJobList()
 
 publish(jobid:any,publish:any)
 {
-  this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
+  
+  this._router.navigate(["/cost"]);
+  // this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
 }
  
 }

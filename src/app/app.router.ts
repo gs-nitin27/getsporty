@@ -31,7 +31,7 @@ import {MessageComponent} from './components/Coach/message/message.component';
 import {OrgComponent} from './components/Coach/org/org.component';
 import { AtheleteDataView } from './components/services/athlete.resolve.services';
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
-
+import {CostComponent} from './components/coach/Cost/Cost.component';
  
  const router:Routes = [
 
@@ -63,6 +63,7 @@ import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.com
       {path : 'viewclass/:classid' , component : viewClass , canActivate:[AthleteCheak]},
       {path : 'coach/message',component:MessageComponent,canActivate:[Guard]},
       {path : 'coach/org',component:OrgComponent,canActivate:[Guard]},
-      {path : 'jobdashboard',component:JobDashboard,canActivate:[Guard]}
+      {path : 'jobdashboard',component:JobDashboard,canActivate:[Guard]},
+      {path : 'cost', component:CostComponent,canActivate:[Guard]}
 ];
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

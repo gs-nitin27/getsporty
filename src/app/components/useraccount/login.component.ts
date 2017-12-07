@@ -1,8 +1,11 @@
 import { User } from '../model/login.model';
 import { loginServices } from '../services/login.services';
-import { Injectable, Inject , OnInit, Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
+import { Injectable,ViewChild, Inject , OnInit, Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, FormArray, NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Angular2SocialLoginModule } from "angular2-social-login";
+import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
+import { AuthService } from "angular2-social-login";
 
 @Component({
   selector: 'app-login',
@@ -11,10 +14,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+   @ViewChild(FBVideoComponent) video: FBVideoComponent;
 public invalid : boolean;
 public myVar : boolean;
 public loginModel: User = new User();
 public form: FormGroup;
+public result : any;
+public sub : any;
 public userid  = localStorage.getItem('currentUserid');
 
 ngOnInit() 
@@ -25,19 +31,35 @@ ngOnInit()
       this.router.navigate(["/profile"]);
     }
 }
- constructor(private fb: FormBuilder,
-        private _accountService: loginServices,private router: Router
-    ) {
+ constructor(private fb: FormBuilder,private _accountService: loginServices,private router: Router
+    ,public _auth: AuthService,private face: FacebookService) {
         this.form = fb.group({
             email: [''],
             password: ['']
         });
+
+        console.log('Initializing Facebook');
+        
+        face.init({
+              appId: '1417736098274297',
+              version: 'v2.8'
+            });
     }
 
     /**
      * Login method, authenticates user is authorized or not
      * @returns void
      */
+
+    signIn(provider){
+        this.sub = this._auth.login(provider).subscribe(
+          (data) => {
+               this.result=data;
+             alert(JSON.stringify(this.result));
+             
+            } ) 
+        
+        }    
      
 login() : void {
       this.myVar = true;
