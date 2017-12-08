@@ -44,13 +44,23 @@ saveEvent(events:CreateEvent) {
    .map(res => res.json().data);
   }
 
-public login(login: User) {
+public login(login: User) 
+{
         let headers      = new Headers({ 'Content-Type': 'application/json' }); 
         let options       = new RequestOptions({ headers: headers });
         let url = this.baseUrl + "/angularapi.php?act=angulartest" + "&email=" + login['email'] + "&password=" + login['password'];
-       return this._http.get(url).map((res => res.json()))
-         ;
-    }
+       return this._http.get(url).map((res => res.json()));
+}
+
+public manageLogin(user:User)
+{
+  return this._http.post(this.baseUrl + "/angularapi.php?act=manageLogin",user).map((res => res.json()));
+}
+
+public getEmailid(userid: any)
+{
+ return this._http.get(this.baseUrl + "/angularapi.php?act=getEmailid&userid="+userid).map((res)=>res.json().email);
+}
 
 Athleteprofiledata(id: String , prof_id :string)
 {       
@@ -73,7 +83,8 @@ profiledata(id: String , prof_id :string) : Observable<any>
    return this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => <User[]>  res.json().data);
 }
 
-Socialloginpromise(login: User): Promise<any> {
+Socialloginpromise(login: User): Promise<any> 
+{
   return this._http.post(this.baseUrl + "/angularapi.php?act=socialLogin",login).toPromise()
       .then(response => {
           return response.json();
@@ -150,7 +161,7 @@ ViewProfileData()
 
 Registration(user : any)
 {
-return this._http.post(this.baseUrl + "/create_database.php?act=registration", user).map(res =>  res.json()); 
+return this._http.post(this.baseUrl + "/angularapi.php?act=registration", user).map(res =>  res.json()); 
 }
 
 }

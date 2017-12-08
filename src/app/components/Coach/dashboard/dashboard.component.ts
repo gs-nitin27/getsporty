@@ -65,9 +65,14 @@ else if(this.router.url === "/editJob/"+this.id)
 }
 if(this.userid) 
 {
-     
-    this.showMenu = true;
-
+     if(this.prof_id)
+     {
+     this.showMenu = true;
+     }else
+     {
+       //this.showMenu = true;
+       this.router.navigate(["/registration"]);
+     }
 }
 else
 {

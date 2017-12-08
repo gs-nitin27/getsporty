@@ -14,13 +14,14 @@ import { AuthService } from "angular2-social-login";
 })
 export class LoginComponent implements OnInit {
 
-   @ViewChild(FBVideoComponent) video: FBVideoComponent;
+@ViewChild(FBVideoComponent) video: FBVideoComponent;
 public invalid : boolean;
 public myVar : boolean;
 public loginModel: User = new User();
 public form: FormGroup;
 public result : any;
 public sub : any;
+//userdata : any;
 public userid  = localStorage.getItem('currentUserid');
 
 ngOnInit() 
@@ -55,9 +56,49 @@ ngOnInit()
         this.sub = this._auth.login(provider).subscribe(
           (data) => {
                this.result=data;
-             alert(JSON.stringify(this.result));
+
+        // alert(JSON.stringify(this.result.email));
              
-            } ) 
+           this._accountService.manageLogin(this.result).subscribe(
+            (data) => { 
+                
+          if(data != null)
+            { 
+                if(data == '0')
+                {
+                    this.myVar = false;
+                    this.invalid=true;  
+                }
+            let user = data;
+            if (user) {
+                localStorage.clear();
+                localStorage.setItem('currentUser',data.name);
+                localStorage.setItem('currentUserid',data.userId);
+                localStorage.setItem('user_image',data.user_image);
+                localStorage.setItem('prof_id' , data.prof_id);
+                }
+                if(data.first == "1")
+                {
+                    setTimeout((router: Router) => {
+                        this.router.navigate(['/registration']);
+                    }, 1000); 
+                    // this.router.navigate(["/registration"]);
+                }else
+                {
+                    this.router.navigate(["/profile"]);
+                }
+               
+                }
+                     else 
+                     { 
+                       this.myVar = false;
+                       this.invalid=true;
+                       //this.router.navigate(["/login"]);
+                     }
+         }, (err) => console.log("Error" + err),
+        );      
+
+            }) 
         
         }    
      
@@ -65,7 +106,9 @@ login() : void {
       this.myVar = true;
       var formData = this.form.value;
       this._accountService.login(formData).subscribe(
-                (data) => { if(data != null)
+                (data) => { 
+                    
+                    if(data != null)
                 { 
                     if(data == '0')
                     {

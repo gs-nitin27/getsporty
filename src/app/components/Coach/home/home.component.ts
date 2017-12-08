@@ -7,8 +7,7 @@ import { OrgModel } from '../../model/org.model';
 import { JobServices } from '../../services/job.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
-
-
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -23,15 +22,15 @@ export class HomeComponent implements OnInit {
     currentDate = new Date();
     public imageurl : any;
     public test = new Date(this.currentDate).getHours();
-    
     public Event : CreateEvent[];
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
     publis : any;
 
-constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
+constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
 { 
     this.imageurl = _config.dir_url; 
+    this._notificationService.popToastSuccess('Welcome', '');
 }
 
 ngOnInit() 

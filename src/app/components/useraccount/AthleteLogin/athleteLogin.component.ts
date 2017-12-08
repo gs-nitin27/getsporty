@@ -7,8 +7,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 import { AuthService } from "angular2-social-login";
-
-
 declare var $ : any;
 
 @Component({
@@ -43,17 +41,15 @@ console.log('Initializing Facebook');
 
 }
 
-
 // load() {
 //   this._loginServices.Socialloginpromise(this.user).then(res => {
-//       this.hotels = res;
-      
+//       this.hotels = res;   
 //     },
 //     err => err);
 // }
-  
-  signIn(provider){
-    this.sub = this._auth.login(provider).subscribe(
+
+signIn(provider){
+  this.sub = this._auth.login(provider).subscribe(
       (data) => 
       {
     this.user=data;
