@@ -164,5 +164,14 @@ Registration(user : any)
 return this._http.post(this.baseUrl + "/angularapi.php?act=registration", user).map(res =>  res.json()); 
 }
 
+orgAdd(orgdata : any)
+{
+ return this._http.post(this.baseUrl + "/angularapi.php?act=addOrg",orgdata).map(res => res.json());
+}
+getOrgDetails(userid:any)
+{
+ return this._http.get(this.baseUrl + "/angularapi.php?act=getorgdetails&userid="+userid).map(res => res.json());
+}
+
 }
 

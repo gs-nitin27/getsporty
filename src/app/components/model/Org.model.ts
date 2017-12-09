@@ -1,5 +1,6 @@
 export  class OrgModel
 {
+  userid : string;
   org_name:string;
   about:string;
   address1:string;

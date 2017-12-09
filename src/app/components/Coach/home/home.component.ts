@@ -8,6 +8,9 @@ import { JobServices } from '../../services/job.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
 import { NotificationService } from '../../services/notification.service';
+import { User } from '../../model/login.model';
+import { loginServices } from '../../services/login.services';
+declare var $ : any;
 
 @Component({
   selector: 'app-home',
@@ -26,8 +29,10 @@ export class HomeComponent implements OnInit {
     public Job : JobModule[];
     public userid = localStorage.getItem('currentUserid');
     publis : any;
+    res : any;
+    result : any;
 
-constructor(private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
+constructor(private _accountService: loginServices,private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
 { 
     this.imageurl = _config.dir_url; 
     this._notificationService.popToastSuccess('Welcome', '');
@@ -37,6 +42,8 @@ ngOnInit()
 {
    this.getEventList();
    this.getJobList();   
+   this.getOrgDetails();
+   this.org.userid = this.userid;
 }
 
 getJobList()
@@ -76,7 +83,17 @@ hello(end_date)
 
 orgregister(org:any)
 {
-  alert(JSON.stringify(org));
+  this._accountService.orgAdd(org).subscribe(data => { this.res = data;
+    
+    $('#myModal').modal('toggle');
+  });
+}
+
+getOrgDetails()
+{
+   this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
+  //  alert(JSON.stringify(this.result));
+  });
 }
 
 }

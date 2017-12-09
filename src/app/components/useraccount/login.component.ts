@@ -85,7 +85,7 @@ ngOnInit()
                     // this.router.navigate(["/registration"]);
                 }else
                 {
-                    this.router.navigate(["/profile"]);
+                    this.router.navigate(["/home"]);
                 }
                
                 }
