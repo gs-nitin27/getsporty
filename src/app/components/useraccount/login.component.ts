@@ -20,7 +20,10 @@ public myVar : boolean;
 public loginModel: User = new User();
 public form: FormGroup;
 public result : any;
+public userdata :any;
 public sub : any;
+public id : any;
+public email :any;
 //userdata : any;
 public userid  = localStorage.getItem('currentUserid');
 
@@ -56,12 +59,18 @@ ngOnInit()
         this.sub = this._auth.login(provider).subscribe(
           (data) => {
                this.result=data;
+            //    this.userdata.email      = this.result.email;
+            //    this.userdata.id         = this.result.id;
+            //    this.userdata.password   = this.result.email;
+            //    this.userdata.data       = data;
+            //    this.userdata.app        = "M";
+            //    this.userdata.loginType  = "2";
 
-        // alert(JSON.stringify(this.result.email));
-             
+
+         alert(JSON.stringify(this.result));   
+
            this._accountService.manageLogin(this.result).subscribe(
             (data) => { 
-                
           if(data != null)
             { 
                 if(data == '0')

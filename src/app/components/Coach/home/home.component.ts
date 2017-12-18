@@ -10,6 +10,7 @@ import { IAppConfig }  from '../../../app.iconfig';
 import { NotificationService } from '../../services/notification.service';
 import { User } from '../../model/login.model';
 import { loginServices } from '../../services/login.services';
+
 declare var $ : any;
 
 @Component({
@@ -84,8 +85,8 @@ hello(end_date)
 orgregister(org:any)
 {
   this._accountService.orgAdd(org).subscribe(data => { this.res = data;
-    
     $('#myModal').modal('toggle');
+    this.getOrgDetails();
   });
 }
 

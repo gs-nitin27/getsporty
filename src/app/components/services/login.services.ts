@@ -54,6 +54,8 @@ public login(login: User)
 
 public manageLogin(user:User)
 {
+  
+  //return this._http.post(this.baseUrl + "/user_access_controller.php?act=gs_login",user).map((res => res.json()));
   return this._http.post(this.baseUrl + "/angularapi.php?act=manageLogin",user).map((res => res.json()));
 }
 

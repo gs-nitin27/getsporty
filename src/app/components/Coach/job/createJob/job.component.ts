@@ -18,8 +18,8 @@ import { IAppConfig }  from '../../../../app.iconfig';
   styleUrls: ['./job.component.css'],
   providers : [JobServices] 
 })
-export class JobComponent implements OnInit {
-
+export class JobComponent implements OnInit 
+{
 myVar: boolean;
 public edited : boolean;
 public datafailure : boolean;

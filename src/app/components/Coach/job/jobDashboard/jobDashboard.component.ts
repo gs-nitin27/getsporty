@@ -18,23 +18,22 @@ declare var $:any;
 })
 export class JobDashboard implements OnInit
 {
-  org : OrgModel = new OrgModel();
-  public userid = localStorage.getItem('currentUserid');
-  public Job : JobModule[];
-  publis : any;
-  activejob = [];
-  cloasedjob = [];
-  savedjob = [];
-
+org : OrgModel = new OrgModel();
+public userid = localStorage.getItem('currentUserid');
+public Job : JobModule[];
+publis : any;
+public imageurl : any;
+activejob = [];
+cloasedjob = [];
+savedjob = [];
 constructor(private _router :Router, private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
-
+  this.imageurl = _config.dir_url; 
 }
 ngOnInit()
 {
   this.getJobList();
 }
-    
 getJobList()
 {
  this._jobservices.getJobList(this.userid).subscribe(res => { 
@@ -45,24 +44,19 @@ getJobList()
     {
       if(this.Job[i]['publish'] == '1') 
       {
-           this.activejob.push(this.Job[i]);
+        this.activejob.push(this.Job[i]);
       }
       else{
-          this.savedjob.push(this.Job[i]);
+        this.savedjob.push(this.Job[i]);
       }
     }
-
     //alert(JSON.stringify(this.activejob));
-     
-
 });
 }
 
 publish(jobid:any,publish:any)
 {
-  
   this._router.navigate(["/cost"]);
   // this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
 }
- 
 }
