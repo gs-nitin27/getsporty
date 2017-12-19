@@ -23,6 +23,9 @@ public userid  = localStorage.getItem('currentUserid');
 // public userid : any;
 public email : any;
 public emaildata : any;
+public isDisabled : boolean;
+public cheaksport : boolean;
+
 constructor(private _activatedRoute :ActivatedRoute,private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute, private _notificationService :NotificationService)
 {
   this._notificationService.popToastSuccess('Welcome', 'Please Fill All Details');
@@ -38,6 +41,8 @@ ngOnInit()
     // this._activatedRoute.params.subscribe(params => {
     //   this.userid = +params['userid']; 
      // alert(this.userid);
+    
+
       if(!this.userid)
       {
         let win = (window as any);
@@ -60,6 +65,15 @@ getEmailid()
     { 
     this.users.userid = this.userid;  
     this.users.email = data;
+
+    if(this.users.email)
+    {
+      this.isDisabled = true;
+    }
+    else
+    {
+      this.isDisabled = false;
+    }
   });
 }
 Sportlist() 
@@ -71,31 +85,51 @@ professionList()
 this._accountService.professionList().subscribe(data => { this.prof_list = data;})
 }
 
+cheakProf(profdata)
+{
+  if(profdata.id == "2" || profdata.id == "8")
+  {
+    this.cheaksport = true;
+  }
+  else
+  {
+    this.cheaksport = false;
+  }
+}
+
 register(users:any)
 {
   users.prof_id = users.profs.id;
   users.prof_name =  users.profs.profession;
 
-  if(users.profs.id == '2' || users.profs.id == '10')
+  if( users.profs.id == '2' || users.profs.id == '8')
+  {
+    
+  }
+  else
   {
     users.sport = '';
   }
   // alert(JSON.stringify(users));
   this.visible = false;
-  this._accountService.Registration(users).subscribe(data => {    
+  this._accountService.Registration(users).subscribe(data => {  
+    // alert(JSON.stringify(data));
+    
     if(JSON.stringify(data.status) =="0")
     {
+      // alert("asdfas");
       this.visible =true;
       this.status = "Please Fill All Details";
-    }else if(JSON.stringify(data.status))
-    {
-      localStorage.setItem('prof_id' , data.status);
-      this._router.navigate(["/home"]);
     }else
     {
-      this.visible =true;
-      this.status = "Error in Registration"; 
-    }
+      localStorage.setItem('prof_id' , data.data.prof_id);
+      localStorage.setItem('currentUser',data.data.name); 
+      this._router.navigate(["/home"]);
+    // }else
+    // {
+    //   this.visible =true;
+    //   this.status = "Error in Registration"; 
+     }
   });
 }
 }

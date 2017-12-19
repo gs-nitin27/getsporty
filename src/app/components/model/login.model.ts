@@ -1,6 +1,6 @@
 export class User
 {
-    
+    id : number;
     email : string;
     userid: string;
     password :string;
@@ -18,5 +18,8 @@ export class User
     user_image :string;
     location :string;
     prof_language :string;
-    other_skill_detail :string;   
+    other_skill_detail :string;  
+    data :any;
+    app : any;
+    loginType : any; 
 }

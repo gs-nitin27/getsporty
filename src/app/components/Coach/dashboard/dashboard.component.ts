@@ -25,8 +25,10 @@ public user_image  = localStorage.getItem('user_image');
 public prof_id = localStorage.getItem('prof_id')
 public id : any;
 
- ngOnInit() {
-  }
+ngOnInit() 
+{
+ 
+}
 
 constructor(private router: Router, private _route: ActivatedRoute)
 {
@@ -68,7 +70,8 @@ if(this.userid)
      if(this.prof_id)
      {
      this.showMenu = true;
-     }else
+     }
+     else
      {
        //this.showMenu = true;
        this.router.navigate(["/registration"]);
