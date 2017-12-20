@@ -54,6 +54,9 @@ ngOnInit()
 signIn(provider){
         this.sub = this._auth.login(provider).subscribe(
           (data) => {
+                 
+                this.myVar = true;
+
                 this.result=data;
                 this.result.id             = this.result.uid;
                 this.userdata.email        = this.result.email;

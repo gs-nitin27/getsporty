@@ -68,11 +68,11 @@ getEmailid()
 
     if(this.users.email)
     {
-      this.isDisabled = true;
+      this.isDisabled = false;
     }
     else
     {
-      this.isDisabled = false;
+      this.isDisabled = true;
     }
   });
 }
