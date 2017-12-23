@@ -16,8 +16,6 @@ import { CreateEvent } from  '../model/createEvent.module';
 import { APP_CONFIG } from '../../app.config';
 import { IAppConfig }  from '../../app.iconfig';
 
-
-
 @Injectable()
 export class loginServices {
     public baseUrl: string;
@@ -33,12 +31,12 @@ saveEvent(events:CreateEvent) {
        return this._http.post(this.baseUrl + "/angularapi.php?act=createevent", events).map(res =>  res.json());      
     }
 
- Sportlist() {
+Sportlist() {
     return this._http.get(this.baseUrl + "/angularapi.php?act=sportlisting")
       .map(res => res.json())
   }
  
-  professionList()
+professionList()
   {
    return this._http.get(this.baseUrl + "/getListingController.php?act=professionlisting")
    .map(res => res.json().data);
@@ -73,15 +71,12 @@ Athleteprofiledata(id: String , prof_id :string)
 {       
    this._http.get(this.baseUrl + '/angularapi.php?act=getUserProfile&userid='+id+'&prof_id='+prof_id).map( res => res.json().data).subscribe(
           (data) => {
-            
             localStorage.setItem('prof_data',JSON.stringify(data));
             // this.userProfileData = data;
             //  this.athProfileData(data)
             // this.ViewProfileData();
-          
           }, (err) => console.log("Error" + err),
       );
-       
           return "1";
     }
 
@@ -168,7 +163,10 @@ ViewProfileData()
 
 Registration(user : any)
 {
-return this._http.post(this.baseUrl + "/angularapi.php?act=registration", user).map(res =>  res.json()); 
+ 
+  return this._http.post(this.baseUrl + "/user_access_controller.php?act=gs_signup",user).map((res => res.json()));
+    
+//return this._http.post(this.baseUrl + "/angularapi.php?act=registration", user).map(res =>  res.json()); 
 }
 
 orgAdd(orgdata : any)

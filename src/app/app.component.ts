@@ -13,9 +13,7 @@ public username  = localStorage.getItem('currentUser');
 public userid  = localStorage.getItem('currentUserid');
 
 ngOnInit() 
-{	
-	
-}
+{	}
     
 constructor(private router: Router){
 if(this.userid) 

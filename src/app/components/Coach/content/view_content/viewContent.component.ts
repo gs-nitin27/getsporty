@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { contentModel } from '../../../model/viewContent.model';
 import { viewContentServices } from '../../../services/viewContent.services';
-import { Globledataservices } from '../../../services/globaldata.services';
+// import { Globledataservices } from '../../../services/globaldata.services';
 import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 declare var $:any;
 

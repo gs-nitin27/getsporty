@@ -7,25 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
-  <script src="http://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+  <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/classie.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8Uo3o2e6vatJumjoa_ghLU_Xs_apoKJ4&libraries=places" type="text/javascript"></script>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.css" />
-
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.1.0/toaster.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <!-- 
   <script src="https://apis.google.com/js/platform.js"></script> -->
-  
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
  <!--  <script type="text/javascript" src="/node_modules/systemjs/dist/system.src.js"></script> -->
-
 <!--   <script type="text/javascript" src="assets/systemjs.config.js"></script> -->
-
 <style type="text/css">
 .cssload-loader {
   position: relative;
@@ -62,10 +59,6 @@
     -webkit-animation: after 2.3s infinite;
     -moz-animation: after 2.3s infinite;
 }
-
-
-
-
 @keyframes before {
   0% {
     width: 0.5em;
@@ -248,6 +241,24 @@
 </style>  
 </head>
 
+<script>
+  window.onbeforeunload = function(e) {
+      let date = Date.now();
+      localStorage.setItem("lastactivity", date);
+  };
+  window.onload = function() {
+      let date1 = localStorage.getItem('lastactivity');
+      let date2 = Date.now();
+      if (date1 !== undefined) {
+       let difference = date2 - date1;
+       let diff = ((difference) / 1000).toFixed(0);
+       if (diff > 10) {
+          localStorage.clear();
+          location.reload();
+       }
+      }
+  };
+</script>
 
 <app-root>
 <div class="cssload-loader" style="margin-top:15%"></div>

@@ -1,5 +1,6 @@
 import { User } from '../model/login.model';
 import { loginServices } from '../services/login.services';
+import { AccountService } from '../services/globaldata.services';
 import { Injectable,ViewChild, Inject , OnInit, Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, FormArray, NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -27,6 +28,7 @@ public email :any;
 public resdata : any;
 //userdata : any;
 public userid  = localStorage.getItem('currentUserid');
+
 ngOnInit() 
 {    
     this.myVar = false;
@@ -35,7 +37,8 @@ ngOnInit()
       this.router.navigate(["/profile"]);
     }
 }
- constructor(private fb: FormBuilder,private _accountService: loginServices,private router: Router
+
+ constructor(private _As: AccountService,private fb: FormBuilder,private _accountService: loginServices,private router: Router
     ,public _auth: AuthService,private face: FacebookService) {
         this.form = fb.group({
             email: [''],
@@ -43,8 +46,8 @@ ngOnInit()
         });
         //console.log('Initializing Facebook');
         face.init({
-              appId: '1417736098274297',
-              version: 'v2.8'
+              appId: '196641097570680',
+              version: 'v2.11'
             });
     }
     /**
@@ -64,6 +67,11 @@ signIn(provider){
                 this.userdata.data         =  this.result;
                 this.userdata.app          = "M";
                 this.userdata.userType     = "103";
+                this.userdata.device_id    = "";
+
+                
+
+                //alert(this.gd.shareObj['global']);
               
         if(this.result.provider == 'google')
         {
@@ -73,26 +81,34 @@ signIn(provider){
         {
           this.userdata.loginType  = "1";
         }
-        // localStorage.setItem('UserData',JSON.stringify(this.userdata));
-         //alert(JSON.stringify(this.userdata));   
-         //console.log(JSON.stringify(this.userdata));
+
+         
+        
+        //console.log(JSON.stringify(this.userdata));
+        // this._As.login(this.userdata);
+
         this._accountService.manageLogin(this.userdata).subscribe(
         (data) => 
              {
-            //alert(JSON.stringify(data.status));
- 
-                // if(data == '0')
-                // {
-                //     this.myVar = false;
-                //     this.invalid=true;  
-                // }
             let user = data.data;
+             if(data.data.userType != 104)
+             {
             if (user) {
                 localStorage.clear();
                 localStorage.setItem('currentUser',data.data.name);
                 localStorage.setItem('currentUserid',data.data.userid);
                 localStorage.setItem('user_image',data.data.user_image);
                 localStorage.setItem('prof_id',data.data.prof_id);
+
+                if(!data.data.prof_id)
+                {
+                    localStorage.setItem('provider_id' ,this.result.uid);
+                    localStorage.setItem('provider_email' ,this.result.email);
+                    localStorage.setItem('provider_image' ,this.result.image);
+                    localStorage.setItem('provider_name' ,this.result.name);
+                    localStorage.setItem('provider',this.userdata.loginType);
+
+                } 
                 }
                 if(data.status == "1")
                 {
@@ -101,8 +117,7 @@ signIn(provider){
                     }, 1000);
                 // alert(localStorage.getItem('UserData')); 
                 // var udata = localStorage.getItem('UserData');
-                //this._accountService.manageRegistration(udata).subscribe( (data) => this.resdata = data);  
-               
+                //this._accountService.manageRegistration(udata).subscribe( (data) => this.resdata = data);         
                  }
                 else
                 {
@@ -122,8 +137,6 @@ signIn(provider){
                 //     }, 1000);
                 //      this.router.navigate(["/home"]);
                 // }
-
-
                 }
                 // else 
                 // { 
@@ -131,6 +144,12 @@ signIn(provider){
                 //        this.invalid=true;
                 //        //this.router.navigate(["/login"]);
                 // }
+            }else
+            { 
+                this.myVar = false;
+                this.invalid=true;
+                //this.router.navigate(["/login"]);  
+            }
         },(err) => console.log("Error" + err),
       );      
     })

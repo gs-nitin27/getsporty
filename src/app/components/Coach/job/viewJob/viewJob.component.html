@@ -120,32 +120,33 @@
           <th></th>
           <th>Name</th>
           <th>Location</th>
-          <th>Email</th>
-          <th>Gender</th>
+          <!-- <th>Email</th> -->
+          <!-- <th>Gender</th> -->
           <th>Mobile</th>
-          <th>DOB</th>
+          <th>Age</th>
           <!-- <th>Profile</th> -->
-         <!--  <th>View</th> -->
+          <th>View</th>
         </tr>
       </thead>
     <tbody>
+
     <tr *ngFor='let list of userList'>
     <td width="10" align="center">
     <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
     </td>
     <td>
-    {{list.name}}
+      <a routerLink="/allProfile/309/2"> {{list.name}}</a>
     <br><i class="fa fa-envelope"></i>
     </td>
     <td>
       {{list.location}}
     </td>
-    <td >
+    <!-- <td >
       {{list.email}}<br>
-     </td>
-     <td >
+     </td> -->
+     <!-- <td >
       {{list.gender}}<br>
-     </td>
+     </td> -->
      <td >
       {{list.contact_no}}<br>
      </td>
@@ -155,11 +156,11 @@
     <!-- <td>
       {{list.name}}
     </td> -->
-    <!--  <td align="center">
-      <div *ngIf='participant.prof_id=="1"'>
-      <a routerLink="/userProfile/{{participant.userid}}/{{participant.prof_id}}" class="btn btn-primary btn-block btn-sm">Profile</a>
+     <td align="center">
+      <div>
+      <a routerLink="/userProfile/{{list.userid}}" class="btn btn-primary btn-block btn-sm">Profile</a>
       </div>
-     </td> -->
+     </td> 
     </tr>
     </tbody>
     </table>

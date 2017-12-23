@@ -22,9 +22,11 @@ import { CreateContentComponent } from './components/Coach/content/create_conten
 import { CreateEventComponent } from './components/Coach/event/createevent/createEvent.component';
 import { LoginComponent } from './components/useraccount/login.component';
 import { loginServices } from './components/services/login.services';
+import {AccountService } from './components/services/globaldata.services';
 import { DashboardComponent } from './components/Coach/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/useraccount/registration/registration.component';
 import { ProfileComponent } from './components/useraccount/profile/profile.component';
+import {AllProfileComponent} from './components/useraccount/ViewProfile/Viewprofile.component';
 import { UserdataComponent } from './userdata.component';
 import { ViewEventComponent } from './components/Coach/event/ViewEvent/viewEvent.component';
 import { EditJobComponent } from './components/Coach/job/editJob/editJob.component';
@@ -46,6 +48,7 @@ import {MessageComponent} from './components/Coach/message/message.component';
 import {OrgComponent} from './components/Coach/org/org.component';
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
 import {CostComponent } from './components/coach/Cost/Cost.component';
+import {GlobalEventsManager} from './globalEventManager';
   
 enableProdMode();
 let providers = 
@@ -93,7 +96,8 @@ let providers =
     MessageComponent,
     OrgComponent,
     JobDashboard,
-    CostComponent
+    CostComponent,
+    AllProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +117,8 @@ let providers =
   loginServices,
   Classdata,
   AthleteCheak,
+  AccountService,
+  GlobalEventsManager,
   Guard,
   [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   [{ provide: APP_CONFIG, useValue: AppConfig }]
