@@ -106,7 +106,119 @@
 </div>
 
 <div class="tab-pane" id="tab_default_2">
-  <div class="container">
+  <div class="container">   
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#example1-tab1" aria-controls="example1-tab1" role="tab" data-toggle="tab">Applicants</a></li>
+            <li role="presentation"><a href="#example1-tab2" aria-controls="example1-tab2" role="tab" data-toggle="tab">Shortlisted</a></li>
+        </ul>
+    
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="example1-tab1">
+            
+  
+
+              <table id="example1-tab1-dt" class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
+                  
+                  <thead>
+                        <tr>
+                            <th></th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <!-- <th>Email</th> -->
+                            <!-- <th>Gender</th> -->
+                            <th>Mobile</th>
+                            <th>Age</th>
+                            <!-- <th>Profile</th> -->
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let list of userList'>
+                          <td>{{userList.indexOf(list)}}</td>
+                            <td width="10" align="center">
+                                <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
+                                </td>
+                                <td>
+                                  <a routerLink="/allProfile/309/2"> {{list.name}}</a>
+                                <br><i class="fa fa-envelope"></i>
+                                </td>
+                                <td>
+                                  {{list.location}}
+                                </td>
+                                 <td >
+                                  {{list.contact_no}}<br>
+                                 </td>
+                                 <td >
+                                  {{list.dob}}<br>
+                                 </td>
+                                 <td align="center">
+                                  <div>
+                                  <a routerLink="/userProfile/{{list.userid}}" class="btn btn-primary btn-block btn-sm">Profile</a>
+                                  </div>
+                                 </td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="example1-tab2">
+                <table id="example1-tab2-dt" class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <!-- <th>Email</th> -->
+                            <!-- <th>Gender</th> -->
+                            <th>Mobile</th>
+                            <th>Age</th>
+                            <!-- <th>Profile</th> -->
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bradley Greer</td>
+                            <td>Software Engineer</td>
+                            <td>London</td>
+                            <td>41</td>
+                            <td>2012/10/13</td>
+                            <td>$132,000</td>
+                        </tr>
+                        <tr>
+                            <td>Dai Rios</td>
+                            <td>Personnel Lead</td>
+                            <td>Edinburgh</td>
+                            <td>35</td>
+                            <td>2012/09/26</td>
+                            <td>$217,500</td>
+                        </tr>
+                        <tr>
+                            <td>Jenette Caldwell</td>
+                            <td>Development Lead</td>
+                            <td>New York</td>
+                            <td>30</td>
+                            <td>2011/09/03</td>
+                            <td>$345,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+  
+  <!-- <div class="container">
     <div class="row">
     <div class="panel panel-default user_panel" style="min-width:100%;">
     <div class="panel-heading">
@@ -120,11 +232,8 @@
           <th></th>
           <th>Name</th>
           <th>Location</th>
-          <!-- <th>Email</th> -->
-          <!-- <th>Gender</th> -->
           <th>Mobile</th>
           <th>Age</th>
-          <!-- <th>Profile</th> -->
           <th>View</th>
         </tr>
       </thead>
@@ -141,21 +250,12 @@
     <td>
       {{list.location}}
     </td>
-    <!-- <td >
-      {{list.email}}<br>
-     </td> -->
-     <!-- <td >
-      {{list.gender}}<br>
-     </td> -->
      <td >
       {{list.contact_no}}<br>
      </td>
      <td >
       {{list.dob}}<br>
      </td>
-    <!-- <td>
-      {{list.name}}
-    </td> -->
      <td align="center">
       <div>
       <a routerLink="/userProfile/{{list.userid}}" class="btn btn-primary btn-block btn-sm">Profile</a>
@@ -168,9 +268,7 @@
     </div>
     </div>
     </div>
-      
-    
-    </div>
+    </div> -->
 
 
 

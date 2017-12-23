@@ -1,5 +1,6 @@
 
-export interface IAppConfig {
+export interface IAppConfig 
+{
     apBaseUrl: string;
     applocalhostUrl : string;
     viewcontenturl: string; 

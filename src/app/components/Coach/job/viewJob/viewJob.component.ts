@@ -5,6 +5,7 @@ import { JobServices } from '../../../services/job.services';
 import {ActivatedRoute} from '@angular/router';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
+declare var $:any;
 
 @Component({
 	selector: 'app-viewjob',
@@ -31,6 +32,17 @@ ngOnInit()
 this._activatedRoute.params.subscribe(params => { this.id = +params['id']; });
 this.getJobdetails();
 this.jobapplyUser();
+
+$(document).ready(function(){
+    $('#example1-tab1-dt').DataTable({});
+ 
+    $('#example1-tab2-dt').DataTable({});
+    
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+       $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+    });   
+ });
 
 }
 

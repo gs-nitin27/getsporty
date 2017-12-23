@@ -293,7 +293,7 @@ Create(user)
 
    this.final ={'userid': this.userid, 'prof_id' : this.prof_id,'profiledata': {'Education' : {'formalEducation': this.formalEducation,'otherCertification': this.otherCertification ,'sportEducation':this.sportEducation},'Experience':{'experienceAsPlayer':this.experienceAsPlayer , 'workExperience':this.workExperience },'HeaderDetails':this.headerdetails}};
 
-    alert(JSON.stringify(this.final));
+   // alert(JSON.stringify(this.final));
   // console.log(JSON.stringify(this.final));
 
     this._accountService.updateProfileData(this.final).subscribe( res => 

@@ -49,7 +49,8 @@ import {OrgComponent} from './components/Coach/org/org.component';
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
 import {CostComponent } from './components/coach/Cost/Cost.component';
 import {GlobalEventsManager} from './globalEventManager';
-  
+
+
 enableProdMode();
 let providers = 
 {

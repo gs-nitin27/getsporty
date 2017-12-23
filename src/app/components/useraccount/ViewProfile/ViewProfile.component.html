@@ -1,5 +1,132 @@
 <app-dashboard></app-dashboard>
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+ 
+<div *ngIf= "profid == 1" class="w3-content w3-margin-top" style="max-width:1400px;">
+    <div class="w3-row-padding">
+    <div class="w3-third">
+    <div class="w3-white w3-text-grey w3-card-4">
+    <div class="w3-display-container">
+    
+    <!-- <img src="http://getsporty.in/img/team/team-02.jpg" style="width:100%" alt="Avatar"> -->
+    
+    <div *ngIf="!user.user_image">
+    <img style="width:100%" alt="Avatar" alt="" src="assets/images/user.jpg">
+    </div>
+    <div *ngIf="user.user_image">
+    <img style="width:100%" alt="Avatar" [src]="athuser.user_image"  (error)="errorHandler($event,athuser.user_image)"/>
+    </div>
+    
+    
+    <div class="w3-display-bottomleft w3-container w3-text-white">
+            <h2>{{athuser.name}}</h2>
+            </div>
+            </div>
+            <div class="w3-container">
+            <h5 class="w3-opacity"><b>Profession - </b>{{athuser.prof_name}}</h5>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>Email - </b> {{athuser.email}}</h5>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>Contact No - </b>{{athuser.contact_no}}</h5>
+            <p></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>Sport - </b>{{athuser.sport}}</h5>
+            <p></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>Gender - </b>{{athuser.gender}}</h5>
+            <p></p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>DOB</b></h5>
+            <h6 class="w3-text-teal"><span class="w3-tag w3-green w3-round">{{athuser.dob}}</span></h6>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <hr>
+            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Address Details</b></p>
+            <h5 class="w3-opacity"><b>Location  </b></h5>
+            <p>{{athuser.location}}</p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            </div>
+            <h5 class="w3-opacity"><b>Languages Known  </b></h5>
+            <p>{{athuser.languages_known}}</p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+            </div>
+            </div>
+              <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Header</b></p>
+              <h5 class="w3-opacity"><b>Description</b></h5>
+              <p>{{athheaderdetails.description}}</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+              </div>
+              <h5 class="w3-opacity"><b>level</b></h5>
+              <p>{{athheaderdetails.level}}</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+              </div>
+              <h5 class="w3-opacity"><b>Location</b></h5>
+              <p>{{athheaderdetails.location}}</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+              </div>
+              <h5 class="w3-opacity"><b>name</b></h5>
+              <p>{{athheaderdetails.name}}</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+              </div>
+              <h5 class="w3-opacity"><b>Rank</b></h5>
+              <p>{{athheaderdetails.Rank}}</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+              </div>
+              <br>
+              <br>
+            </div>
+          </div><br>
+        </div>
+        <div class="w3-twothird">
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Award</h2>
+        <div *ngFor = 'let awards of Award' >
+        <div class="w3-container">
+        <h5 class="w3-opacity"><b>Date -</b> {{awards.date}} </h5>
+        <h6 class="w3-text-teal"><b>Description  -</b>{{awards.description}}</h6>
+        <h6 class="w3-text-teal"><b>Name Of Award  -</b> {{awards.nameOfAward}}</h6>
+        <hr>
+        </div>
+        </div>
+        </div>
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Best Results</h2>
+        <div *ngFor = 'let bestresult of BestResults'> 
+        <div class="w3-container">
+        <h5 class="w3-opacity"><b>Date -</b> {{bestresult.date}} </h5>
+        <h6 class="w3-text-teal"><b>Name Comptation -</b>{{bestresult.nameComptation}}</h6>
+        <h6 class="w3-text-teal"><b>Result  -</b> {{bestresult.result}}</h6>
+        <h6 class="w3-text-teal"><b>Rounds  -</b> {{bestresult.rounds}}</h6>
+        <hr>
+        </div>
+        </div>
+        </div>
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Latest Result</h2>
+        <div *ngFor = 'let latestresults of LatestResult'> 
+        <div class="w3-container">
+        <h5 class="w3-opacity"><b>Date Of Competation-</b> {{latestresults.dateOfCompetation}} </h5>
+        <h6 class="w3-text-teal"><b>Detail -</b>{{latestresults.detail}}</h6>
+        <h6 class="w3-text-teal"><b>Name Of Competation  -</b> {{latestresults.nameOfCompetation}}</h6>
+        <h6 class="w3-text-teal"><b>Opponent -</b> {{latestresults.opponent}}</h6>
+        <h6 class="w3-text-teal"><b>Result -</b>{{latestresults.result}}</h6>
+        <h6 class="w3-text-teal"><b>Round  -</b> {{latestresults.round}}</h6>
+        <h6 class="w3-text-teal"><b>Score -</b> {{latestresults.score}}</h6>
+        <hr>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+<div *ngIf= "profid != 1"  class="w3-content w3-margin-top" style="max-width:1400px;">
 <div class="w3-row-padding">
 <div class="w3-third">
 <div class="w3-white w3-text-grey w3-card-4">

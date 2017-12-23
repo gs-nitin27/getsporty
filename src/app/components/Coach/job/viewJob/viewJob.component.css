@@ -161,3 +161,11 @@ margin-bottom: 0;}
 }
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+
+
+.tab-content {
+  padding:10px;
+  border-left:1px solid #DDD;
+  border-bottom:1px solid #DDD;
+  border-right:1px solid #DDD;
+}
