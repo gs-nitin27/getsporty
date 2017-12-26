@@ -22,6 +22,12 @@ Job: JobModule = new JobModule();
 userList : any;
 id : any;
 public imageurl : string;
+public shortlist  = [];
+public applicants = [];
+public offered  = [];
+
+
+
 constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig)
 {
    this.imageurl = _config.dir_url;
@@ -32,18 +38,6 @@ ngOnInit()
 this._activatedRoute.params.subscribe(params => { this.id = +params['id']; });
 this.getJobdetails();
 this.jobapplyUser();
-
-$(document).ready(function(){
-    $('#example1-tab1-dt').DataTable({});
- 
-    $('#example1-tab2-dt').DataTable({});
-    
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
-       $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-    });   
- });
-
 }
 
 getJobdetails()
@@ -53,7 +47,26 @@ getJobdetails()
 
 jobapplyUser()
 {
-   this._JobServices.jobapplyUser(this.id).subscribe(res => {this.userList = res ; });
+   this._JobServices.jobapplyUser(this.id).subscribe(res => 
+    {
+      this.userList = res ;
+    //   alert(JSON.stringify(this.userList.status));
+     for(let shortlisttype in res)
+     {
+       if(res[shortlisttype].status == 1)
+       {
+        this.applicants.push(res[shortlisttype]); 
+       }else if(res[shortlisttype].status == 2)
+       {
+        this.shortlist.push(res[shortlisttype]);
+       }else if(res[shortlisttype].status == 3)
+       {
+        this.offered.push(res[shortlisttype]);
+       } 
+     }
+      
+    
+    });
 
 }
 
