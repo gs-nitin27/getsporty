@@ -2,7 +2,6 @@
 <app-dashboard></app-dashboard>
 
 <img style="height: 400px;width: 80%;margin-left: 10%; text-align: center;" src="assets/images/job_back.jpg"/>
-
 <div class="caption">
 <h2>{{Job.organisation_name}}</h2>
 </div>
@@ -30,9 +29,9 @@
         Tab 3 </a>
     </li> -->
     </ul>
-    <div class="tab-content">
-    <div class="tab-pane active" id="tab_default_1">
-            
+<div class="tab-content">
+
+<div class="tab-pane active" id="tab_default_1">   
 <div class="container">
 <div class="row grid-divider">
 <div class="col-sm-4">
@@ -118,8 +117,6 @@
         <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="example1-tab1">
             
-      
-
             <table class="table-users table" border="0">
              <thead>
                 <tr>
@@ -138,7 +135,7 @@
             <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
             </td>
             <td>
-              <a routerLink="/allProfile/309/2" target="_blank"> {{list.name}}</a>
+              <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
             <br><i class="fa fa-envelope"></i>
             </td>
             <td>
@@ -152,7 +149,7 @@
              </td>
              <td align="center">
               <div>
-              <a  class="btn btn-primary btn-block btn-sm">Profile</a>
+              <a  class="btn btn-primary btn-block btn-sm" (click)="shortlisted(list.userid,id)" >Shortlist</a>
               </div>
              </td> 
             </tr>
@@ -183,7 +180,7 @@
             <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
             </td>
             <td>
-              <a routerLink="/allProfile/309/2" target="_blank"> {{list.name}}</a>
+              <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
             <br><i class="fa fa-envelope"></i>
             </td>
             <td>
@@ -195,9 +192,9 @@
              <td >
               {{list.dob}}<br>
              </td>
-             <td align="center">
+             <td align="left">
               <div>
-              <a  class="btn btn-primary btn-block btn-sm">Profile</a>
+              <a  class="btn btn-primary" (click)="callforinterview(list.userid)">Schedule Interview</a>
               </div>
              </td> 
             </tr>
@@ -227,7 +224,7 @@
                 <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
                 </td>
                 <td>
-                  <a routerLink="/allProfile/309/2" target="_blank"> {{list.name}}</a>
+                  <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
                 <br><i class="fa fa-envelope"></i>
                 </td>
                 <td>

@@ -55,19 +55,20 @@ CreatJob(job)
  }
 jobapplyUser(id : string) :Observable<any>
 {
- 
    return this._http.get(this.baseurl+"/angularapi.php?act=jobapplyUser&id="+id).map(res => <JobModule[]>res.json());
-
 }
- 
 uploadimage(binaryString)
-  {
+{
     return  this._http.post(this.baseurl+"/angularapi_image.php?act=jobimage", binaryString) .retryWhen(error => error.delay(2000)).timeout(8000).map(res => res.json());
-  }
-  
+}
 publish(jobid:any , publish:any)
 {
   return this._http.get(this.baseurl + "/angularapi.php?act=publishjob&jobid="+ jobid + "&publish=" + publish).map(res =>res.json());
 } 
+
+shortlist(userid,jobid)
+{
+  return this._http.get(this.baseurl + "/angularapi.php?act=callforshortlist&userid="+userid+"&jobid="+jobid).map(res =>res.json());
+}
 
 }
