@@ -71,4 +71,13 @@ shortlist(userid,jobid)
   return this._http.get(this.baseurl + "/angularapi.php?act=callforshortlist&userid="+userid+"&jobid="+jobid).map(res =>res.json());
 }
 
+callforinterview(interviewdata)
+{
+  return this._http.post(this.baseurl + "/create_database.php?act=interview_schedule",interviewdata).map(res => res.json());
+}
+
+JobOffer(offer)
+{
+  return this._http.post(this.baseurl + "/create_database.php?act=send_offer",offer).map(res => res.json());
+}
 }

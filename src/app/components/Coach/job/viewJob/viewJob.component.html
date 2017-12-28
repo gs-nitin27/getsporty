@@ -1,33 +1,38 @@
 
 <app-dashboard></app-dashboard>
-
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+  <div class="loader">
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+  </div>
+</div>
 <img style="height: 400px;width: 80%;margin-left: 10%; text-align: center;" src="assets/images/job_back.jpg"/>
 <div class="caption">
 <h2>{{Job.organisation_name}}</h2>
 </div>
 <div class="tabbable-panel">
-    <div class="tabbable-line">
-    <ul class="nav nav-tabs ">
-    <li class="active">
-    <a href="#tab_default_1" data-toggle="tab">
+<div class="tabbable-line">
+<ul class="nav nav-tabs ">
+<li class="active">
+<a href="#tab_default_1" data-toggle="tab">
         Details </a>
-    </li>
-    <li>
-    <a href="#tab_default_2" data-toggle="tab">
-     Participant </a>
-    </li>
-    <!-- <li>
-    <a href="#tab_default_3" data-toggle="tab">
-      Accounting </a>
-    </li> -->
-    <!-- <li>
-    <a href="#tab_default_4" data-toggle="tab">
-       Manage </a>
-    </li> -->
-    <!-- <li>
-    <a href="#tab_default_5" data-toggle="tab">
-        Tab 3 </a>
-    </li> -->
+</li>
+<li>
+<a href="#tab_default_2" data-toggle="tab">Participant </a>
+</li>
+<!-- <li>
+            <a href="#tab_default_3" data-toggle="tab">
+            Accounting </a>
+</li> -->
+<!-- <li>
+            <a href="#tab_default_4" data-toggle="tab">
+            Manage </a>
+</li> -->
+<!-- <li>
+             <a href="#tab_default_5" data-toggle="tab">
+             Tab 3 </a>
+</li> -->
     </ul>
 <div class="tab-content">
 
@@ -132,7 +137,12 @@
         
             <tr *ngFor='let list of applicants'>
             <td width="10" align="center">
+            <div *ngIf="!list.user_image">
+            <img class="pull-left img-circle nav-user-photo" width="50" src="assets/images/user.jpg" />                           
+            </div>
+            <div *ngIf="list.user_image">
             <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
+            </div> 
             </td>
             <td>
               <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
@@ -145,7 +155,8 @@
               {{list.contact_no}}<br>
              </td>
              <td >
-              {{list.dob}}<br>
+                {{findAge(list.dob)}}
+                {{age}}<br>
              </td>
              <td align="center">
               <div>
@@ -155,48 +166,143 @@
             </tr>
             </tbody>
             </table>
-
-   
-
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="example1-tab2">
-    
 
-            <table class="table-users table" border="0">
-             <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Location</th>
-                  <th>Mobile</th>
-                  <th>Age</th>
-                  <th>View</th>
-                </tr>
-              </thead>
-            <tbody>
+        <div role="tabpanel" class="tab-pane fade" id="example1-tab2">
+          <table class="table-users table" border="0">
+          <thead>
+          <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Age</th>
+          <th>Interview</th>
+          <th>Interview Date</th>
+          <th>Sent Offer</th>
+          </tr>
+          </thead>
+          <tbody>
         
-            <tr *ngFor='let list of shortlist'>
-            <td width="10" align="center">
-            <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
-            </td>
-            <td>
-              <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
-            <br><i class="fa fa-envelope"></i>
-            </td>
-            <td>
+          <tr *ngFor='let list of shortlist'>
+          <td width="10" align="center">
+
+        <div *ngIf="!list.user_image">
+        <img class="pull-left img-circle nav-user-photo" width="50" src="assets/images/user.jpg" />                           
+        </div>     
+        <div *ngIf="list.user_image">
+        <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
+        </div>  
+        </td>
+          <td>
+          <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
+          <br><i class="fa fa-envelope"></i>
+          </td>
+          <!-- <td>
               {{list.location}}
-            </td>
-             <td >
+          </td> -->
+          <td>
               {{list.contact_no}}<br>
-             </td>
-             <td >
-              {{list.dob}}<br>
-             </td>
-             <td align="left">
-              <div>
-              <a  class="btn btn-primary" (click)="callforinterview(list.userid)">Schedule Interview</a>
-              </div>
+          </td>
+          <td>
+              {{findAge(list.dob)}}
+              {{age}}
+              <!-- {{list.dob}} -->
+              <br>
+          </td>
+          <td align="left">
+
+          <div *ngIf="!list.interview_date">  
+          <button type="button"  class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal'+list.userid">
+              Schedule
+          </button>
+          </div>   
+
+          <div *ngIf="list.interview_date">   
+          <button type="button"  class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modal'+list.userid">
+            Reschedule
+          </button>
+          </div>
+                <!-- Modal -->
+          <div class="modal fade" id="modal{{list.userid}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+          <div class="form-group"> 
+          <label>Message</label>
+          <input type="text" id="msg{{list.userid}}" class="form-control">              
+          </div>
+          <div class="form-group"> 
+          <label>Interview Date</label>
+          <input  type="date" id="date{{list.userid}}" class="form-control">              
+          </div> 
+          <div class="form-group" *ngIf="result"> 
+          <label>Venue</label>
+          <input type="text" id="location{{list.userid}}" value="{{result.address1}} , {{result.address2}} , {{result.city}} , {{result.state}}" class="form-control">              
+          </div>
+          <div class="form-group" *ngIf="!result"> 
+          <label>Venue</label>
+          <input type="text" id="location{{list.userid}}"  class="form-control">              
+          </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="callforinterview(list.userid)">Schedule Interview</button>
+          </div>
+          </div>
+          </div>
+          </div> 
+            <!-- <div>
+            <a  class="btn btn-primary" (click)="callforinterview(list.userid)">Schedule Interview</a>
+            </div> -->
              </td> 
+             <td>
+                {{list.interview_date}}
+             </td>
+             <td>
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Offer
+            </button>
+                  <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+
+                <div class="form-group"> 
+                <label>Salary</label>
+                <input type="text" id="Salary{{list.userid}}" class="form-control">              
+                </div>
+
+                <div class="form-group"> 
+                <label>Join Date</label>
+                <input type="date" id="Join_date{{list.userid}}" class="form-control">              
+                </div>
+                          
+
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendoffer(list.userid)">Offer</button>
+              </div>
+              </div>
+              </div>
+              </div>
+
+
+             </td>
             </tr>
             </tbody>
             </table>
@@ -221,7 +327,12 @@
             
                 <tr *ngFor='let list of offered'>
                 <td width="10" align="center">
+                <div *ngIf="!list.user_image">
+                <img class="pull-left img-circle nav-user-photo" width="50" src="assets/images/user.jpg" />                           
+                </div>
+                <div *ngIf="list.user_image">
                 <img class="pull-left img-circle nav-user-photo" width="50" src="{{list.user_image}}" />                           
+                </div> 
                 </td>
                 <td>
                   <a routerLink="/allProfile/{{list.userid}}/{{list.prof_id}}" target="_blank"> {{list.name}}</a>
@@ -234,7 +345,11 @@
                   {{list.contact_no}}<br>
                  </td>
                  <td >
-                  {{list.dob}}<br>
+                    {{findAge(list.dob)}}
+                    {{age}}
+                  
+                  <!-- {{list.dob}} -->
+                  <br>
                  </td>
                  <td align="center">
                   <div>

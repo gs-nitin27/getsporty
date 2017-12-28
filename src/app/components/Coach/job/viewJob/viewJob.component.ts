@@ -2,6 +2,7 @@ import { FormControl, FormBuilder, FormGroup, FormArray, Validators } from '@ang
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
 import { JobModule } from '../../../model/job.model';
 import { JobServices } from '../../../services/job.services';
+import { loginServices } from '../../../services/login.services';
 import {ActivatedRoute} from '@angular/router';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
@@ -27,21 +28,26 @@ public shortlist  = [];
 public applicants = [];
 public offered  = [];
 userinterview : any;
+public age : any;
+public myVar:boolean;
 public employer_id = localStorage.getItem('currentUserid');
 public employer_name = localStorage.getItem("currentUser");
+public result : any;
 
 
 
-constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig)
+constructor(private _accountService: loginServices,private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig)
 {
    this.imageurl = _config.dir_url;
 }
 
 ngOnInit()
 {
+ this.myVar = true;   
 this._activatedRoute.params.subscribe(params => { this.id = +params['id']; });
 this.getJobdetails();
 this.jobapplyUser();
+this.getOrgDetails();
 }
 
 getJobdetails()
@@ -63,36 +69,74 @@ jobapplyUser()
        if(res[shortlisttype].status == 1)
        {
         this.applicants.push(res[shortlisttype]); 
-       }else if(res[shortlisttype].status == 2)
+       }else if(res[shortlisttype].status == 2 || res[shortlisttype].status == 3)
        {
         this.shortlist.push(res[shortlisttype]);
-       }else if(res[shortlisttype].status == 3)
+       }else if(res[shortlisttype].status == 4 || res[shortlisttype].status == 5)
        {
         this.offered.push(res[shortlisttype]);
        } 
      }
       
-    
+     this.myVar = false; 
     });
 
 }
 
 public shortlisted(user_id:any,job_id:any)
 {
+  this.myVar = true; 
   this._JobServices.shortlist(user_id,job_id).subscribe(res => 
-{ 
+  { 
     this.shortresult = res;
     this.jobapplyUser();
-});
+    this.myVar = false; 
+  });
 }
 
 public callforinterview(applicants_id)
 {
-   this.userinterview = {"employer_id":this.employer_id,"name": this.employer_name,"applicant_id":applicants_id,"job_id":this.id,"status":'3',"module":'1'};
-  
-    alert(JSON.stringify(this.userinterview));
- 
+this.myVar = true; 
+this.userinterview = {"employer_id":this.employer_id,"name": this.employer_name,"applicant_id":[applicants_id],"job_id":this.id,"status":'3',"module":'1',"date":$("#date"+applicants_id).val(),"msg": $("#msg"+applicants_id).val(),"venue":$("#location"+applicants_id).val()};
+this._JobServices.callforinterview(this.userinterview).subscribe(res => 
+{     
+        this.jobapplyUser();
+        this.myVar = false; 
+});
 }
 
+public sendoffer(uid)
+{
+this.myVar = true; 
+var offer = {"emp_id":this.employer_id,"applicant_id":uid,"job_id":this.id,"salary":$("#Salary"+uid).val(),"joining_date":$("#Join_date"+uid).val()}; 
+this._JobServices.JobOffer(offer).subscribe(res => 
+{ 
+    this.jobapplyUser();
+    this.myVar = false; 
+});
+}
 
+public findAge(birthdate)
+{
+   if(birthdate)
+   {
+    var date1 = new Date(birthdate);
+    var date2 = new Date();
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    this.age = Math.ceil((timeDiff / (1000 * 3600 * 24))/365);
+   }
+   else
+   {
+    this.age = "";
+   }
+}
+
+getOrgDetails()
+{
+   this._accountService.getOrgDetails(this.employer_id).subscribe(data => 
+    { 
+        this.result = data;
+    //alert(JSON.stringify(this.result));
+  });
+}
 }
