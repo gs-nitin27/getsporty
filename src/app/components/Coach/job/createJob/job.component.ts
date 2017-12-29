@@ -1,15 +1,16 @@
 import { JobModule } from '../../../model/job.model';
 import { JobServices } from '../../../services/job.services';
+import { loginServices } from '../../../services/login.services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable, Inject , OnInit, Component,Directive, forwardRef, Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, FormArray, NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-
 import { Observable } from 'rxjs/Observable';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import {HttpModule, Http,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
+declare var $ : any;
 
 
 @Component({
@@ -27,9 +28,11 @@ public notresponse : boolean;
 public imageurl : string;
 public userid :string;
 public image : string;
+public orgDetails : any;
+public user_id = localStorage.getItem('currentUserid');
 public sports : any[];
 
-constructor(private _JobServices : JobServices, private _http : Http, private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
+constructor(private _accountService :loginServices,private _JobServices : JobServices, private _http : Http, private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
      this.Job = new JobModule(); 
      this.imageurl = _config.dir_url;
@@ -38,14 +41,25 @@ constructor(private _JobServices : JobServices, private _http : Http, private ro
 
   ngOnInit() {
   this.myVar = false;
-  this.Job.userid =  localStorage.getItem('currentUserid');
+  this.Job.userid =  this.user_id;
   this.Job.id = "0";
   this.Sportlist();  
+  this.getOrgDetails();
   }
 
 
 CreateJob(job) : void
 {
+     this.Job.organisation_name    =  $("#org_name").val();
+     this.Job.about                =  $("#about").val();
+     this.Job.org_address1         =  $("#address1").val();
+     this.Job.org_address2         =  $("#address2").val();
+     this.Job.org_city             =  $("#city").val();
+     this.Job.org_state            =  $("#state").val();
+     this.Job.contact              =  $("#mobilenumber").val();
+     this.Job.org_pin              =  $("#pin").val();
+     this.Job.email                =  $("#email").val();
+
      this._JobServices.CreatJob(job).subscribe( 
      data=>{ 
                 if(data != "0")
@@ -115,6 +129,13 @@ _handleReaderLoaded(readerEvt) {
  Sportlist() {
     this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
       })
+  }
+
+  getOrgDetails()
+  {
+     this._accountService.getOrgDetails(this.user_id).subscribe(data => { this.orgDetails = data;
+      console.log(JSON.stringify(this.orgDetails));
+    });
   }
 
 }

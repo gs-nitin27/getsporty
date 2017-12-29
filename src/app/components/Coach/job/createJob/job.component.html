@@ -94,52 +94,52 @@
        <!-- Tab 2 start -->
     
 
-    <div id="menu1" class="tab-pane fade">  
+<div id="menu1" class="tab-pane fade">  
     
 <div class="box1">
 <!-- <h2>Organisation Details:</h2> -->
   <div>
   <span class="input input--hoshi">
  
-  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.organisation_name" type="text" name="title">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.organisation_name" type="text" value="{{orgDetails?.org_name}}" id="org_name" name="title">
    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Organisation Name</span></label>
   </span>
   </div >
     <div>
-       <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.about" name="title">
+  <span class="input input--hoshi">
+  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.about" value="{{orgDetails?.about}}" id="about" name="title">
     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">About Organisation</span></label>
     </span>
   </div >
   <div>
    <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.org_address1" name="title">
+  <input class='input__field input__field--hoshi' type="text" [(ngModel)] = "Job.org_address1" value="{{orgDetails?.address1}}" id="address1" name="title">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 1</span></label>
   </span>
   </div >
   
   <div>
    <span class="input input--hoshi">
-  <input type="text" name="title" [(ngModel)] = "Job.org_address2"  class="input__field input__field--hoshi validate datepicker">
+  <input type="text" name="title" [(ngModel)] = "Job.org_address2"  value="{{orgDetails?.address2}}" id="address2" class="input__field input__field--hoshi">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Address Line 2</span></label>
   </span>
   </div >
    
   <div class=" wd60 pd0 fl">
        <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_city" type="text" name="title">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_city"  value="{{orgDetails?.city}}" id="city" type="text" name="title">
     <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Job Location</span></label>
     </span>
   </div >
   <div class="wd60 pd0 fr">
    <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_state" type="text" name="title">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_state" type="text" value="{{orgDetails?.state}}" id="state" name="title">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">State</span></label>
   </span>
   </div >
 <div class=" wd60 pd0 fl">
 <span class="input input--hoshi">
-<input type="text" class="input__field input__field--hoshi" id="mobilenumber"
+<input type="text" class="input__field input__field--hoshi"  value="{{orgDetails?.mobile}}" id="mobilenumber"
                required
                [(ngModel)]="Job.contact" name="mobilenumber"
                pattern="[0-9]*"
@@ -163,7 +163,7 @@
   </div >
   <div class="wd60 pd0 fr">
    <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_pin" type="text" name="title">
+  <input class='input__field input__field--hoshi' [(ngModel)] = "Job.org_pin" type="text" value="{{orgDetails?.pin}}" id="pin" name="title">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">PIN</span></label>
   </span>
   </div >
@@ -171,7 +171,7 @@
   
   <div>
    <span class="input input--hoshi">
-  <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)] = "Job.email">
+  <input class='input__field input__field--hoshi' type="text" name="title"  [(ngModel)] = "Job.email" id="email" value="{{orgDetails?.email}}">
   <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="title"><span class="input__label-content input__label-content--hoshi">Email</span></label>
   </span>
   </div >

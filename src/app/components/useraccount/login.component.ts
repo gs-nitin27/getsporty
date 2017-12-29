@@ -26,6 +26,7 @@ public sub : any;
 public id : any;
 public email :any;
 public resdata : any;
+public msg : any;
 //userdata : any;
 public userid  = localStorage.getItem('currentUserid');
 
@@ -102,10 +103,10 @@ signIn(provider){
 
                 if(!data.data.prof_id)
                 {
-                    localStorage.setItem('provider_id' ,this.result.uid);
-                    localStorage.setItem('provider_email' ,this.result.email);
-                    localStorage.setItem('provider_image' ,this.result.image);
-                    localStorage.setItem('provider_name' ,this.result.name);
+                    localStorage.setItem('provider_id',this.result.uid);
+                    localStorage.setItem('provider_email',this.result.email);
+                    localStorage.setItem('provider_image',this.result.image);
+                    localStorage.setItem('provider_name',this.result.name);
                     localStorage.setItem('provider',this.userdata.loginType);
 
                 } 
@@ -146,6 +147,16 @@ signIn(provider){
                 // }
             }else
             { 
+                if(data.data.prof_id == 6)
+                {
+                   this.msg = "You are Already Register as Parent.";
+                }else if(data.data.prof_id == 1)
+                {
+                    this.msg = "You are Already Register as Athlete.";
+                }
+                else{
+                    this.msg = "You are Already Registered.";
+                }
                 this.myVar = false;
                 this.invalid=true;
                 //this.router.navigate(["/login"]);  
@@ -177,13 +188,13 @@ login() : void {
                     localStorage.setItem('prof_id' , data.prof_id);
                     }
                       this.router.navigate(["/profile"]);
-                      }
-                         else 
-                         { 
-                           this.myVar = false;
-                           this.invalid=true;
+                    }
+                    else 
+                    { 
+                        this.myVar = false;
+                        this.invalid=true;
                            //this.router.navigate(["/login"]);
-                         }
+                    }
              }, (err) => console.log("Error" + err),
             );
 
