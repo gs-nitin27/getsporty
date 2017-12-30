@@ -59,4 +59,13 @@ publish(jobid:any,publish:any)
   this._router.navigate(["/cost"]);
   // this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
 }
+
+openJobView(id)
+{
+  var nid = btoa(id);
+  this._router.navigate(["/viewjob",nid]);
+}
+
+
+
 }

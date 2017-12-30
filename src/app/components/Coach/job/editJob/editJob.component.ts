@@ -22,6 +22,7 @@ public imageurl : string;
 public sports :any;
 Job: JobModule = new JobModule();
 id : any;
+public tempUrl :any;
 
 constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobServices,private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig)
 {
@@ -31,7 +32,8 @@ constructor(private _activatedRoute :ActivatedRoute,private _JobServices : JobSe
 ngOnInit()
 {
 this._activatedRoute.params.subscribe(params => {
-            this.id = +params['id']; 
+            this.tempUrl = params['id']; 
+            this.id = atob(this.tempUrl);
             this.myVar = false;
   });
   this.getJobdetails();

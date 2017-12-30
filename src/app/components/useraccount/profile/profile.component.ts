@@ -33,6 +33,7 @@ this.imageurl = _config.dir_url;
 ngOnInit()
 { 
   this.profile();
+  // alert(btoa("110"));
 }
 profile()
 {

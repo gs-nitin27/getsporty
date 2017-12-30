@@ -157,10 +157,18 @@
                 {{findAge(list.dob)}}
                 {{age}}<br>
              </td>
-             <td align="center">
-              <div>
+             <td align="left">
+              <div *ngIf="list.status == 1">
               <a  class="btn btn-primary btn-block btn-sm" (click)="shortlisted(list.userid,id)" >Shortlist</a>
               </div>
+              <div *ngIf="list.status != 1">
+              
+              <!-- <span class="label label-success">Shortlisted</span> -->
+              
+               <a  class="btn btn-success btn-block btn-sm">Shortlisted</a>
+                
+
+                  </div>
              </td> 
             </tr>
             </tbody>
@@ -461,8 +469,9 @@
           </div>
         </div>
       </div>
-<a class="btn icon-btn btn-danger job" routerLink="/editJob/{{id}}"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a>
+<!-- <a class="btn icon-btn btn-danger job" routerLink="/editJob/{{id}}"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a> -->
 
+<a class="btn icon-btn btn-danger job" (click)="openJobEdit(id)"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a>
 
   
     

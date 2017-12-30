@@ -20,7 +20,8 @@
               <div class="column"> 
                   <div class="post-module"> 
                     <div class="thumbnail">
-                  <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}">
+                        <div class="date" style="background-color:#f56436;"> <a title="view" (click)="openJobView(job.id)">
+                  <!-- <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}"> -->
                         <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
                         </a> </div>
                   <div *ngIf='job.image'>
@@ -102,7 +103,8 @@
       <div class="column"> 
           <div class="post-module"> 
             <div class="thumbnail">
-          <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{sjob.id}}">
+                <div class="date" style="background-color:#f56436;"> <a title="view"  (click)="openJobView(sjob.id)">
+          <!-- <div class="date" style="background-color:#f56436;"> <a title="view"  routerLink ="/viewjob/{{sjob.id}}"> -->
                 <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
                 </a> </div>
           <div *ngIf='sjob.image'>
