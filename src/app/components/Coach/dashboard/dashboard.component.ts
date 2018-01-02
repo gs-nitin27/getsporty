@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from "angular2-social-login";
 
 
 @Component({
@@ -30,7 +31,7 @@ ngOnInit()
  
 }
 
-constructor(private router: Router, private _route: ActivatedRoute)
+constructor(public _auth: AuthService,private router: Router, private _route: ActivatedRoute)
 {
 
  //alert(this.prof_id);
@@ -85,7 +86,14 @@ else
 }
 logout() :void 
 {
-    localStorage.clear();
+  localStorage.clear();
+  this._auth.logout().subscribe(
+    (data)=>
+    {alert("hii");
+    } 
+  )
+
+ 
     this.router.navigate(["/login"]);
 }
 

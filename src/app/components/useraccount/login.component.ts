@@ -164,6 +164,9 @@ signIn(provider){
         },(err) => console.log("Error" + err),
       );      
     })
+
+
+
 }    
      
 login() : void {
