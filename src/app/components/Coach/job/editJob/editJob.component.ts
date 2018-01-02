@@ -58,7 +58,8 @@ CreateJob(job) : void
                 if(data != "0")
                 {
                 this.myVar = false;
-                this.router.navigate(["/viewjob" ,data]); 
+                var nid = btoa(data);
+                this.router.navigate(["/viewjob" ,nid]); 
                 }else
                 {
                 this.myVar = false;
