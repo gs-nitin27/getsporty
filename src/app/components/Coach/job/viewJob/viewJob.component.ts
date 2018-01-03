@@ -44,7 +44,7 @@ constructor(private _accountService: loginServices,private _router :Router ,priv
 
 ngOnInit()
 {
- this.myVar = true;   
+this.myVar = true;   
 this._activatedRoute.params.subscribe(params => 
   {
      this.tempUrl = params['id']; 

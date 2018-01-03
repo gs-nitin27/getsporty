@@ -65,7 +65,7 @@ import {AllProfileComponent} from './components/useraccount/ViewProfile/Viewprof
       {path : 'coach/message',component:MessageComponent,canActivate:[Guard]},
       {path : 'coach/org',component:OrgComponent,canActivate:[Guard]},
       {path : 'jobdashboard',component:JobDashboard,canActivate:[Guard]},
-      {path : 'cost', component:CostComponent,canActivate:[Guard]},
+      {path : 'cost/:j_id', component:CostComponent,canActivate:[Guard]},
       {path : 'allProfile/:id/:prof_id' ,component:AllProfileComponent}
 ];
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

@@ -1,33 +1,44 @@
 <app-dashboard></app-dashboard>
 
-    <div class="col-md-4" style="margin-left:30%;">
-    <div class="box box-primary">
-    <div class="box-header with-border">
-    <h3 class="box-title">Order Summary</h3>
-    </div>
-    <div class="box-body">
-    <hr>
-    <div class="left"><h4><b>Company Name : </b></h4></div>
-    <div class="right">Dark Horse Sports</div>
-    <hr>
-    <div class="left"><h4><b>Location : </b></h4></div>
-    <div class="right">Noida</div>
-    <hr>
-    <div class="left"><h4><b>Order Review: </b></h4></div>
-    <div class="right">Dark Horse Sports</div>
-    <hr>
-    <div class="left">
-    <div class="col-lg-5"><h4><b> Job</b></h4></div></div>
-    <hr>
-    <div class="left"><h4><b>Cost : </b></h4></div>
-    <div class="right">700</div>
-    <hr>
-    <div class="left"><h4><b>GST: </b></h4></div>
-    <div class="right">200</div>
-    <hr>
-    <div class="left"><h4><b>Total : </b></h4></div>
-    <div class="right">900</div>
-    <hr>
-    </div>
-    </div>
-    </div>
+<div class="col-md-4" style="margin-left:30%;">
+<div class="box box-primary">       
+          <!-- {{plan || json}} -->    
+<div class="box-header with-border">
+<h3 class="box-title">Order Summary</h3>
+</div>
+<p>Payment Plan</p>
+<div *ngFor="let payplan of plan  let i = index"> 
+<div class="radio radio-info radio-inline">
+<input type="radio" id="inlineRadio{{i}}" value="{{payplan.amount}}"  name="radioInline" (change)="onChange(payplan.amount)" checked="">
+<label for="inlineRadio{{i}}"> {{payplan.amount}} <b> for </b> {{payplan.duration}} </label>
+</div>
+<!-- <label class="radio-inline"><input type="radio" name="optradio">Option 1</label> -->
+</div>
+<div class="box-body">
+<hr>
+<div class="left"><h4><b>Company Name : </b></h4></div>
+<div class="right">Dark Horse Sports</div>
+<hr>
+<div class="left"><h4><b>Location : </b></h4></div>
+<div class="right">Noida</div>
+<hr>
+<div class="left"><h4><b>Order Review: </b></h4></div>
+<div class="right">Dark Horse Sports</div>
+<hr>
+<div class="left">
+<div class="col-lg-5"><h4><b> Job</b></h4></div></div>
+<hr>
+<div class="left"><h4><b>Cost : </b></h4></div>
+<div class="right">{{plancost}}</div>
+<hr>
+<div class="left"><h4><b>GST: </b></h4></div>
+<div class="right">{{gst}}</div>
+<hr>
+<div class="left"><h4><b>Total : </b></h4></div>
+<div class="right">{{total}}</div>
+
+<hr>
+<button type="button" class="btn btn-primary" (click)="payment(total)">Submit</button>
+</div>
+</div>
+</div>

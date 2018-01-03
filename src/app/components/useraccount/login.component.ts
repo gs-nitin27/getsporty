@@ -58,9 +58,7 @@ ngOnInit()
 signIn(provider){
         this.sub = this._auth.login(provider).subscribe(
           (data) => {
-                 
                 this.myVar = true;
-
                 this.result=data;
                 this.result.id             = this.result.uid;
                 this.userdata.email        = this.result.email;
@@ -69,8 +67,6 @@ signIn(provider){
                 this.userdata.app          = "M";
                 this.userdata.userType     = "103";
                 this.userdata.device_id    = "";
-
-                
 
                 //alert(this.gd.shareObj['global']);
               
@@ -82,9 +78,6 @@ signIn(provider){
         {
           this.userdata.loginType  = "1";
         }
-
-         
-        
         //console.log(JSON.stringify(this.userdata));
         // this._As.login(this.userdata);
 
