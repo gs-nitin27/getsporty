@@ -89,7 +89,10 @@ logout() :void
   localStorage.clear();
   this._auth.logout().subscribe(
     (data)=>
-    {alert("hii");
+    {
+    
+      alert("hii");
+    
     } 
   )
 

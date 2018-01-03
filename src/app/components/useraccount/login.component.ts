@@ -35,7 +35,7 @@ ngOnInit()
     this.myVar = false;
     if(this.userid)
     {
-      this.router.navigate(["/profile"]);
+      this.router.navigate(["/home"]);
     }
 }
 
