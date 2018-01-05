@@ -29,6 +29,8 @@ export class CostComponent implements OnInit
   public id:any;
   public tempUrl:any;
   public result : any;
+  hashdata : CostModule = new CostModule();
+  public keydata : any;
 
 constructor(private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
 {
@@ -41,6 +43,8 @@ constructor(private _costservice : CostServices, private _activatedRoute :Activa
 ngOnInit()
 {
   this.paymentPlan();
+  this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
+  this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
 }
 
 paymentPlan()
@@ -66,6 +70,8 @@ onChange(amount)
     this.gst  = 200;
     var tot = +this.gst + +amount;
     this.total  =  tot;
+    this.hashdata.amount =  this.total;
+
 }
 payment(total_amount)
 {
@@ -81,4 +87,49 @@ payment(total_amount)
 this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
     
 }
+
+createHash(data) 
+{
+  data.key    = "JBZaLc";
+  this._costservice.createHash(data).subscribe( res => 
+  { 
+            this.keydata = res;
+            data.hash   = res.hashkey;
+            data.taxid  =  res.taxid;
+
+           // alert(JSON.stringify(this.keydata));
+            alert(JSON.stringify(data)); 
+        // this._costservice.pay(data).subscribe( res => alert(res));   
+
+     
+
+          var data1 = eval(data);
+          $.ajax({
+            type: "POST",
+            url: 'https://test.payu.in/_payment',
+            data: data1,
+            dataType: "jsonp",
+            headers: {
+                "Accept":"application/json"
+            },
+            error: function(xhr, status, error) {
+                alert("failed");
+                console.log("ajax failed: "+error);
+                },
+            success: function(result) 
+                {
+                console.log("niitn");
+                }
+        });
+
+
+
+
+                 
+    }
+    );
+}
+
+
+
 }

@@ -5,10 +5,22 @@ export class CostModule
 	invoice_id  : string;
     user_item : string;
 	module:string;
-	amount  : string;
+	amount  : any;
 	date  : any;
 	billing_status : string;
     transaction_id: string;
     date_created : string;
-    date_updated : string;	
+	date_updated : string;	
+
+	key : string;
+    txnid: string;
+	productinfo : string;	
+	firstname : string;
+    udf1: string;
+    phone : string;
+	email : string;	
+	lastname : string;
+    surl: string;
+    furl : string;
+
 }

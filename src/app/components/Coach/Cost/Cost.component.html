@@ -42,3 +42,64 @@
 </div>
 </div>
 </div>
+
+
+
+<tr>
+<td>Amount: </td>
+<td><input name="amount" [(ngModel)] = "hashdata.amount" ></td>
+<td>First Name: </td>
+<td><input name="firstname" id="firstname" [(ngModel)] = "hashdata.firstname"></td>
+</tr>
+<tr>
+<td>Email: </td>
+<td><input name="email" id="email"  [(ngModel)] = "hashdata.email"></td>
+<td>Phone: </td>
+<td><input name="phone" [(ngModel)] = "hashdata.phone"></td>
+</tr>
+<tr>
+<td>Product Info: </td>
+<td colspan="3"><input name="productinfo" [(ngModel)] = "hashdata.productinfo"></td>
+</tr>
+<tr>
+<td>Success URI: </td>
+<td colspan="3"><input name="surl"  [(ngModel)] = "hashdata.surl"></td>
+</tr>
+<tr>
+<td>Failure URI: </td>
+<td colspan="3"><input name="furl" [(ngModel)] = "hashdata.furl"></td>
+</tr>
+
+<tr>
+<td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+</tr>
+
+<button class="btn btn-primary fontBold"  (click)="createHash(hashdata)"  >PAY NOW</button>
+
+<br>
+<div id="results"></div>
+<!-- <form action="http://localhost/testingapp/paymentController.php?act=test" method="get">
+    Name: <input type="text" name="name"><br>
+    E-mail: <input type="text" name="email"><br>
+    <input type="submit">
+    </form> -->
+
+
+    
+<!-- <div class="jumbotron text-center">
+    <h1>Payumoney Payment Gateway</h1>
+    key<input type="text" name="key"  [(ngModel)] = "hashdata.key"><br>
+        <input type="text" name="txnid" [(ngModel)] = "hashdata.txnid">
+        Amount<input type="text" name="amount"  [(ngModel)] = "hashdata.amount"><br>
+        Product Info<input type="text" name="productinfo" [(ngModel)] = "hashdata.productinfo"><br>
+        firstname <input type="text" name="firstname" [(ngModel)] = "hashdata.firstname"><br>
+        udf1 <input type="text" name="udf1" [(ngModel)] = "hashdata.udf1"><br>
+        email <input type="text" name="email" [(ngModel)] = "hashdata.email"><br>
+        phone <input type="text" name="phone" [(ngModel)] = "hashdata.phone"><br>
+        lastname <input type="text" name="lastname" [(ngModel)] = "hashdata.lastname"><br>
+        surl  <input type="text" name="surl" [(ngModel)] = "hashdata.surl"><br>
+        furl <input type="text" name="furl" [(ngModel)] = "hashdata.furl"><br>
+        <div class="pay-now-button-outer">
+        <button class="btn btn-primary fontBold"  (click)="createHash(hashdata)"    type="submit">PAY NOW</button>
+        </div>
+</div> -->
