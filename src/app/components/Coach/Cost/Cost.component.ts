@@ -32,6 +32,18 @@ export class CostComponent implements OnInit
   hashdata : CostModule = new CostModule();
   public keydata : any;
 
+  key : any;
+  hash : any;
+  txnid : any;
+  amount : any;
+  firstname : any;
+  email : any;
+  phone : any;
+  productinfo : any;
+  surl : any;
+  furl : any;
+
+
 constructor(private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
 {
     this._activatedRoute.params.subscribe(params => 
@@ -82,14 +94,15 @@ payment(total_amount)
 	this.costvalue.amount = total_amount;
     this.costvalue.transaction_id = "123645479dasf";
 
-   //alert(JSON.stringify(this.costvalue));
+//alert(JSON.stringify(this.costvalue));
 
-this._costservice.payment(this.costvalue).subscribe(res => this.result =res);    
+this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
+    
 }
 
 createHash(data) 
 {
-  data.key    = "JBZaLc";
+  data.key    = "gtKFFx";
   this._costservice.createHash(data).subscribe( res => 
   { 
             this.keydata = res;
@@ -100,25 +113,37 @@ createHash(data)
             alert(JSON.stringify(data)); 
         // this._costservice.pay(data).subscribe( res => alert(res));   
 
+       
+        this.key = data.key;
+        this.hash = res.hashkey; 
+        this.txnid = res.taxid;
+        this.amount = data.amount;
+        this.firstname =data.firstname;
+        this.email =data.email;
+        this.phone =data.phone;
+        this.productinfo = {"name" : 'hiii'};
+        this.surl =data.surl;
+        this.furl =data.furl;
+        // this.key =data.key
 
-          var data1 = eval(data);
-          $.ajax({
-            type: "POST",
-            url: 'https://test.payu.in/_payment',
-            data: data1,
-            dataType: "jsonp",
-            headers: {
-                "Accept":"application/json"
-            },
-            error: function(xhr, status, error) {
-                alert("failed");
-                console.log("ajax failed: "+error);
-                },
-            success: function(result) 
-                {
-                console.log("niitn");
-                }
-        });
+        //   var data1 = eval(data);
+        //   $.ajax({
+        //     type: "POST",
+        //     url: 'https://test.payu.in/_payment',
+        //     data: data1,
+        //     dataType: "jsonp",
+        //     headers: {
+        //         "Accept":"application/json"
+        //     },
+        //     error: function(xhr, status, error) {
+        //         alert("failed");
+        //         console.log("ajax failed: "+error);
+        //         },
+        //     success: function(result) 
+        //         {
+        //         console.log("niitn");
+        //         }
+        // });
 
 
 

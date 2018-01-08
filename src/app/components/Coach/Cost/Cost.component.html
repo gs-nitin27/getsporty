@@ -103,3 +103,89 @@
         <button class="btn btn-primary fontBold"  (click)="createHash(hashdata)"    type="submit">PAY NOW</button>
         </div>
 </div> -->
+
+
+
+<form ngNoForm action="https://test.payu.in/_payment" target="_blank" method="POST">
+    
+    <input type="text" name="key" value="{{key}}" />
+    <input type="text" name="hash" value="{{hash}}"/>
+    <input type="text" name="txnid" value="{{txnid}}"/>
+    <table>
+      <tr>
+        <td><b>Mandatory Parameters</b></td>
+      </tr>
+      <tr>
+        <td>Amount: </td>
+        <td><input name="amount" value="{{amount}}" /></td>
+        <td>First Name: </td>
+        <td><input name="firstname" id="firstname" value="{{firstname}}" /></td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><input name="email" id="email" value="{{email}}" /></td>
+        <td>Phone: </td>
+        <td><input name="phone" value="{{phone}}" /></td>
+      </tr>
+      <tr>
+        <td>Product Info: </td>
+        <td colspan="3"><input type="text" name="productinfo" value="{{productinfo}}" /></td>
+      </tr>
+      <tr>
+        <td>Success URI: </td>
+        <td colspan="3"><input name="surl" value="{{surl}}" /></td>
+      </tr>
+      <tr>
+        <td>Failure URI: </td>
+        <td colspan="3"><input name="furl" value="{{furl}}" /></td>
+      </tr>
+
+      <tr>
+        <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+      </tr>
+      </table>
+
+
+
+
+<button type="submit">Search</button>
+</form>
+<!-- <form ngNoForm [formGroup]="myForm" action="https://test.payu.in/_payment"  method="POST">
+    
+    
+    
+    
+    <tr>
+    <td>Amount: </td>
+    <td><input name="amount" [(ngModel)] = "hashdata.amount" ></td>
+    <td>First Name: </td>
+    <td><input name="firstname" id="firstname" [(ngModel)] = "hashdata.firstname"></td>
+    </tr>
+    <tr>
+    <td>Email: </td>
+    <td><input name="email" id="email"  [(ngModel)] = "hashdata.email"></td>
+    <td>Phone: </td>
+    <td><input name="phone" [(ngModel)] = "hashdata.phone"></td>
+    </tr>
+    <tr>
+    <td>Product Info: </td>
+    <td colspan="3"><input name="productinfo" [(ngModel)] = "hashdata.productinfo"></td>
+    </tr>
+    <tr>
+    <td>Success URI: </td>
+    <td colspan="3"><input name="surl"  [(ngModel)] = "hashdata.surl"></td>
+    </tr>
+    <tr>
+    <td>Failure URI: </td>
+    <td colspan="3"><input name="furl" [(ngModel)] = "hashdata.furl"></td>
+    </tr>
+    
+    <tr>
+    <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+    </tr>
+    
+   
+    
+    <br>
+    <button type="submit" [disabled]="!myForm.valid" onclick="submit()">SEND</button>
+    </form> -->
