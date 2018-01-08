@@ -82,10 +82,9 @@ payment(total_amount)
 	this.costvalue.amount = total_amount;
     this.costvalue.transaction_id = "123645479dasf";
 
-//alert(JSON.stringify(this.costvalue));
+   //alert(JSON.stringify(this.costvalue));
 
-this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
-    
+this._costservice.payment(this.costvalue).subscribe(res => this.result =res);    
 }
 
 createHash(data) 
@@ -101,7 +100,6 @@ createHash(data)
             alert(JSON.stringify(data)); 
         // this._costservice.pay(data).subscribe( res => alert(res));   
 
-     
 
           var data1 = eval(data);
           $.ajax({
