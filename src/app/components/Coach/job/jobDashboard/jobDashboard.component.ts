@@ -7,7 +7,8 @@ import { JobServices } from '../../../services/job.services';
 import { loginServices } from '../../../services/login.services';
 import { APP_CONFIG } from '../../../../app.config';
 import { IAppConfig }  from '../../../../app.iconfig';
-
+import { CostServices } from '../../../services/cost.services';
+import { CostModule } from '../../../model/cost.model';
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
 
@@ -15,7 +16,7 @@ declare var $:any;
 	 selector : 'app-jobdashboard',
 	 templateUrl : './jobDashboard.component.html',
      styleUrls : ['./jobDashboard.component.css'],
-     providers : [JobServices]
+     providers : [JobServices,CostServices]
 })
 export class JobDashboard implements OnInit
 {
@@ -27,7 +28,9 @@ public imageurl : any;
 activejob = [];
 cloasedjob = [];
 savedjob = [];
-constructor(private _router :Router, private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
+response : any;
+invoicedata : CostModule = new CostModule();
+constructor(private _costservice : CostServices,private _router :Router, private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
   this.imageurl = _config.dir_url; 
 }
@@ -54,20 +57,46 @@ getJobList()
     //alert(JSON.stringify(this.activejob));
 });
 }
-
-publish(jobid:any,publish:any)
-{
-  var jid = btoa(jobid);
-  this._router.navigate(["/cost",jid]);
-  // this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
-}
-
 openJobView(id)
 {
   var nid = btoa(id);
   this._router.navigate(["/viewjob",nid]);
 }
-
-
-
+publish(jobid:any,publish:any)
+{
+ // var jid = btoa(jobid);
+ // this._router.navigate(["/cost",jid]);
+   this._jobservices.publish(jobid , publish).subscribe(res => 
+    { 
+    this.publis = res;
+    if(publish == 1)
+    {
+    this.billingdata(jobid);  
+    }  
+    else
+    {
+    this.getJobList();    
+    }  
+    });
+}
+billingdata(jobid)
+{
+  var newdate =  new Date(); 
+  var day = newdate.getDate();
+  var monthIndex = newdate.getMonth()+1;
+  var year = newdate.getFullYear().toString().substr(-2);
+  var invoice = "GSJ/1/" + jobid + "/"+day+monthIndex+year;
+  this.invoicedata.userid =this.userid; 
+  this.invoicedata.invoice_id=invoice;
+  this.invoicedata.user_item=jobid; 
+  this.invoicedata.module="1"; 
+  this.invoicedata.amount="2000"; 
+  this.invoicedata.billing_status="1"; 
+  this.invoicedata.transaction_id="1212";
+  this._costservice.payment(this.invoicedata).subscribe( res =>
+  { 
+    this.response = res;
+    this.getJobList();  
+  });
+}
 }

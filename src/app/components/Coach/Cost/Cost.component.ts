@@ -64,8 +64,7 @@ paymentPlan()
 var tdata ;
 this._costservice.PaymentPlan().subscribe(data => 
 { 
-   this.plan = data; 
-   
+   this.plan = data;
    //console.log(this.plan);
    for(let pplan in data)
    {
@@ -94,7 +93,7 @@ payment(total_amount)
 	this.costvalue.amount = total_amount;
     this.costvalue.transaction_id = "123645479dasf";
 
-//alert(JSON.stringify(this.costvalue));
+   //alert(JSON.stringify(this.costvalue));
 
 this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
     
