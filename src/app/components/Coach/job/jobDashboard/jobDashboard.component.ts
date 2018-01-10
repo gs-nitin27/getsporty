@@ -64,35 +64,53 @@ openJobView(id)
 }
 publish(jobid:any,publish:any)
 {
- // var jid = btoa(jobid);
- // this._router.navigate(["/cost",jid]);
-   this._jobservices.publish(jobid , publish).subscribe(res => 
+  if(publish == 1)
+  {
+    var jid = btoa(jobid);
+    this._router.navigate(["/cost",jid]);
+  }
+  else
+  {
+    this._jobservices.publish(jobid , publish).subscribe(res => 
     { 
     this.publis = res;
-    if(publish == 1)
-    {
-    this.billingdata(jobid);  
-    }  
-    else
-    {
-    this.getJobList();    
-    }  
+    
     });
+  }
+
+  
+  //  this._jobservices.publish(jobid , publish).subscribe(res => 
+  //   { 
+  //   this.publis = res;
+  //   if(publish == 1)
+  //   {
+  //   this.billingdata(jobid);  
+  //   }  
+  //   else
+  //   {
+  //   this.getJobList();    
+  //   }  
+  //   });
 }
 billingdata(jobid)
 {
+
+  var monthNames = ["Jan", "Feb", "Mar","Apr", "May", "June", "July","Aug", "Sept", "Oct","Nov", "Dec"];
   var newdate =  new Date(); 
   var day = newdate.getDate();
   var monthIndex = newdate.getMonth()+1;
+  var monthInd = newdate.getMonth();
   var year = newdate.getFullYear().toString().substr(-2);
   var invoice = "GSJ/1/" + jobid + "/"+day+monthIndex+year;
-  this.invoicedata.userid =this.userid; 
+  var invoice_date = day + '-' + monthNames[monthInd] + '-' + year;
+  this.invoicedata.userid =this.userid;
   this.invoicedata.invoice_id=invoice;
   this.invoicedata.user_item=jobid; 
   this.invoicedata.module="1"; 
   this.invoicedata.amount="2000"; 
   this.invoicedata.billing_status="1"; 
-  this.invoicedata.transaction_id="1212";
+  this.invoicedata.transaction_id="0D034569918";
+  this.invoicedata.date = invoice_date;
   this._costservice.payment(this.invoicedata).subscribe( res =>
   { 
     this.response = res;

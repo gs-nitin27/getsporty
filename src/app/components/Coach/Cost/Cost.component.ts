@@ -17,7 +17,7 @@ declare var $:any;
 	 selector : 'app-cost',
 	 templateUrl : './Cost.component.html',
      styleUrls : ['./Cost.component.css'],
-     providers : [CostServices]
+     providers : [CostServices,JobServices]
 })
 export class CostComponent implements OnInit
 {
@@ -31,6 +31,7 @@ export class CostComponent implements OnInit
   public result : any;
   hashdata : CostModule = new CostModule();
   public keydata : any;
+  public publis: any;
 
   key : any;
   hash : any;
@@ -44,7 +45,7 @@ export class CostComponent implements OnInit
   furl : any;
 
 
-constructor(private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
+constructor(private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
 {
     this._activatedRoute.params.subscribe(params => 
         {
@@ -65,7 +66,6 @@ var tdata ;
 this._costservice.PaymentPlan().subscribe(data => 
 { 
    this.plan = data;
-   //console.log(this.plan);
    for(let pplan in data)
    {
       tdata = data[pplan]['amount'];
@@ -86,19 +86,62 @@ onChange(amount)
 }
 payment(total_amount)
 {
-    this.costvalue.userid = localStorage.getItem('currentUserid');
-	this.costvalue.invoice_id = "GSJ/1/32/030118";
-    this.costvalue.user_item = "job"
-	this.costvalue.module = "i"
-	this.costvalue.amount = total_amount;
-    this.costvalue.transaction_id = "123645479dasf";
+      
+   // alert("asdf");
+    
+    // this.costvalue.userid = localStorage.getItem('currentUserid');
+	// this.costvalue.invoice_id = "GSJ/1/32/030118";
+    // this.costvalue.user_item = "job"
+	// this.costvalue.module = "i"
+	// this.costvalue.amount = total_amount;
+    // this.costvalue.transaction_id = "123645479dasf";
 
    //alert(JSON.stringify(this.costvalue));
+ 
+   var monthNames = ["Jan", "Feb", "Mar","Apr", "May", "June", "July","Aug", "Sept", "Oct","Nov", "Dec"];
+   var newdate =  new Date(); 
+   var day = newdate.getDate();
+   var monthIndex = newdate.getMonth()+1;
+   var monthInd = newdate.getMonth();
+   var year = newdate.getFullYear().toString().substr(-2);
+   var invoice = "GSJ/1/" + this.id + "/"+day+monthIndex+year;
+   var invoice_date = day + '-' + monthNames[monthInd] + '-' + year;
+   this.costvalue.userid =localStorage.getItem('currentUserid');
+   this.costvalue.invoice_id=invoice;
+   this.costvalue.user_item=this.id; 
+   this.costvalue.module="1"; 
+   this.costvalue.amount=total_amount; 
+   this.costvalue.billing_status="1"; 
+   this.costvalue.transaction_id="0D034569918";
+   this.costvalue.date = invoice_date;
+   this._costservice.payment(this.costvalue).subscribe( res =>
+   { 
+     this.result = res;
+   //  this.getJobList();  
+   this.jobpublish(this.id)
+   });
 
-this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
+
+
+// this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
     
 }
 
+jobpublish(jobid)
+{
+ this._jobservices.publish(jobid ,"1").subscribe(res => 
+    { 
+    this.publis = res;
+    // if(publish == 1)
+    // {
+    // this.billingdata(jobid);  
+    // }  
+    // else
+    // {
+    // this.getJobList();    
+    // }  
+    });
+}
 createHash(data) 
 {
   data.key    = "gtKFFx";
