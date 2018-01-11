@@ -9,7 +9,6 @@ import { loginServices } from '../../services/login.services';
 import { CostServices } from '../../services/cost.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
-
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
 
@@ -32,7 +31,7 @@ export class CostComponent implements OnInit
   hashdata : CostModule = new CostModule();
   public keydata : any;
   public publis: any;
-
+  myVar:boolean;
   key : any;
   hash : any;
   txnid : any;
@@ -43,18 +42,23 @@ export class CostComponent implements OnInit
   productinfo : any;
   surl : any;
   furl : any;
+  jtitle:any;
+  duration : any;
 
 
-constructor(private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
+constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
 {
     this._activatedRoute.params.subscribe(params => 
         {
            this.tempUrl = params['j_id']; 
+           this.jtitle = params['title'];
            this.id = atob(this.tempUrl);
         });
+        
  }
 ngOnInit()
 {
+  this.myVar=true;
   this.paymentPlan();
   this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
   this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
@@ -63,31 +67,35 @@ ngOnInit()
 paymentPlan()
 {
 var tdata ;
+var tplan;
 this._costservice.PaymentPlan().subscribe(data => 
 { 
    this.plan = data;
    for(let pplan in data)
    {
       tdata = data[pplan]['amount'];
+      tplan = data[pplan]['duration'];
    }
-   this.onChange(tdata);
+   this.myVar=false;
+   this.onChange(tdata,tplan);
 
 });
 } 
 
-onChange(amount)
+onChange(amount,period)
 {
     this.plancost  = amount;
     this.gst  = 200;
     var tot = +this.gst + +amount;
     this.total  =  tot;
+    this.duration = period;
     this.hashdata.amount =  this.total;
 
 }
 payment(total_amount)
 {
       
-   // alert("asdf");
+   // alert(this.duration);
     
     // this.costvalue.userid = localStorage.getItem('currentUserid');
 	// this.costvalue.invoice_id = "GSJ/1/32/030118";
@@ -97,6 +105,7 @@ payment(total_amount)
     // this.costvalue.transaction_id = "123645479dasf";
 
    //alert(JSON.stringify(this.costvalue));
+   this.myVar=true;
  
    var monthNames = ["Jan", "Feb", "Mar","Apr", "May", "June", "July","Aug", "Sept", "Oct","Nov", "Dec"];
    var newdate =  new Date(); 
@@ -114,6 +123,8 @@ payment(total_amount)
    this.costvalue.billing_status="1"; 
    this.costvalue.transaction_id="0D034569918";
    this.costvalue.date = invoice_date;
+   this.costvalue.title = this.jtitle;
+   this.costvalue.duration = this.duration;
    this._costservice.payment(this.costvalue).subscribe( res =>
    { 
      this.result = res;
@@ -132,14 +143,14 @@ jobpublish(jobid)
  this._jobservices.publish(jobid ,"1").subscribe(res => 
     { 
     this.publis = res;
-    // if(publish == 1)
-    // {
-    // this.billingdata(jobid);  
-    // }  
-    // else
-    // {
-    // this.getJobList();    
-    // }  
+    //alert(this.publis);
+    if( this.publis == "1")
+    { 
+        this._router.navigate(["/jobdashboard"]);
+    } 
+    
+    this.myVar=false;
+ 
     });
 }
 createHash(data) 

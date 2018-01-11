@@ -29,7 +29,9 @@ activejob = [];
 cloasedjob = [];
 savedjob = [];
 response : any;
+myVar:boolean;
 invoicedata : CostModule = new CostModule();
+
 constructor(private _costservice : CostServices,private _router :Router, private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
   this.imageurl = _config.dir_url; 
@@ -37,6 +39,7 @@ constructor(private _costservice : CostServices,private _router :Router, private
 ngOnInit()
 {
   this.getJobList();
+  this.myVar=true;
 }
 getJobList()
 {
@@ -54,6 +57,7 @@ getJobList()
         this.savedjob.push(this.Job[i]);
       }
     }
+    this.myVar=false;
     //alert(JSON.stringify(this.activejob));
 });
 }
@@ -62,19 +66,21 @@ openJobView(id)
   var nid = btoa(id);
   this._router.navigate(["/viewjob",nid]);
 }
-publish(jobid:any,publish:any)
+publish(jobid:any,publish:any,job_title:any)
 {
+  // alert(job_title);
+  this.myVar=true;
   if(publish == 1)
   {
     var jid = btoa(jobid);
-    this._router.navigate(["/cost",jid]);
+    this._router.navigate(["/cost",jid,job_title]);
   }
   else
   {
     this._jobservices.publish(jobid , publish).subscribe(res => 
     { 
     this.publis = res;
-    
+    this.getJobList();
     });
   }
 

@@ -1,4 +1,11 @@
 <app-dashboard></app-dashboard>
+<div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
+<div class="loader">
+<div class="inner one"></div>
+<div class="inner two"></div>
+<div class="inner three"></div>
+</div>
+</div>
 
 <div class="col-md-4" style="margin-left:30%;">
 <div class="box box-primary">       
@@ -9,7 +16,7 @@
 <p>Payment Plan</p>
 <div *ngFor="let payplan of plan  let i = index"> 
 <div class="radio radio-info radio-inline">
-<input type="radio" id="inlineRadio{{i}}" value="{{payplan.amount}}"  name="radioInline" (change)="onChange(payplan.amount)" checked="">
+<input type="radio" id="inlineRadio{{i}}" value="{{payplan.amount}}"  name="radioInline" (change)="onChange(payplan.amount,payplan.duration)" checked="">
 <label for="inlineRadio{{i}}"> {{payplan.amount}} <b> for </b> {{payplan.duration}} </label>
 </div>
 <!-- <label class="radio-inline"><input type="radio" name="optradio">Option 1</label> -->
@@ -42,6 +49,7 @@
 </div>
 </div>
 </div>
+
 
 
 <!-- 

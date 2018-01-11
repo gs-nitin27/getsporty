@@ -11,7 +11,7 @@ export class CostModule
     transaction_id: string;
     date_created : string;
 	date_updated : string;	
-
+    title : any; 
 	key : string;
     txnid: string;
 	productinfo : string;	
@@ -21,6 +21,7 @@ export class CostModule
 	email : string;	
 	lastname : string;
     surl: string;
-    furl : string;
+	furl : string;
+	duration:any;
 
 }
