@@ -1,4 +1,5 @@
 import { Injectable, Inject ,Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CreateEvent } from '../../model/createEvent.module';
 import { createEventServices } from  '../../services/createEvent.services';
@@ -21,6 +22,8 @@ declare var $ : any;
 })
 export class HomeComponent implements OnInit {
 
+    form: FormGroup;
+    private formSumitAttempt: boolean;
     today: number = Date.now();
     org : OrgModel = new OrgModel();
     currentDate = new Date();
@@ -33,7 +36,7 @@ export class HomeComponent implements OnInit {
     res : any;
     result : any;
 
-constructor(private _accountService: loginServices,private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
+constructor(private formBuilder: FormBuilder,private _accountService: loginServices,private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
 { 
     this.imageurl = _config.dir_url; 
     this._notificationService.popToastSuccess('Welcome', '');
@@ -45,6 +48,22 @@ ngOnInit()
    this.getJobList();   
    this.getOrgDetails();
    this.org.userid = this.userid;
+
+
+   this.form = this.formBuilder.group({
+    userid : this.userid,
+    org_name:  [null, Validators.required],
+    about: [null,Validators.required],
+    email: [null, [Validators.required, Validators.email]],
+    address1:  [null, Validators.required],
+    address2:  [null, Validators.required],
+    city:  [null, Validators.required],
+    state:  [null, Validators.required],
+    pin:  [null, Validators.required],
+    mobile:  [null, Validators.required]
+
+
+});
 }
 
 getJobList()
@@ -95,6 +114,44 @@ getOrgDetails()
    this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
   //  alert(JSON.stringify(this.result));
   });
+}
+
+isFieldValid(field: string) 
+{
+  return (
+    (!this.form.get(field).valid && this.form.get(field).touched) ||
+    (this.form.get(field).untouched && this.formSumitAttempt)
+  );
+}
+
+displayFieldCss(field: string) 
+{
+  return {
+    'has-error': this.isFieldValid(field),
+    'has-feedback': this.isFieldValid(field)
+  };
+}
+
+onSubmit() 
+{
+  this.formSumitAttempt = true;
+  if (this.form.valid) 
+  {
+
+    this._accountService.orgAdd(this.form.value).subscribe(data => { this.res = data;
+      $('#myModal').modal('toggle');
+      this.getOrgDetails();
+    });
+  
+   // alert(JSON.stringify(this.form.value));
+
+  }
+}
+
+reset() 
+{
+  this.form.reset();
+  this.formSumitAttempt = false;
 }
 
 }

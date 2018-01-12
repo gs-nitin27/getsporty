@@ -49,6 +49,7 @@ import {OrgComponent} from './components/Coach/org/org.component';
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
 import {CostComponent } from './components/coach/Cost/Cost.component';
 import {GlobalEventsManager} from './globalEventManager';
+import { FieldErrorDisplayComponent } from './components/field-error-display/field-error-display.component';
 
 
 enableProdMode();
@@ -98,7 +99,8 @@ let providers =
     OrgComponent,
     JobDashboard,
     CostComponent,
-    AllProfileComponent
+    AllProfileComponent,
+    FieldErrorDisplayComponent
   ],
   imports: [
     BrowserModule,
