@@ -21,6 +21,9 @@ declare var $ : any;
 })
 export class JobComponent implements OnInit 
 {
+
+form: FormGroup;
+private formSumitAttempt: boolean; 
 myVar: boolean;
 public edited : boolean;
 public datafailure : boolean;
@@ -32,7 +35,7 @@ public orgDetails : any;
 public user_id = localStorage.getItem('currentUserid');
 public sports : any[];
 
-constructor(private _accountService :loginServices,private _JobServices : JobServices, private _http : Http, private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
+constructor(private formBuilder: FormBuilder,private _accountService :loginServices,private _JobServices : JobServices, private _http : Http, private router : Router,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
      this.Job = new JobModule(); 
      this.imageurl = _config.dir_url;
@@ -45,6 +48,23 @@ constructor(private _accountService :loginServices,private _JobServices : JobSer
   this.Job.id = "0";
   this.Sportlist();  
   this.getOrgDetails();
+
+
+    this.form = this.formBuilder.group({
+    userid : this.userid,
+    org_name:  [null, Validators.required],
+    about: [null,Validators.required],
+    email: [null, [Validators.required, Validators.email]],
+    address1:  [null, Validators.required],
+    address2:  [null, Validators.required],
+    city:  [null, Validators.required],
+    state:  [null, Validators.required],
+    pin:  [null, Validators.required],
+    mobile:  [null, Validators.required]
+});
+
+
+
   }
 
 
@@ -128,14 +148,14 @@ _handleReaderLoaded(readerEvt) {
     }
 
  Sportlist() {
-    this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
+    this._JobServices.Sportlist().subscribe(data => { this.sports = data;
       })
   }
 
   getOrgDetails()
   {
      this._accountService.getOrgDetails(this.user_id).subscribe(data => { this.orgDetails = data;
-      console.log(JSON.stringify(this.orgDetails));
+      // console.log(JSON.stringify(this.orgDetails));
     });
   }
 

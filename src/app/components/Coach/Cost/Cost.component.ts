@@ -44,6 +44,8 @@ export class CostComponent implements OnInit
   furl : any;
   jtitle:any;
   duration : any;
+  userdataemail : any;
+  user_id = localStorage.getItem('currentUserid');
 
 
 constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
@@ -59,9 +61,15 @@ constructor(private _router : Router, private _jobservices : JobServices,private
 ngOnInit()
 {
   this.myVar=true;
+  this.userdata();
   this.paymentPlan();
-  this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
-  this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
+ 
+}
+
+userdata()
+{
+  this._costservice.useremaildata(this.user_id).subscribe(res => this.userdataemail = res );
+     
 }
 
 paymentPlan()
@@ -78,7 +86,6 @@ this._costservice.PaymentPlan().subscribe(data =>
    }
    this.myVar=false;
    this.onChange(tdata,tplan);
-
 });
 } 
 
@@ -90,13 +97,19 @@ onChange(amount,period)
     this.total  =  tot;
     this.duration = period;
     this.hashdata.amount =  this.total;
+    this.hashdata.firstname = this.userdataemail.name ;
+    this.hashdata.email = this.userdataemail.email ;
+    this.hashdata.phone =  this.userdataemail.contact_no ;
+    this.hashdata.productinfo = this.jtitle;
+    this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
+    this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
 
+
+    this.createHash(this.hashdata)
 }
 payment(total_amount)
 {
-      
    // alert(this.duration);
-    
     // this.costvalue.userid = localStorage.getItem('currentUserid');
 	// this.costvalue.invoice_id = "GSJ/1/32/030118";
     // this.costvalue.user_item = "job"
@@ -105,8 +118,8 @@ payment(total_amount)
     // this.costvalue.transaction_id = "123645479dasf";
 
    //alert(JSON.stringify(this.costvalue));
+
    this.myVar=true;
- 
    var monthNames = ["Jan", "Feb", "Mar","Apr", "May", "June", "July","Aug", "Sept", "Oct","Nov", "Dec"];
    var newdate =  new Date(); 
    var day = newdate.getDate();
@@ -132,10 +145,7 @@ payment(total_amount)
    this.jobpublish(this.id)
    });
 
-
-
 // this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
-    
 }
 
 jobpublish(jobid)
@@ -148,25 +158,21 @@ jobpublish(jobid)
     { 
         this._router.navigate(["/jobdashboard"]);
     } 
-    
     this.myVar=false;
- 
     });
 }
+
 createHash(data) 
 {
-  data.key    = "gtKFFx";
+  data.key    = "2g3RdB";
+
+  
   this._costservice.createHash(data).subscribe( res => 
   { 
-            this.keydata = res;
-            data.hash   = res.hashkey;
-            data.taxid  =  res.taxid;
+        this.keydata = res;
+        data.hash   = res.hashkey;
+        data.taxid  =  res.taxid;
 
-           // alert(JSON.stringify(this.keydata));
-            alert(JSON.stringify(data)); 
-        // this._costservice.pay(data).subscribe( res => alert(res));   
-
-       
         this.key = data.key;
         this.hash = res.hashkey; 
         this.txnid = res.taxid;
@@ -174,34 +180,9 @@ createHash(data)
         this.firstname =data.firstname;
         this.email =data.email;
         this.phone =data.phone;
-        this.productinfo = {"name" : 'hiii'};
+        this.productinfo =data.productinfo;
         this.surl =data.surl;
-        this.furl =data.furl;
-        // this.key =data.key
-
-        //   var data1 = eval(data);
-        //   $.ajax({
-        //     type: "POST",
-        //     url: 'https://test.payu.in/_payment',
-        //     data: data1,
-        //     dataType: "jsonp",
-        //     headers: {
-        //         "Accept":"application/json"
-        //     },
-        //     error: function(xhr, status, error) {
-        //         alert("failed");
-        //         console.log("ajax failed: "+error);
-        //         },
-        //     success: function(result) 
-        //         {
-        //         console.log("niitn");
-        //         }
-        // });
-
-
-
-
-                 
+        this.furl =data.furl;   
     }
     );
 }

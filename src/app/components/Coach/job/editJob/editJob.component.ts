@@ -41,7 +41,7 @@ this._activatedRoute.params.subscribe(params => {
 }
 
 Sportlist() {
-  this._JobServices.Sportlist().subscribe(data => { this.sports = data; console.log(this.sports)
+  this._JobServices.Sportlist().subscribe(data => { this.sports = data; 
     })
 }
 

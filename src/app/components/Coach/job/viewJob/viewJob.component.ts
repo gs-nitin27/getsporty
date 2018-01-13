@@ -15,7 +15,6 @@ declare var $:any;
     providers:[JobServices]
 })
 
-
 export class ViewJob implements OnInit
 {
 Job: JobModule = new JobModule();

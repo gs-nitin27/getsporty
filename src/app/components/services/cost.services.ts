@@ -40,4 +40,10 @@ pay(data)
 {
   return this._http.post("https://test.payu.in/_payment",data);
 }
+
+
+useremaildata(userid)
+{
+ return this._http.get(this.baseurl + "/paymentController.php?act=useremaildata&userid="+userid).map(res => res.json());
+}
 }

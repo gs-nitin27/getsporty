@@ -20,10 +20,11 @@ declare var $ : any;
   styleUrls: ['./home.component.css'],
   providers : [createEventServices,JobServices]
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit 
+{
     form: FormGroup;
     private formSumitAttempt: boolean;
+    
     today: number = Date.now();
     org : OrgModel = new OrgModel();
     currentDate = new Date();
@@ -49,8 +50,7 @@ ngOnInit()
    this.getOrgDetails();
    this.org.userid = this.userid;
 
-
-   this.form = this.formBuilder.group({
+    this.form = this.formBuilder.group({
     userid : this.userid,
     org_name:  [null, Validators.required],
     about: [null,Validators.required],
@@ -61,11 +61,8 @@ ngOnInit()
     state:  [null, Validators.required],
     pin:  [null, Validators.required],
     mobile:  [null, Validators.required]
-
-
 });
 }
-
 getJobList()
 {
   this._jobservices.getJobList(this.userid).subscribe(res => { this.Job = res;});
@@ -74,23 +71,19 @@ getEventList()
 {
 	this._eventservices.getEventList(this.userid).subscribe(res => { this.Event = res;});
 }
-
 viewjob()
 {
-this._router.navigate(["/editJob",25]);
+  this._router.navigate(["/editJob",25]);
 }
-
 publish(jobid:any,publish:any)
 {
   this._jobservices.publish(jobid , publish).subscribe(res => { this.publis = res; this.getJobList();  });
 }
-
 hello(end_date)
 {
   var eventStartTime = new Date(this.currentDate);
   var eventEndTime = new Date(end_date);
   var duration = eventEndTime.valueOf() - eventStartTime.valueOf();
-
   if(duration >0 )
   {
   return true;
@@ -104,14 +97,14 @@ hello(end_date)
 orgregister(org:any)
 {
   this._accountService.orgAdd(org).subscribe(data => { this.res = data;
-    $('#myModal').modal('toggle');
-    this.getOrgDetails();
+  $('#myModal').modal('toggle');
+  this.getOrgDetails();
   });
 }
 
 getOrgDetails()
 {
-   this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
+  this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
   //  alert(JSON.stringify(this.result));
   });
 }
@@ -137,14 +130,11 @@ onSubmit()
   this.formSumitAttempt = true;
   if (this.form.valid) 
   {
-
-    this._accountService.orgAdd(this.form.value).subscribe(data => { this.res = data;
-      $('#myModal').modal('toggle');
-      this.getOrgDetails();
-    });
-  
+  this._accountService.orgAdd(this.form.value).subscribe(data => { this.res = data;
+  $('#myModal').modal('toggle');
+  this.getOrgDetails();
+  });
    // alert(JSON.stringify(this.form.value));
-
   }
 }
 
@@ -153,5 +143,4 @@ reset()
   this.form.reset();
   this.formSumitAttempt = false;
 }
-
 }
