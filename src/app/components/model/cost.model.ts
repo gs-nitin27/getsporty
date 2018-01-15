@@ -23,5 +23,6 @@ export class CostModule
     surl: string;
 	furl : string;
 	duration:any;
+	
 
 }

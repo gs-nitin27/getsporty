@@ -3,6 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { OrgModel } from '../../model/org.model';
 import { JobModule } from '../../model/job.model';
+import { User } from '../../model/login.model';
 import { CostModule } from '../../model/cost.model';
 import { JobServices } from '../../services/job.services';
 import { loginServices } from '../../services/login.services';
@@ -44,9 +45,8 @@ export class CostComponent implements OnInit
   furl : any;
   jtitle:any;
   duration : any;
-  userdataemail : any;
+  userdataemail : User = new User();
   user_id = localStorage.getItem('currentUserid');
-
 
 constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
 {
@@ -55,20 +55,21 @@ constructor(private _router : Router, private _jobservices : JobServices,private
            this.tempUrl = params['j_id']; 
            this.jtitle = params['title'];
            this.id = atob(this.tempUrl);
-        });
-        
+        });   
  }
 ngOnInit()
 {
   this.myVar=true;
   this.userdata();
   this.paymentPlan();
- 
 }
 
 userdata()
 {
-  this._costservice.useremaildata(this.user_id).subscribe(res => this.userdataemail = res );
+  this._costservice.useremaildata(this.user_id).subscribe(res => {
+
+   this.userdataemail = res;
+} );
      
 }
 
@@ -91,21 +92,22 @@ this._costservice.PaymentPlan().subscribe(data =>
 
 onChange(amount,period)
 {
+
     this.plancost  = amount;
     this.gst  = 200;
     var tot = +this.gst + +amount;
     this.total  =  tot;
     this.duration = period;
-    this.hashdata.amount =  this.total;
-    this.hashdata.firstname = this.userdataemail.name ;
+    this.hashdata.amount =  tot;
+    this.hashdata.firstname =localStorage.getItem('currentUser');
     this.hashdata.email = this.userdataemail.email ;
     this.hashdata.phone =  this.userdataemail.contact_no ;
-    this.hashdata.productinfo = this.jtitle;
+    this.hashdata.productinfo = this.id;
     this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
     this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
 
 
-    this.createHash(this.hashdata)
+    this.createHash(this.hashdata);
 }
 payment(total_amount)
 {
@@ -144,7 +146,6 @@ payment(total_amount)
    //  this.getJobList();  
    this.jobpublish(this.id)
    });
-
 // this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
 }
 
@@ -164,9 +165,8 @@ jobpublish(jobid)
 
 createHash(data) 
 {
+   // alert("hii");
   data.key    = "2g3RdB";
-
-  
   this._costservice.createHash(data).subscribe( res => 
   { 
         this.keydata = res;
