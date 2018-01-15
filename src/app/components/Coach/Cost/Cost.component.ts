@@ -132,7 +132,7 @@ payment(total_amount)
    var invoice_date = day + '-' + monthNames[monthInd] + '-' + year;
    this.costvalue.userid =localStorage.getItem('currentUserid');
    this.costvalue.invoice_id=invoice;
-   this.costvalue.user_item=this.id; 
+   this.costvalue.user_item=this.id;
    this.costvalue.module="1"; 
    this.costvalue.amount=total_amount; 
    this.costvalue.billing_status="1"; 
@@ -162,17 +162,15 @@ jobpublish(jobid)
     this.myVar=false;
     });
 }
-
 createHash(data) 
 {
    // alert("hii");
-  data.key    = "2g3RdB";
+  data.key    = "rjQUPktU";
   this._costservice.createHash(data).subscribe( res => 
   { 
         this.keydata = res;
         data.hash   = res.hashkey;
         data.taxid  =  res.taxid;
-
         this.key = data.key;
         this.hash = res.hashkey; 
         this.txnid = res.taxid;
@@ -183,8 +181,7 @@ createHash(data)
         this.productinfo =data.productinfo;
         this.surl =data.surl;
         this.furl =data.furl;   
-    }
-    );
+    });
 }
 
 

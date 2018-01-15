@@ -52,9 +52,9 @@
 
 
 
-<form ngNoForm action="https://secure.payu.in/_payment" target="_blank" method="POST">
+<form ngNoForm action="https://test.payu.in/_payment" target="_blank" method="POST">
     <input type="hidden" name="key" value="{{key}}" />
-    <input type="hidden" name="hash" value="{{hash}}"/>
+    <input type="text" name="hash" value="{{hash}}"/>
     <input type="hidden" name="txnid" value="{{txnid}}"/>
     <table>
  
@@ -66,7 +66,7 @@
   
     <td><input name="email" type="hidden" id="email" value="{{email}}" /></td>
 
-    <td><input name="phone" type="hidden" value="{{phone}}" /></td>
+    <td><input name="phone" type="text" value="{{phone}}" /></td>
     </tr>
     <tr>
 
