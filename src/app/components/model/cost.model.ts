@@ -14,7 +14,7 @@ export class CostModule
     title : any; 
 	key : string;
     txnid: string;
-	productinfo : string;	
+	productinfo : any;	
 	firstname : string;
     udf1: string;
     phone : string;

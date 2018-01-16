@@ -35,13 +35,10 @@ createHash(data)
 {
     return this._http.post(this.baseurl + "/paymentController.php?act=creatHash",data).map(res => res.json());
 }
-
 pay(data)
 {
   return this._http.post("https://test.payu.in/_payment",data);
 }
-
-
 useremaildata(userid)
 {
  return this._http.get(this.baseurl + "/paymentController.php?act=useremaildata&userid="+userid).map(res => res.json());

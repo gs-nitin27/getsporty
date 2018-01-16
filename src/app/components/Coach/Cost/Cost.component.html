@@ -45,16 +45,16 @@
 <div class="right">{{total}}</div>
 
 <hr>
-<button type="button" class="btn btn-primary" (click)="payment(total)">Submit</button>
+<!-- <button type="button" class="btn btn-primary" (click)="payment(total)">Submit</button> -->
 </div>
 </div>
 </div>
 
 
 
-<form ngNoForm action="https://test.payu.in/_payment" target="_blank" method="POST">
+<form ngNoForm action="https://test.payu.in/_payment" target="" method="POST">
     <input type="hidden" name="key" value="{{key}}" />
-    <input type="text" name="hash" value="{{hash}}"/>
+    <input type="hidden" name="hash" value="{{hash}}"/>
     <input type="hidden" name="txnid" value="{{txnid}}"/>
     <table>
  
@@ -66,7 +66,7 @@
   
     <td><input name="email" type="hidden" id="email" value="{{email}}" /></td>
 
-    <td><input name="phone" type="text" value="{{phone}}" /></td>
+    <td><input name="phone" type="hidden" value="{{phone}}" /></td>
     </tr>
     <tr>
 
@@ -84,5 +84,5 @@
     <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
     </tr>
     </table>
-    <button type="submit" class="btn btn-primary">Pay</button>
+    <button style="margin-bottom: -101%;margin-left:-32%" type="submit" class="btn btn-primary">Pay</button>
     </form>

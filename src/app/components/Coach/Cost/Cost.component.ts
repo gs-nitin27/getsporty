@@ -10,6 +10,7 @@ import { loginServices } from '../../services/login.services';
 import { CostServices } from '../../services/cost.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
+
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
 
@@ -47,15 +48,18 @@ export class CostComponent implements OnInit
   duration : any;
   userdataemail : User = new User();
   user_id = localStorage.getItem('currentUserid');
+  baseUrl :any;
 
-constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute) 
+constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
+    this.baseUrl = _config.apBaseUrl;
+
     this._activatedRoute.params.subscribe(params => 
-        {
-           this.tempUrl = params['j_id']; 
-           this.jtitle = params['title'];
-           this.id = atob(this.tempUrl);
-        });   
+    {
+        this.tempUrl = params['j_id']; 
+        this.jtitle = params['title'];
+        this.id = atob(this.tempUrl);
+    });   
  }
 ngOnInit()
 {
@@ -67,10 +71,8 @@ ngOnInit()
 userdata()
 {
   this._costservice.useremaildata(this.user_id).subscribe(res => {
-
-   this.userdataemail = res;
-} );
-     
+  this.userdataemail = res; 
+});
 }
 
 paymentPlan()
@@ -92,7 +94,6 @@ this._costservice.PaymentPlan().subscribe(data =>
 
 onChange(amount,period)
 {
-
     this.plancost  = amount;
     this.gst  = 200;
     var tot = +this.gst + +amount;
@@ -103,10 +104,8 @@ onChange(amount,period)
     this.hashdata.email = this.userdataemail.email ;
     this.hashdata.phone =  this.userdataemail.contact_no ;
     this.hashdata.productinfo = this.id;
-    this.hashdata.furl = "http://localhost/PayUMoney-PHP-Module-master/failure.php";
-    this.hashdata.surl = "http://localhost/PayUMoney-PHP-Module-master/success.php";
-
-
+    this.hashdata.furl = this.baseUrl+"/paymentapi/failure.php";
+    this.hashdata.surl = this.baseUrl+"/paymentapi/success.php";
     this.createHash(this.hashdata);
 }
 payment(total_amount)
@@ -118,7 +117,6 @@ payment(total_amount)
 	// this.costvalue.module = "i"
 	// this.costvalue.amount = total_amount;
     // this.costvalue.transaction_id = "123645479dasf";
-
    //alert(JSON.stringify(this.costvalue));
 
    this.myVar=true;
@@ -144,7 +142,7 @@ payment(total_amount)
    { 
      this.result = res;
    //  this.getJobList();  
-   this.jobpublish(this.id)
+    this.jobpublish(this.id)
    });
 // this._costservice.payment(this.costvalue).subscribe(res => this.result =res);
 }
