@@ -155,13 +155,22 @@ margin-bottom: 0;}
  width: 80px;
  position: fixed;
  z-index: 3000;
- top: 85%;
+ top: 80%;
  right: 0%;
 
 }
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 
+.job1 
+{
+ width: 98px;
+ position: fixed;
+ z-index: 3000;
+ top: 88%;
+ right: 0%;
+
+}
 
 .tab-content {
   padding:10px;

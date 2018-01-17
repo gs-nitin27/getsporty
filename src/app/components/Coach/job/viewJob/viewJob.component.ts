@@ -149,4 +149,10 @@ openJobEdit(id)
       var nid = btoa(id);
       this._router.navigate(["/editJob",nid]);
 }
+
+publish(jobid:any,job_title:any)
+{
+  var jid = btoa(jobid);
+  this._router.navigate(["/cost",jid,job_title]);
+}
 }

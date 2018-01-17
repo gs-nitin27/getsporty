@@ -49,6 +49,7 @@ export class CostComponent implements OnInit
   userdataemail : User = new User();
   user_id = localStorage.getItem('currentUserid');
   baseUrl :any;
+  plan_duration :any;
 
 constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
@@ -86,6 +87,7 @@ this._costservice.PaymentPlan().subscribe(data =>
    {
       tdata = data[pplan]['amount'];
       tplan = data[pplan]['duration'];
+      this.plan_duration = tplan;
    }
    this.myVar=false;
    this.onChange(tdata,tplan);
@@ -95,7 +97,9 @@ this._costservice.PaymentPlan().subscribe(data =>
 onChange(amount,period)
 {
     this.plancost  = amount;
-    this.gst  = 200;
+
+
+    this.gst  = amount*18/100;
     var tot = +this.gst + +amount;
     this.total  =  tot;
     this.duration = period;

@@ -1,5 +1,4 @@
 <app-dashboard></app-dashboard>
-
 <div class="loading" id="imagelodar" *ngIf='myVar' >Loading&#8230;
 <div class="loader">
 <div class="inner one"></div>
@@ -7,7 +6,6 @@
 <div class="inner three"></div>
 </div>
 </div>
-
 <div class="col-md-4" style="margin-left:30%;">
 <div class="box box-primary">  
 <div class="box-header with-border">
@@ -17,7 +15,7 @@
 <div *ngFor="let payplan of plan  let i = index"> 
 <div class="radio radio-info radio-inline">
 <input type="radio" id="inlineRadio{{i}}" value="{{payplan.amount}}"  name="radioInline" (change)="onChange(payplan.amount,payplan.duration)" checked="">
-<label for="inlineRadio{{i}}"> {{payplan.amount}} <b> for </b> {{payplan.duration}} </label>
+<label for="inlineRadio{{i}}"> {{payplan.amount}} <b> for </b> {{payplan.duration}} Days </label>
 </div>
 <!-- <label class="radio-inline"><input type="radio" name="optradio">Option 1</label> -->
 </div>
@@ -30,10 +28,10 @@
 <div class="right">Noida</div>
 <hr>
 <div class="left"><h4><b>Order Review: </b></h4></div>
-<div class="right">Dark Horse Sports</div>
+<div class="right">Dark Horse Sports</div> 
 <hr>
 <div class="left">
-<div class="col-lg-5"><h4><b> Job</b></h4></div></div>
+<div class="right"><h4><b> Job - </b>  {{jtitle}} <b>for -</b> {{plan_duration}} Days </h4></div></div>
 <hr>
 <div class="left"><h4><b>Cost : </b></h4></div>
 <div class="right">{{plancost}}</div>
@@ -43,41 +41,32 @@
 <hr>
 <div class="left"><h4><b>Total : </b></h4></div>
 <div class="right">{{total}}</div>
-
 <hr>
 <!-- <button type="button" class="btn btn-primary" (click)="payment(total)">Submit</button> -->
 </div>
 </div>
 </div>
 
-
-
 <form ngNoForm action="https://test.payu.in/_payment" target="" method="POST">
     <input type="hidden" name="key" value="{{key}}" />
     <input type="hidden" name="hash" value="{{hash}}"/>
     <input type="hidden" name="txnid" value="{{txnid}}"/>
     <table>
- 
     <tr>
     <td><input type="hidden" name="amount" value="{{amount}}" /></td>
     <td><input name="firstname" type="hidden" id="firstname" value="{{firstname}}" /></td>
     </tr>
     <tr>
-  
     <td><input name="email" type="hidden" id="email" value="{{email}}" /></td>
-
     <td><input name="phone" type="hidden" value="{{phone}}" /></td>
     </tr>
     <tr>
-
     <td colspan="3"><input type="hidden" name="productinfo" value="{{productinfo}}" /></td>
     </tr>
     <tr>
-
     <td colspan="3"><input type="hidden" name="surl" value="{{surl}}" /></td>
     </tr>
     <tr>
-
     <td colspan="3"><input type="hidden" name="furl" value="{{furl}}" /></td>
     </tr>
     <tr>

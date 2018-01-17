@@ -159,4 +159,15 @@ _handleReaderLoaded(readerEvt) {
     });
   }
 
+
+next(tabname1,tabname2)
+{
+  // $("#tabs").tabs();
+
+  $('.nav-tabs > .active').next('li').find('a').trigger('click');
+  //alert(tabname);
+  $("#"+tabname1).addClass("active");
+  $("#"+tabname2).removeClass('active');
+	// $("#tabs").tabs("option", "active", 2);
+}  
 }

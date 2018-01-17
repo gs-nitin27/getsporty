@@ -56,6 +56,7 @@ ngOnInit()
      * @returns void
      */
 signIn(provider){
+    localStorage.clear();
         this.sub = this._auth.login(provider).subscribe(
           (data) => {
                 this.myVar = true;
@@ -88,7 +89,7 @@ signIn(provider){
              if(data.data.userType != 104)
              {
             if (user) {
-                localStorage.clear();
+                // localStorage.clear();
                 localStorage.setItem('currentUser',data.data.name);
                 localStorage.setItem('currentUserid',data.data.userid);
                 localStorage.setItem('user_image',data.data.user_image);
