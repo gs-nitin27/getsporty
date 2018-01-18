@@ -59,7 +59,9 @@ profile()
 {
 this._accountService.profiledata(this.user_id,this.profid).subscribe((result) =>
 {
+
  //alert(JSON.stringify(result));
+ 
 if(this.profid == 1)
 {
     for(let key in result)

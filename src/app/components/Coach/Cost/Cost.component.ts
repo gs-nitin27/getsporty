@@ -10,7 +10,6 @@ import { loginServices } from '../../services/login.services';
 import { CostServices } from '../../services/cost.services';
 import { APP_CONFIG } from '../../../app.config';
 import { IAppConfig }  from '../../../app.iconfig';
-
 import { FormBuilder,FormControl, FormGroup,  ReactiveFormsModule, FormArray, Validators  } from '@angular/forms';
 declare var $:any;
 
@@ -54,7 +53,6 @@ export class CostComponent implements OnInit
 constructor(private _router : Router, private _jobservices : JobServices,private _costservice : CostServices, private _activatedRoute :ActivatedRoute,@Inject(APP_CONFIG) private _config: IAppConfig) 
 {
     this.baseUrl = _config.apBaseUrl;
-
     this._activatedRoute.params.subscribe(params => 
     {
         this.tempUrl = params['j_id']; 
@@ -75,7 +73,6 @@ userdata()
   this.userdataemail = res; 
 });
 }
-
 paymentPlan()
 {
 var tdata ;
@@ -97,8 +94,6 @@ this._costservice.PaymentPlan().subscribe(data =>
 onChange(amount,period)
 {
     this.plancost  = amount;
-
-
     this.gst  = amount*18/100;
     var tot = +this.gst + +amount;
     this.total  =  tot;

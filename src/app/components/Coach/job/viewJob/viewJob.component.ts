@@ -56,7 +56,11 @@ this.getOrgDetails();
 
 getJobdetails()
 {
-    this._JobServices.getJobdetails(this.id).subscribe(res => { this.Job = res; });
+    this._JobServices.getJobdetails(this.id).subscribe(res => { this.Job = res; 
+     
+      //alert(JSON.stringify(this.Job));
+     
+    });
 }
 
 jobapplyUser()

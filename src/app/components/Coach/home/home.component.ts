@@ -105,7 +105,14 @@ orgregister(org:any)
 getOrgDetails()
 {
   this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
-  //  alert(JSON.stringify(this.result));
+   // alert(JSON.stringify(this.result));
+   
+   if(!this.result)
+   {
+    $('#myModal').modal('toggle');
+   }
+   
+  
   });
 }
 

@@ -9,13 +9,12 @@
     
     <!-- <img src="http://getsporty.in/img/team/team-02.jpg" style="width:100%" alt="Avatar"> -->
     
-    <div *ngIf="!user.user_image">
+    <div *ngIf="!athuser.user_image">
     <img style="width:100%" alt="Avatar" alt="" src="assets/images/user.jpg">
     </div>
-    <div *ngIf="user.user_image">
+    <div *ngIf="athuser.user_image">
     <img style="width:100%" alt="Avatar" [src]="athuser.user_image"  (error)="errorHandler($event,athuser.user_image)"/>
     </div>
-    
     
     <div class="w3-display-bottomleft w3-container w3-text-white">
             <h2>{{athuser.name}}</h2>
@@ -106,13 +105,38 @@
         </div>
         </div>
         </div>
-        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+
+        <div *ngIf=" athuser.sport !='Football' || athuser.sport ==''" class="w3-container w3-card-2 w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Latest Result</h2>
         <div *ngFor = 'let latestresults of LatestResult'> 
         <div class="w3-container">
         <h5 class="w3-opacity"><b>Date Of Competation-</b> {{latestresults.dateOfCompetation}} </h5>
-        <h6 class="w3-text-teal"><b>Detail -</b>{{latestresults.detail}}</h6>
+        <h6 class="w3-text-teal"><b>Detail -</b>{{latestresults.event }}</h6>
         <h6 class="w3-text-teal"><b>Name Of Competation  -</b> {{latestresults.nameOfCompetation}}</h6>
+          <!-- <h6 class="w3-text-teal"><b>Opponent -</b> {{latestresults.result}}</h6> -->
+        <h6 class="w3-text-teal"><b>Result -</b>{{latestresults.result}}</h6>
+        <h6 class="w3-text-teal"><b>Round  -</b> {{latestresults.roundOrHeat}}</h6>
+        <h6 class="w3-text-teal"><b>Time -</b> {{latestresults.time}}</h6>
+        <hr>
+        </div>
+        </div>
+        </div>
+
+
+
+        <div *ngIf=" athuser.sport == 'Football'" class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Latest Result</h2>
+        <div *ngFor = 'let latestresults of LatestResult'> 
+        <div class="w3-container">
+        <h5 class="w3-opacity"><b>Date Of Competation-</b> {{latestresults.dateOfCompetation}} </h5>
+        <h6 class="w3-text-teal"><b>Name Of Competation  -</b> {{latestresults.nameOfCompetation}}</h6>
+        <h6 class="w3-opacity"><b>Detail -</b></h6>
+        <h6 class="w3-text-teal"><b>Position -</b>{{latestresults.detail.nameValuePairs.position}}</h6>
+        <h6 class="w3-text-teal"><b>Goals -</b>{{latestresults.detail.nameValuePairs.goals}}</h6>
+        <h6 class="w3-text-teal"><b>Unit-1 -</b>{{latestresults.detail.nameValuePairs.unit1}}</h6>
+        <h6 class="w3-text-teal"><b>Number-1 -</b>{{latestresults.detail.nameValuePairs.number1}}</h6>
+        <h6 class="w3-text-teal"><b>Unit-2 -</b>{{latestresults.detail.nameValuePairs.unit2}}</h6>
+        <h6 class="w3-text-teal"><b>Number-2 -</b>{{latestresults.detail.nameValuePairs.number2}}</h6>
         <h6 class="w3-text-teal"><b>Opponent -</b> {{latestresults.opponent}}</h6>
         <h6 class="w3-text-teal"><b>Result -</b>{{latestresults.result}}</h6>
         <h6 class="w3-text-teal"><b>Round  -</b> {{latestresults.round}}</h6>
@@ -121,6 +145,9 @@
         </div>
         </div>
         </div>
+
+
+
         </div>
         </div>
         </div>

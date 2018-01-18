@@ -9,7 +9,9 @@
 </div>
 <img style="height: 400px;width: 80%;margin-left: 10%; text-align: center;" src="assets/images/job_back.jpg"/>
 <div class="caption">
-<h2>{{Job.organisation_name}}</h2>
+    <!-- <img src="https://www.w3schools.com/bootstrap/cinqueterre.jpg" class="img-circle" alt="Cinque Terre" width="304" height="236">  -->
+    <img src="{{imageurl}}/job/{{Job.image}}"class="img-rounded" alt="Cinque Terre" width="204" height="156"> 
+    <h2>{{Job.organisation_name}}</h2>
 </div>
 <div class="tabbable-panel">
 <div class="tabbable-line">
@@ -479,7 +481,7 @@
 <!-- <a class="btn icon-btn btn-danger job" routerLink="/editJob/{{id}}"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a> -->
 
 <a class="btn icon-btn btn-danger job" (click)="openJobEdit(id)"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Edit</b></a>
-<div>
+<div *ngIf="Job.publish==0">
 <a class="btn icon-btn btn-info job1" (click)="publish(id,Job.title)"><span class="glyphicon btn-glyphicon glyphicon-pencil img-circle text-danger"></span><b>Publish</b></a>
 </div>
   
