@@ -18,6 +18,9 @@ declare var $:any;
 })
 export class RegistrationComponent 
 {
+  form: FormGroup;
+  private formSumitAttempt: boolean;
+
 public users: User = new User();
 sports :any;
 prof_list :any;
@@ -36,15 +39,35 @@ public cheaksport : boolean;
 public myVar : boolean;
 public authInfoResponce: AuthInfoResponce;
 loginType :any;
+res : any;
 
-constructor(private _globaldata: AccountService, private _activatedRoute :ActivatedRoute,private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute, private _notificationService :NotificationService)
+constructor(private formBuilder: FormBuilder,private _globaldata: AccountService, private _activatedRoute :ActivatedRoute,private fb: FormBuilder,private _accountService: loginServices,private _router: Router,private route: ActivatedRoute, private _notificationService :NotificationService)
 {
   this._notificationService.popToastSuccess('Welcome', 'Please Fill All Details');
   this._globaldata.authInfo$.map(authInfo => authInfo.$authResponce).subscribe(userGlobalData => this.authInfoResponce = userGlobalData);
+
+  this.form = this.formBuilder.group({
+    userid : this.userid,
+    name:  [null, Validators.required],
+    phone_no: [null,Validators.required],
+    email: [null, [Validators.required, Validators.email]],
+    dob:  [null, Validators.required],
+    profs:  [null, Validators.required],
+    sport:  [null ],
+    gender:  [null, Validators.required],
+    location:  [null, Validators.required],
+});
 }
 ngOnInit() 
 {
      this.myVar= true;  
+
+     this.form.patchValue({
+      name:localStorage.getItem('provider_name'),
+      email:localStorage.getItem('provider_email')
+      // formControlName2: myValue2 (can be omitted)
+    });
+
      this.users.name = localStorage.getItem('provider_name');
      this.users.email = localStorage.getItem('provider_email');
 
@@ -196,5 +219,43 @@ if(!this.pdata.email)
      }
   });
 }
+}
+
+isFieldValid(field: string) 
+{
+  return (
+    (!this.form.get(field).valid && this.form.get(field).touched) ||
+    (this.form.get(field).untouched && this.formSumitAttempt)
+  );
+}
+
+displayFieldCss(field: string) 
+{
+  return {
+    'has-error': this.isFieldValid(field),
+    'has-feedback': this.isFieldValid(field)
+  };
+}
+
+onSubmit(users) 
+{
+  this.formSumitAttempt = true;
+ // alert(JSON.stringify(this.form.value));
+  
+
+   if (this.form.valid) 
+   {
+    this.register(users);
+  //  this._accountService.orgAdd(this.form.value).subscribe(data => { this.res = data;
+  //  $('#myModal').modal('toggle');
+  //  });
+  //   alert(JSON.stringify(this.form.value));
+   }
+}
+
+reset() 
+{
+  this.form.reset();
+  this.formSumitAttempt = false;
 }
 }

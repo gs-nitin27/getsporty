@@ -45,6 +45,15 @@
       </app-field-error-display>
       </div>
       </div>
+
+      <div class="form-group" [ngClass]="displayFieldCss('gstin')">
+      <div class="col-sm-12">
+      <label for="gstin" class="control-label required">GSTIN</label>
+      <input type="text" id="gstin" class="form-control" formControlName="gstin">
+      <app-field-error-display [displayError]="isFieldValid('gstin')" errorMsg="Please enter GST No">
+      </app-field-error-display>
+      </div>
+      </div>
  
       <div class="form-group" [ngClass]="displayFieldCss('address1')">
           <div class="col-sm-12">
@@ -92,7 +101,12 @@
         <div class="form-group" [ngClass]="displayFieldCss('mobile')">
         <div class="col-sm-12">
         <label for="mobile" class="control-label required">Mobile No</label>
-        <input type="text" id="mobile" class="form-control" formControlName="mobile">
+        <input type="text" id="mobile" class="form-control" formControlName="mobile"
+        required
+        name="mobile"
+        pattern="[0-9]*"
+        minlength="10"
+        maxlength="10" >
         <app-field-error-display [displayError]="isFieldValid('mobile')" errorMsg="Please enter your mobile number">
         </app-field-error-display>
         </div>

@@ -8,16 +8,146 @@
 </div> 
 
 <div class="section"></div>
-<div style="text-align:center; ">
+<div >
 <main> 
 <div class="section"></div>
 <div class="section"></div>
 <div class="container-fluid" style="margin-top: 6%">
 <div class="row-fluid" >
 <div class="col-md-offset-4 col-md-4" id="box" style="background-color:#2995E2; ">
+ <div style="text-align:center; ">   
 <img class="responsive-img" style="width:50%; margin-top: 10%" src="http://portal.getsporty.in/img/logo.png" />              
-<hr>                     
-<form class="form-horizontal"  role="form"  id="contact_form">
+</div>
+<hr>   
+
+<form class="form-horizontal" [formGroup]="form">
+    
+    <div class="form-group" [ngClass]="displayFieldCss('name')">
+    <div class="col-sm-12">
+    <label for="name" class="control-label required">Name</label>
+    <input type="text" id="name" [(ngModel)]="users.name"  class="form-control" name="name" formControlName="name">
+    <app-field-error-display [displayError]="isFieldValid('name')" errorMsg="Please enter your name">
+    </app-field-error-display>
+    </div>
+    </div>
+        
+          <div class="form-group" *ngIf="isDisabled" [ngClass]="displayFieldCss('email')">
+          <div class="col-sm-12">
+          <label for="email" class="control-label required">Email</label>
+          <input type="text" name="email" id="email" [(ngModel)]="users.email"  class="form-control" formControlName="email">
+          <app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Please enter your email">
+          </app-field-error-display>
+          </div>
+          </div>
+    
+          <div class="form-group" [ngClass]="displayFieldCss('phone_no')">
+          <div class="col-sm-12">
+          <label for="phone_no" class="control-label required">Mobile</label>
+          <input type="text"  id="phone_no" [(ngModel)]="users.phone_no"  class="form-control" formControlName="phone_no"
+          required
+          [(ngModel)]="users.phone_no" name="phone_no"
+          pattern="[0-9]*"
+          minlength="10"
+          maxlength="10" 
+         >
+         
+         
+          <app-field-error-display [displayError]="isFieldValid('phone_no')" errorMsg="Please enter your Mobile Number">
+          </app-field-error-display>
+          </div>
+          </div>
+
+          <div class="form-group" [ngClass]="displayFieldCss('location')">
+          <div class="col-sm-12">
+          <label for="location" class="control-label required">Location</label>
+          <input type="text" name="location" [(ngModel)]="users.location"  id="location" class="form-control" formControlName="location" autocomplete="on">
+          <app-field-error-display [displayError]="isFieldValid('location')" errorMsg="Please enter your location">
+          </app-field-error-display>
+          </div>
+          </div>
+     
+          <div class="form-group" [ngClass]="displayFieldCss('dob')">
+              <div class="col-sm-12">
+              <label for="dob" class="control-label required">DOB</label>
+              <input type="date" name="dob" id="dob" [(ngModel)]="users.dob"  class="form-control" formControlName="dob">
+              <app-field-error-display [displayError]="isFieldValid('dob')" errorMsg="Please enter your address">
+              </app-field-error-display>
+              </div>
+              </div>
+    
+            <div class="form-group" [ngClass]="displayFieldCss('profs')">
+            <div class="col-sm-12">
+            <label for="profs" class="control-label required">Profession</label>
+            <select id="prf" [(ngModel)] = "users.profs" name="profession"   (change)="cheakProf(users.profs)" class="form-control" formControlName="profs">
+            <option *ngFor="let prof of prof_list" [ngValue]= "prof" > {{prof.profession}} </option>
+            </select>
+            <!-- <input type="text" id="profs" class="form-control" formControlName="profs"> -->
+            <app-field-error-display [displayError]="isFieldValid('profs')" errorMsg="Please enter your address">
+            </app-field-error-display>
+            </div>
+            </div>
+            <div *ngIf="cheaksport">
+            <div class="form-group" [ngClass]="displayFieldCss('sport')"  >
+            <div class="col-sm-12">
+            <label for="sport" class="control-label required">Sport</label>
+            <select id="sport" [(ngModel)]="users.sport"  class="form-control" name="sport" formControlName="sport">
+            <option *ngFor="let sport of sports" [ngValue]="sport.sports" > {{sport.sports}} </option>
+            </select>
+
+            <!-- <input type="text" id="sport" class="form-control" formControlName="sport"> -->
+            <app-field-error-display [displayError]="isFieldValid('sport')" errorMsg="Please enter your Sport">
+            </app-field-error-display>
+            </div>
+            </div>
+            </div>
+            
+            <div class="form-group" [ngClass]="displayFieldCss('gender')">
+            <div class="col-sm-12">
+
+            <!-- <span class="input-group-addon">I am !</span>
+            <select id="country" name="gender" [(ngModel)] = "users.gender" class="form-control">
+            <option>-Select-</option>
+            <option>Male</option>
+            <option>Female</option>
+            </select> -->
+
+
+            <label for="gender" class="control-label required">I am !</label>
+
+                     
+            <select id="gender"  [(ngModel)]="users.gender"  name="gender" formControlName="gender" class="form-control" >
+            <option>Male</option>
+            <option>Female</option>
+            </select>
+            <app-field-error-display [displayError]="isFieldValid('gender')" errorMsg="Please Select your Gender">
+            </app-field-error-display>
+            </div>
+            </div>
+            <!-- <div class="form-group" [ngClass]="displayFieldCss('pin')">
+            <div class="col-sm-12">
+            <label for="pin" class="control-label required">Pin</label>
+            <input type="text" id="pin" class="form-control" formControlName="pin">
+            <app-field-error-display [displayError]="isFieldValid('pin')" errorMsg="Please enter pin number">
+            </app-field-error-display>
+            </div>
+            </div>
+            <div class="form-group" [ngClass]="displayFieldCss('mobile')">
+            <div class="col-sm-12">
+            <label for="mobile" class="control-label required">Mobile No</label>
+            <input type="text" id="mobile" class="form-control" formControlName="mobile">
+            <app-field-error-display [displayError]="isFieldValid('mobile')" errorMsg="Please enter your mobile number">
+            </app-field-error-display>
+            </div>
+            </div> -->
+            
+    
+          <button class="btn btn-primary" (click)="onSubmit(users)">Submit</button>
+          <button class="btn" (click)="reset()">Reset</button>
+        
+        </form>
+    
+
+<!-- <form class="form-horizontal"  role="form"  id="contact_form">
 <fieldset>
 <div class="form-group">
 <div class="col-md-12">
@@ -59,14 +189,7 @@
     </div>
     </div>
 
-<!-- <div class="row">
-<div class="input-field col s12">
-<i class="material-icons prefix">Location</i>
-    
-<input id="location" class="validate" type="text" size="50" placeholder="Enter a location" autocomplete="on">
 
-</div>
-</div> -->
 
 
 
@@ -110,16 +233,14 @@
 </div>
 </div>
 </div>
-<!-- <label style='float: left;'>
-<a class='pink-text' routerLink="/login"><h4 style="color: white"><b>Already have a account ?</b></h4></a>
-</label> -->
+
 <div class="form-group">
 <div class="col-md-12">
 <button type="submit" class="btn btn-md btn-danger pull-right" (click)="register(users)" >Submit </button>
 </div>
 </div>
 </fieldset>
-</form>
+</form> -->
 </div> 
 </div>
 </div>

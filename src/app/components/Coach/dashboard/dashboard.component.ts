@@ -105,5 +105,4 @@ logout() :void
 //  this.router.navigate(['/profile', this.userid]);
  // }
 
-  
 }

@@ -60,7 +60,8 @@ ngOnInit()
     city:  [null, Validators.required],
     state:  [null, Validators.required],
     pin:  [null, Validators.required],
-    mobile:  [null, Validators.required]
+    mobile:  [null, Validators.required],
+    gstin : [null, Validators.required]
 });
 }
 getJobList()
