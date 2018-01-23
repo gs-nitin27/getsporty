@@ -47,13 +47,18 @@ getJobList()
     this.Job = res;
     this.activejob = [];
     this.savedjob = [];
+    this.cloasedjob = [];
     for(var i=0; i<this.Job.length;i++)
     {
       if(this.Job[i]['publish'] == '1') 
       {
         this.activejob.push(this.Job[i]);
+      }else if(this.Job[i]['publish'] == '-1')
+      {
+        this.cloasedjob.push(this.Job[i]);
       }
-      else{
+      else
+      {
         this.savedjob.push(this.Job[i]);
       }
     }

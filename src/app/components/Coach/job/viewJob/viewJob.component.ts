@@ -144,7 +144,7 @@ getOrgDetails()
 {
    this._accountService.getOrgDetails(this.employer_id).subscribe(data => 
     { 
-        this.result = data;
+        this.result = data.data;
     //alert(JSON.stringify(this.result));
   });
 }

@@ -29,10 +29,10 @@
               <div class="column"> 
                   <div class="post-module"> 
                     <div class="thumbnail">
-                        <div class="date" style="background-color:#f56436;"> <a title="view" (click)="openJobView(job.id)">
+                      <a title="view" (click)="openJobView(job.id)"><div class="date" style="background-color:#f56436;"> 
                   <!-- <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}"> -->
                         <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
-                        </a> </div>
+                         </div></a>
                   <div *ngIf='job.image'>
                   <img src="{{imageurl}}/job/{{job.image}}" class="img-responsive" style="width:100%;" alt="">
                    </div>
@@ -97,6 +97,77 @@
 
 <!-- Closed Job -->
 
+
+<a class="btn icon-btn btn-danger job" routerLink="/job"><span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span><b>Create Job</b></a>
+<div *ngIf="cloasedjob"> 
+<div class="row">
+<div *ngFor = 'let job of cloasedjob ; let i = index' class= ''>
+    <div class="col-md-4" style="margin-top: 2%; width: 25%;">
+      <div class="column"> 
+          <div class="post-module"> 
+            <div class="thumbnail">
+              <a title="view" (click)="openJobView(job.id)"> <div class="date" style="background-color:#f56436;"> 
+          <!-- <div class="date" style="background-color:#f56436;"> <a title="view" routerLink ="/viewjob/{{job.id}}"> -->
+                <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
+                 </div></a>
+          <div *ngIf='job.image'>
+          <img src="{{imageurl}}/job/{{job.image}}" class="img-responsive" style="width:100%;" alt="">
+           </div>
+          <div *ngIf='!job.image'>
+          <img src="assets/images/No_image.jpg" class="img-responsive" style="width:100%;" alt="">
+          </div>
+
+
+            </div>
+            <div class="post-content">
+              <div class="category" style="background-color:#f56436;">{{job.title}}</div>
+              <h2 class="title"></h2>
+
+              <!-- <h2 class="sub_title">{{job.publish}}</h2>  -->
+
+              <div class="post-meta"><span class="timestamp">Location - {{job.location}}</span><span class="comments">Sports - {{job.sport}}</span></div>
+              <div *ngIf='job.publish == -1'>
+              <!-- <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(job.id,1,job.title)">Republish</button> -->
+              <button type="button" style="float: right;" class="btn btn-danger" (click)="publish(job.id,1,job.title)">Republish</button>
+            </div>
+            <div *ngIf='job.publish ==1'>
+              <button type="button" style="float: right;" class="btn btn-success" (click)="publish(job.id , 0,job.title)">Deactive</button>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+</div>
+</div>
+<br>
+<br>
+<div style="margin-left: 32%;" *ngIf='!cloasedjob'>
+  <div class="col-md-4" style="margin-top: 2%; width: 50%;">
+    <div class="column"> 
+    <div class="post-module" > 
+    <div class="thumbnail" >
+    <img src="assets/images/no-photo.png" class="img-responsive" style="width:100%;" alt="">
+    </div>
+    <div class="post-content" >
+    <div class="category" style="background-color:#8ac14a;">Job Title</div>
+    <h4 class="title"> </h4>
+    <div class="row">
+    <span class="glyphicon glyphicon-globe"> evt.location   </span><br>
+    <span class="glyphicon glyphicon-calendar"><b>Event Start </b></span><h5> evt.start_date </h5> 
+    <div>
+    <span class="glyphicon glyphicon-calendar"><b>Event End </b></span><h5>evt.end_date </h5>
+    </div>
+    </div>  
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+
 </div>
 
 
@@ -112,10 +183,10 @@
       <div class="column"> 
           <div class="post-module"> 
             <div class="thumbnail">
-                <div class="date" style="background-color:#f56436;"> <a title="view"  (click)="openJobView(sjob.id)">
+              <a title="view"  (click)="openJobView(sjob.id)"> <div class="date" style="background-color:#f56436;"> 
           <!-- <div class="date" style="background-color:#f56436;"> <a title="view"  routerLink ="/viewjob/{{sjob.id}}"> -->
                 <i style="color: #fff;" class="glyphicon glyphicon-eye-open"></i>
-                </a> </div>
+                </div> </a>
           <div *ngIf='sjob.image'>
           <img src="{{imageurl}}/job/{{sjob.image}}" class="img-responsive" style="width:100%;" alt="">
            </div>

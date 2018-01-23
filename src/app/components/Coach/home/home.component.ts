@@ -36,11 +36,14 @@ export class HomeComponent implements OnInit
     publis : any;
     res : any;
     result : any;
+    myModalcheak : boolean;
+
 
 constructor(private formBuilder: FormBuilder,private _accountService: loginServices,private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
 { 
     this.imageurl = _config.dir_url; 
     this._notificationService.popToastSuccess('Welcome', '');
+
 }
 
 ngOnInit() 
@@ -106,14 +109,17 @@ orgregister(org:any)
 getOrgDetails()
 {
   this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
-   // alert(JSON.stringify(this.result));
-   
-   if(!this.result)
-   {
-    $('#myModal').modal('toggle');
-   }
-   
   
+    // alert(JSON.stringify(this.result.data.org_name));
+
+  this.result = data.data.org_name;
+  if(data.status == '0')
+  {
+      this.myModalcheak = true;
+      $('#myModal').modal('toggle');
+  }else{
+    this.myModalcheak = false;
+  } 
   });
 }
 

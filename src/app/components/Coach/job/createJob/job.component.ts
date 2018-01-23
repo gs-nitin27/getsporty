@@ -154,8 +154,8 @@ _handleReaderLoaded(readerEvt) {
 
   getOrgDetails()
   {
-     this._accountService.getOrgDetails(this.user_id).subscribe(data => { this.orgDetails = data;
-      // console.log(JSON.stringify(this.orgDetails));
+     this._accountService.getOrgDetails(this.user_id).subscribe(data => { this.orgDetails = data.data;
+      //alert(JSON.stringify(this.orgDetails));
     });
   }
 

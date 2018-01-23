@@ -22,6 +22,9 @@ export class CostModule
 	lastname : string;
     surl: string;
 	furl : string;
+	hash : any;
+	taxid :any;
+
 	duration:any;
 	
 

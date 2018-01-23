@@ -213,6 +213,8 @@ if(!this.pdata.email)
       localStorage.setItem('currentUser',data.data.name); 
       localStorage.setItem('currentUserid',data.data.userid);
       localStorage.setItem('user_image',data.data.user_image);
+      localStorage.setItem('email',data.data.email);
+      localStorage.setItem('phone',data.data.contact_no);
 
       this._router.navigate(["/home"]);
  

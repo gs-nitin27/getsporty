@@ -86,6 +86,9 @@ signIn(provider){
         (data) => 
              {
             let user = data.data;
+
+           // alert(JSON.stringify(data.data));
+
              if(data.data.userType != 104)
              {
             if (user) {
@@ -94,6 +97,8 @@ signIn(provider){
                 localStorage.setItem('currentUserid',data.data.userid);
                 localStorage.setItem('user_image',data.data.user_image);
                 localStorage.setItem('prof_id',data.data.prof_id);
+                localStorage.setItem('email',data.data.email);
+                localStorage.setItem('phone',data.data.contact_no);
 
                 if(!data.data.prof_id)
                 {
