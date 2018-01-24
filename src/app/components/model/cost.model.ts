@@ -1,6 +1,5 @@
 export class CostModule
 {
-
 	userid : any;
 	invoice_id  : string;
     user_item : string;
@@ -24,8 +23,5 @@ export class CostModule
 	furl : string;
 	hash : any;
 	taxid :any;
-
 	duration:any;
-	
-
 }

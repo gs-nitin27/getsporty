@@ -43,4 +43,13 @@ useremaildata(userid)
 {
  return this._http.get(this.baseurl + "/paymentController.php?act=useremaildata&userid="+userid).map(res => res.json());
 }
+
+getTransactionList(userid)
+{
+ return this._http.get(this.baseurl + "/paymentController.php?act=getTransactionList&userid="+userid).map(res=>res.json());
+}
+getInvoiceData(invoiceid)
+{
+    return this._http.get(this.baseurl + "/paymentController.php?act=getInvoiceData&invoiceid="+ invoiceid).map( res =>res.json());
+}
 }

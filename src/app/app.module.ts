@@ -50,7 +50,7 @@ import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.com
 import {CostComponent } from './components/coach/Cost/Cost.component';
 import {GlobalEventsManager} from './globalEventManager';
 import { FieldErrorDisplayComponent } from './components/field-error-display/field-error-display.component';
-
+import {BillingHistory } from './components/coach/billingHistory/billingHistory.component';
 
 enableProdMode();
 let providers = 
@@ -100,7 +100,8 @@ let providers =
     JobDashboard,
     CostComponent,
     AllProfileComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    BillingHistory
   ],
   imports: [
     BrowserModule,

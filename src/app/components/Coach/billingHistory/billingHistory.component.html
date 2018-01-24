@@ -1,0 +1,133 @@
+<app-dashboard></app-dashboard>
+
+<div class="col-sm-8" id="left">
+        
+<div class="list-group" style="margin-top:15px;"  *ngFor='let list of TransactionList let i =index'>
+
+<a (click) = "invoicedata(list.invoice_id)" style="border: 2px solid #008CBA;" class="list-group-item list-group-item-action"> {{list.invoice_id}}</a>
+
+<!-- <div *ngIf="i%5 == 0">
+<a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action"> {{list.invoice_id}}</a>
+</div> -->
+<!-- <div *ngIf="i%5 == 1">
+<a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action list-group-item-success">{{list.invoice_id}}</a>
+</div>
+<div *ngIf="i%5 == 2">
+<a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action list-group-item-info">{{list.invoice_id}}</a>
+</div>
+<div *ngIf="i%5 == 3">
+<a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action list-group-item-warning">{{list.invoice_id}}</a>
+</div>
+<div *ngIf="i%5 == 4">
+<a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action list-group-item-danger">{{list.invoice_id}}</a>
+</div> -->
+
+
+</div>
+</div>   
+  
+<div class="col-sm-4" id="right">
+       
+<div *ngIf = "InvoiceData">
+
+
+
+    <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+    <tr class="top">
+    <td colspan="2">
+    <table>
+    <tr>
+    <td class="title">
+    <h1>getsporty</h1>
+    <p><strong>Invoice</strong></p>
+    </td>
+    <td>
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    <tr class="information">
+    <td colspan="2">
+    <table>
+    <tr>
+    <td>
+    <strong>Invoice Number:</strong> <span>{{InvoiceData.invoice_id}}</span>
+    </td>                                
+    <td>
+    <strong>Invoice Date:</strong> <span>{{InvoiceData.date | date: 'dd/MM/yyyy'}}</span>
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>    
+    <tr class="billy">
+    <td colspan="2">
+    <table>
+    <tr>
+    <td class="billy-lft">
+    <strong>Bill From:</strong>
+    <p>Getsporty</p>
+    <p>Darkhorsesports PVT.LTD.</p>
+    <p>A-20 Sector-35</p>
+    <p>Noida</p>
+    <p>pin- 201003</p>
+    </td>
+    <td class="billy-rht">
+    <strong>Bill To:</strong>
+    <p>{{username}}</p>
+    <p>{{phone}}</p>
+    <p>{{email}}</p>
+    </td>
+    </tr>
+    </table>
+    </td>
+    </tr>           
+    <tr class="heading">
+    <td>
+       Mode Of Payment
+    </td>
+    <td>
+     Online
+    </td>
+    </tr>
+    <tr class="details">
+    <td>
+      Transaction Id
+    </td>
+    <td>{{InvoiceData.transaction_id}}</td>
+    </tr>
+    </table>
+    <table>
+    <tr class="heading">
+    <td>Description</td>
+    <td>Duration</td>
+    <td>Ammount</td>
+    <td>Total</td>
+    </tr>
+    <tr class="details">
+    <td>paymentdata</td>
+    <td>30 days</td>
+    <td>{{InvoiceData.amount}}</td>
+    <td>{{InvoiceData.amount}}</td>
+    </tr>
+    </table>
+    </div>
+  
+
+<!-- {{InvoiceData | json}}
+<ul class="list-group">
+    <li class="list-group-item">{{InvoiceData.invoice_id}}</li>
+    <li class="list-group-item list-group-item-success">{{InvoiceData.invoice_id}}</li>
+    <li class="list-group-item list-group-item-info">{{InvoiceData.invoice_id}}</li>
+    <li class="list-group-item list-group-item-warning">{{InvoiceData.invoice_id}}</li>
+    <li class="list-group-item list-group-item-danger">{{InvoiceData.invoice_id}}</li>
+</ul> -->
+
+
+</div>
+    
+
+</div>
+  

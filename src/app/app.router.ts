@@ -33,7 +33,9 @@ import { AtheleteDataView } from './components/services/athlete.resolve.services
 import {JobDashboard} from './components/coach/job/jobDashboard/jobDashboard.component';
 import {CostComponent} from './components/coach/Cost/Cost.component';
 import {AllProfileComponent} from './components/useraccount/ViewProfile/Viewprofile.component';
- 
+import {BillingHistory } from './components/coach/billingHistory/billingHistory.component';
+
+
  const router:Routes = [
 
       {path : '',redirectTo:'login' , pathMatch: 'full'},
@@ -66,6 +68,7 @@ import {AllProfileComponent} from './components/useraccount/ViewProfile/Viewprof
       {path : 'coach/org',component:OrgComponent,canActivate:[Guard]},
       {path : 'jobdashboard',component:JobDashboard,canActivate:[Guard]},
       {path : 'cost/:j_id/:title', component:CostComponent,canActivate:[Guard]},
-      {path : 'allProfile/:id/:prof_id' ,component:AllProfileComponent}
+      {path : 'allProfile/:id/:prof_id' ,component:AllProfileComponent},
+      {path : 'transactions' , component:BillingHistory}
 ];
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

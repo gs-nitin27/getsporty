@@ -1,0 +1,133 @@
+
+  
+  @media (min-width: 768px){
+    #left {
+      position: absolute;
+      top: 20%;
+      bottom: 0;
+      left: 0;
+      width: 25%;
+      overflow-y: scroll; 
+    }
+    
+    #right {
+      position: absolute;
+      top: 20%;
+      bottom: 0;
+      right: 0;
+      overflow-y: scroll;
+      width: 75%;
+    }
+  }
+  
+  #left {
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+    height:78%;
+  }
+  
+  #right {
+    height:78%;
+    background-color: #4FC1E9;
+    text-align: center;
+  }
+
+  .title h1 {
+    font-size: 50px;
+color: #fff;
+font-weight: bold;
+text-shadow: 3px 1px 9px #666;
+letter-spacing: -5px;
+}
+
+.title p strong{
+    font-size: 28px;
+    color: #555;
+}
+strong{
+    font-size: 16px;
+}
+.billy p,.title p{
+    margin: 5px 0;
+}
+.invoice-box{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+    border:1px solid #eee;
+    font-size:15px;
+    line-height:18px;
+    font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    color:#555;
+}
+
+.invoice-box table{
+    width:100%;
+    line-height:inherit;
+    text-align:left;
+}
+
+.invoice-box table td{
+    padding:5px;
+    vertical-align:top;
+}
+
+td.billy-lft {
+    width: 54.6%;
+}
+
+.invoice-box table tr.top table td{
+   /* padding-bottom:20px;*/
+}
+
+.invoice-box table tr.top table td.title{
+    font-size:28px!important;
+    color:#555;
+}
+
+.invoice-box table tr.information table td{
+    /*padding-bottom:40px;*/
+}
+
+.invoice-box table tr.heading td{
+    background:#eee;
+    border-bottom:1px solid #ddd;
+    font-weight:bold;
+}
+
+.invoice-box table tr.details td{
+    padding-bottom:20px;
+}
+
+.invoice-box table tr.item td{
+    border-bottom:1px solid #eee;
+}
+
+.invoice-box table tr.item.last td{
+    border-bottom:none;
+}
+
+.invoice-box table tr.total td:nth-child(2){
+    border-top:2px solid #eee;
+    font-weight:bold;
+}
+td.billy-lft {
+min-width: 180px;
+}
+tr.heading td,tr.details td {
+padding-left: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+    .invoice-box table tr.top table td{
+        width:100%;
+        display:block;
+        text-align:center;
+    }
+    
+    .invoice-box table tr.information table td{
+        width:100%;
+        display:block;
+        text-align:center;
+    }
+}
