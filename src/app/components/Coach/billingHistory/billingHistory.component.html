@@ -4,7 +4,7 @@
         
 <div class="list-group" style="margin-top:15px;"  *ngFor='let list of TransactionList let i =index'>
 
-<a (click) = "invoicedata(list.invoice_id)" style="border: 2px solid #008CBA;" class="list-group-item list-group-item-action"> {{list.invoice_id}}</a>
+<a (click) = "invoicedata(list.invoice_id)" style="border: 2px solid #008CBA;" class="list-group-item list-group-item-action "> {{list.date | date: 'dd/MM/yyyy' }} - Rs :{{list.amount}}</a>
 
 <!-- <div *ngIf="i%5 == 0">
 <a (click) = "invoicedata(list.invoice_id)" class="list-group-item list-group-item-action"> {{list.invoice_id}}</a>
@@ -39,7 +39,7 @@
     <table>
     <tr>
     <td class="title">
-    <h1>getsporty</h1>
+    <h1>GETSPORTY</h1>
     <p><strong>Invoice</strong></p>
     </td>
     <td>
@@ -107,7 +107,7 @@
     <td>Total</td>
     </tr>
     <tr class="details">
-    <td>paymentdata</td>
+    <td>{{InvoiceData.title}}</td>
     <td>30 days</td>
     <td>{{InvoiceData.amount}}</td>
     <td>{{InvoiceData.amount}}</td>

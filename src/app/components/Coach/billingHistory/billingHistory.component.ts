@@ -33,25 +33,20 @@ constructor(private _costServices: CostServices , private router: Router)
 ngOnInit()
 {
     this.getTransactionList();
-    
 }
 
 getTransactionList()
 {
     this._costServices.getTransactionList(this.userid).subscribe( res => {this.TransactionList = res;
-    
   //   alert(JSON.stringify(this.TransactionList));
 
-    });
+});
 }
 
 invoicedata(invoiceid)
 {
-  
   this._costServices.getInvoiceData(invoiceid).subscribe( res => { this.InvoiceData = res;
-  
-   // alert(JSON.stringify(this.InvoiceData));
- 
+    //alert(JSON.stringify(this.InvoiceData.title));
 });
     
 }
