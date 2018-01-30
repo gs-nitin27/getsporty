@@ -9,6 +9,7 @@ export const AppConfig: IAppConfig = {
     applocalhostUrl: "https://getsporty.in/testingapp",
     localimageurl :"https://getsporty.in/staging/uploads/",
     dir_url:"http://localhost/staging/uploads/",
+    
 
      loginUrl :  "http://localhost/testingapp/angularapi.php?act=angulartest",
      viewcontenturl: "http://localhost/testingapp/angularapi.php?act=contentangularlex",
