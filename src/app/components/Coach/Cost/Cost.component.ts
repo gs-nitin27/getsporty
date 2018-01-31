@@ -87,11 +87,13 @@ var tdata ;
 var tplan;
 this._costservice.PaymentPlan().subscribe(data => 
 { 
-   this.plan = data;
-   for(let pplan in data)
+   this.plan = data.data;
+   var amoutdata = data.data;
+
+   for(let pplan in  amoutdata)
    {
-      tdata = data[pplan]['amount'];
-      tplan = data[pplan]['duration'];
+      tdata = amoutdata[pplan]['amount'];
+      tplan = amoutdata[pplan]['duration'];
       this.plan_duration = tplan;
    }
    this.myVar=false;
@@ -168,9 +170,6 @@ jobpublish(jobid)
 }
 createHash(data) 
 {
-
-
-
   //this._notificationService.popToastSuccess( data.amount, 'Click on pay button to pay fee'); 
   data.key    = "rjQUPktU";
   this._costservice.createHash(data).subscribe( res => 
