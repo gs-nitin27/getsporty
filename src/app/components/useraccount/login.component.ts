@@ -209,9 +209,6 @@ logout() :void
     localStorage.clear();
 }
 
-
-
-
-
+ngDestory ( ) {}
 
 }

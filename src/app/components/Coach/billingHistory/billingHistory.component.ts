@@ -43,10 +43,15 @@ getTransactionList()
 });
 }
 
+// ngDoCheck()
+// {
+//     alert("hii");
+// }
+
 invoicedata(invoiceid)
 {
   this._costServices.getInvoiceData(invoiceid).subscribe( res => { this.InvoiceData = res;
-    //alert(JSON.stringify(this.InvoiceData.title));
+   // console.log(JSON.stringify(this.InvoiceData));
 });
     
 }

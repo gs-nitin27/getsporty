@@ -33,9 +33,6 @@ app.get('/newtest', function(request, response)
     response.send("response")
 });
 
-
-
-    
 app.get('/insert', function(req, res, next)
 {
      // res.send("Harshvardhan")
