@@ -306,7 +306,7 @@
       <th>Location</th>
       <th>Mobile</th>
       <th>Age</th>
-      <th>View</th>
+      <th>Status</th>
       </tr>
       </thead>
       <tbody> 
@@ -335,9 +335,14 @@
       <br>
       </td>
       <td align="center">
-      <div>
-      <a  class="btn btn-primary btn-block btn-sm">Profile</a>
+      <div *ngIf="list.status == 4">
+      <a  class="btn btn-primary btn-block btn-sm">Pending</a>
       </div>
+      
+      <div *ngIf="list.status == 5">
+      <a  class="btn btn-success btn-block btn-sm">Accept</a>
+      </div>
+
       </td> 
       </tr>
       </tbody>

@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit
 {
     form: FormGroup;
     private formSumitAttempt: boolean;
-    
     today: number = Date.now();
     org : OrgModel = new OrgModel();
     currentDate = new Date();
@@ -38,33 +37,30 @@ export class HomeComponent implements OnInit
     result : any;
     myModalcheak : boolean;
 
-
 constructor(private formBuilder: FormBuilder,private _accountService: loginServices,private _router :Router,private _eventservices : createEventServices , private _jobservices : JobServices,@Inject(APP_CONFIG) private _config: IAppConfig,private _notificationService :NotificationService) 
 { 
     this.imageurl = _config.dir_url; 
     this._notificationService.popToastSuccess('Welcome', '');
-
 }
 
 ngOnInit() 
 {
-   this.getEventList();
-   this.getJobList();   
-   this.getOrgDetails();
-   this.org.userid = this.userid;
-
-    this.form = this.formBuilder.group({
-    userid : this.userid,
-    org_name:  [null, Validators.required],
-    about: [null,Validators.required],
-    email: [null, [Validators.required, Validators.email]],
-    address1:  [null, Validators.required],
-    address2:  [null, Validators.required],
-    city:  [null, Validators.required],
-    state:  [null, Validators.required],
-    pin:  [null, Validators.required],
-    mobile:  [null, Validators.required],
-    gstin : [null, Validators.required]
+  this.getEventList();
+  this.getJobList();   
+  this.getOrgDetails();
+  this.org.userid = this.userid;
+  this.form = this.formBuilder.group({
+  userid : this.userid,
+  org_name:  [null, Validators.required],
+  about: [null,Validators.required],
+  email: [null, [Validators.required, Validators.email]],
+  address1:  [null, Validators.required],
+  address2:  [null, Validators.required],
+  city:  [null, Validators.required],
+  state:  [null, Validators.required],
+  pin:  [null, Validators.required],
+  mobile:  [null, Validators.required],
+  gstin : [null, Validators.required]
 });
 }
 getJobList()
@@ -100,7 +96,9 @@ hello(end_date)
 
 orgregister(org:any)
 {
-  this._accountService.orgAdd(org).subscribe(data => { this.res = data;
+  this._accountService.orgAdd(org).subscribe(data => 
+  { 
+  this.res = data;
   $('#myModal').modal('toggle');
   this.getOrgDetails();
   });
@@ -109,9 +107,7 @@ orgregister(org:any)
 getOrgDetails()
 {
   this._accountService.getOrgDetails(this.userid).subscribe(data => { this.result = data;
-  
     // alert(JSON.stringify(this.result.data.org_name));
-
   this.result = data.data.org_name;
   if(data.status == '0')
   {

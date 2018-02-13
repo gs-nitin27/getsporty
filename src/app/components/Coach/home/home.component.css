@@ -33,17 +33,14 @@ nav .brand-logo {
   color: white;
 }
 .tabs .indicator {
-    
     background-color: rgb(43, 209, 226);
     height:3px;
-    
 }
 .input-field label{
     color:#01579b;
 }
 .tabs{
     background-color: rgba(30, 30, 30, 0.88);
-
 }
 .tabs .tab a{
     color: rgba(255, 255, 255, 0.57);
@@ -53,15 +50,14 @@ nav .brand-logo {
 }
 .btn1,.btn1:hover,.btn1:focus{
     background-color: #01579b;
-
 }
 .backform{
         background-color: rgba(0, 0, 0, 0.10)!important;
-       margin-top: -20px;
-    padding-top: 20px;
+        margin-top: -20px;
+        padding-top: 20px;
 }
 .create{
-        font-size: 40px;
+    font-size: 40px;
     font-family: 'Slabo 27px', serif;
     font-weight:600;
 }
@@ -76,25 +72,20 @@ nav .brand-logo {
   padding-top: 30px;
 }
 .backform1{
-        background-color: rgba(0, 0, 0, 0.10)!important;
-       margin-top: -20px;
+    background-color: rgba(0, 0, 0, 0.10)!important;
+    margin-top: -20px;
     padding-top: 20px;
     padding-bottom: 45px;
 }
-
 .border{
     border:2px solid black;
 }
-
-
-
 .input-field1{
         margin-top: 0;
 }
 .card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
-
 .card {
   margin-top: 10px;
   box-sizing: border-box;
